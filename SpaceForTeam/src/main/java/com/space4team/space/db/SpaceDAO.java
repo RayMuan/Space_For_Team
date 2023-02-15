@@ -1,4 +1,4 @@
-package com.space4team.db;
+package com.space4team.space.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
