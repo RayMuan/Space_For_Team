@@ -1,3 +1,5 @@
+<%@page import="com.space4team.review.db.ReviewDAO"%>
+<%@page import="com.space4team.host.db.HostDTO"%>
 <%@page import="com.space4team.space.db.SpaceDAO"%>
 <%@page import="com.space4team.space.db.SpaceDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,7 +11,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Modern Business - Start Bootstrap Template</title>
+    <%
+    SpaceDTO sdto=(SpaceDTO)request.getAttribute("sdto");
+    HostDTO hdto=(HostDTO)request.getAttribute("hdto");
+    ReviewDAO rdao=new ReviewDAO(); // 임시
+	%>
+        <title><%= sdto.getS_name() %></title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -18,9 +25,6 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body class="d-flex flex-column">
-    <%
-    SpaceDTO dto=(SpaceDTO)request.getAttribute("dto");
-	%>
         <main class="flex-shrink-0">
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -62,11 +66,9 @@
                                 <!-- Post header-->
                                 <header class="mb-4">
                                     <!-- Post title-->
-                                    <h1 class="fw-bolder mb-1"><%=dto.getS_name() %></h1>
+                                    <h1 class="fw-bolder mb-1"><%=sdto.getS_name() %></h1>
                                     <!-- Post meta content-->
                                     <!-- Post categories-->
-                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">스터디룸</a>
-                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">세미나룸</a>
                                 </header>
                                 <!-- Preview image figure-->
                                 <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
@@ -91,7 +93,7 @@
                                                 <div class="d-flex mt-4">
                                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                                     <div class="ms-3">
-                                                        <div class="fw-bold d-flex align-items-center">호스트 <p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6">2022-02-08</p></div>
+                                                        <div class="fw-bold d-flex align-items-center"><%=hdto.getH_name() %><p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6">2022-02-08</p></div>
                                                         And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
                                                     </div>
                                                 </div>
@@ -114,7 +116,7 @@
                         <div class="col-lg-3">
 						<section class="mb-5">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
-							<p class="fs-1 mb-4">4.5</p>
+							<p class="fs-1 mb-4"><%=rdao.getAverage() %></p>
 
 							<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 							<div>
@@ -176,7 +178,7 @@
 									<img class="card-img-top"
 										src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
 									<div class="card-body p-4">
-										<p class="card-text mb-0">부산광역시 부산진구<br><%=dto.getS_address() %></p>
+										<p class="card-text mb-0"><%=sdto.getS_sido() %><><%=sdto.getS_sigungu() %><br><%=sdto.getS_address() %></p>
 									</div>
 								</div>
 							</div>
@@ -185,14 +187,13 @@
 								<div class="card h-100 border">
 									<div class="card-body p-4">
 										<h5 class="card-title mb-3">공지사항</h5>
-										<p class="card-text mb-0">메모 내용 좀 길게 적어야 줄나눔이 보일 것 같은데
-											어게한담. 엔터를 넣으면 어떻게 될까. 충격 엔터 안먹음 . 당연...한가? db로 넣으면 다를지도.</p>
+										<p class="card-text mb-0"><%=sdto.getS_memo() %></p>
 									</div>
 									<div class="card-footer p-3 bg-light border-top">
 										<div class="d-flex align-items-end justify-content-between">
 											<div class="d-flex align-items-center">
-												<div class="fw-bold me-sm-3">호스트</div>
-												<div class="fw-nomal">010-0111-0111</div>
+												<div class="fw-bold me-sm-3"><%=hdto.getH_name()%></div>
+												<div class="fw-nomal"><%=hdto.getH_tel() %></div>
 											</div>
 										</div>
 									</div>

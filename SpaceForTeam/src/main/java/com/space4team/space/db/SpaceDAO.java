@@ -73,8 +73,26 @@ public class SpaceDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto=new SpaceDTO();
+				dto.setS_num(s_num);
 				dto.setS_name(rs.getString("s_name"));
 				dto.setS_address(rs.getString("s_address"));
+				dto.setS_bill(rs.getString("s_bill"));
+				dto.setH_num(rs.getInt("h_num"));
+				dto.setS_sido(rs.getString("s_sido"));
+				dto.setS_sigungu(rs.getString("s_sigungu"));
+				dto.setS_memo(rs.getString("s_memo"));
+				dto.setS_elevator(rs.getInt("s_elevator"));
+				dto.setS_parking(rs.getInt("s_parking"));
+				dto.setS_wifi(rs.getInt("s_wifi"));
+				dto.setS_drink(rs.getInt("s_drink"));
+				dto.setS_toilet(rs.getInt("s_toliet"));
+				dto.setS_socket(rs.getInt("s_socket"));
+				dto.setS_heating(rs.getInt("s_heating"));
+				dto.setS_air(rs.getInt("s_air"));
+				dto.setS_locker(rs.getInt("s_locker"));
+				dto.setS_print(rs.getInt("s_print"));
+				dto.setS_beam(rs.getInt("s_beam"));
+				dto.setS_laptop(rs.getInt("s_laptop"));
 				}
 		}catch (Exception e) {
 			e.printStackTrace();
