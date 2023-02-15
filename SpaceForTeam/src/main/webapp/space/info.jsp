@@ -1,5 +1,5 @@
-<%@page import="com.space4team.db.SpaceDAO"%>
-<%@page import="com.space4team.db.SpaceDTO"%>
+<%@page import="com.space4team.space.db.SpaceDAO"%>
+<%@page import="com.space4team.space.db.SpaceDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

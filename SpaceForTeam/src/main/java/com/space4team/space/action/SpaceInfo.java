@@ -3,8 +3,8 @@ package com.space4team.space.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.space4team.db.SpaceDAO;
-import com.space4team.db.SpaceDTO;
+import com.space4team.space.db.SpaceDAO;
+import com.space4team.space.db.SpaceDTO;
 
 public class SpaceInfo implements Action{
 

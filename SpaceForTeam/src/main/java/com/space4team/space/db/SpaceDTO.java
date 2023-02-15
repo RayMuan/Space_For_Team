@@ -1,4 +1,4 @@
-package com.space4team.db;
+package com.space4team.space.db;
 
 public class SpaceDTO {
 	private int s_num;
