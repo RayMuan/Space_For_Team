@@ -143,6 +143,4 @@ public class SpaceDTO {
 	public void setS_laptop(int s_laptop) {
 		this.s_laptop = s_laptop;
 	}
-	
-	
 }// class
