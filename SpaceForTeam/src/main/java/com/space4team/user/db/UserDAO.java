@@ -18,7 +18,8 @@ private Connection con=null;
 		return con;
 	}//connection
 	
-	public UserDTO getInfoUser(int user_num) {
+	public UserDTO getUser(int user_num) {
+		System.out.println("getUser()");
 		UserDTO dto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -26,15 +27,15 @@ private Connection con=null;
 		
 		try {
 			con=getConnection();
-			String sql="select * from review where user_num=?";
+			String sql="select * from user where user_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, user_num);
 			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto=new UserDTO();
-				dto.setUser_num(rs.getInt(user_num));
-				dto.setUser_email (rs.getString("user_email"));
+				dto.setUser_num(user_num);
+				dto.setUser_email(rs.getString("user_email"));
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setUser_name(rs.getString("user_name"));
 				dto.setUser_pass(rs.getString("user_pass"));

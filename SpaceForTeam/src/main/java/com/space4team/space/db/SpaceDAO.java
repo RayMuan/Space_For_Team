@@ -60,6 +60,7 @@ public class SpaceDAO {
 		}//insertSpace
 	
 	public SpaceDTO getSpace(int s_num) {
+		System.out.println("getSpace()");
 		SpaceDTO dto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -81,18 +82,7 @@ public class SpaceDAO {
 				dto.setS_sido(rs.getString("s_sido"));
 				dto.setS_sigungu(rs.getString("s_sigungu"));
 				dto.setS_memo(rs.getString("s_memo"));
-				dto.setS_elevator(rs.getInt("s_elevator"));
-				dto.setS_parking(rs.getInt("s_parking"));
-				dto.setS_wifi(rs.getInt("s_wifi"));
-				dto.setS_drink(rs.getInt("s_drink"));
-				dto.setS_toilet(rs.getInt("s_toliet"));
-				dto.setS_socket(rs.getInt("s_socket"));
-				dto.setS_heating(rs.getInt("s_heating"));
-				dto.setS_air(rs.getInt("s_air"));
-				dto.setS_locker(rs.getInt("s_locker"));
-				dto.setS_print(rs.getInt("s_print"));
-				dto.setS_beam(rs.getInt("s_beam"));
-				dto.setS_laptop(rs.getInt("s_laptop"));
+				dto.setS_opt(rs.getString("s_opt"));
 				}
 		}catch (Exception e) {
 			e.printStackTrace();

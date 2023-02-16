@@ -27,10 +27,13 @@ public class SpaceInfo implements Action{
 		HostDTO hdto=hdao.getHost(sdto.getH_num());
 		
 		ReviewDAO redao=new ReviewDAO();
-		ReviewDTO redto=redao.getInfoReview(s_num);
+		ReviewDTO redto=redao.getReview(s_num);
 		
 		UserDAO udao=new UserDAO();
-		UserDTO udto=udao.getInfoUser(redto.getUser_num());
+		UserDTO udto=udao.getUser(redto.getUser_num());
+		
+		
+		
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
 		request.setAttribute("redto", redto);
@@ -38,9 +41,6 @@ public class SpaceInfo implements Action{
 		
 		
 				
-		
-		
-		
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("space/info.jsp");
