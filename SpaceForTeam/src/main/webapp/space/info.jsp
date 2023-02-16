@@ -1,6 +1,7 @@
+<%@page import="com.space4team.user.db.UserDTO"%>
+<%@page import="com.space4team.review.db.ReviewDTO"%>
 <%@page import="com.space4team.review.db.ReviewDAO"%>
 <%@page import="com.space4team.host.db.HostDTO"%>
-<%@page import="com.space4team.space.db.SpaceDAO"%>
 <%@page import="com.space4team.space.db.SpaceDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,7 +15,9 @@
     <%
     SpaceDTO sdto=(SpaceDTO)request.getAttribute("sdto");
     HostDTO hdto=(HostDTO)request.getAttribute("hdto");
-    ReviewDAO rdao=new ReviewDAO(); // 임시
+    ReviewDTO redto=(ReviewDTO)request.getAttribute("redto");
+    UserDTO udto=(UserDTO)request.getAttribute("udto");
+    
 	%>
         <title><%= sdto.getS_name() %></title>
         <!-- Favicon-->
@@ -86,9 +89,9 @@
                                             <!-- Parent comment-->
                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                             <div class="ms-3">
-                                                <div class="fw-bold d-flex align-items-center">게스트 1<p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6">2022-02-07</p></div>
-                                                <div>★★★★☆</div>
-                                                If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                                                <div class="fw-bold d-flex align-items-center"><%= udto.getUser_id() %><p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6">2022-02-07</p></div>
+                                                <div><%=redto.getRe_point() %></div>
+                                                <%=redto.getRe_subject() %>
                                                 <!-- Child comment 1-->
                                                 <div class="d-flex mt-4">
                                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
@@ -116,7 +119,7 @@
                         <div class="col-lg-3">
 						<section class="mb-5">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
-							<p class="fs-1 mb-4"><%=rdao.getAverage() %></p>
+							<p class="fs-1 mb-4"><%= %></p>
 
 							<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 							<div>

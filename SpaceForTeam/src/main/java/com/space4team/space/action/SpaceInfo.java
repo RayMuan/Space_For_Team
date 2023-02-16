@@ -6,8 +6,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.space4team.host.db.HostDAO;
 import com.space4team.host.db.HostDTO;
 import com.space4team.review.db.ReviewDAO;
+import com.space4team.review.db.ReviewDTO;
 import com.space4team.space.db.SpaceDAO;
 import com.space4team.space.db.SpaceDTO;
+import com.space4team.user.db.UserDAO;
+import com.space4team.user.db.UserDTO;
 
 public class SpaceInfo implements Action{
 
@@ -23,13 +26,18 @@ public class SpaceInfo implements Action{
 		HostDAO hdao=new HostDAO();
 		HostDTO hdto=hdao.getHost(sdto.getH_num());
 		
-		ReviewDAO rdao=new ReviewDAO();
+		ReviewDAO redao=new ReviewDAO();
+		ReviewDTO redto=redao.getInfoReview(s_num);
 		
-		double avg=rdao.getAverage();
-		
+		UserDAO udao=new UserDAO();
+		UserDTO udto=udao.getInfoUser(redto.getS_num());
 		
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
+		request.setAttribute("redto", redto);
+		request.setAttribute("udto", udto);
+		
+		
 		
 		
 		ActionForward forward=new ActionForward();

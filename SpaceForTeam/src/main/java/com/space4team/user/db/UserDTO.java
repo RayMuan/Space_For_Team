@@ -2,14 +2,13 @@ package com.space4team.user.db;
 
 public class UserDTO {
 	private int user_num;
-	private String Suser_email;
+	private String user_email;
 	private String user_id;
 	private String user_name;
 	private String user_pass;
 	private String user_phone;
 	private String user_birth;
-	private String user_pass1;
-	
+
 	// get set
 	public int getUser_num() {
 		return user_num;
@@ -17,11 +16,11 @@ public class UserDTO {
 	public void setUser_num(int user_num) {
 		this.user_num = user_num;
 	}
-	public String getSuser_email() {
-		return Suser_email;
+	public String getUser_email() {
+		return user_email;
 	}
-	public void setSuser_email(String suser_email) {
-		Suser_email = suser_email;
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -52,11 +51,5 @@ public class UserDTO {
 	}
 	public void setUser_birth(String user_birth) {
 		this.user_birth = user_birth;
-	}
-	public String getUser_pass1() {
-		return user_pass1;
-	}
-	public void setUser_pass1(String user_pass1) {
-		this.user_pass1 = user_pass1;
 	}
 }//class
