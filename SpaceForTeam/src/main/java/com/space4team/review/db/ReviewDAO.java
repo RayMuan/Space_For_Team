@@ -20,7 +20,8 @@ public class ReviewDAO {
 		return con;
 	}//connection
 	
-	public ReviewDTO getInfoReview(int s_num) {
+	public ReviewDTO getReview(int s_num) {
+		System.out.println("getReview()");
 		ReviewDTO dto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -38,20 +39,20 @@ public class ReviewDAO {
 				dto=new ReviewDTO();
 				dto.setRe_num(rs.getInt("re_num"));
 				dto.setUser_num(rs.getInt("user_num"));
-				dto.setRe_subject(rs.getString("re_suject"));
+				dto.setRe_subject(rs.getString("re_subject"));
 				dto.setRe_content(rs.getString("re_content"));
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
 				dto.setRe_reply(rs.getString("re_reply"));
 				
 				}
-			String sql2="select avg(*) from review where s_num=?";
+			String sql2="select avg(re_point) from review where s_num=?";
 			pstmt=con.prepareStatement(sql2);
 			pstmt.setInt(1, s_num);
 			
-			
+			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				dto.setRe_avg(rs.getDouble("avg(*)"));
+				dto.setRe_avg(rs.getDouble("avg(re_point)"));
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

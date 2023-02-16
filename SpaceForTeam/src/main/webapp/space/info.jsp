@@ -17,7 +17,6 @@
     HostDTO hdto=(HostDTO)request.getAttribute("hdto");
     ReviewDTO redto=(ReviewDTO)request.getAttribute("redto");
     UserDTO udto=(UserDTO)request.getAttribute("udto");
-    
 	%>
         <title><%= sdto.getS_name() %></title>
         <!-- Favicon-->
@@ -97,7 +96,7 @@
                                                     <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                                     <div class="ms-3">
                                                         <div class="fw-bold d-flex align-items-center"><%=hdto.getH_name() %><p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6">2022-02-08</p></div>
-                                                        And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                                                        <%=redto.getRe_reply() %>
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,9 +105,9 @@
                                         <div class="d-flex">
                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                             <div class="ms-3">
-                                                <div class="fw-bold d-flex align-items-center">게스트2<p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6">2022-02-07</p></div>
-                                                <div>★★★★☆</div>
-                                                When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                                                <div class="fw-bold d-flex align-items-center"><%= udto.getUser_id() %><p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6">2022-02-07</p></div>
+                                                <div><%=redto.getRe_point() %></div>
+                                                <%=redto.getRe_subject() %>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +116,7 @@
                         </div>
                         
                         <div class="col-lg-3">
-						<section class="mb-5">
+						<section class="mb-5 pt-4">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 							<p class="fs-1 mb-4"><%=redto.getRe_avg() %></p>
 
@@ -155,24 +154,6 @@
 									class="feature bg-dark bg-gradient text-white rounded-3 mb-3">
 									<i class="bi bi-thermometer-snow"></i>
 								</div>
-
-								<h3 class="fw-bolder mb-2 mt-5">선택 옵션</h3>
-								<div
-									class="feature bg-dark bg-gradient text-white rounded-3 mb-3">
-									<i class="bi bi-file-lock2"></i>
-								</div>
-								<div
-									class="feature bg-dark bg-gradient text-white rounded-3 mb-3">
-									<i class="bi bi-printer"></i>
-								</div>
-								<div
-									class="feature bg-dark bg-gradient text-white rounded-3 mb-3">
-									<i class="bi bi-projector"></i>
-								</div>
-								<div
-									class="feature bg-dark bg-gradient text-white rounded-3 mb-3">
-									<i class="bi bi-laptop"></i>
-								</div>
 							</div>
 
 							<h3 class="fw-bolder mb-2 mt-5">위치</h3>
@@ -181,7 +162,7 @@
 									<img class="card-img-top"
 										src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
 									<div class="card-body p-4">
-										<p class="card-text mb-0"><%=sdto.getS_sido() %><><%=sdto.getS_sigungu() %><br><%=sdto.getS_address() %></p>
+										<p class="card-text mb-0"><%=sdto.getS_sido()%><%=sdto.getS_sigungu() %><%=sdto.getS_address() %></p>
 									</div>
 								</div>
 							</div>
@@ -193,12 +174,8 @@
 										<p class="card-text mb-0"><%=sdto.getS_memo() %></p>
 									</div>
 									<div class="card-footer p-3 bg-light border-top">
-										<div class="d-flex align-items-end justify-content-between">
-											<div class="d-flex align-items-center">
 												<div class="fw-bold me-sm-3"><%=hdto.getH_name()%></div>
-												<div class="fw-nomal"><%=hdto.getH_tel() %></div>
-											</div>
-										</div>
+												<div class="fw-nomal"><%=hdto.getH_phone() %></div>
 									</div>
 								</div>
 							</div>

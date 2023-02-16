@@ -8,7 +8,7 @@ public class HostDTO {
 	private String h_pass;
 	private String h_phone;
 	private String h_birth;
-	private String h_pass1;
+
 	
 	// get set
 	public int getH_num() {
@@ -53,10 +53,5 @@ public class HostDTO {
 	public void setH_birth(String h_birth) {
 		this.h_birth = h_birth;
 	}
-	public String getH_pass1() {
-		return h_pass1;
-	}
-	public void setH_pass1(String h_pass1) {
-		this.h_pass1 = h_pass1;
-	}
+	
 }//class
