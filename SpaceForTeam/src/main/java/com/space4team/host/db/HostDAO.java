@@ -38,7 +38,7 @@ public class HostDAO {
 				dto.setH_email(rs.getString("h_email")); 
 				dto.setH_id(rs.getString("h_id"));
 				dto.setH_pass(rs.getString("h_pass"));
-				dto.setH_tel(rs.getString("h_tel"));
+				dto.setH_phone(rs.getString("h_phone"));
 				dto.setH_birth(rs.getString("h_birth"));
 				dto.setH_pass1(rs.getString("h_pass1"));
 				}

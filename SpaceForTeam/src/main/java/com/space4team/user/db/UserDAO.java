@@ -1,4 +1,4 @@
-package com.space4team.review.db;
+package com.space4team.user.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,10 +8,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-
-
-public class ReviewDAO {
-	private Connection con=null;
+public class UserDAO {
+private Connection con=null;
 	
 	public Connection getConnection() throws Exception{
 		Context init=new InitialContext();
@@ -20,39 +18,30 @@ public class ReviewDAO {
 		return con;
 	}//connection
 	
-	public ReviewDTO getInfoReview(int s_num) {
-		ReviewDTO dto=null;
+	public UserDTO getInfoUser(int user_num) {
+		UserDTO dto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs= null;
 		
-		
 		try {
 			con=getConnection();
-			String sql="select * from review where s_num=?";
+			String sql="select * from review where user_num=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, s_num);
-
+			pstmt.setInt(1, user_num);
+			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				dto=new ReviewDTO();
-				dto.setRe_num(rs.getInt("re_num"));
-				dto.setUser_num(rs.getInt("user_num"));
-				dto.setRe_subject(rs.getString("re_suject"));
-				dto.setRe_content(rs.getString("re_content"));
-				dto.setRe_date(rs.getTimestamp("re_date"));
-				dto.setRe_point(rs.getInt("re_point"));
-				dto.setRe_reply(rs.getString("re_reply"));
+				dto=new UserDTO();
+				dto.setUser_num(rs.getInt(user_num));
+				dto.setUser_email (rs.getString("user_email"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setUser_name(rs.getString("user_name"));
+				dto.setUser_pass(rs.getString("user_pass"));
+				dto.setUser_phone(rs.getString("user_phone"));
+				dto.setUser_birth(rs.getString("user_birth"));
 				
 				}
-			String sql2="select avg(*) from review where s_num=?";
-			pstmt=con.prepareStatement(sql2);
-			pstmt.setInt(1, s_num);
-			
-			
-			if(rs.next()) {
-				dto.setRe_avg(rs.getDouble("avg(*)"));
-			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -62,5 +51,5 @@ public class ReviewDAO {
 		}
 		return dto;
 	}// getInfoReview
-	
+
 }//class
