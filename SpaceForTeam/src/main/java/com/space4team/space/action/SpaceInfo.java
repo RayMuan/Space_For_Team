@@ -30,12 +30,14 @@ public class SpaceInfo implements Action{
 		ReviewDTO redto=redao.getInfoReview(s_num);
 		
 		UserDAO udao=new UserDAO();
-		UserDTO udto=udao.getInfoUser(redto.getS_num());
-		
+		UserDTO udto=udao.getInfoUser(redto.getUser_num());
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
 		request.setAttribute("redto", redto);
 		request.setAttribute("udto", udto);
+		
+		
+				
 		
 		
 		

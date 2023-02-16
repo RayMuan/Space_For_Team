@@ -119,7 +119,7 @@
                         <div class="col-lg-3">
 						<section class="mb-5">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
-							<p class="fs-1 mb-4"><%= %></p>
+							<p class="fs-1 mb-4"><%=redto.getRe_avg() %></p>
 
 							<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 							<div>

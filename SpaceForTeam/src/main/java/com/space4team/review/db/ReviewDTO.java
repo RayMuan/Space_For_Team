@@ -68,4 +68,5 @@ public class ReviewDTO {
 	public void setRe_avg(double re_avg) {
 		this.re_avg = re_avg;
 	}
+	
 }//class

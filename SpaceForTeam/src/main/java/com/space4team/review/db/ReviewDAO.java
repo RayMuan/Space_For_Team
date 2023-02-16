@@ -32,7 +32,7 @@ public class ReviewDAO {
 			String sql="select * from review where s_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, s_num);
-			
+
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto=new ReviewDTO();
@@ -45,6 +45,14 @@ public class ReviewDAO {
 				dto.setRe_reply(rs.getString("re_reply"));
 				
 				}
+			String sql2="select avg(*) from review where s_num=?";
+			pstmt=con.prepareStatement(sql2);
+			pstmt.setInt(1, s_num);
+			
+			
+			if(rs.next()) {
+				dto.setRe_avg(rs.getDouble("avg(*)"));
+			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -55,5 +63,4 @@ public class ReviewDAO {
 		return dto;
 	}// getInfoReview
 	
-
 }//class
