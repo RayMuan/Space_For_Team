@@ -39,4 +39,18 @@
   	<servlet-name>ReviewFrontController</servlet-name>
   	<url-pattern>*.re</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+	<servlet-name>BookingFrontController</servlet-name>
+	<servlet-class>com.space4team.booking.action.BookingFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>BookingFrontController</servlet-name>
+  	<url-pattern>*.bk</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
 </web-app>

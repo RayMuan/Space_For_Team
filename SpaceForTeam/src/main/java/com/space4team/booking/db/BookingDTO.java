@@ -9,7 +9,7 @@ public class BookingDTO {
 	private int bk_usercount;
 	private Timestamp bk_date;
 	private int bk_price;
-	private int bk_usedate;
+	private String bk_usedate;
 	private int bk_starttime;
 	private int bk_endtime;
 	
@@ -50,10 +50,10 @@ public class BookingDTO {
 	public void setBk_price(int bk_price) {
 		this.bk_price = bk_price;
 	}
-	public int getBk_usedate() {
+	public String getBk_usedate() {
 		return bk_usedate;
 	}
-	public void setBk_usedate(int bk_usedate) {
+	public void setBk_usedate(String bk_usedate) {
 		this.bk_usedate = bk_usedate;
 	}
 	public int getBk_starttime() {
