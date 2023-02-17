@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itwillbs.guest.action.GuestEmailCheck;
 import com.itwillbs.guest.action.GuestIdCheck;
 
 public class HostFrontController extends HttpServlet{
@@ -62,7 +63,14 @@ public class HostFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(sPath.equals("/GuestInsertForm.gu")) {
+		}else if(sPath.equals("/HostEmailCheck.ho")) {
+			action = new HostEmailCheck();// (부모=자식)
+			try {
+				forward= action.execute(request, response); // 이동할 경로 받아오기
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/HostInsertForm.gu")) {
 			// member/join.jsp 이동
 			forward1 = new com.itwillbs.guest.action.ActionForward(); //이동할 값 저장
 			forward1.setPath("guestInsert.jsp"); // 경로 지정

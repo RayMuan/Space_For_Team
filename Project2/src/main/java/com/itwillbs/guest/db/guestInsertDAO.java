@@ -61,7 +61,7 @@ public class guestInsertDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select * from user where user_id=?";
+			String sql="select user_id from user where user_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 
@@ -69,12 +69,46 @@ public class guestInsertDAO {
 			if(rs.next()){
 				dto=new guestInsertDTO();
 				
-				dto.setUser_email(rs.getString("user_email"));
+//				dto.setUser_email(rs.getString("user_email"));
 				dto.setUser_id(rs.getString("user_id"));
-				dto.setUser_name(rs.getString("user_name"));
-				dto.setUser_pass(rs.getString("user_pass"));
-				dto.setUser_phone(rs.getString("user_phone"));
-				dto.setUser_birth(rs.getString("user_birth"));
+//				dto.setUser_name(rs.getString("user_name"));
+//				dto.setUser_pass(rs.getString("user_pass"));
+//				dto.setUser_phone(rs.getString("user_phone"));
+//				dto.setUser_birth(rs.getString("user_birth"));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			// 예외 상관없이 마무리작업 => 객체생성한 기억장소 해제
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return dto;
+	}//getMember()
+	public guestInsertDTO getMember1(String email) {
+		guestInsertDTO dto=null;
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			
+			String sql="select user_email from user where user_email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				dto=new guestInsertDTO();
+				
+				dto.setUser_email(rs.getString("user_email"));
+//				dto.setUser_id(rs.getString("user_id"));
+//				dto.setUser_name(rs.getString("user_name"));
+//				dto.setUser_pass(rs.getString("user_pass"));
+//				dto.setUser_phone(rs.getString("user_phone"));
+//				dto.setUser_birth(rs.getString("user_birth"));
 				
 			}
 		} catch (Exception e) {

@@ -7,7 +7,7 @@ public class hostInsertDTO {
 	private String h_id;
 	private String h_name;
 	private String h_pass;
-	private String h_tel;
+	private String h_phone;
 	private String h_birth;
 	
 	
@@ -41,11 +41,11 @@ public class hostInsertDTO {
 	public void setH_pass(String h_pass) {
 		this.h_pass = h_pass;
 	}
-	public String getH_tel() {
-		return h_tel;
+	public String getH_phone() {
+		return h_phone;
 	}
-	public void setH_tel(String h_tel) {
-		this.h_tel = h_tel;
+	public void setH_phone(String h_phone) {
+		this.h_phone = h_phone;
 	}
 	public String getH_birth() {
 		return h_birth;

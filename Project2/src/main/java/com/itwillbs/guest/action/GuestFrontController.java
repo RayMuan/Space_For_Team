@@ -57,6 +57,13 @@ public class GuestFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(sPath.equals("/GuestEmailCheck.gu")) {
+			action = new GuestEmailCheck();// (부모=자식)
+			try {
+				forward= action.execute(request, response); // 이동할 경로 받아오기
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(sPath.equals("/Main.gu")) {
 			forward = new ActionForward(); //이동할 값 저장
 			forward.setPath("project/main.jsp"); // 경로 지정

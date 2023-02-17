@@ -32,7 +32,7 @@ public class hostInsertDAO {
 			if(rs.next()) {
 			h_num=rs.getInt("max(h_num)")+1;
 			}
-			sql = "insert into host(h_num,h_email, h_id ,h_name,h_pass,h_tel,h_birth) values(?,?,?,?,?,?,?)";
+			sql = "insert into host(h_num,h_email, h_id ,h_name,h_pass,h_phone,h_birth) values(?,?,?,?,?,?,?)";
 				
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, h_num);
@@ -40,7 +40,7 @@ public class hostInsertDAO {
 			pstmt.setString(3, dto.getH_id());
 			pstmt.setString(4, dto.getH_name());
 			pstmt.setString(5, dto.getH_pass() );
-			pstmt.setString(6, dto.getH_tel());
+			pstmt.setString(6, dto.getH_phone());
 			pstmt.setString(7, dto.getH_birth());
 //			pstmt.setTimestamp(7, dto.getDate());
 
@@ -61,7 +61,7 @@ public class hostInsertDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select * from host where h_id=?";
+			String sql="select h_id from host where h_id=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 
@@ -69,12 +69,46 @@ public class hostInsertDAO {
 			if(rs.next()){
 				dto=new hostInsertDTO();
 				
-				dto.setH_email(rs.getString("H_email"));
+//				dto.setH_email(rs.getString("H_email"));
 				dto.setH_id(rs.getString("H_id"));
-				dto.setH_name(rs.getString("H_name"));
-				dto.setH_pass(rs.getString("H_pass"));
-				dto.setH_tel(rs.getString("H_tel"));
-				dto.setH_birth(rs.getString("H_birth"));
+//				dto.setH_name(rs.getString("H_name"));
+//				dto.setH_pass(rs.getString("H_pass"));
+//				dto.setH_phone(rs.getString("H_phone"));
+//				dto.setH_birth(rs.getString("H_birth"));
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			// 예외 상관없이 마무리작업 => 객체생성한 기억장소 해제
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return dto;
+	}//getMember()
+	public hostInsertDTO getMember1(String email) {
+		hostInsertDTO dto=null;
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			
+			String sql="select h_email from host where h_email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				dto=new hostInsertDTO();
+				
+				dto.setH_email(rs.getString("H_email"));
+//				dto.setH_id(rs.getString("H_id"));
+//				dto.setH_name(rs.getString("H_name"));
+//				dto.setH_pass(rs.getString("H_pass"));
+//				dto.setH_phone(rs.getString("H_phone"));
+//				dto.setH_birth(rs.getString("H_birth"));
 				
 			}
 		} catch (Exception e) {

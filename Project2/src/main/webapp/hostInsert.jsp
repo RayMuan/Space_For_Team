@@ -22,6 +22,11 @@
  	// ready 준비하다는 함수
 	// document - html문서
  	$(document).ready(function(){
+ 		var RegexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //@, . 필수 입력
+ 		var RegexName = /^[가-힣]{2,4}$/; //이름 유효성 검사 2~4자 사이
+ 		var RegexId =  /^[a-zA-Z0-9]{4,12}$/ ; //아이디 유효성 검사 4 ~12자 사이
+ 		var RegexTel = /^[0-9]{8,11}$/; //전화번호 유효성 검사
+ 		var RegexPass= /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
 // 	alert("준비");
 	// submit 버튼을 클릭했을 때 폼태그가 전송되어지면 이벤트 onsubmit()
 	// form 태그의 id="join"를 찾아갈 때 #으로 찾아간다 
@@ -34,37 +39,52 @@
 			alert("이메일 입력하세요");
 			$('#h_email').focus();
 			return false;
+		}else if (!RegexEmail.test($.trim($("#h_email").val()))){
+			alert("이메일 형식에 맞지않습니다");
+			$("#email").focus();
+			return false;
 		}
 		if($('#h_id').val()==""){
 			alert("아이디 입력하세요");
-			// 스타일시트 사용 -> 대상 지정 * 전체 , h1태그
-			// id=이름 #이름, class=이름 .이름
 			$('#h_id').focus();
-			// return 되돌아 갈때 submit이 작용하지 않게끔 하려면 false
-			// return에 false를 하지않으면 다음지정페이지로 넘어가게됨
-// 태그 대상 지정해서 제어가능 $('*').css('color','red');
-// 태그 대상 지정해서 제어가능 $('form').css('color','blue');
 			return false;
-		}
+		}else if (!RegexId.test($.trim($("#h_id").val()))){
+ 				alert("아이디 4~12자로 입력하세요");
+ 				$("#h_id").focus();
+ 				return false;
+ 			}	
 		if ($('#h_name').val()=="") {
 			alert("이름 입력하세요");
 			$('#h_name').focus();
+			return false;
+		}else if ( !RegexName.test($.trim($("#h_name").val()))){
+			alert("이름형식에 맞지않습니다");
+			$("#h_name").focus();
 			return false;
 		}
 		if ($('#h_pass').val()=="") {
 			alert("비밀번호 입력하세요");
 			$('#h_pass').focus();
 			return false;
-		}
+		}else if ( !RegexPass.test($.trim($("#h_pass").val()))){
+			alert("비밀번호는 숫자+영문자+특수문자 조합으로 8자리 이상 사용해야 합니다");
+			$("#h_pass").focus();
+			return false;
+			}
 		if ($('#h_pass').val() != $('#h_pass1').val()) {
 			alert("비밀번호가 일치하지 않습니다");
 			$('#h_pass1').focus();
 			return false;
 		}
+		
 	
-		if ($('#h_tel').val()=="") {
+		if ($('#h_phone').val()=="") {
 			alert("핸드폰번호를 입력하세요");
-			$('#h_tel').focus();
+			$('#h_phone').focus();
+			return false;
+		}else if (!RegexTel.test($.trim($("#h_phone").val()))){
+			alert("전화번호 형식에 맞지않습니다");
+			$("#h_phone").focus();
 			return false;
 		}
 		if ($('#h_birth').val()=="") {
@@ -72,6 +92,8 @@
 			$('#h_birth').focus();
 			return false;
 		}
+
+            
 // 		if ($('.email').val() != $('.email2').val()) {
 // 			alert("이메일 틀림");
 // 			$('.email2').focus();
@@ -79,8 +101,31 @@
 // 		}
 		
 		});
+	
+ 		$('#button').click(function () {
+			if($('#h_email').val()==""){
+				alert("이메일 입력하세요");
+				$('#h_email').focus();
+				return false;
+			}
+			$.ajax({
+				url : 'HostEmailCheck.ho',
+				data : {'email':$('#h_email').val()},
+				// 성공적으로 결과값을 잘 들고오면 아이디 중복이랑 같은지 if문으로 확인
+				success : function(result){
+					// trim공백 제거
+					if(result.trim()=="이메일 중복"){
+						$('#button').html(result).css("color","red");
+					}else{
+						$('#button').html(result).css("color","blue");						
+					}
+					
+				}
+			});
+			
+		});
 		// class = "dup" 를 클릭했을 때 기능동작 <ID중복체크>!
-		$('#button').click(function () {
+		$('#button1').click(function () {
 			if($('#h_id').val()==""){
 				alert("아이디 입력하세요");
 				$('#h_id').focus();
@@ -95,9 +140,9 @@
 				success : function(result){
 					// trim공백 제거
 					if(result.trim()=="아이디 중복"){
-						$('#button').html(result).css("color","red");
+						$('#button1').html(result).css("color","red");
 					}else{
-						$('#button').html(result).css("color","blue");						
+						$('#button1').html(result).css("color","blue");						
 					}
 					
 				}
@@ -181,14 +226,17 @@
                                     <div class="form-floating mb-3">
                                         <input class="form-control" name="h_email" id="h_email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
                                         <label for="email">이메일</label>
+                                    <button class="btn btn-outline-dark" id="button" type="button">중복확인</button>
+                                    <button class="btn btn-outline-dark" id="button2" type="button">카카오톡으로 회원가입</button>
+                                    <button class="btn btn-outline-dark" id="button3" type="button">페이스북으로 회원가입</button>
                                         <div class="invalid-feedback" data-sb-feedback="email:required"></div>
                                     </div>
                                     
                                      <!-- Id input-->
-                                    <div class="form-control mb-3">
+                                    <div class="form-floating mb-3">
+                                    <input class="form-control" name= "h_id" id="h_id" type="text" placeholder="a"  data-sb-validations="required" />
                                     <label for="id">아이디</label>
-                                    <input class="form-control" name= "h_id" id="h_id" type="text" placeholder=""  data-sb-validations="required" aria-describedby="button-newsletter" />
-                                    <button class="btn btn-outline-dark" id="button" type="button">중복확인</button>
+                                    <button class="btn btn-outline-dark" id="button1" type="button">중복확인</button>
                                      <div class="invalid-feedback" data-sb-feedback="id:required"></div>
                                	 </div>
                                		 
@@ -223,8 +271,9 @@
                                     </div>
                                     <!-- Phone number input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" name="h_tel" id="h_tel" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                                        <input class="form-control" name="h_phone" id="h_phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
                                         <label for="tel">핸드폰 번호</label>
+                                        <button class="btn btn-outline-dark" id="button" type="button">인증번호 받기</button>
                                         <div class="invalid-feedback" data-sb-feedback="tel:required"></div>
                                     </div>
                                     <!-- birth input-->
