@@ -9,4 +9,16 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+	<servlet-name>SpaceFrontController</servlet-name>
+	<servlet-class>com.space4team.space.action.SpaceFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>SpaceFrontController</servlet-name>
+  	<url-pattern>*.sp</url-pattern>
+  </servlet-mapping>
+
+	
 </web-app>

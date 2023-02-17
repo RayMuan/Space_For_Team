@@ -88,6 +88,7 @@
   text-align: center;
 }
 
+
 .block:hover {
   background-color: #ddd;
   color: black;
@@ -424,11 +425,12 @@ sup {
 }
 
 a {
-  color: #0d6efd;
-  text-decoration: underline;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
 }
 a:hover {
-  color: #0a58ca;
+  color: #000040;
+  text-decoration: underline;
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {

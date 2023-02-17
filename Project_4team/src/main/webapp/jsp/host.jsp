@@ -1,3 +1,5 @@
+<%@page import="com.space4team.space.db.HostDTO"%>
+<%@page import="com.space4team.space.db.SpaceDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -53,76 +55,22 @@
             <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
                <h1 class="display-4 fw-bolder">Space for team</h1>
-<!-- 검색창 -->
-    <div class="searchmain">
-       <input type="text" class="form-control" placeholder="공간명으로 찾아보세요" style="text-align:left; width:550px; height:35px;" >
-    </div>
-<div class="ser-main" >
-       <button type="button" class="form-control" style="text-align:left; width:40px; height:35px;"><i class="fa-solid fa-magnifying-glass"></i></button>  
-	</div> 
-	<div class="selmain" >                                     
-       <select class="form-control" style="text-align:left; width:150px; height:35px;" >
-           <option value="" disabled selected> 지역 </option>
-              <option value='1'>서울</option>
-			  <option value='2'>부산</option>
-			  <option value='3'>대구</option>
-			  <option value='4'>인천</option>
-			  <option value='5'>광주</option>
-			  <option value='6'>대전</option>
-			  <option value='7'>울산</option>
-			  <option value='8'>강원</option>
-			  <option value='9'>경기</option>
-			  <option value='10'>경남</option>
-			  <option value='11'>경북</option>
-			  <option value='12' >전남</option>
-			  <option value='13'>전북</option>
-			  <option value='14'>제주</option>
-			  <option value='15'>충남</option>
-			  <option value='16'>충북</option>  
-       </select>
-	</div>
-   
-   <div class="selmain">   
-    <input type="number" min="1" placeholder="인원" class="form-control" 
-     style="display:inline-block;position: relative;  text-align:left; width:150px; height:35px; ">                                 
-   	</div>   
-  
-   	<div class="selmain">                                     
-       <select class="form-control" style="text-align:left; width:150px; height:35px;">
-           <option value="" disabled selected> 가격 </option>
-           <option>1</option>
-           <option>2</option>
-           <option>3</option>  
-       </select>
-    </div> 
-         
-<!-- 	달력 -->
-<input
-  type="date"
-  data-placeholder="날짜"
-  required
-  aria-required="true"
-  value={startDateValue}
-  className={styles.selectDay}
-  onChange={StartDateValueHandler} 
-  class="form-control" 
-  style="display:inline-block;position: relative; top: 18px; text-align:left; width:150px; height:35px; ">
-       
-	
-</div>
-</div>
+
+ </div>
+ </div>
+
             </header>
             
             
             <!--  버튼            -->
 <div class="btn">
-<button class="block">공간 등록</button>
+<button class="block"><a href="user.jsp">공간등록</a></button>
 </div>
 <div class="btn">
-<button class="block">공간 관리</button>
+<button class="block"><a href="user.jsp">공간관리</a></button>
 </div>
 <div class="btn">
-<button class="block">게스트 전환</button>
+<button class="block"><a href="user.jsp">게스트 전환</a></button>
 </div>
             
             <!-- Features section-->
@@ -138,13 +86,46 @@
                         </div>
                     </div>
                     <div class="row gx-5">
-<!-- 공간프리뷰 1 -->	
+<%
+SpaceDTO sdto = (SpaceDTO)request.getAttribute("sdto");
+HostDTO hdto  = (HostDTO)request.getAttribute("hdto");          		   
+%>
+           <!-- 공간프리뷰 1 -->	
 <div class="col-lg-4 mb-5">
     <div class="card h-100 shadow border-0">
         <img class="card-img-top" src="s1.jpg" alt="..." />
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
-           		 <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">꿈나라 스터디룸</h5></a>
+           		 <a class="text-decoration-none link-dark stretched-link" href="good.jsp" ><h5 class="card-title mb-3"><%=sdto.getS_name() %></h5></a>
+            	 <p class="card-text mb-0"><%=sdto.getS_memo() %></p>
+        	</div>
+        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+            <div class="d-flex align-items-end justify-content-between">
+                <div class="d-flex align-items-center">
+<!--                			 호스트 프로필 사진 -->
+<!--                          <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." /> -->
+                            <div class="small">
+	<div class="fw-bold"></div>
+		<button class="button1"><a href="host.jsp">수정</a></button>
+		<button class="button2"><a href="host.jsp">삭제</a></button>
+ 		<a href="host.jsp" class="notification">
+  			<span>리뷰 답글 달기</span>
+  			<span class="badge">3</span>
+		</a>
+</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>         
+
+ <!-- 공간프리뷰 2 -->	
+<div class="col-lg-4 mb-5">
+    <div class="card h-100 shadow border-0">
+        <img class="card-img-top" src="s1.jpg" alt="..." />
+        	<div class="card-body p-4">
+            	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
+           		 <a class="text-decoration-none link-dark stretched-link" href="user.jsp" ><h5 class="card-title mb-3">꿈나라 스터디룸</h5></a>
             	 <p class="card-text mb-0">서면역 5분거리</p>
         	</div>
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
@@ -152,42 +133,27 @@
                 <div class="d-flex align-items-center">
 <!--                			 호스트 프로필 사진 -->
 <!--                          <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." /> -->
-                             <div class="small">
-                                   <div class="fw-bold"></div>
-                                   <button class="button1"><a href="#" onclick="delchk();">수정</a></button>
-                                   <script type="text/javascript">
-									function delchk(){
-									    if(confirm("삭제하시겠습니까?")){
-									        location.href = "write_del_ok.jsp?num=1";
-									        return true;
-									    } else {
-									        return false;
-									    }
-									}
-									</script>
-                                   
-                                   
-                                   <button class="button2">삭제</button>
-                                    <a href="#" class="notification">
-									  <span>리뷰 답글 달기</span>
-									  <span class="badge">3</span>
-									</a>
-                                   <div class="text-muted">
-                                  
-                                   </div>
-                               </div>
+                            <div class="small">
+	<div class="fw-bold"></div>
+		<button class="button1"><a href="ex.jsp">수정</a></button>
+		<button class="button2"><a href="ex.jsp">삭제</a></button>
+ 		<a href="ex.jsp" class="notification">
+  			<span>리뷰 답글 달기</span>
+  			<span class="badge">3</span>
+		</a>
+</div>
                            </div>
                        </div>
                    </div>
                </div>
-           </div>
-<!-- 공간프리뷰 2 -->	
+           </div>         
+ <!-- 공간프리뷰 3 -->	
 <div class="col-lg-4 mb-5">
     <div class="card h-100 shadow border-0">
         <img class="card-img-top" src="s1.jpg" alt="..." />
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
-           		 <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">꿈나라 스터디룸</h5></a>
+           		 <a class="text-decoration-none link-dark stretched-link" href="user.jsp" ><h5 class="card-title mb-3">꿈나라 스터디룸</h5></a>
             	 <p class="card-text mb-0">서면역 5분거리</p>
         	</div>
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
@@ -195,56 +161,20 @@
                 <div class="d-flex align-items-center">
 <!--                			 호스트 프로필 사진 -->
 <!--                          <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." /> -->
-                             <div class="small">
-                                   <div class="fw-bold"></div>
-                                   <button class="button1">수정</button>
-                                   <button class="button2">삭제</button>
-                                    <a href="#" class="notification">
-									  <span>리뷰 답글 달기</span>
-									  <span class="badge">3</span>
-									</a>
-                                   <div class="text-muted">
-                                  
-                                   </div>
-                               </div>
+                            <div class="small">
+	<div class="fw-bold"></div>
+		<button class="button1"><a href="host.jsp">수정</a></button>
+		<button class="button2"><a href="host.jsp">삭제</a></button>
+ 		<a href="host.jsp" class="notification">
+  			<span>리뷰 답글 달기</span>
+  			<span class="badge">3</span>
+		</a>
+</div>
                            </div>
                        </div>
                    </div>
                </div>
-           </div>
-           <!-- 공간프리뷰 3 -->	
-<div class="col-lg-4 mb-5">
-    <div class="card h-100 shadow border-0">
-        <img class="card-img-top" src="s1.jpg" alt="..." />
-        	<div class="card-body p-4">
-            	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
-           		 <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">꿈나라 스터디룸</h5></a>
-            	 <p class="card-text mb-0">서면역 5분거리</p>
-        	</div>
-        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-            <div class="d-flex align-items-end justify-content-between">
-                <div class="d-flex align-items-center">
-<!--                			 호스트 프로필 사진 -->
-<!--                          <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." /> -->
-                             <div class="small">
-                                   <div class="fw-bold"></div>
-                                   <button class="button1">수정</button>
-                                   <button class="button2">삭제</button>
-                                    <a href="#" class="notification">
-									  <span>리뷰 답글 달기</span>
-									  <span class="badge">3</span>
-									</a>
-                                   <div class="text-muted">
-                                  
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-           
-  
+           </div>         
             </section>
         </main>
         <!-- Footer-->

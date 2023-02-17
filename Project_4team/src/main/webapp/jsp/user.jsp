@@ -1,3 +1,5 @@
+<%@page import="com.space4team.space.db.HostDTO"%>
+<%@page import="com.space4team.space.db.SpaceDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,7 +14,7 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
         <!-- 		아이콘 -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
@@ -58,13 +60,16 @@
             </header>
 <!--  버튼            -->
 <div class="btn">
-<button class="block">마이페이지</button>
+						<!-- 마이페이지 -->
+<button class="block"><a href="jsp/good.jsp">마이페이지</a></button>
 </div>
 <div class="btn">
-<button class="block">예약 내역</button>
+				<!-- 마이페이지-예약내역 페이지 -->
+<button class="block"><a href="jsp/good.jsp">예약내역</a></button>
 </div>
 <div class="btn">
-<button class="block">호스트 되기</button>
+				<!-- 호스트 회원가입 또는 로그인 창 -->
+<button class="block"><a href="jsp/good.jsp">호스트 되기</a></button>
 </div>
             
             
@@ -81,14 +86,19 @@
                         </div>
                     </div>
                     <div class="row gx-5">
+<%
+SpaceDTO sdto = (SpaceDTO)request.getAttribute("sdto");
+HostDTO hdto =  (HostDTO)request.getAttribute("hdto") ;                            		
+
+%>
 <!-- 공간프리뷰 1 -->	
 <div class="col-lg-4 mb-5">
     <div class="card h-100 shadow border-0">
         <img class="card-img-top" src="s1.jpg" alt="..." />
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
-           		 <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">꿈나라 스터디룸</h5></a>
-            	 <p class="card-text mb-0">서면역 5분거리</p>
+           		 <a class="text-decoration-none link-dark stretched-link" href="jsp/good.jsp"><h5 class="card-title mb-3"><%=sdto.getS_name() %></h5></a>
+            	 <p class="card-text mb-0"><%=sdto.getS_memo() %></p>
         	</div>
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
             <div class="d-flex align-items-end justify-content-between">
@@ -96,7 +106,7 @@
                			 <!-- 호스트 프로필 사진 -->
                          <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                              <div class="small">
-                                   <div class="fw-bold">host name</div>
+                                   <div class="fw-bold"><%=hdto.getH_name() %></div>
                                    <div class="text-muted">
                                     <i class="fa-solid fa-user fa-sm">최대 6명</i>
 									<i class="fa-solid fa-comment fa-sm">리뷰12</i>
@@ -114,8 +124,8 @@
         <img class="card-img-top" src="s1.jpg" alt="..." />
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
-           		 <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">꿈나라 스터디룸</h5></a>
-            	 <p class="card-text mb-0">서면역 5분거리</p>
+           		 <a class="text-decoration-none link-dark stretched-link" href="jsp/good.jsp"><h5 class="card-title mb-3"><%=sdto.getS_name() %></h5></a>
+            	 <p class="card-text mb-0"><%=sdto.getS_memo() %></p>
         	</div>
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
             <div class="d-flex align-items-end justify-content-between">
@@ -123,7 +133,7 @@
                			 <!-- 호스트 프로필 사진 -->
                          <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                              <div class="small">
-                                   <div class="fw-bold">host name</div>
+                                   <div class="fw-bold"><%=hdto.getH_name() %></div>
                                    <div class="text-muted">
                                     <i class="fa-solid fa-user fa-sm">최대 6명</i>
 									<i class="fa-solid fa-comment fa-sm">리뷰12</i>
@@ -141,8 +151,8 @@
         <img class="card-img-top" src="s1.jpg" alt="..." />
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
-           		 <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">꿈나라 스터디룸</h5></a>
-            	 <p class="card-text mb-0">서면역 5분거리</p>
+           		 <a class="text-decoration-none link-dark stretched-link" href="jsp/good.jsp"><h5 class="card-title mb-3"><%=sdto.getS_name() %></h5></a>
+            	 <p class="card-text mb-0"><%=sdto.getS_memo() %></p>
         	</div>
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
             <div class="d-flex align-items-end justify-content-between">
@@ -150,7 +160,7 @@
                			 <!-- 호스트 프로필 사진 -->
                          <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                              <div class="small">
-                                   <div class="fw-bold">host name</div>
+                                   <div class="fw-bold"><%=hdto.getH_name() %></div>
                                    <div class="text-muted">
                                     <i class="fa-solid fa-user fa-sm">최대 6명</i>
 									<i class="fa-solid fa-comment fa-sm">리뷰12</i>
@@ -162,9 +172,108 @@
                    </div>
                </div>
            </div>
-           
     
             </section>
+            
+            <!-- Features section-->
+                <!-- Blog preview section-->
+            <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <div class="text-center">
+                                <h2 class="fw-bolder">이런 공간은 어때요?</h2>
+                                <p class="lead fw-normal text-muted mb-5">오직 space for team에서만 볼 수 있는 공간을 준비했어요</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gx-5">
+
+<!-- 공간프리뷰 1 -->	
+<div class="col-lg-4 mb-5">
+    <div class="card h-100 shadow border-0">
+        <img class="card-img-top" src="s1.jpg" alt="..." />
+        	<div class="card-body p-4">
+            	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
+           		 <a class="text-decoration-none link-dark stretched-link" href="jsp/good.jsp"><h5 class="card-title mb-3"><%=sdto.getS_name() %></h5></a>
+            	 <p class="card-text mb-0"><%=sdto.getS_memo() %></p>
+        	</div>
+        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+            <div class="d-flex align-items-end justify-content-between">
+                <div class="d-flex align-items-center">
+               			 <!-- 호스트 프로필 사진 -->
+                         <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                             <div class="small">
+                                   <div class="fw-bold"><%=hdto.getH_name() %></div>
+                                   <div class="text-muted">
+                                    <i class="fa-solid fa-user fa-sm">최대 6명</i>
+									<i class="fa-solid fa-comment fa-sm">리뷰12</i>
+									<i class="fa-solid fa-heart fa-sm">찜3</i> 
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+<!-- 공간프리뷰 2 -->	
+<div class="col-lg-4 mb-5">
+    <div class="card h-100 shadow border-0">
+        <img class="card-img-top" src="s1.jpg" alt="..." />
+        	<div class="card-body p-4">
+            	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
+           		 <a class="text-decoration-none link-dark stretched-link" href="jsp/good.jsp"><h5 class="card-title mb-3"><%=sdto.getS_name() %></h5></a>
+            	 <p class="card-text mb-0"><%=sdto.getS_memo() %></p>
+        	</div>
+        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+            <div class="d-flex align-items-end justify-content-between">
+                <div class="d-flex align-items-center">
+               			 <!-- 호스트 프로필 사진 -->
+                         <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                             <div class="small">
+                                   <div class="fw-bold"><%=hdto.getH_name() %></div>
+                                   <div class="text-muted">
+                                    <i class="fa-solid fa-user fa-sm">최대 6명</i>
+									<i class="fa-solid fa-comment fa-sm">리뷰12</i>
+									<i class="fa-solid fa-heart fa-sm">찜3</i> 
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <!-- 공간프리뷰 3 -->	
+<div class="col-lg-4 mb-5">
+    <div class="card h-100 shadow border-0">
+        <img class="card-img-top" src="s1.jpg" alt="..." />
+        	<div class="card-body p-4">
+            	<div class="badge bg-primary bg-gradient rounded-pill mb-2">New</div>
+           		 <a class="text-decoration-none link-dark stretched-link" href="jsp/good.jsp"><h5 class="card-title mb-3"><%=sdto.getS_name() %></h5></a>
+            	 <p class="card-text mb-0"><%=sdto.getS_memo() %></p>
+        	</div>
+        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+            <div class="d-flex align-items-end justify-content-between">
+                <div class="d-flex align-items-center">
+               			 <!-- 호스트 프로필 사진 -->
+                         <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                             <div class="small">
+                                   <div class="fw-bold"><%=hdto.getH_name() %></div>
+                                   <div class="text-muted">
+                                    <i class="fa-solid fa-user fa-sm">최대 6명</i>
+									<i class="fa-solid fa-comment fa-sm">리뷰12</i>
+									<i class="fa-solid fa-heart fa-sm">찜3</i> 
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+    
+            </section>         
+         
+            
         </main>
         <!-- Footer-->
         <footer class="bg-dark py-4 mt-auto">
