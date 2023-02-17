@@ -196,7 +196,7 @@
 										<div class="d-flex align-items-end justify-content-between">
 											<div class="d-flex align-items-center">
 												<div class="fw-bold me-sm-3"><%=hdto.getH_name()%></div>
-												<div class="fw-nomal"><%=hdto.getH_tel() %></div>
+												<div class="fw-nomal"><%=hdto.getH_phone() %></div>
 											</div>
 										</div>
 									</div>
