@@ -12,7 +12,14 @@ public class ReviewDTO {
 	private int s_num;
 	private String re_reply;
 	private double re_avg;
+	private String re_max;
 	
+	public String getRe_max() {
+		return re_max;
+	}
+	public void setRe_max(String re_max) {
+		this.re_max = re_max;
+	}
 	//get set
 	public int getRe_num() {
 		return re_num;

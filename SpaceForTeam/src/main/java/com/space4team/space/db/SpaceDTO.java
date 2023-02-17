@@ -10,8 +10,15 @@ public class SpaceDTO {
 	private String s_sigungu;
 	private String s_memo;
 	private String s_opt;
+	private String s_max;
 	
 	
+	public String getS_max() {
+		return s_max;
+	}
+	public void setS_max(String s_max) {
+		this.s_max = s_max;
+	}
 	// get set
 	public int getS_num() {
 		return s_num;

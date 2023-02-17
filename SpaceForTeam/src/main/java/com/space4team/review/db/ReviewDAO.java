@@ -44,6 +44,7 @@ public class ReviewDAO {
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
 				dto.setRe_reply(rs.getString("re_reply"));
+				dto.setRe_max(rs.getString("re_max"));
 				
 				}
 			String sql2="select avg(re_point) from review where s_num=?";
