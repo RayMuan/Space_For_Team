@@ -12,14 +12,13 @@ import com.space4team.space.db.SpaceDTO;
 import com.space4team.user.db.UserDAO;
 import com.space4team.user.db.UserDTO;
 
-public class SpaceInfo implements Action{
+public class SpaceInfoPro implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("SpaceInfo execute()");
-		int s_num=1;
+		int s_num=51;
 //				Integer.parseInt(request.getParameter("s_num"));
-		
 		SpaceDAO sdao=new SpaceDAO();
 		SpaceDTO sdto=sdao.getSpace(s_num);
 
@@ -33,19 +32,17 @@ public class SpaceInfo implements Action{
 		UserDTO udto=udao.getUser(redto.getUser_num());
 		
 		
-		
+		// setAttribute
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
 		request.setAttribute("redto", redto);
 		request.setAttribute("udto", udto);
-		
-		
-				
-		
+	
 		ActionForward forward=new ActionForward();
-		forward.setPath("space/info.jsp");
+		forward.setPath("/ReviewPro.re");
 		forward.setRedirect(false);
 		return forward;
 	}
 
 }
+

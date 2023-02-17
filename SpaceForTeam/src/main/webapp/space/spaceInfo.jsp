@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.space4team.user.db.UserDTO"%>
 <%@page import="com.space4team.review.db.ReviewDTO"%>
 <%@page import="com.space4team.review.db.ReviewDAO"%>
@@ -78,29 +79,50 @@
                                 
                             </article>
                             <!-- Comments section-->
+                            <%
+                            ArrayList<ReviewDTO> reviewList=(ArrayList<ReviewDTO>)request.getAttribute("reviewList");
+							%>
                             <section>
                                 <div class="card bg-light">
                                     <div class="card-body">
                                         <!-- Comment form-->
                                         <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
                                         <!-- Comment with nested comments-->
+                                        
+                                        
                                         <div class="d-flex mb-4">
                                             <!-- Parent comment-->
                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                            <div class="ms-3">
-                                                <div class="fw-bold d-flex align-items-center"><%= udto.getUser_id() %><p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6">2022-02-07</p></div>
+                                            <ul>
+                                            <li>
+                                            <%
+                                            for(int i=0;i<reviewList.size();i++){
+                                            	ReviewDTO dto=reviewList.get(i);
+                                            	%>
+                                            	<div class="ms-3">
+                                                <div class="fw-bold d-flex align-items-center"><%= udto.getUser_id() %><p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date() %></p></div>
                                                 <div><%=redto.getRe_point() %></div>
                                                 <%=redto.getRe_subject() %>
                                                 <!-- Child comment 1-->
                                                 <div class="d-flex mt-4">
-                                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                                    <div class="ms-3">
-                                                        <div class="fw-bold d-flex align-items-center"><%=hdto.getH_name() %><p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6">2022-02-08</p></div>
+                                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                                <div class="ms-3">
+                                                <div class="fw-bold d-flex align-items-center"><%=hdto.getH_name() %><p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date() %></p></div>
                                                         <%=redto.getRe_reply() %>
                                                     </div>
+                                                	</div>
+                                                 <%
+                                                 }
+                                                 %>
                                                 </div>
+                                                </li>
+                                                </ul>
                                             </div>
                                         </div>
+                                        </div>
+                                        </section>
+                                        
+                                        
                                         <!-- Single comment-->
                                         <div class="d-flex">
                                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
