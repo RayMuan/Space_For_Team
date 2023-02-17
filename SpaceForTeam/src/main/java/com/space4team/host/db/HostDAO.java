@@ -20,6 +20,7 @@ public class HostDAO {
 	}//connection
 	
 	public HostDTO getHost(int h_num) {
+		System.out.println("getHost()");
 		HostDTO dto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -40,7 +41,6 @@ public class HostDAO {
 				dto.setH_pass(rs.getString("h_pass"));
 				dto.setH_phone(rs.getString("h_phone"));
 				dto.setH_birth(rs.getString("h_birth"));
-				dto.setH_pass1(rs.getString("h_pass1"));
 				}
 		}catch (Exception e) {
 			e.printStackTrace();
