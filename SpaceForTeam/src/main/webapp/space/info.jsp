@@ -176,6 +176,11 @@
 									<div class="card-footer p-3 bg-light border-top">
 												<div class="fw-bold me-sm-3"><%=hdto.getH_name()%></div>
 												<div class="fw-nomal"><%=hdto.getH_phone() %></div>
+<<<<<<< HEAD
+=======
+											</div>
+										</div>
+>>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
 									</div>
 								</div>
 							</div>
