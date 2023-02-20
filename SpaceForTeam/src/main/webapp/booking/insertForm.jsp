@@ -20,7 +20,7 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
 </script>
 시작시간 : <input type="number" name="bk_starttime" min="0" max="24"><br>
 종료시간 : <input type="number" name="bk_endtime" min="0" max="24"><br>
-<input type="submit" value="결제">
+<input type="submit" value="확인">
 </form>
 </body>
 </html>
