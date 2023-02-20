@@ -8,25 +8,22 @@ import javax.servlet.http.HttpServletResponse;
 import com.space4team.review.db.ReviewDAO;
 import com.space4team.review.db.ReviewDTO;
 
-
 public class ReviewPro implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-				System.out.println("ReviewList execute()");
+				System.out.println("ReviewPro execute()");
 				
 				int s_num=51;
 				
 				ReviewDAO redao=new ReviewDAO();				
 				int pageSize=5;
-				String pageNum=request.getParameter("pageNum");
-				if(pageNum==null) {
-					pageNum="1";
-				}
+				String pageNum="1";
 				int currentPage=Integer.parseInt(pageNum);
 				int startRow=(currentPage-1)*pageSize+1;
+				int endRow = startRow+pageSize-1;
 				
-				ArrayList<ReviewDTO> reviewList=redao.getReviewList(startRow, pageSize);
+				ArrayList<ReviewDTO> reviewList=redao.getReviewList(s_num, startRow, pageSize);
 				
 				int pageBlock=10;
 				int startPage=(currentPage-1)/pageBlock*pageBlock+1;
@@ -37,7 +34,7 @@ public class ReviewPro implements Action{
 					endPage = pageCount;
 				}
 				
-				request.setAttribute("boardList",reviewList);
+				request.setAttribute("reviewList",reviewList);
 				
 				request.setAttribute("currentPage", currentPage);
 				request.setAttribute("startPage", startPage);
