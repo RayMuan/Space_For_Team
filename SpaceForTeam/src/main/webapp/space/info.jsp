@@ -197,17 +197,9 @@
 											<div class="d-flex align-items-center">
 												<div class="fw-bold me-sm-3"><%=hdto.getH_name()%></div>
 												<div class="fw-nomal"><%=hdto.getH_phone() %></div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
 											</div>
 										</div>
-<<<<<<< HEAD
-=======
->>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
->>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
+
 									</div>
 								</div>
 							</div>
