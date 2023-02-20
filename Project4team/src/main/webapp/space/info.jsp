@@ -36,7 +36,7 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="userLogin.html">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
                             <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
                             <li class="nav-item dropdown">
@@ -67,7 +67,7 @@
                                 <!-- Post header-->
                                 <header class="mb-4">
                                     <!-- Post title-->
-                                    <h1 class="fw-bolder mb-1"><%=sdto.getS_name() %></h1>
+                                    <h1 class="fw-bolder mb-1"><%=sdto.gets_name() %></h1>
                                     <!-- Post meta content-->
                                     <!-- Post categories-->
                                 </header>
@@ -194,7 +194,7 @@
 										<div class="d-flex align-items-end justify-content-between">
 											<div class="d-flex align-items-center">
 												<div class="fw-bold me-sm-3"><%=hdto.getH_name()%></div>
-												<div class="fw-nomal"><%=hdto.getH_tel() %></div>
+												<div class="fw-nomal"><%=hdto.getH_phone() %></div>
 											</div>
 										</div>
 									</div>

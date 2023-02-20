@@ -16,7 +16,7 @@ public class SpaceLogout implements Action{
 		
 		// 이동 SpaceMain.me
 		ActionForward forward = new ActionForward();
-		forward.setPath("SpaceMain.sp");
+		forward.setPath("SpaceInfo.sp");
 		forward.setRedirect(true);
 		
 		return forward;

@@ -38,7 +38,7 @@ public class SpaceLoginPro implements Action {
 			session.setAttribute("email", email);
 			
 			forward=new ActionForward();
-			forward.setPath("MemberMain.sp");
+			forward.setPath("SpaceInfo.sp");
 			forward.setRedirect(true);
 			
 		} else {
