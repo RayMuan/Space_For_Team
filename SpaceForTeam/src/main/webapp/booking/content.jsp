@@ -36,7 +36,7 @@ if(id != null){
 	//글쓴이 세션값이 일치하면 자기자신이 쓴 글(글수정, 글삭제 보이기)
 	
 	//여기가 
-		if(id.equals(dto.getUser_id())){
+		if(id.equals(dto.getUser_num())){
 %>
 
 <input type= "button" value="예약수정" 
