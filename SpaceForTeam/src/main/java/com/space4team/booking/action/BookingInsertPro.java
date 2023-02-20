@@ -6,8 +6,10 @@ import java.sql.Timestamp;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itwillbs.Booking.db.BookingDAO;
-import com.itwillbs.Booking.db.BookingDTO;
+import com.space4team.booking.db.BookingDAO;
+import com.space4team.booking.db.BookingDTO;
+
+
 
 public class BookingInsertPro implements Action{
 
@@ -45,7 +47,7 @@ public class BookingInsertPro implements Action{
 		dao.insertBooking(dto);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("index/index.jsp");
+		forward.setPath("결제창");
 		forward.setRedirect(false);
 		
 		return forward;

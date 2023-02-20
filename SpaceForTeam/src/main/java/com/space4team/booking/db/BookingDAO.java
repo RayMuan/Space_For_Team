@@ -1,4 +1,4 @@
-package com.space4team.booking.db
+package com.space4team.booking.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

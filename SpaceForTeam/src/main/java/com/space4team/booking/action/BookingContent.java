@@ -2,9 +2,11 @@ package com.space4team.booking.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.space4team.booking.db.BookingDAO;
+import com.space4team.booking.db.BookingDTO;
 
-import com.itwillbs.Booking.db.BookingDAO;
-import com.itwillbs.Booking.db.BookingDTO;
+
+
 
 public class BookingContent implements Action{
 
