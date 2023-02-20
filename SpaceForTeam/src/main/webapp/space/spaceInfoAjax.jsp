@@ -31,9 +31,20 @@ ReviewDTO re_avg = (ReviewDTO) request.getAttribute("re_avg");
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
 <!-- 추가 js -->
-<script type="text/javascript">
-
-
+<script>
+$(document).ready(function(){
+    $("#review").click(getReview); //id="listButton"인 태그에 click하면 function getMemberList() 실행
+});
+function getReview(){
+    $.ajax({
+        url:"reviewJson.re"                   //list.jsp에 AJAX요청
+        success:function(arr){
+        	$.each(arr,function(index,item){
+				$('#reviewList').html(array.join"");
+			});
+        }
+    });    
+}
 </script>
 <!-- 추가 css -->
 <style>
@@ -110,7 +121,7 @@ ul {
 							<div class="col p-2">
 							<ul class="btn-toolbar m-0 p-0">
                             <li class="col-lg-6 text-center" id="review">
-                            <a class="button fs-4 text-black text-decoration-none" href="javascript:void(0)" id="review">리뷰</a>
+                            <a class="button fs-4 text-black text-decoration-none" href="javascript:void(0)" onclick="getReview()">리뷰</a>
                             </li>
                             <li class="col-lg-6 text-center border-start">
                             <a class="button fs-4 text-black text-decoration-none" href="#" id="qna">QnA</a>
@@ -134,12 +145,12 @@ ul {
 									<ul>
 										<%
 										for (int i = 0; i < reviewList.size(); i++) { redto =
-										reviewList.get(i);
+										reviewList.get(i); udto = udao.getUser(redto.getUser_num());
 										%>
 										<li>
 											<div class="ms-3 border-bottom">
 												<div class="ms-3">
-													<div class="fw-bold d-flex align-items-center">아이디<p
+													<div class="fw-bold d-flex align-items-center"><%=udto.getUser_id()%><p
 															class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
 													</div>
 													<div><%=redto.getRe_point()%></div>

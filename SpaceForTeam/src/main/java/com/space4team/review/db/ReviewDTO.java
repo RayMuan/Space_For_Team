@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 public class ReviewDTO {
 	private int re_num;
 	private int user_num;
-	private String re_subject;
 	private String re_content;
 	private Timestamp re_date;
 	private int re_point;
@@ -26,12 +25,7 @@ public class ReviewDTO {
 	public void setUser_num(int user_num) {
 		this.user_num = user_num;
 	}
-	public String getRe_subject() {
-		return re_subject;
-	}
-	public void setRe_subject(String re_subject) {
-		this.re_subject = re_subject;
-	}
+
 	public String getRe_content() {
 		return re_content;
 	}
