@@ -12,8 +12,8 @@ public class BookingDTO {
 	private String bk_usedate;
 	private int bk_starttime;
 	private int bk_endtime;
+	private int bk_usetine= bk_endtime-bk_starttime;
 	
-	// get set
 	public int getBk_num() {
 		return bk_num;
 	}
@@ -68,6 +68,13 @@ public class BookingDTO {
 	public void setBk_endtime(int bk_endtime) {
 		this.bk_endtime = bk_endtime;
 	}
+	public int getBk_usetine() {
+		return bk_usetine;
+	}
+	public void setBk_usetine(int bk_usetine) {
+		this.bk_usetine = bk_usetine;
+	}
+	
 	
 	
 

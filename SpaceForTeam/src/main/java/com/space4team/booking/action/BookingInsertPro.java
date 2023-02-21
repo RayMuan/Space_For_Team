@@ -47,7 +47,7 @@ public class BookingInsertPro implements Action{
 		dao.insertBooking(dto);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("결제창");
+		forward.setPath("index/index.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

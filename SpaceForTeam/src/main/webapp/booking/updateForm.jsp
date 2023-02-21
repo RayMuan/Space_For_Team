@@ -25,7 +25,7 @@ BookingDTO dto = (BookingDTO)request.getAttribute("dto");
 <form action = "BookingUpdatePro.bk" method = "post">
 <!-- num값을 가지고 가야 업데이트 작업이 가능 
 지금처럼 hidden으로 가져가도 되고 밑에 표에 넣어서 가져가도 됨 -->
-<input type ="hidden" name ="num" value="<%=dto.getBk_num() %>">
+<%-- <input type ="hidden" name ="num" value="<%=dto.getBk_num() %>"> --%>
 <table border = "1">
 <tr><td>예약일자</td>
     <td><input type="date" name ="bk_usedate" value="<%=dto.getBk_usedate() %>"></td></tr>

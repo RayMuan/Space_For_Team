@@ -27,15 +27,13 @@ ArrayList<BookingDTO> bookingList =(ArrayList<BookingDTO>) request.getAttribute(
 %>
 
 <table border ="1">
-<tr><td>예약번호</td><td>사용날짜</td><td>사용인원</td><td>시작시간</td><td>종료시간</td><td>사용시간</td><td>가격</td></tr>
+<tr><td>예약번호</td><td>사용날짜</td><td>사용인원</td><td>시작시간</td><td>종료시간</td><td>가격</td></tr>
 <%
 
 for(int i=0 ; i<bookingList.size();i++){
 // 	배열접근, 배열한칸에 내용 가져오기 => BoardDTO 저장 => 출력
 	BookingDTO dto=bookingList.get(i);
 	%>
-
-
 	
 <!-- 	글제목을 눌렀을 때 글내용으로 하이퍼링크 -->
 <tr><td><a href="BookingContent.bk?num=<%=dto.getBk_num() %>"></a></td>
@@ -43,7 +41,7 @@ for(int i=0 ; i<bookingList.size();i++){
 	<td><%=dto.getBk_usercount() %></td>
 	<td><%=dto.getBk_starttime() %>시</td>
 	<td><%=dto.getBk_endtime() %>시</td>
-	<td><%=dto.getBk_price() %></td></tr>
+	<td>시간당<%=dto.getBk_price() %>원</td></tr>
 	<%
 }
 %>

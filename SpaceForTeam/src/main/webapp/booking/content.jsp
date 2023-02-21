@@ -1,3 +1,5 @@
+<%@page import="com.space4team.user.db.UserDTO"%>
+<%@page import="com.space4team.user.db.UserDAO"%>
 <%@page import="com.space4team.booking.db.BookingDTO"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -29,20 +31,24 @@ BookingDTO dto = (BookingDTO)request.getAttribute("dto");
 <tr><td colspan="2">
 <!-- <input type= "button" value="글목록" onclick = "location.href = 'list.jsp'"> -->
 
+
 <%
 // 로그인 => 세션값 존재
-
+UserDTO dto2 = new UserDTO();
 if(id != null){
 	//글쓴이 세션값이 일치하면 자기자신이 쓴 글(글수정, 글삭제 보이기)
 	
 	//여기가 
-		if(id.equals(dto.getUser_num())){
+		if(id.equals(dto2.getUser_id())){
 %>
 
 <input type= "button" value="예약수정" 
  onclick = "location.href='BookingUpdateForm.bk?num=<%=dto.getBk_num() %>'">
 <input type= "button" value="예약삭제" 
  onclick = "location.href='BookingDeleteForm.bk?num=<%=dto.getBk_num() %>'">
+ <input type= "button" value="결제" 
+ onclick = "location.href='Payment.pay?num=<%=dto.getBk_num() %>'">
+ 
 <%
 //예약삭제는 따로 form이 없고 클릭시 경고 뜨는 방향으로 해결
 		}
