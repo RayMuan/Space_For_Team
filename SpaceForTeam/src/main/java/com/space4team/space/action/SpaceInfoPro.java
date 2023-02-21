@@ -25,6 +25,7 @@ public class SpaceInfoPro implements Action{
 		
 		ReviewDAO redao=new ReviewDAO();
 		ReviewDTO redto=redao.getReview(s_num);
+		ReviewDTO re_avg=redao.getRe_avg(s_num);
 		
 
 		
@@ -32,6 +33,10 @@ public class SpaceInfoPro implements Action{
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
 		request.setAttribute("redto", redto);
+<<<<<<< HEAD
+=======
+		request.setAttribute("re_avg", re_avg);
+>>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
 
 		ActionForward forward=new ActionForward();
 		forward.setPath("/ReviewPro.re");

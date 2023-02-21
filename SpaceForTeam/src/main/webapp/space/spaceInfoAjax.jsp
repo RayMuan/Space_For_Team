@@ -20,10 +20,7 @@
 SpaceDTO sdto = (SpaceDTO) request.getAttribute("sdto");
 HostDTO hdto = (HostDTO) request.getAttribute("hdto");
 ReviewDTO redto = (ReviewDTO) request.getAttribute("redto");
-<<<<<<< HEAD
-=======
 ReviewDTO re_avg = (ReviewDTO) request.getAttribute("re_avg");
->>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
 %>
 <title><%=sdto.getS_name()%></title>
 <!-- Favicon-->
@@ -34,141 +31,20 @@ ReviewDTO re_avg = (ReviewDTO) request.getAttribute("re_avg");
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
 <!-- 추가 js -->
-<script type="text/javascript">
-
-<<<<<<< HEAD
-</script>
-<!-- 추가 css -->
-<style>
-ul {
-	list-style: none;
+<script>
+$(document).ready(function(){
+    $("#review").click(getReview); //id="listButton"인 태그에 click하면 function getMemberList() 실행
+});
+function getReview(){
+    $.ajax({
+        url:"reviewJson.re"                   //list.jsp에 AJAX요청
+        success:function(arr){
+        	$.each(arr,function(index,item){
+				$('#reviewList').html(array.join"");
+			});
+        }
+    });    
 }
-</style>
-</head>
-<body class="d-flex flex-column">
-	<main class="flex-shrink-0">
-		<!-- Navigation-->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<div class="container px-5">
-				<a class="navbar-brand" href="index.html">Start Bootstrap</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-						<li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-						<li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#"
-							role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-							<ul class="dropdown-menu dropdown-menu-end"
-								aria-labelledby="navbarDropdownBlog">
-								<li><a class="dropdown-item" href="blog-home.html">Blog
-										Home</a></li>
-								<li><a class="dropdown-item" href="blog-post.html">Blog
-										Post</a></li>
-							</ul></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" id="navbarDropdownPortfolio"
-							href="#" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">Portfolio</a>
-							<ul class="dropdown-menu dropdown-menu-end"
-								aria-labelledby="navbarDropdownPortfolio">
-								<li><a class="dropdown-item" href="portfolio-overview.html">Portfolio
-										Overview</a></li>
-								<li><a class="dropdown-item" href="portfolio-item.html">Portfolio
-										Item</a></li>
-							</ul></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<!-- Page Content-->
-		<section class="py-5">
-			<div class="container px-5 my-5">
-				<div class="row gx-5">
-					<div class="col-lg-9">
-						<!-- Post content-->
-						<article>
-							<!-- Post header-->
-							<header class="mb-4">
-								<!-- Post title-->
-								<h1 class="fw-bolder mb-1"><%=sdto.getS_name()%></h1>
-							</header>
-							<!-- 본문 사진 -->
-							<figure class="mb-4">
-								<img class="img-fluid rounded"
-									src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
-									alt="..." />
-							</figure>
-						</article>
-						
-						<div class="card bg-light">
-							<div class="col p-2">
-							<ul class="btn-toolbar m-0 p-0">
-                            <li class="col-lg-6 text-center "><a class="button fs-4 text-black text-decoration-none" href="index.html">리뷰</a></li>
-                            <li class="col-lg-6 text-center border-start"><a class="button fs-4 text-black text-decoration-none" href="about.html">QnA</a></li>
-                        	</ul>
-							</div>
-						<!-- 리뷰 -->
-						<div>
-						<%
-						ArrayList<ReviewDTO> reviewList = (ArrayList<ReviewDTO>) request.getAttribute("reviewList");
-						UserDAO dao = new UserDAO();
-						UserDTO udto = null;
-						%>
-								<div class="card-body">
-									<!-- Comment form-->
-									<form class="mb-4">
-										<textarea class="form-control" rows="3"
-											placeholder="Join the discussion and leave a comment!"></textarea>
-									</form>
-									<!-- Comment with nested comments-->
-
-
-									<div class="d-flex mb-4">
-										<!-- Parent comment-->
-										<ul class="p-0">
-											<%
-											for (int i = 0; i < reviewList.size(); i++) {
-												redto = reviewList.get(i);
-												udto = dao.getUser(redto.getUser_num());
-											%>
-											<li>
-												<div class="ms-3 border-bottom">
-													<div class="ms-3">
-														<div class="fw-bold d-flex align-items-center"><%=udto.getUser_id()%><p
-																class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
-														</div>
-														<div><%=redto.getRe_point()%></div>
-														<%=redto.getRe_content()%>
-													</div>
-													<!-- Child comment 1-->
-													<div class="ms-3">
-														<div class="d-flex mt-3 mb-4 ">
-															<div class="ms-3 p-sm-4 bg-dark bg-opacity-25 col-5">
-																<div class="fw-bold d-flex align-items-center"><%=hdto.getH_name()%><p
-																		class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
-																</div>
-																<%=redto.getRe_reply()%>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-											<%
-											}
-											%>
-										</ul>
-										<div></div>
-=======
-
 </script>
 <!-- 추가 css -->
 <style>
@@ -245,7 +121,7 @@ ul {
 							<div class="col p-2">
 							<ul class="btn-toolbar m-0 p-0">
                             <li class="col-lg-6 text-center" id="review">
-                            <a class="button fs-4 text-black text-decoration-none" href="javascript:void(0)" id="review">리뷰</a>
+                            <a class="button fs-4 text-black text-decoration-none" href="javascript:void(0)" onclick="getReview()">리뷰</a>
                             </li>
                             <li class="col-lg-6 text-center border-start">
                             <a class="button fs-4 text-black text-decoration-none" href="#" id="qna">QnA</a>
@@ -269,12 +145,12 @@ ul {
 									<ul>
 										<%
 										for (int i = 0; i < reviewList.size(); i++) { redto =
-										reviewList.get(i);
+										reviewList.get(i); udto = udao.getUser(redto.getUser_num());
 										%>
 										<li>
 											<div class="ms-3 border-bottom">
 												<div class="ms-3">
-													<div class="fw-bold d-flex align-items-center">아이디<p
+													<div class="fw-bold d-flex align-items-center"><%=udto.getUser_id()%><p
 															class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
 													</div>
 													<div><%=redto.getRe_point()%></div>
@@ -299,20 +175,12 @@ ul {
 									</ul>
 
 									<div class="d-flex mb-4" id="reviewList">
->>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
 									</div>
 								</div>
 							</div>
 						<!-- 	QnA		-->
 						</div>
 					</div>
-<<<<<<< HEAD
-					<!-- 상세 정보 -->
-					<div class="col-lg-3">
-						<section class="mb-5 pt-4">
-							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
-							<p class="fs-1 mb-4"><%=redto.getRe_avg()%></p>
-=======
 					
 					
 					
@@ -322,7 +190,6 @@ ul {
 						<section class="mb-5 pt-4">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 							<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
->>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
 
 							<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 							<div></div>
