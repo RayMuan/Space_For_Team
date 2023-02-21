@@ -8,6 +8,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.space4team.user.db.UserDTO;
+
 
 public class HostDAO {
 	private Connection con=null;
@@ -51,5 +53,45 @@ public class HostDAO {
 		}
 		return dto;
 	}//getHost
+	
+	public HostDTO hostCheck(int host_num, String host_pass) {
+		System.out.println("hostCheck()");
+		HostDTO dto=null;
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con = getConnection();
+			
+			String sql="select * from host where host_num=? and host_pass=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, host_num);
+			pstmt.setString(2, host_pass);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()){
+				
+				dto=new HostDTO();
+				dto.setH_num(host_num);
+				dto.setH_email(rs.getString("host_email"));
+				dto.setH_id(rs.getString("host_id"));
+				dto.setH_name(rs.getString("host_name"));
+				dto.setH_pass(rs.getString("host_pass"));
+				dto.setH_phone(rs.getString("host_phone"));
+				dto.setH_birth(rs.getString("host_birth"));
+			}else{
+
+			}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return dto;
+	}//hostCheck()
 
 }//class

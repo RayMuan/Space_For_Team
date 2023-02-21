@@ -134,9 +134,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </section>
-                        </div>
+                             </div>
+                        </section>
                         
+                        <section class="py-5">
                         <div class="col-lg-3">
 						<section class="mb-5 pt-4">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
@@ -203,8 +204,6 @@
 							</div>
 						</section>
 					</div>        
-                        </div>    
-                    </div>
             </section>
         </main>
         <!-- Footer-->

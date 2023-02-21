@@ -36,9 +36,14 @@ public class UserDAO {
 			rs=pstmt.executeQuery();
 
 		if(rs.next()) {
-			dto = new UserDTO();
-			dto.setUser_email("email");
-			dto.setUser_pass("pass");
+			dto=new UserDTO();
+			dto.setUser_num(user_num);
+			dto.setUser_email(rs.getString("user_email"));
+			dto.setUser_id(rs.getString("user_id"));
+			dto.setUser_name(rs.getString("user_name"));
+			dto.setUser_pass(rs.getString("user_pass"));
+			dto.setUser_phone(rs.getString("user_phone"));
+			dto.setUser_birth(rs.getString("user_birth"));
 			}
 		      } catch(Exception e) {
 			e.printStackTrace();
@@ -52,7 +57,7 @@ public class UserDAO {
 	
 	// userCheck 메서드 정의
 	public UserDTO userCheck(String id, String pass) {
-		
+		System.out.println("userCheck()");
 		UserDTO dto=null;
 		Connection con =null;
 		PreparedStatement pstmt=null;
@@ -60,20 +65,23 @@ public class UserDAO {
 		try {
 			con = getConnection();
 			
-			String sql="select * from user where email=? and pass=?";
+			String sql="select * from user where user_num=? and user_pass=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2, pass);
+			pstmt.setString(1, user_num);
+			pstmt.setString(2, user_pass);
 			
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()){
 				
 				dto=new UserDTO();
-				dto.setUser_id(rs.getString("user_id"));
+				dto.setUser_num(user_num);
 				dto.setUser_email(rs.getString("user_email"));
-				dto.setUser_pass(rs.getString("user_pass"));
+				dto.setUser_id(rs.getString("user_id"));
 				dto.setUser_name(rs.getString("user_name"));
+				dto.setUser_pass(rs.getString("user_pass"));
+				dto.setUser_phone(rs.getString("user_phone"));
+				dto.setUser_birth(rs.getString("user_birth"));
 			}else{
 
 			}	
