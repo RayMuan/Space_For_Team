@@ -81,7 +81,11 @@
                                   <!-- Submit Button-->
 <!--                                     <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">공간예약</button></div> -->
                               <div class="d-grid">
+<<<<<<< HEAD
                               <input type="submit" class="btn btn-primary btn-lg" value ="공간예약하기"></div>
+=======
+                              <input type="submit" class="btn btn-primary btn-lg" value ="공간예약"></div>
+>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
                                 </form>
                             </div>
                         </div>
