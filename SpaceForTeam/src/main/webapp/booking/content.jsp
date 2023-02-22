@@ -35,7 +35,7 @@ BookingDTO dto = (BookingDTO)request.getAttribute("dto");
 // 로그인 => 세션값 존재
 UserDTO dto2 = new UserDTO();
 if(id != null){
-	//글쓴이 세션값이 일치하면 자기자신이 쓴 글(글수정, 글삭제 보이기)
+// 	글쓴이 세션값이 일치하면 자기자신이 쓴 글(글수정, 글삭제 보이기)
 		if(id.equals(dto2.getUser_id())){
 %>
 
