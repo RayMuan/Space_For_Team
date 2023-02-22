@@ -45,7 +45,6 @@ public class SpaceFrontController extends HttpServlet{
 		
 		
 		
-		
 		// 연결
 		if(forward != null) {
 			if(forward.isRedirect()==true) {
