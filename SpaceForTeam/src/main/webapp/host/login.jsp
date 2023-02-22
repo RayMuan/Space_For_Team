@@ -9,11 +9,11 @@
 <body>
 <article>
 <h1>Login</h1>
-<form action="SpaceLoginPro.me" id="join" method="post">
+<form action="SpaceLoginPro.sp" id="join" method="post">
 <fieldset>
 <legend>Login Info</legend>
 <label>User ID</label>
-<input type="text" name="id"><br>
+<input type="email" name="email"><br>
 <label>Password</label>
 <input type="password" name="pass"><br>
 </fieldset>

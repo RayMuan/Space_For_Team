@@ -1,14 +1,14 @@
-package com.space4team.space.action;
+package com.space4team.host.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class SpaceLogout implements Action{
+public class HostLogout implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("SpaceLogout execute()");
+		System.out.println("HostLogout execute()");
 		
 		// 세션 초기화
 		HttpSession session=request.getSession();

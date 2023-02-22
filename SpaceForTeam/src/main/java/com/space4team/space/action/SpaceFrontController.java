@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 public class SpaceFrontController extends HttpServlet{
 
 	@Override
@@ -36,31 +35,6 @@ public class SpaceFrontController extends HttpServlet{
 		
 		if(sPath.equals("/SpaceInfoPro.sp")) {
 			action=new SpaceInfoPro();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(sPath.equals("/SpaceLoginForm.sp")) {
-			forward=new ActionForward();
-			forward.setPath("space/login.jsp");
-			forward.setRedirect(false);
-		}else if(sPath.equals("/SpaceLoginPro.sp")) {
-			action = new SpaceLoginPro();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(sPath.equals("/SpaceLogout.sp")) {
-			action=new SpaceLogout();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if (sPath.equals("/SpaceIdCheck.sp")) {
-			action=new SpaceIdCheck();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {

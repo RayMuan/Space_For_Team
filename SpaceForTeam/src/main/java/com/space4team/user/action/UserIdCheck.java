@@ -1,5 +1,4 @@
-package com.space4team.space.action;
-
+package com.space4team.user.action;
 
 import java.io.PrintWriter;
 
@@ -9,12 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.space4team.user.db.UserDAO;
 import com.space4team.user.db.UserDTO;
 
-
-public class SpaceIdCheck implements Action{
+public class UserIdCheck implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("SpaceIdCheck execute()");
+		System.out.println("UserIdCheck execute()");
 		
 				String email=request.getParameter("email");
 				UserDAO dao=new UserDAO();
