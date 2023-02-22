@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>booking/insertForm.jsp</title>
+<title>insertForm.jsp</title>
 </head>
 <body>
 <!--  http://localhost:8080/Model2/MemberInsertForm.me -->
 <!--  http://localhost:8080/Model2/MemberInsertPro.me -->
 
-<h1>booking/insertForm.jsp</h1>
+<h1>insertForm.jsp</h1>
 
 <form action="BookingInsertPro.bk" method="post">
 예약인원 : <input type="number" name="bk_usercount" min="1"><br>

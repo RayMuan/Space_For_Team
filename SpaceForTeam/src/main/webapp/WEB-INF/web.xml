@@ -52,7 +52,7 @@
   
    <servlet>
 	<servlet-name>BookingFrontController</servlet-name>
-	<servlet-class>com.itwillbs.Booking.action.BookingFrontController</servlet-class>
+	<servlet-class>com.space4team.booking.action.BookingFrontController</servlet-class>
   </servlet>
   
   <servlet-mapping>
