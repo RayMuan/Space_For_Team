@@ -19,7 +19,6 @@ private Connection con=null;
 	}//connection
 	
 	public UserDTO getUser(int user_num) {
-		System.out.println("getUser()");
 		UserDTO dto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
