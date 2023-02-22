@@ -3,14 +3,10 @@ package com.space4team.review.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
-import com.space4team.user.db.UserDAO;
-
 
 
 
@@ -24,8 +20,7 @@ public class ReviewDAO {
 		return con;
 	}//connection
 	
-	public ReviewDTO getReview(int s_num) {
-		System.out.println("getReview()");
+	public ReviewDTO getInfoReview(int s_num) {
 		ReviewDTO dto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -37,7 +32,7 @@ public class ReviewDAO {
 			String sql="select * from review where s_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, s_num);
-			
+
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto=new ReviewDTO();
@@ -47,7 +42,7 @@ public class ReviewDAO {
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
 				dto.setRe_reply(rs.getString("re_reply"));
-<<<<<<< HEAD
+				
 				}
 =======
 			}
