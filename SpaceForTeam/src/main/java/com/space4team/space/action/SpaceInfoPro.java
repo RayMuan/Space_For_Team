@@ -25,6 +25,7 @@ public class SpaceInfoPro implements Action{
 		
 		ReviewDAO redao=new ReviewDAO();
 		ReviewDTO redto=redao.getReview(s_num);
+		ReviewDTO re_avg=redao.getRe_avg(s_num);
 		
 
 		
@@ -32,6 +33,7 @@ public class SpaceInfoPro implements Action{
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
 		request.setAttribute("redto", redto);
+		request.setAttribute("re_avg", re_avg);
 
 		ActionForward forward=new ActionForward();
 		forward.setPath("/ReviewPro.re");
