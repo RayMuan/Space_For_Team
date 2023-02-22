@@ -9,15 +9,17 @@ public class BookingDTO {
 	SpaceDTO dto = new SpaceDTO();
 	UserDTO dto2 = new UserDTO();
 	private int bk_num;
-	private int s_num = dto.getS_num();
-	private int user_num = dto2.getUser_num();
+	private int s_num;
+//	= dto.getS_num();
+	private int user_num ;
+//	= dto2.getUser_num();
 	private int bk_usercount;
 	private Timestamp bk_date;
 	private String bk_usedate;
 	private int bk_starttime;
 	private int bk_endtime;
-	private int bk_usetime=bk_endtime-bk_starttime;
-	private int bk_price = Integer.parseInt(dto.getS_bill()) * bk_usetime;
+	private int bk_usetime;
+	private int bk_price;
 	
 	public int getBk_usetime() {
 		return bk_usetime;

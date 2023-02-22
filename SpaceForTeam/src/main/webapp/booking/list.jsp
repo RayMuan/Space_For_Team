@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>list.jsp</title>
 </head>
 <body>
 String id = (String)session.getAttribute("id");
@@ -28,7 +28,7 @@ ArrayList<BookingDTO> bookingList =(ArrayList<BookingDTO>) request.getAttribute(
 %>
 
 <table border ="1">
-<tr><td>예약번호</td><td>사용날짜</td><td>사용인원</td><td>시작시간</td><td>종료시간</td><td>가격</td></tr>
+<tr><td>예약번호</td><td>사용날짜</td><td>사용인원</td><td>시작시간</td><td>종료시간</td><td>사용시간</td><td>합계가격</td></tr>
 <%
 
 for(int i=0 ; i<bookingList.size();i++){
@@ -42,7 +42,8 @@ for(int i=0 ; i<bookingList.size();i++){
 	<td><%=dto.getBk_usercount() %></td>
 	<td><%=dto.getBk_starttime() %>시</td>
 	<td><%=dto.getBk_endtime() %>시</td>
-	<td>시간당<%=dto.getBk_price() %>원</td></tr>
+	<td><%=dto.getBk_usetime() %>시간</td>
+	<td><%=dto.getBk_price() %></td></tr>
 	<%
 }
 %>

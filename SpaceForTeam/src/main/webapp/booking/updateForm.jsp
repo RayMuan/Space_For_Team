@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>board/updateForm.jsp</title>
+<title>updateForm.jsp</title>
 </head>
 <body>
 <%
@@ -36,6 +36,7 @@ BookingDTO dto = (BookingDTO)request.getAttribute("dto");
     <td><input type="number" name ="bk_starttime" value="<%=dto.getBk_starttime() %>"></td></tr>
  <tr><td>종료시간</td>
     <td><input type="number" name ="bk_endtime" value="<%=dto.getBk_endtime() %>"></td></tr>
+
 <tr><td colspan ="2"><input type="submit" value="예약수정"></td></tr>
 </table>
 </form>
