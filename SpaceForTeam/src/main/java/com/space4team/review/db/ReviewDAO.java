@@ -3,10 +3,15 @@ package com.space4team.review.db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+
+import com.space4team.user.db.UserDAO;
+
+
 
 
 
@@ -20,7 +25,8 @@ public class ReviewDAO {
 		return con;
 	}//connection
 	
-	public ReviewDTO getInfoReview(int s_num) {
+	public ReviewDTO getReview(int s_num) {
+		System.out.println("getReview()");
 		ReviewDTO dto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -32,7 +38,7 @@ public class ReviewDAO {
 			String sql="select * from review where s_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, s_num);
-
+			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto=new ReviewDTO();
@@ -42,9 +48,6 @@ public class ReviewDAO {
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
 				dto.setRe_reply(rs.getString("re_reply"));
-				
-				}
-=======
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -64,7 +67,6 @@ public class ReviewDAO {
 		ResultSet rs= null;
 		try {
 			con=getConnection();
->>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
 			String sql2="select avg(re_point) from review where s_num=?";
 			pstmt=con.prepareStatement(sql2);
 			pstmt.setInt(1, s_num);
@@ -104,10 +106,6 @@ public class ReviewDAO {
 				ReviewDTO dto=new ReviewDTO();
 				dto.setRe_num(rs.getInt("re_num"));
 				dto.setUser_num(rs.getInt("user_num"));
-<<<<<<< HEAD
-				dto.setRe_subject(rs.getString("re_subject"));
-=======
->>>>>>> branch '우정임' of https://github.com/RayMuan/Space_For_Team.git
 				dto.setRe_content(rs.getString("re_content"));
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
@@ -117,6 +115,7 @@ public class ReviewDAO {
 				reviewList.add(dto);
 
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
