@@ -9,11 +9,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.space4team.user.db.UserDAO;
-
-
-
-
 
 public class ReviewDAO {
 	private Connection con=null;
