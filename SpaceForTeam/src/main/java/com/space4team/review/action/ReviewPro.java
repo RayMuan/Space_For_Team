@@ -43,7 +43,7 @@ public class ReviewPro implements Action{
 				request.setAttribute("pageCount", pageCount);
 				
 				ActionForward forward=new ActionForward();
-				forward.setPath("space/spaceInfoAjax.jsp");
+				forward.setPath("space/spaceInfo.jsp");
 				forward.setRedirect(false);
 				return forward;
 	}
