@@ -50,7 +50,6 @@ private Connection con=null;
 			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 		}
 		return dto;
-<<<<<<< HEAD
 	}// getUser();
 	
 	public UserDTO getReviewUser(int re_user_num) {
@@ -80,8 +79,7 @@ private Connection con=null;
 		}
 		return re_udto;
 	}// getInfoReview (User_num -> User_id)
-=======
-	}// getInfoReview
+	
 	public void insertUser(UserDTO dto) { 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -171,6 +169,4 @@ private Connection con=null;
 		}
 		return dto;
 	}//getMember()
->>>>>>> refs/remotes/origin/장정윤
-
 }//class
