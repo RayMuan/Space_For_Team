@@ -16,7 +16,6 @@ import com.space4team.space.db.SpaceDTO;
 import com.space4team.user.db.UserDAO;
 import com.space4team.user.db.UserDTO;
 
-
 public class SpaceInfoPro implements Action{
 
 	@Override
@@ -31,7 +30,7 @@ public class SpaceInfoPro implements Action{
 		SpaceDAO sdao=new SpaceDAO();
 		SpaceDTO sdto=sdao.getSpace(s_num);
 
-		HostDTO hdao=new HostDAO();
+		HostDAO hdao=new HostDAO();
 		HostDTO hdto=hdao.getHost(sdto.getH_num());
 		
 		UserDAO udao=new UserDAO();
@@ -41,13 +40,9 @@ public class SpaceInfoPro implements Action{
 		ReviewDTO redto=redao.getReview(s_num);
 		ReviewDTO re_avg=redao.getRe_avg(s_num);
 		
-<<<<<<< HEAD
 		QnaDAO qdao=new QnaDAO();
 		QnaDTO qdto=qdao.getQna(s_num);
 
-=======
-
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 		//review
 		//review page
 		System.out.println("ReviewPro()");
@@ -57,12 +52,7 @@ public class SpaceInfoPro implements Action{
 		int re_startRow=(re_currentPage-1)*re_pageSize+1;
 		int re_endRow = re_startRow+re_pageSize-1;
 		
-<<<<<<< HEAD
 		ArrayList<ReviewDTO> reviewList=redao.getReviewList(s_num, re_startRow, re_pageSize);
-=======
-		ArrayList<ReviewDTO> reviewList=redao.getReviewList(s_num, startRow, pageSize);
-
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 		
 		int re_pageBlock=10;
 		int re_startPage=(re_currentPage-1)/re_pageBlock*re_pageBlock+1;
@@ -98,9 +88,6 @@ public class SpaceInfoPro implements Action{
 		// setAttribute dto
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
-
-		request.setAttribute("redto", redto);
-
 		request.setAttribute("udto", udto);
 		request.setAttribute("redto", redto);
 		request.setAttribute("qdto", qdto);
@@ -120,17 +107,12 @@ public class SpaceInfoPro implements Action{
 		
 		// setAttribute review
 		request.setAttribute("reviewList",reviewList);
-<<<<<<< HEAD
 		request.setAttribute("re_pageCount", re_pageCount);
 
 		// setAttribute qna
 		request.setAttribute("qnaList",qnaList);
 		request.setAttribute("q_pageCount", q_pageCount);
 		
-=======
-		request.setAttribute("pageCount", rePageCount);
-		
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 		ActionForward forward=new ActionForward();
 		forward.setPath("space/spaceInfo.jsp");
 		forward.setRedirect(false);
@@ -139,3 +121,4 @@ public class SpaceInfoPro implements Action{
 	}
 
 }
+
