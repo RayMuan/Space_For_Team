@@ -70,14 +70,5 @@
   	<servlet-name>BookingFrontController</servlet-name>
   	<url-pattern>*.bk</url-pattern>
   </servlet-mapping>
-<<<<<<< 우정임
 
-=======
-<<<<<<< HEAD
-
-  
-=======
-
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
->>>>>>> a69495b Merge branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 </web-app>
