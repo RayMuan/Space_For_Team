@@ -17,7 +17,8 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <%
-int s_num=Integer.parseInt(request.getParameter("s_num"));
+
+int s_num=51;
 // (int)session.getAttribute("s_num");
 
 SpaceDTO sdto = (SpaceDTO) request.getAttribute("sdto");
@@ -190,7 +191,7 @@ ul {
 						<section class="mb-5 pt-4">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 							<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
-							<a class="btn btn-primary btn-lg px-4 me-sm-3" href="">예약하기</a>
+							<a class="btn btn-primary btn-lg px-4 me-sm-3" href="BookingInsertForm.bk">예약하기</a>
 							<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 							<div></div>
 							<h3 class="fw-bolder mb-2 mt-5">위치</h3>
