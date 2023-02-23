@@ -1,3 +1,4 @@
+
 <%@page import="com.mysql.cj.sasl.ScramSha1SaslClient"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -51,39 +52,65 @@
                                 <!-- To make this form functional, sign up at-->
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
+       
+                        
+ <script type="text/javascript">
+
+ function fun(){
+	if(document.fr.uc.value==""){
+		document.getElementById("d").innerHTML="<h5>예약인원을 설정해주세요</h5>";
+	document.fr.uc.focus();
+	return;
+	}
+	if(document.fr.currentDate.value==""){
+		document.getElementById("d").innerHTML="<h5>예약일을 선택해주세요</h5>";
+	document.fr.currentDate.focus();
+	return;
+	}
+	if(document.fr.st.value==""){
+		document.getElementById("d").innerHTML="<h5>시작시간을 선택해주세요</h5>";
+	document.fr.st.focus();
+	return;
+	}
+	if(document.fr.et.value==""){
+		document.getElementById("d").innerHTML="<h5>종료시간을 선택해주세요</h5>";
+	document.fr.et.focus();
+	return;
+	}
+	document.fr.submit();
+ }
+ </script>
  
- 
-                                <form action="BookingInsertPro.bk" method="post" id="bookingForm" name="fr">
+                <form action="BookingInsertPro.bk" method="post" id="bookingForm" name="fr">
     
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="uc" name="bk_usercount" type="number" data-sb-validations="required" min="1" max="20"/>
-                                        <label for="bk_usercount">예약인원</label>       
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control"  id="currentDate" name="bk_usedate" type="date"/>
-                                        <label for="bk_usedate">예약일</label>
-                                        <script type="text/javascript">
-										document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
-										</script>
-                                        <div class="invalid-feedback" data-sb-feedback="currentDate:required">예약일은 필수선택사항입니다.</div>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id ="st" name="bk_starttime" type="number" min="0" max="24" data-sb-validations="required" />
-                                        <label for="bk_starttime">시작시간</label>
-                                        <div class="invalid-feedback" data-sb-feedback="st:required">시작시간은 필수선택사항입니다</div>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="et" name="bk_endtime" type="number"  min="0" max="24"data-sb-validations="required,email" />
-                                        <label for="bk_endtime">종료시간</label>
-                                        <div class="invalid-feedback" data-sb-feedback="et:required">종료시간은 필수선택사항입니다.</div>                            
-                                    </div>
-                                    <div id="d"></div>  
+                    <div class="form-floating mb-3">
+                            <input class="form-control" id="uc" name="bk_usercount" type="number" data-sb-validations="required" min="1" max="20"/>
+                            <label for="bk_usercount">예약인원</label>       
+                    </div>
+                    <div class="form-floating mb-3">
+                             <input class="form-control"  id="currentDate" name="bk_usedate" type="date"/>
+                             <label for="bk_usedate">예약일</label>
+                        <script type="text/javascript">
+                        var now_utc = Date.now()
+                        var timeOff = new Date().getTimezoneOffset()*60000;
+                        var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+                        document.getElementById("currentDate").setAttribute("min", today);
+						</script>
+                    </div>
+                    <div class="form-floating mb-3">
+                             <input class="form-control" id ="st" name="bk_starttime" type="number" min="0" max="24" data-sb-validations="required" />
+                             <label for="bk_starttime">시작시간</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                             <input class="form-control" id="et" name="bk_endtime" type="number"  min="0" max="24"data-sb-validations="required,email" />
+                             <label for="bk_endtime">종료시간</label>                            
+                    </div>
+                    <div id="d"></div>  
                                   <!-- Submit Button-->
 <!--                                     <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">공간예약</button></div> -->
-                              <div class="d-grid">
-                              <input type="submit" class="btn btn-primary btn-lg" value ="공간예약"></div>
-
-                                </form>
+                    <div class="d-grid">
+                              <input type="button" class="btn btn-primary btn-lg" value ="공간예약" onclick="fun()"></div>
+				</form>
                             </div>
                         </div>
                     </div>
