@@ -10,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
+
 public class ReviewDAO {
 	private Connection con=null;
 	
@@ -145,5 +146,38 @@ public class ReviewDAO {
 		}
 		return count;
 	} // getBoardCount
+	
+	public void insertReview(ReviewDTO redto) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		try {
+			con=getConnection();
+			// num 구하기
+			int re_num=1;
+			String sql="select Max(num) from review";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				re_num=rs.getInt("max(num)")+1;
+			}
+				sql="insert review(re_num, user_num, re_content, re_date, re_point, s_num, re_reply) values(?, ?, ?, ?, ?, ?, ?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, re_num);
+				pstmt.setInt(2, redto.getUser_num());
+				pstmt.setString(3, redto.getRe_content());
+				pstmt.setTimestamp(4, redto.getRe_date());
+				pstmt.setInt(5, redto.getRe_point());
+				pstmt.setInt(6, redto.getS_num());
+				pstmt.setString(7, redto.getRe_reply());
+			
+				pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+			if(con!=null) try {con.close();}catch (Exception e2) {}
+		}
+	} //insertReview
 	
 }//class

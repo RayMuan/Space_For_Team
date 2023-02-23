@@ -128,7 +128,7 @@ ul {
 								<div class="card-body">
 								<div class="row gx-5">
 									<!-- Comment form-->
-									<form class="mb-4 col">
+									<form class="mb-4 col" action="ReviewWritePro.re" method="post">
 										<textarea class="form-control col-10" rows="3"
 											placeholder="Join the discussion and leave a comment!"></textarea>
 											<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기">
