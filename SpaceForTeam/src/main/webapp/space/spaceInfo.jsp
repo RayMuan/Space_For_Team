@@ -24,6 +24,7 @@ int s_num=51;
 SpaceDTO sdto = (SpaceDTO) request.getAttribute("sdto");
 HostDTO hdto = (HostDTO) request.getAttribute("hdto");
 ReviewDTO redto = (ReviewDTO) request.getAttribute("redto");
+QnaDTO qdto = (QnaDTO) request.getAttribute("qdto");
 ReviewDTO re_avg = (ReviewDTO) request.getAttribute("re_avg");
 %>
 <title><%=sdto.getS_name()%></title>
@@ -111,17 +112,7 @@ ul {
 						</article>
 						
 						<div class="card bg-light">
-							<div class="col p-2">
-							<ul class="btn-toolbar m-0 p-0">
-                            <li class="col-lg-6 text-center" id="review">
-                            <a class="button fs-4 text-black text-decoration-none" href="javascript:void(0)" id="review">리뷰</a>
-                            </li>
-                            <li class="col-lg-6 text-center border-start">
-                            <a class="button fs-4 text-black text-decoration-none" href="#" id="qna">QnA</a>
-                            </li>
-                        	</ul>
-							</div>
-							
+						<h2 class="fw-bolder m-3">Review</h2>
 							<%
 							ArrayList<ReviewDTO> reviewList = (ArrayList<ReviewDTO>) request.getAttribute("reviewList");
 							%>
@@ -143,13 +134,13 @@ ul {
 											placeholder="Join the discussion and leave a comment!"></textarea>
 									</form>
 									</div>
-									<ul>
+									<ul class="p-4">
 										<%
 										for (int i = 0; i < reviewList.size(); i++) { redto =
 										reviewList.get(i);
 										%>
 										<li>
-											<div class="ms-3 border-bottom">
+											<div class="m-0 border-bottom">
 												<div class="ms-3">
 													<div class="fw-bold d-flex align-items-center"><%=redto.getRe_user_id() %><p
 															class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
@@ -158,6 +149,9 @@ ul {
 													<%=redto.getRe_content()%>
 												</div>
 												<!-- Child comment 1-->
+												<%
+												if(redto.getRe_reply() !=null){
+												%>
 												<div class="ms-3">
 													<div class="d-flex mt-3 mb-4 ">
 														<div class="ms-3 p-sm-4 bg-dark bg-opacity-25 col-5">
@@ -168,6 +162,9 @@ ul {
 														</div>
 													</div>
 												</div>
+												<%
+												}
+												%>
 											</div>
 										</li>
 										<%
@@ -179,13 +176,8 @@ ul {
 									</div>
 								</div>
 							</div>
-						<!-- 	QnA		-->
 						</div>
 					</div>
-					
-					
-					
-					
 					<!-- 상세 정보 -->
 					<div class="col-lg-3">
 						<section class="mb-5 pt-4">
@@ -200,7 +192,7 @@ ul {
 									<img class="card-img-top"
 										src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
 									<div class="card-body p-4">
-										<p class="card-text mb-0"><%=sdto.getS_sido()%><%=sdto.getS_sigungu()%><%=sdto.getS_address()%></p>
+										<p class="card-text mb-0"><%=sdto.getS_address()%></p>
 									</div>
 								</div>
 							</div>
@@ -217,10 +209,37 @@ ul {
 									</div>
 								</div>
 							</div>
+
+						<%
+						ArrayList<QnaDTO> qnaList = (ArrayList<QnaDTO>) request.getAttribute("qnaList");
+						%>
+						<h2 class="fw-bolder mb-3">Q&amp;A</h2>
+						<%if(qnaList !=null){ %>
+										<%
+										for (int i = 0; i < qnaList.size(); i++) { 
+											qdto =qnaList.get(i);
+										%>
+                            <div class="accordion mb-3" id="accordionExample">
+                                <div class="accordion-item">
+									<h3 class="accordion-header" id="heading<%=qdto.getQ_num() %>">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%=qdto.getQ_num() %>" aria-expanded="true" aria-controls="collapse<%=qdto.getQ_num() %>">
+									Q. <%=qdto.getQ_content() %>
+									</button></h3>
+                                    <div class="accordion-collapse collapse show" id="collapse<%=qdto.getQ_num() %>" aria-labelledby="heading<%=qdto.getQ_num() %>" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            A.<%=qdto.getQ_recontent() %>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                    <%
+                                    }
+                                }
+								%>
 						</section>
+                            </div>
 					</div>
 				</div>
-			</div>
 		</section>
 	</main>
 	<!-- Footer-->

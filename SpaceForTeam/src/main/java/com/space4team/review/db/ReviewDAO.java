@@ -81,7 +81,7 @@ public class ReviewDAO {
 		return dto;
 	}// getReview
 	
-	public ArrayList<ReviewDTO> getReviewList(int s_num, int startRow, int pageSize){
+	public ArrayList<ReviewDTO> getReviewList(int s_num, int re_startRow, int re_pageSize){
 		ArrayList<ReviewDTO> reviewList=new ArrayList<ReviewDTO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -92,8 +92,8 @@ public class ReviewDAO {
 			String sql="SELECT r.re_num, r.user_num, r.re_content, r.re_date, r.re_point, r.s_num, r.re_reply, u.user_id FROM review r join user u on r.user_num = u.user_num where r.s_num=? order by r.re_num desc limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, s_num);
-			pstmt.setInt(2, startRow-1);
-			pstmt.setInt(3, pageSize);
+			pstmt.setInt(2, re_startRow-1);
+			pstmt.setInt(3, re_pageSize);
 			
 			rs=pstmt.executeQuery();
 			
