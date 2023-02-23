@@ -23,7 +23,7 @@ public class UserLoginPro implements Action {
 		// SpaceDAO 객체생성
 		UserDAO dao=new UserDAO();
 		// SpaceDTO = userCheck() 메서드호출
-		UserDTO dto=dao.userCheck(user_email, user_pass);
+		UserDTO dto=dao.getUserEmail("user_email");
 		
 		// dto != null 아이디 비밀번호 일치 세션값 생성 MemberMain.me 이동
 		// 아이디 비밀번호 틀림 , 뒤로이동	
@@ -36,7 +36,7 @@ public class UserLoginPro implements Action {
 			session.setAttribute("user_pass", user_pass);
 			
 			forward=new ActionForward();
-			forward.setPath("/original/index.html");
+			forward.setPath("Main.ho");
 			forward.setRedirect(true);
 			
 		} else {
