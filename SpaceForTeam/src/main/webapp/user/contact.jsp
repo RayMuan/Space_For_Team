@@ -1,47 +1,20 @@
-<%@page import="com.space4team.qna.db.QnaDTO"%>
-<%@page import="com.space4team.user.db.UserDAO"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.space4team.user.db.UserDTO"%>
-<%@page import="com.space4team.review.db.ReviewDTO"%>
-<%@page import="com.space4team.review.db.ReviewDAO"%>
-<%@page import="com.space4team.host.db.HostDTO"%>
-<%@page import="com.space4team.space.db.SpaceDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<%
-SpaceDTO sdto = (SpaceDTO) request.getAttribute("sdto");
-HostDTO hdto = (HostDTO) request.getAttribute("hdto");
-ReviewDTO redto = (ReviewDTO) request.getAttribute("redto");
-ReviewDTO re_avg = (ReviewDTO) request.getAttribute("re_avg");
-%>
-<title><%=sdto.getS_name()%></title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Bootstrap icons-->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/styles.css" rel="stylesheet" />
-<!-- 추가 js -->
-<script type="text/javascript">
-
-
-</script>
-<!-- 추가 css -->
-<style>
-ul {
-	list-style: none;
-}
-</style>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content />
+        <meta name="author" content />
+        <title>Modern Business - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
     <body class="d-flex flex-column">
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -53,7 +26,8 @@ ul {
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Join.us">회원가입</a></li>
+                            <li class="nav-item"><a class="nav-link" href="UserLoginForm.us">로그인</a></li>
                             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
                             <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
                             <li class="nav-item dropdown">
@@ -125,7 +99,7 @@ ul {
                                    
                                     <p class="host">
                                    Host Login--------------------------------------------------------------
-                                   <a href="hostLogin.html" class="post">로그인</a>
+                                   <a href="HostLoginForm.ho" class="post">로그인</a>
                                    </p>
                                   
                                    <!-- Submit success message-->
@@ -146,33 +120,10 @@ ul {
                                     <!-- an error submitting the form-->
                                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                     <!-- Submit Button-->
-                                    <div class="d-grid"> <a href="/original/index.html" class="login"></a>
+                                    <div class="d-grid"> <a href="Main.ho" class="login"></a>
                                     <button class="btn btn-primary btn-lg" id="login" type="submit">이메일로 로그인</button></div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Contact cards-->
-                    <div class="row gx-5 row-cols-2 row-cols-lg-4 py-5">
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-chat-dots"></i></div>
-                            <div class="h5 mb-2">Chat with us</div>
-                            <p class="text-muted mb-0">Chat live with one of our support specialists.</p>
-                        </div>
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-people"></i></div>
-                            <div class="h5">Ask the community</div>
-                            <p class="text-muted mb-0">Explore our community forums and communicate with other users.</p>
-                        </div>
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-question-circle"></i></div>
-                            <div class="h5">Support center</div>
-                            <p class="text-muted mb-0">Browse FAQ's and support articles to find solutions.</p>
-                        </div>
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-telephone"></i></div>
-                            <div class="h5">Call us</div>
-                            <p class="text-muted mb-0">Call us during normal business hours at (555) 892-9403.</p>
                         </div>
                     </div>
                 </div>

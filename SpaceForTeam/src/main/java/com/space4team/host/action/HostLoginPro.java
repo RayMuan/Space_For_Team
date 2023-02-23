@@ -1,5 +1,7 @@
 package com.space4team.host.action;
 
+
+
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +25,7 @@ public class HostLoginPro implements Action {
 		// SpaceDAO 객체생성
 		HostDAO dao=new HostDAO();
 		// SpaceDTO = hostCheck() 메서드호출
-		HostDTO dto=dao.hostCheck(1, h_email);
+		HostDTO dto=dao.hostCheck("h_email", "h_pass");
 		
 		// dto != null 아이디 비밀번호 일치 세션값 생성 MemberMain.me 이동
 		// 아이디 비밀번호 틀림 , 뒤로이동	
@@ -36,7 +38,7 @@ public class HostLoginPro implements Action {
 			session.setAttribute("h_pass", h_pass);
 			
 			forward=new ActionForward();
-			forward.setPath("/space/spaceInfo.sp");
+			forward.setPath("Main.ho");
 			forward.setRedirect(true);
 			
 		} else {

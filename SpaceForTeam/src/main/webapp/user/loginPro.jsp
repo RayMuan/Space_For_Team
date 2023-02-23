@@ -9,13 +9,13 @@ String pass=request.getParameter("pass");
 
 
 UserDAO dao=new UserDAO();
-UserDTO dto=dao.userCheck("user_email", "user_pass");
+UserDTO dto=dao.getUserEmail("email");
 
 if(dto!=null){
 	//아이디 비밀번호 일치
 	session.setAttribute("email", email);
 	session.setAttribute("pass", pass);
-	response.sendRedirect("../original/index.html");
+	response.sendRedirect("../main/main.jsp");
 }else{
 	//아이디 비밀번호 틀림
     %>

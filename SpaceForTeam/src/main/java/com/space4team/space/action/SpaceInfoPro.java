@@ -11,6 +11,9 @@ import com.space4team.review.db.ReviewDAO;
 import com.space4team.review.db.ReviewDTO;
 import com.space4team.space.db.SpaceDAO;
 import com.space4team.space.db.SpaceDTO;
+import com.space4team.user.db.UserDAO;
+import com.space4team.user.db.UserDTO;
+
 
 public class SpaceInfoPro implements Action{
 
@@ -26,7 +29,7 @@ public class SpaceInfoPro implements Action{
 		SpaceDAO sdao=new SpaceDAO();
 		SpaceDTO sdto=sdao.getSpace(s_num);
 
-		HostDAO hdao=new HostDAO();
+		HostDTO hdao=new HostDAO();
 		HostDTO hdto=hdao.getHost(sdto.getH_num());
 		
 		UserDAO udao=new UserDAO();
@@ -36,9 +39,7 @@ public class SpaceInfoPro implements Action{
 		ReviewDTO redto=redao.getReview(s_num);
 		ReviewDTO re_avg=redao.getRe_avg(s_num);
 		
-<<<<<<< HEAD
 
-=======
 		//review
 		System.out.println("ReviewPro()");
 		//page
@@ -49,7 +50,7 @@ public class SpaceInfoPro implements Action{
 		int endRow = startRow+pageSize-1;
 		
 		ArrayList<ReviewDTO> reviewList=redao.getReviewList(s_num, startRow, pageSize);
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
+
 		
 		int pageBlock=10;
 		int startPage=(currentPage-1)/pageBlock*pageBlock+1;
@@ -65,10 +66,9 @@ public class SpaceInfoPro implements Action{
 		// setAttribute dto
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
-<<<<<<< HEAD
+
 		request.setAttribute("redto", redto);
 
-=======
 		request.setAttribute("udto", udto);
 		request.setAttribute("redto", redto);
 		request.setAttribute("re_avg", re_avg);
@@ -83,7 +83,6 @@ public class SpaceInfoPro implements Action{
 		request.setAttribute("reviewList",reviewList);
 		request.setAttribute("pageCount", rePageCount);
 		
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 		ActionForward forward=new ActionForward();
 		forward.setPath("space/spaceInfo.jsp");
 		forward.setRedirect(false);

@@ -20,16 +20,7 @@
   	<url-pattern>*.sp</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-	<servlet-name>UserFrontController</servlet-name>
-	<servlet-class>com.space4team.user.action.UserFrontController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>UserFrontController</servlet-name>
-  	<url-pattern>*.us</url-pattern>
-  </servlet-mapping>  
-  
+
   <servlet>
 	<servlet-name>HostFrontController</servlet-name>
 	<servlet-class>com.space4team.host.action.HostFrontController</servlet-class>
@@ -71,7 +62,7 @@
   	<url-pattern>*.qa</url-pattern>
   </servlet-mapping>
   
-<<<<<<< HEAD
+
   <servlet>
 	<servlet-name>BookingFrontController</servlet-name>
 	<servlet-class>com.space4team.booking.action.BookingFrontController</servlet-class>
@@ -82,19 +73,4 @@
   	<url-pattern>*.bk</url-pattern>
   </servlet-mapping>
   
-  
-  
-  
-=======
-   <servlet>
-	<servlet-name>BookingFrontController</servlet-name>
-	<servlet-class>com.space4team.booking.action.BookingFrontController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>BookingFrontController</servlet-name>
-  	<url-pattern>*.bk</url-pattern>
-  </servlet-mapping>
-
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 </web-app>
