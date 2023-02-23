@@ -17,6 +17,10 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <%
+
+int s_num=51;
+// (int)session.getAttribute("s_num");
+
 SpaceDTO sdto = (SpaceDTO) request.getAttribute("sdto");
 HostDTO hdto = (HostDTO) request.getAttribute("hdto");
 ReviewDTO redto = (ReviewDTO) request.getAttribute("redto");
@@ -120,17 +124,25 @@ ul {
 							
 							<%
 							ArrayList<ReviewDTO> reviewList = (ArrayList<ReviewDTO>) request.getAttribute("reviewList");
-							UserDAO udao = new UserDAO();
-							UserDTO udto = null; 
 							%>
 						<!-- 리뷰 -->
 						<div id="reviewList">
 								<div class="card-body">
+								<div class="row gx-5">
 									<!-- Comment form-->
-									<form class="mb-4">
-										<textarea class="form-control" rows="3"
+									<form class="mb-4 col" action="ReviewWritePro.re" method="post">
+										<select class="btn btn-outline-dark text-center" name="re_point">
+										<option class="text-center" value="5">★★★★★</option>
+										<option class="text-center" value="4">★★★★☆</option>
+										<option class="text-center" value="3">★★★☆☆</option>
+										<option class="text-center" value="2">★★☆☆☆</option>
+										<option class="text-center" value="1">★☆☆☆☆</option>
+										</select>
+										<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기">
+										<textarea class="form-control col-10"  name="re_content" rows="3"
 											placeholder="Join the discussion and leave a comment!"></textarea>
 									</form>
+									</div>
 									<ul>
 										<%
 										for (int i = 0; i < reviewList.size(); i++) { redto =
@@ -139,7 +151,7 @@ ul {
 										<li>
 											<div class="ms-3 border-bottom">
 												<div class="ms-3">
-													<div class="fw-bold d-flex align-items-center">아이디<p
+													<div class="fw-bold d-flex align-items-center"><%=redto.getRe_user_id() %><p
 															class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
 													</div>
 													<div><%=redto.getRe_point()%></div>
@@ -179,10 +191,9 @@ ul {
 						<section class="mb-5 pt-4">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 							<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
-
+							<a class="btn btn-primary btn-lg px-4 me-sm-3" href="BookingInsertForm.bk">예약하기</a>
 							<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 							<div></div>
-
 							<h3 class="fw-bolder mb-2 mt-5">위치</h3>
 							<div class="col-lg-12 mb-5">
 								<div class="card h-100 border">

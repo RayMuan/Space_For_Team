@@ -55,36 +55,59 @@
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
 
+ <script type="text/javascript">
 
-
-
-
-   
-
+ function fun(){
+	if(document.fr.uc.value==""){
+		document.getElementById("d").innerHTML="<h5>예약인원을 설정해주세요</h5>";
+	document.fr.uc.focus();
+	return;
+	}
+	if(document.fr.date.value==""){
+		document.getElementById("d").innerHTML="<h5>예약일을 선택해주세요</h5>";
+	document.fr.date.focus();
+	return;
+	}
+	if(document.fr.st.value==""){
+		document.getElementById("d").innerHTML="<h5>시작시간을 선택해주세요</h5>";
+	document.fr.st.focus();
+	return;
+	}
+	if(document.fr.et.value==""){
+		document.getElementById("d").innerHTML="<h5>종료시간을 선택해주세요</h5>";
+	document.fr.et.focus();
+	return;
+	}
+	document.fr.submit();
+ }
+ </script>
 
 <tr><td colspan ="2"><input type="submit" value="예약수정"></td></tr>
  
- 
- 
                                 <form action="BookingUpdatePro.bk" method="post" name="fr">
-    								<input type ="hidden" name ="num" value="<%=dto.getBk_num() %>">
+    								<input type ="hidden" name ="num" id="uc" value="<%=dto.getBk_num() %>">
     								<div class="form-floating mb-3">
                                         <input class="form-control" type="number" name ="bk_usercount" value="<%=dto.getBk_usercount() %>"min="1" max="20" />
                                         <label for="bk_usercount">예약인원</label>       
                                     </div>
                                     
     								<div class="form-floating mb-3">
-                                        <input class="form-control" type="date" name ="bk_usedate" value="<%=dto.getBk_usedate() %>" />
-                                        <label for="bk_usercount">예약일</label>       
+                                        <input class="form-control" type="date" id="date" name ="bk_usedate" value="<%=dto.getBk_usedate() %>" />
+                                        <label for="bk_usercount">예약일</label>  
+                                    	<script type="text/javascript">
+                        					var now_utc = Date.now()
+                        					var timeOff = new Date().getTimezoneOffset()*60000;
+                        					var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+                        					document.getElementById("date").setAttribute("min", today);
+										</script>     
                                     </div>
-    								
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" type="number" name ="bk_starttime" value="<%=dto.getBk_starttime() %>" min="1" max="24" />
+                                        <input class="form-control" type="number" id="st" name ="bk_starttime" value="<%=dto.getBk_starttime() %>" min="1" max="24" />
                                         <label for="bk_usercount">시작시간</label>       
                                     </div>
                                     
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" type="number" name ="bk_endtime" value="<%=dto.getBk_endtime() %>" min="1" max="24"/>
+                                        <input class="form-control" type="number" id="et" name ="bk_endtime" value="<%=dto.getBk_endtime() %>" min="1" max="24"/>
                                         <label for="bk_usercount">종료시간</label>       
                                     </div>
                                 

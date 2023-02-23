@@ -31,6 +31,17 @@
   </servlet-mapping>
   
   <servlet>
+	<servlet-name>UserFrontController</servlet-name>
+	<servlet-class>com.space4team.user.action.UserFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>UserFrontController</servlet-name>
+  	<url-pattern>*.us</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
 	<servlet-name>ReviewFrontController</servlet-name>
 	<servlet-class>com.space4team.review.action.ReviewFrontController</servlet-class>
   </servlet>
@@ -59,5 +70,5 @@
   	<servlet-name>BookingFrontController</servlet-name>
   	<url-pattern>*.bk</url-pattern>
   </servlet-mapping>
-  
+
 </web-app>
