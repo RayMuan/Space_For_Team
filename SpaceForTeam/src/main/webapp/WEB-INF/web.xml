@@ -50,7 +50,6 @@
   	<servlet-name>ReviewFrontController</servlet-name>
   	<url-pattern>*.re</url-pattern>
   </servlet-mapping>
-<<<<<<< HEAD
 
   <servlet>
 	<servlet-name>QnaFrontController</servlet-name>
@@ -71,7 +70,5 @@
   	<servlet-name>BookingFrontController</servlet-name>
   	<url-pattern>*.bk</url-pattern>
   </servlet-mapping>
-=======
->>>>>>> refs/remotes/origin/장정윤
-  
+
 </web-app>
