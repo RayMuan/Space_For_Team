@@ -80,7 +80,7 @@ public class SpaceDAO {
 				dto.setS_bill(rs.getString("s_bill"));
 				dto.setH_num(rs.getInt("h_num"));
 				dto.setS_sido(rs.getString("s_sido"));
-				dto.setS_sigungu(rs.getString("s_sigungu"));
+				dto.setS_sigungu(rs.getString("s_gungu"));
 				dto.setS_memo(rs.getString("s_memo"));
 				dto.setS_opt(rs.getString("s_opt"));
 				}

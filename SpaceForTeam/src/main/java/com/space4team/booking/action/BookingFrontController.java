@@ -34,7 +34,11 @@ public class BookingFrontController extends HttpServlet{
 		Action action =null;
 
 		if(sPath.equals("/BookingInsertForm.bk")) {
+<<<<<<< HEAD
 			System.out.println("/BookingInsertForm.bk  booking/insertForm.jsp");
+=======
+			System.out.println("/BookingInsertForm.bk");
+>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 			forward = new ActionForward();
 			forward.setPath("booking/insertForm.jsp");
 			forward.setRedirect(false);

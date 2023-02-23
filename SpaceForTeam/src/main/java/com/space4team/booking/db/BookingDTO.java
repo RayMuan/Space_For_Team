@@ -3,16 +3,30 @@ package com.space4team.booking.db;
 import java.sql.Timestamp;
 
 public class BookingDTO {
+
 	private int bk_num;
 	private int s_num;
-	private int user_num;
+//	= dto.getS_num();
+	private int user_num ;
+//	= dto2.getUser_num();
 	private int bk_usercount;
 	private Timestamp bk_date;
+<<<<<<< HEAD
 	private int bk_price;
+=======
+>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 	private String bk_usedate;
 	private int bk_starttime;
 	private int bk_endtime;
+	private int bk_usetime;
+	private int bk_price;
 	
+	public int getBk_usetime() {
+		return bk_usetime;
+	}
+	public void setBk_usetime(int bk_usetime) {
+		this.bk_usetime = bk_usetime;
+	}
 	// get set
 	public int getBk_num() {
 		return bk_num;
