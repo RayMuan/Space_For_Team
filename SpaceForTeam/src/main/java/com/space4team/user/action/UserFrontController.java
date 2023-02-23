@@ -35,9 +35,9 @@ public class UserFrontController extends HttpServlet{
 		Action action=null;
 		
 		if(sPath.equals("/UserInsertForm.us")) {
-			
+			System.out.println("/UserInsertForm.us");
 			forward = new ActionForward();
-			forward.setPath("/user/contact.html");
+			forward.setPath("user/contact.html");
 			forward.setRedirect(false);			
 			
 		} else if(sPath.equals("/UserInsertPro.us")) {
@@ -66,7 +66,7 @@ public class UserFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if (sPath.equals("/UserIdCheck.us")) {
-			action=new UserIdCheck();
+			action=new UserEmailCheck();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
@@ -87,11 +87,7 @@ public class UserFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
-		
-		
+
 		
 		// 연결
 		if(forward != null) {

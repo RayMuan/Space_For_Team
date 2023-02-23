@@ -1,30 +1,30 @@
-package com.space4team.space.action;
-
+package com.space4team.host.action;
 
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.space4team.user.db.UserDAO;
-import com.space4team.user.db.UserDTO;
+import com.space4team.host.db.HostDAO;
+import com.space4team.host.db.HostDTO;
 
 
-public class SpaceIdCheck implements Action{
+
+public class HostEmailCheck implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("SpaceIdCheck execute()");
+		System.out.println("HostEmailCheck execute()");
 		
 				String email=request.getParameter("email");
-				UserDAO dao=new UserDAO();
-				UserDTO dto=dao.getMember(email);
+				HostDAO dao=new HostDAO();
+				HostDTO dto=dao.getHost(1);
 				String result="";
 				
 				if(dto!=null) {
-					result="아이디 중복";
+					result="이메일 중복";
 				}else {
-					result="아이디 사용가능";
+					result="이메일 사용가능";
 				}
 				
 				response.setContentType("text/html; charset=UTF-8");

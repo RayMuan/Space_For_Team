@@ -68,7 +68,7 @@ public class HostFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if (sPath.equals("/HostIdCheck.ho")) {
-			action=new HostIdCheck();
+			action=new HostEmailCheck();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {

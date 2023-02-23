@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.space4team.user.db.UserDAO;
 import com.space4team.user.db.UserDTO;
 
-public class UserIdCheck implements Action{
+public class UserEmailCheck implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("UserIdCheck execute()");
+		System.out.println("UserEmailCheck execute()");
 		
 				String email=request.getParameter("email");
 				UserDAO dao=new UserDAO();
@@ -20,9 +20,9 @@ public class UserIdCheck implements Action{
 				String result="";
 				
 				if(dto!=null) {
-					result="아이디 중복";
+					result="이메일 중복";
 				}else {
-					result="아이디 사용가능";
+					result="이메일 사용가능";
 				}
 				
 				response.setContentType("text/html; charset=UTF-8");

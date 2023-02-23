@@ -1,18 +1,47 @@
+<%@page import="com.space4team.qna.db.QnaDTO"%>
+<%@page import="com.space4team.user.db.UserDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.space4team.user.db.UserDTO"%>
+<%@page import="com.space4team.review.db.ReviewDTO"%>
+<%@page import="com.space4team.review.db.ReviewDAO"%>
+<%@page import="com.space4team.host.db.HostDTO"%>
+<%@page import="com.space4team.space.db.SpaceDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content />
-        <meta name="author" content />
-        <title>Modern Business - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<%
+SpaceDTO sdto = (SpaceDTO) request.getAttribute("sdto");
+HostDTO hdto = (HostDTO) request.getAttribute("hdto");
+ReviewDTO redto = (ReviewDTO) request.getAttribute("redto");
+ReviewDTO re_avg = (ReviewDTO) request.getAttribute("re_avg");
+%>
+<title><%=sdto.getS_name()%></title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<!-- Bootstrap icons-->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="css/styles.css" rel="stylesheet" />
+<!-- 추가 js -->
+<script type="text/javascript">
+
+
+</script>
+<!-- 추가 css -->
+<style>
+ul {
+	list-style: none;
+}
+</style>
+</head>
     <body class="d-flex flex-column">
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -65,41 +94,8 @@
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
                                 <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                                
-                                <div class="text-center mb-3">
-                                	<div class="login_btn">
-                                <a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com" class="naver" style="text-decoration:none">
-                                		<div class="d-grid"><button class="btn btn-success btn-lg  active" id="submitButton" type="submit">네이버로 로그인</button></div></a>
-                              		</div>
-                                </div>
-                                
-                                <div class="text-center mb-3">
-                               		<div class="login_btn">
-                                <a href="https://www.daum.net/" class="kakao" style="text-decoration:none">
-                                		<div class="d-grid"><button class="btn btn-warning btn-lg  active" id="submitButton" type="submit">카카오로 로그인</button></div></a>
-									</div>
-								</div>
-								
-                                <div id="naverIdLogin" style="display: none;">
-								<a id="naverIdLogin_loginButton" href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com">
-								<img src="/naverLogo.png" height="60"></a></div>
-								
-								<div id="kakaoIdLogin" style="display: none;">
-								<a id="kakaoIdLogin_loginButton" href="https://www.daum.net/">
-								<img src="/kakaoLogo.jpg" height="60"></a></div>
-                                
-                                
-                       			 <p class="or">
-                       			 <style>
-                       			 p.or::before{
-                       			 content:"------------------------------------";
-                       			 }
-                       			 p.or::after{
-                       			 content:"-----------------------------------";
-                       			 }
-                       			 </style>
-                                <span class="btn btn-light btn-block disabled"> 또는</span>
-                                </p>    
+                              
+
                                     <!-- Email address input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
@@ -120,10 +116,19 @@
                                     <label for="memory">
                                     이메일 기억하기
                                     </label></p>
-                                    <a href="/auth/find/password" class="password">비밀번호 찾기</a>
                                     </div>
                                     
-                                    <!-- Submit success message-->
+                                   <p class="no mem">
+                                   Space For Team 회원이 아니신가요?-------------------------------
+                                   <a href="/insertForm.jsp" class="submit">회원가입</a>
+                                   </p>
+                                   
+                                    <p class="host">
+                                   Host Login--------------------------------------------------------------
+                                   <a href="hostLogin.html" class="post">로그인</a>
+                                   </p>
+                                  
+                                   <!-- Submit success message-->
                                     <!---->
                                     <!-- This is what your users will see when the form-->
                                     <!-- has successfully submitted-->
@@ -141,13 +146,8 @@
                                     <!-- an error submitting the form-->
                                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                     <!-- Submit Button-->
-                                    <div class="text-center mb-3">
-                                    <div class="d-grid"> <a href="https://www.daum.net/" class="login"></a>
-                                    <button class="btn btn-primary btn-lg" id="login" type="post">이메일로 로그인</button></div>
-                                    </div>
-                                    <!-- Submit2 Button-->
-                                    <div class="d-grid"> <a href="/auth/signup" class="submit"></a>
-                                    <button class="btn btn-primary btn-lg" id="login" type="submit">회원가입</button></div>
+                                    <div class="d-grid"> <a href="/original/index.html" class="login"></a>
+                                    <button class="btn btn-primary btn-lg" id="login" type="submit">이메일로 로그인</button></div>
                                 </form>
                             </div>
                         </div>
