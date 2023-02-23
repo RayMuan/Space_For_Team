@@ -32,11 +32,11 @@ public class HostFrontController extends HttpServlet{
 		
 		if(sPath.equals("/HostInsertForm.ho")) {
 			forward = new ActionForward(); 
-			forward.setPath("hostInsert.jsp"); 
+			forward.setPath("join/hostInsert.jsp"); 
 			forward.setRedirect(false);
 		}else if(sPath.equals("/Main.ho")) {
 			forward = new ActionForward();
-			forward.setPath("main.jsp");
+			forward.setPath("join/main.jsp");
 			forward.setRedirect(false); 
 		}else if(sPath.equals("/HostInsertPro.ho")) {
 			action = new HostInsertPro();
@@ -61,15 +61,15 @@ public class HostFrontController extends HttpServlet{
 			}
 		}else if(sPath.equals("/HostInsertForm.us")) {
 			forward = new ActionForward(); 
-			forward.setPath("guestInsert.jsp"); 
+			forward.setPath("join/guestInsert.jsp"); 
 			forward.setRedirect(false);
 		}else if(sPath.equals("/Join.us")) {
 			forward = new ActionForward();
-			forward.setPath("join.jsp"); 
+			forward.setPath("join/join.jsp"); 
 			forward.setRedirect(false); 
 		}else if(sPath.equals("/HostInsertForm.ho")) {
 			forward = new  ActionForward(); 
-			forward.setPath("hostInsert.jsp"); 
+			forward.setPath("join/hostInsert.jsp"); 
 			forward.setRedirect(false);
 		}
 		

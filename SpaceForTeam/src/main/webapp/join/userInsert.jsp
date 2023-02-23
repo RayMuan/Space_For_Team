@@ -241,9 +241,9 @@
                                     <button class="btn btn-outline-dark" id="button" type="button">중복확인</button>
                                         <div class="invalid-feedback" data-sb-feedback="email:required"></div>
                                     </div>
+                                    
                                      <!-- Id input-->
-                              
-                               	 <div class="form-floating mb-3">
+                                  	 <div class="form-floating mb-3">
                                     <input class="form-control" name= "user_id" id="user_id" type="text" placeholder="a"  data-sb-validations="required" aria-describedby="button-newsletter" />
                                     <label for="id">아이디</label>
                                       <input type="hidden" name="iddup" value="" id="iddup">
@@ -251,63 +251,47 @@
                                      <div class="invalid-feedback" data-sb-feedback="id:required"></div>
                                	 </div>
                                		 
-<!--                                     <div> -->
-                                    
-<!--                                     <div class="form-floating mb-3 col-9"  > -->
-<!--                                         <input class="form-control " id="id" type="text" placeholder="Enter your id..." data-sb-validations="required"/> -->
-<!--                                         <label for="id">아이디</label>  -->
-<!--                                         <div class="invalid-feedback" data-sb-feedback="id:required">5~12자 영문(대소문자 구분), 숫자 입력해주세요.</div> -->
-<!--                                     <div class="form-floating mb-3 col-3" style="float: right"> -->
-<!--                                     	<input type="button" value="중복확인" class= "dup" > -->
-<!--                             		</div> -->
-<!--                                     </div> -->
-                                    
                                     <!-- Name input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" name="user_name" id="user_name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
                                         <label for="name">이름</label>
                                         <div class="invalid-feedback" data-sb-feedback="name:required"></div>
                                     </div>
+                                    
                                      <!-- Pass1 input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" name="user_pass" id="user_pass" type="password" placeholder="Enter your passward..." data-sb-validations="required" />
                                         <label for="pass">비밀번호</label>
                                         <div class="invalid-feedback" data-sb-feedback="pass:required"></div>
                                     </div>
+                                    
                                     <!-- Pass2 input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" name="user_pass1" id="user_pass1" type="password" placeholder="Enter your Confirm password..." data-sb-validations="required" />
                                         <label for="pass1">비밀번호 재확인</label>
                                         <div class="invalid-feedback" data-sb-feedback="pass:required"></div>
                                     </div>
+                                    
                                     <!-- Phone number input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" name="user_phone" id="user_phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
                                         <label for="phone">핸드폰 번호</label>
                                         <div class="invalid-feedback" data-sb-feedback="phone:required"></div>
                                     </div>
+                                    
                                     <!-- birth input-->
                                      <div class="form-floating mb-3">
                                         <input class="form-control" name="user_birth" id="user_birth" type="text" placeholder="1993-01-01" data-sb-validations="required" />
                                         <label for="birth">생년월일</label>
                                         <div class="invalid-feedback" data-sb-feedback="birth:required"></div>
                                     </div>
-                                    <!-- Submit success message-->
-                                    <!---->
-                                    <!-- This is what your users will see when the form-->
-                                    <!-- has successfully submitted-->
+                                    
                                     <div class="d-none" id="submitSuccessMessage">
                                         <div class="text-center mb-3">
                                             <div class="fw-bolder">Form submission successful!</div>
                                             <br />
-<!--                                             <a href="insertPro.jsp">이동</a> -->
                                         </div>
                                     </div>
-                                    <!-- Submit error message-->
-                                    <!-- This is what your users will see when there is-->
-                                    <!-- an error submitting the form-->
-                                    
-                                    <!-- Submit Button-->
                                     <input type="submit" class="btn-primary btn-lg disabled" id="submitButton" name="submit" value="회원가입" >
                                     </form>
                                     </div>
@@ -316,10 +300,7 @@
                     </div>
           
                         
-                        
-                        
-                        
-                        
+                 
                 </div>
             </section>
         </main>
@@ -342,10 +323,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>

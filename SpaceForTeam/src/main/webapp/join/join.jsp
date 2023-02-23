@@ -26,7 +26,7 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Join.us">회원가입</a></li>
                             <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
                             <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
                             <li class="nav-item dropdown">
@@ -196,7 +196,7 @@
 <!--                                             Monthly status reports -->
 <!--                                         </li> -->
 <!--                                     </ul> -->
-                                    <div class="d-grid"><a class="btn btn-outline-primary" href="GuestInsertForm.us">가입하기</a></div>
+                                    <div class="d-grid"><a class="btn btn-outline-primary" href="UserInsertForm.us">가입하기</a></div>
                                 </div>
                             </div>
                         </div>
@@ -222,6 +222,6 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="../js/scripts.js"></script>
     </body>
 </html>

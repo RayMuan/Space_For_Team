@@ -34,7 +34,7 @@ public class UserFrontController extends HttpServlet{
 		
 		if(sPath.equals("/UserInsertForm.us")) {
 			forward = new ActionForward(); 
-			forward.setPath("userInsert.jsp");
+			forward.setPath("join/userInsert.jsp");
 			forward.setRedirect(false);
 		}else if(sPath.equals("/UserInsertPro.us")) {
 			action = new UserInsertPro();
@@ -59,7 +59,7 @@ public class UserFrontController extends HttpServlet{
 			}
 		}else if(sPath.equals("/Join.us")) {
 			forward = new ActionForward(); 
-			forward.setPath("join.jsp"); 
+			forward.setPath("join/join.jsp"); 
 			forward.setRedirect(false); 
 		}
 				
