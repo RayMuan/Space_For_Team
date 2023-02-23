@@ -126,11 +126,14 @@ ul {
 						<!-- 리뷰 -->
 						<div id="reviewList">
 								<div class="card-body">
+								<div class="row gx-5">
 									<!-- Comment form-->
-									<form class="mb-4">
-										<textarea class="form-control" rows="3"
+									<form class="mb-4 col">
+										<textarea class="form-control col-10" rows="3"
 											placeholder="Join the discussion and leave a comment!"></textarea>
+											<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기">
 									</form>
+									</div>
 									<ul>
 										<%
 										for (int i = 0; i < reviewList.size(); i++) { redto =
@@ -179,10 +182,9 @@ ul {
 						<section class="mb-5 pt-4">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 							<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
-
+							<a class="btn btn-primary btn-lg px-4 me-sm-3" href="">예약하기</a>
 							<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 							<div></div>
-
 							<h3 class="fw-bolder mb-2 mt-5">위치</h3>
 							<div class="col-lg-12 mb-5">
 								<div class="card h-100 border">
