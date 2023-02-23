@@ -1,15 +1,18 @@
-package com.space4team.space.action;
+package com.space4team.qna.action;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SpaceFrontController extends HttpServlet{
+import com.space4team.space.action.Action;
+import com.space4team.space.action.ActionForward;
+import com.space4team.space.action.SpaceInfoPro;
 
+public class QnaFrontController extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("SpaceFrontController doGet()");
@@ -22,8 +25,6 @@ public class SpaceFrontController extends HttpServlet{
 		doProcess(request, response);
 	} //doPost
 	
-	
-	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("SpaceFrontController doProcess()");
 		
@@ -33,7 +34,7 @@ public class SpaceFrontController extends HttpServlet{
 		ActionForward forward=null;
 		Action action=null;
 		
-		if(sPath.equals("/SpaceInfoPro.sp")) {
+		if(sPath.equals("/QnaJson.qa")) {
 			action=new SpaceInfoPro();
 			try {
 				forward=action.execute(request, response);
@@ -41,21 +42,6 @@ public class SpaceFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
-		
-		// 연결
-		if(forward != null) {
-			if(forward.isRedirect()==true) {
-				response.sendRedirect(forward.getPath());
-			}else {
-				RequestDispatcher dispatcher=request.getRequestDispatcher(forward.getPath());
-				dispatcher.forward(request, response);
-			}
-		}
-		
-		
-	}// doProcess
-	
-}// class
+	} //doPost
+
+}

@@ -10,7 +10,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-
 public class ReviewDAO {
 	private Connection con=null;
 	
@@ -34,25 +33,42 @@ public class ReviewDAO {
 			String sql="select * from review where s_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, s_num);
-
+			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto=new ReviewDTO();
 				dto.setRe_num(rs.getInt("re_num"));
 				dto.setUser_num(rs.getInt("user_num"));
-				dto.setRe_subject(rs.getString("re_subject"));
 				dto.setRe_content(rs.getString("re_content"));
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
 				dto.setRe_reply(rs.getString("re_reply"));
-				
-				}
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+			if(con!=null) try {con.close();}catch (Exception e2) {}
+			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
+		}
+		return dto;
+	}// getReview
+	
+	public ReviewDTO getRe_avg(int s_num) {
+		System.out.println("getRe_avg()");
+		ReviewDTO dto=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		try {
+			con=getConnection();
 			String sql2="select avg(re_point) from review where s_num=?";
 			pstmt=con.prepareStatement(sql2);
 			pstmt.setInt(1, s_num);
 			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
+				dto=new ReviewDTO();
 				dto.setRe_avg(rs.getDouble("avg(re_point)"));
 			}
 		}catch (Exception e) {
@@ -63,29 +79,28 @@ public class ReviewDAO {
 			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 		}
 		return dto;
-	}// getInfoReview
+	}// getReview
 	
-	public ArrayList<ReviewDTO> getReviewList(int startRow, int pageSize){
+	public ArrayList<ReviewDTO> getReviewList(int s_num, int startRow, int pageSize){
 		ArrayList<ReviewDTO> reviewList=new ArrayList<ReviewDTO>();
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		
 		try {
 			con=getConnection();
 			
 			String sql="select * from review where s_num=? order by re_num desc limit ?, ?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, startRow-1);
-			pstmt.setInt(2, pageSize);
+			pstmt.setInt(1, s_num);
+			pstmt.setInt(2, startRow-1);
+			pstmt.setInt(3, pageSize);
 			
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
 				ReviewDTO dto=new ReviewDTO();
 				dto.setRe_num(rs.getInt("re_num"));
-				dto.setUser_num(rs.getInt("User_num"));
-				dto.setRe_subject(rs.getString("re_subject"));
+				dto.setUser_num(rs.getInt("user_num"));
 				dto.setRe_content(rs.getString("re_content"));
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
@@ -93,6 +108,7 @@ public class ReviewDAO {
 				dto.setRe_reply(rs.getString("re_reply"));
 				
 				reviewList.add(dto);
+
 			}
 			
 		} catch (Exception e) {
@@ -113,8 +129,8 @@ public class ReviewDAO {
 		try {
 			con=getConnection();
 			String sql="select count(re_num) from Review where s_num=?";
-			pstmt.setInt(1, s_num);
 			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, s_num);
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {

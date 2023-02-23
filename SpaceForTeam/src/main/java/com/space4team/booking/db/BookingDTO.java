@@ -2,17 +2,31 @@ package com.space4team.booking.db;
 
 import java.sql.Timestamp;
 
+import com.space4team.space.db.SpaceDTO;
+import com.space4team.user.db.UserDTO;
+
 public class BookingDTO {
+	SpaceDTO dto = new SpaceDTO();
+	UserDTO dto2 = new UserDTO();
 	private int bk_num;
 	private int s_num;
-	private int user_num;
+//	= dto.getS_num();
+	private int user_num ;
+//	= dto2.getUser_num();
 	private int bk_usercount;
 	private Timestamp bk_date;
-	private int bk_price;
-	private int bk_usedate;
+	private String bk_usedate;
 	private int bk_starttime;
 	private int bk_endtime;
+	private int bk_usetime;
+	private int bk_price;
 	
+	public int getBk_usetime() {
+		return bk_usetime;
+	}
+	public void setBk_usetime(int bk_usetime) {
+		this.bk_usetime = bk_usetime;
+	}
 	// get set
 	public int getBk_num() {
 		return bk_num;
@@ -50,10 +64,10 @@ public class BookingDTO {
 	public void setBk_price(int bk_price) {
 		this.bk_price = bk_price;
 	}
-	public int getBk_usedate() {
+	public String getBk_usedate() {
 		return bk_usedate;
 	}
-	public void setBk_usedate(int bk_usedate) {
+	public void setBk_usedate(String bk_usedate) {
 		this.bk_usedate = bk_usedate;
 	}
 	public int getBk_starttime() {
