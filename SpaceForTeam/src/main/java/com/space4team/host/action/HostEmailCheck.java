@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.space4team.host.db.HostDAO;
 import com.space4team.host.db.HostDTO;
 
-
 public class HostEmailCheck implements Action{
 
 	@Override
@@ -30,6 +29,7 @@ public class HostEmailCheck implements Action{
 		out.close();
 	
 		return null;
+
 	}
 
 }

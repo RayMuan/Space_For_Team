@@ -1,5 +1,6 @@
 package com.space4team.user.db;
 
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,67 +19,6 @@ private Connection con=null;
 		con=ds.getConnection();
 		return con;
 	}//connection
-	
-	public UserDTO getUser(int user_num) {
-		UserDTO dto=null;
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs= null;
-		
-		try {
-			con=getConnection();
-			String sql="select * from user where user_num=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, user_num);
-			
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				dto=new UserDTO();
-				dto.setUser_num(user_num);
-				dto.setUser_email(rs.getString("user_email"));
-				dto.setUser_id(rs.getString("user_id"));
-				dto.setUser_name(rs.getString("user_name"));
-				dto.setUser_pass(rs.getString("user_pass"));
-				dto.setUser_phone(rs.getString("user_phone"));
-				dto.setUser_birth(rs.getString("user_birth"));
-				}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
-			if(con!=null) try {con.close();}catch (Exception e2) {}
-			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
-		}
-		return dto;
-	}// getUser();
-	
-	public UserDTO getReviewUser(int re_user_num) {
-		UserDTO re_udto=null;
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs= null;
-		
-		try {
-			con=getConnection();
-			String sql="select * from user where user_num=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, re_user_num);
-			
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				re_udto=new UserDTO();
-				re_udto.setUser_num(re_user_num);
-				re_udto.setUser_id(rs.getString("user_id"));
-				}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
-			if(con!=null) try {con.close();}catch (Exception e2) {}
-			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
-		}
-		return re_udto;
-	}// getInfoReview (User_num -> User_id)
 	
 	public void insertUser(UserDTO dto) { 
 		Connection con = null;
@@ -103,6 +43,7 @@ private Connection con=null;
 			pstmt.setString(5, dto.getUser_pass() );
 			pstmt.setString(6, dto.getUser_phone());
 			pstmt.setString(7, dto.getUser_birth());
+
 
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -169,4 +110,32 @@ private Connection con=null;
 		}
 		return dto;
 	}//getMember()
+	
+	public UserDTO getReviewUser(int re_user_num) {
+		UserDTO re_udto=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		
+		try {
+			con=getConnection();
+			String sql="select * from user where user_num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, re_user_num);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				re_udto=new UserDTO();
+				re_udto.setUser_num(re_user_num);
+				re_udto.setUser_id(rs.getString("user_id"));
+				}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+			if(con!=null) try {con.close();}catch (Exception e2) {}
+			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
+		}
+		return re_udto;
+	}// getInfoReview (User_num -> User_id)
 }//class

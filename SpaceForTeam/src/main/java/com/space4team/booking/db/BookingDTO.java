@@ -11,6 +11,10 @@ public class BookingDTO {
 //	= dto2.getUser_num();
 	private int bk_usercount;
 	private Timestamp bk_date;
+<<<<<<< HEAD
+	private int bk_price;
+=======
+>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 	private String bk_usedate;
 	private int bk_starttime;
 	private int bk_endtime;

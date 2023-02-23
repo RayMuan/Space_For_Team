@@ -1,11 +1,17 @@
 package com.space4team.booking.action;
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 
+//<<<<<<< HEAD
+
+import com.space4team.booking.db.BookingDAO;
+import com.space4team.booking.db.BookingDTO;
+=======
 import com.space4team.booking.db.BookingDAO;
 import com.space4team.booking.db.BookingDTO;
 
 
+//>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 
 public class BookingContent implements Action{
 

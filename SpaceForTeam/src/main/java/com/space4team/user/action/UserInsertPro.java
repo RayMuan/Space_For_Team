@@ -1,6 +1,5 @@
 package com.space4team.user.action;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -34,11 +33,11 @@ public class UserInsertPro implements Action{
 		dto.setUser_phone(user_phone);
 		dto.setUser_birth(user_birth);
 		
-		// MemberDAO 객체 생성
+		
 		UserDAO dao=new UserDAO();
 		System.out.println("GuestInsertDAO주소 :"+dao);
 
-		// insertMember() 메서드 호출
+		
 		dao.insertUser(dto);
 		
 		// 이동 MemberLoginForm.me
@@ -51,3 +50,4 @@ public class UserInsertPro implements Action{
 	}
 
 }
+
