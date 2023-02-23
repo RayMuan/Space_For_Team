@@ -11,6 +11,8 @@ import com.space4team.review.db.ReviewDAO;
 import com.space4team.review.db.ReviewDTO;
 import com.space4team.space.db.SpaceDAO;
 import com.space4team.space.db.SpaceDTO;
+import com.space4team.user.db.UserDAO;
+import com.space4team.user.db.UserDTO;
 
 public class SpaceInfoPro implements Action{
 
@@ -18,12 +20,18 @@ public class SpaceInfoPro implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("SpaceInfo execute()");
 		int s_num=51;
+		request.setAttribute("s_num", s_num);
+		int user_num=1;
+		request.setAttribute("user_num", user_num);
 //				Integer.parseInt(request.getParameter("s_num"));
 		SpaceDAO sdao=new SpaceDAO();
 		SpaceDTO sdto=sdao.getSpace(s_num);
 
 		HostDAO hdao=new HostDAO();
 		HostDTO hdto=hdao.getHost(sdto.getH_num());
+		
+		UserDAO udao=new UserDAO();
+		UserDTO udto=udao.getUser(user_num);
 		
 		ReviewDAO redao=new ReviewDAO();
 		ReviewDTO redto=redao.getReview(s_num);
@@ -54,6 +62,7 @@ public class SpaceInfoPro implements Action{
 		// setAttribute dto
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
+		request.setAttribute("udto", udto);
 		request.setAttribute("redto", redto);
 		request.setAttribute("re_avg", re_avg);
 		

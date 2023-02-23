@@ -10,7 +10,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-
 public class ReviewDAO {
 	private Connection con=null;
 	
@@ -90,7 +89,7 @@ public class ReviewDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select * from review where s_num=? order by re_num desc limit ?, ?";
+			String sql="SELECT r.re_num, r.user_num, r.re_content, r.re_date, r.re_point, r.s_num, r.re_reply, u.user_id FROM review r join user u on r.user_num = u.user_num where r.s_num=? order by r.re_num desc limit ?, ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, s_num);
 			pstmt.setInt(2, startRow-1);
@@ -100,16 +99,16 @@ public class ReviewDAO {
 			
 			while(rs.next()) {
 				ReviewDTO dto=new ReviewDTO();
-				dto.setRe_num(rs.getInt("re_num"));
-				dto.setUser_num(rs.getInt("user_num"));
-				dto.setRe_content(rs.getString("re_content"));
-				dto.setRe_date(rs.getTimestamp("re_date"));
-				dto.setRe_point(rs.getInt("re_point"));
-				dto.setS_num(rs.getInt("s_num"));
+				dto.setRe_num(rs.getInt("r.re_num"));
+				dto.setUser_num(rs.getInt("r.user_num"));
+				dto.setRe_content(rs.getString("r.re_content"));
+				dto.setRe_date(rs.getTimestamp("r.re_date"));
+				dto.setRe_point(rs.getInt("r.re_point"));
+				dto.setS_num(rs.getInt("r.s_num"));
 				dto.setRe_reply(rs.getString("re_reply"));
+				dto.setRe_user_id(rs.getString("u.user_id"));
 				
 				reviewList.add(dto);
-
 			}
 			
 		} catch (Exception e) {
@@ -160,8 +159,7 @@ public class ReviewDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				re_num=rs.getInt("max(num)")+1;
-			}
-				sql="insert review(re_num, user_num, re_content, re_date, re_point, s_num, re_reply) values(?, ?, ?, ?, ?, ?, ?)";
+				sql="insert review(re_num, user_num, re_content, re_date, re_point, s_numy) values(?, ?, ?, ?, ?, ?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, re_num);
 				pstmt.setInt(2, redto.getUser_num());
@@ -169,9 +167,9 @@ public class ReviewDAO {
 				pstmt.setTimestamp(4, redto.getRe_date());
 				pstmt.setInt(5, redto.getRe_point());
 				pstmt.setInt(6, redto.getS_num());
-				pstmt.setString(7, redto.getRe_reply());
 			
 				pstmt.executeUpdate();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

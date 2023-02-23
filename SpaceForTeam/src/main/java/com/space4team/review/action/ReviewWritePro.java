@@ -20,22 +20,20 @@ public class ReviewWritePro implements Action{
 				Timestamp re_date=new Timestamp(System.currentTimeMillis());
 				int re_point=Integer.parseInt(request.getParameter("re_point"));
 				int s_num=Integer.parseInt(request.getParameter("s_num"));
-				String re_reply=request.getParameter("re_reply");
 				
 				ReviewDTO redto=new ReviewDTO();
-				redto.setUser_num(user_num); 
+				redto.setUser_num(user_num);
 				redto.setRe_content(re_content); 
 				redto.setRe_date(re_date);
 				redto.setRe_point(re_point);
-				ReviewDAO redao=new ReviewDAO();
 				redto.setS_num(s_num);
-				redto.setRe_reply(re_reply);
+				ReviewDAO redao=new ReviewDAO();
 				// insertBoard(dto)메서드 호출
 				redao.insertReview(redto);
 				
 				
 				ActionForward forward=new ActionForward();
-				forward.setPath("space/spaceInfo.jsp");
+				forward.setPath("SpaceInfo.sp");
 				forward.setRedirect(false);
 				return forward;
 	}

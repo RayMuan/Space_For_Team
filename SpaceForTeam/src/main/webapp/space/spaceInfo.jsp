@@ -120,8 +120,6 @@ ul {
 							
 							<%
 							ArrayList<ReviewDTO> reviewList = (ArrayList<ReviewDTO>) request.getAttribute("reviewList");
-							UserDAO udao = new UserDAO();
-							UserDTO udto = null; 
 							%>
 						<!-- 리뷰 -->
 						<div id="reviewList">
@@ -129,7 +127,7 @@ ul {
 								<div class="row gx-5">
 									<!-- Comment form-->
 									<form class="mb-4 col" action="ReviewWritePro.re" method="post">
-										<textarea class="form-control col-10" rows="3"
+										<textarea class="form-control col-10"  name="content" rows="3"
 											placeholder="Join the discussion and leave a comment!"></textarea>
 											<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기">
 									</form>
@@ -142,7 +140,7 @@ ul {
 										<li>
 											<div class="ms-3 border-bottom">
 												<div class="ms-3">
-													<div class="fw-bold d-flex align-items-center">아이디<p
+													<div class="fw-bold d-flex align-items-center"><%=redto.getRe_user_id() %><p
 															class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
 													</div>
 													<div><%=redto.getRe_point()%></div>

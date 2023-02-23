@@ -50,6 +50,34 @@ private Connection con=null;
 			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 		}
 		return dto;
-	}// getInfoReview
+	}// getUser();
+	
+	public UserDTO getReviewUser(int re_user_num) {
+		UserDTO re_udto=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		
+		try {
+			con=getConnection();
+			String sql="select * from user where user_num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, re_user_num);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				re_udto=new UserDTO();
+				re_udto.setUser_num(re_user_num);
+				re_udto.setUser_id(rs.getString("user_id"));
+				}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+			if(con!=null) try {con.close();}catch (Exception e2) {}
+			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
+		}
+		return re_udto;
+	}// getInfoReview (User_num -> User_id)
 
 }//class
