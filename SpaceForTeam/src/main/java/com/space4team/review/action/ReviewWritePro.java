@@ -15,11 +15,11 @@ public class ReviewWritePro implements Action{
 				System.out.println("ReviewWritePro execute()");
 				request.setCharacterEncoding("utf-8");
 				
+				int s_num=Integer.parseInt(request.getParameter("s_num"));
 				int user_num=Integer.parseInt(request.getParameter("user_num"));
 				String re_content=request.getParameter("re_content");
 				Timestamp re_date=new Timestamp(System.currentTimeMillis());
 				int re_point=Integer.parseInt(request.getParameter("re_point"));
-				int s_num=Integer.parseInt(request.getParameter("s_num"));
 				
 				ReviewDTO redto=new ReviewDTO();
 				redto.setUser_num(user_num);
