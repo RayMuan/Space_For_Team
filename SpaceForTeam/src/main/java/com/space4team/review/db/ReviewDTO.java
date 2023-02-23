@@ -11,6 +11,7 @@ public class ReviewDTO {
 	private int s_num;
 	private String re_reply;
 	private double re_avg;
+	private String re_user_id;
 	
 	//get set
 	public int getRe_num() {
@@ -61,6 +62,12 @@ public class ReviewDTO {
 	}
 	public void setRe_avg(double re_avg) {
 		this.re_avg = re_avg;
+	}
+	public String getRe_user_id() {
+		return re_user_id;
+	}
+	public void setRe_user_id(String re_user_id) {
+		this.re_user_id = re_user_id;
 	}
 	
 }//class

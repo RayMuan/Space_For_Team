@@ -35,8 +35,8 @@ public class ReviewFrontController extends HttpServlet {
 		ActionForward forward=null;
 		Action action=null;
 		
-		if(sPath.equals("/ReviewPro.re")) {
-			action=new ReviewPro();
+		if(sPath.equals("/ReviewWritePro.re")) {
+			action=new ReviewWritePro();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {

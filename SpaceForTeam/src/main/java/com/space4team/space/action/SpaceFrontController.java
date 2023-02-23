@@ -33,7 +33,7 @@ public class SpaceFrontController extends HttpServlet{
 		ActionForward forward=null;
 		Action action=null;
 		
-		if(sPath.equals("/SpaceInfoPro.sp")) {
+		if(sPath.equals("/SpaceInfo.sp")) {
 			action=new SpaceInfoPro();
 			try {
 				forward=action.execute(request, response);
