@@ -62,9 +62,9 @@
 	document.fr.uc.focus();
 	return;
 	}
-	if(document.fr.currentDate.value==""){
+	if(document.fr.date.value==""){
 		document.getElementById("d").innerHTML="<h5>예약일을 선택해주세요</h5>";
-	document.fr.currentDate.focus();
+	document.fr.date.focus();
 	return;
 	}
 	if(document.fr.st.value==""){
@@ -88,13 +88,13 @@
                             <label for="bk_usercount">예약인원</label>       
                     </div>
                     <div class="form-floating mb-3">
-                             <input class="form-control"  id="currentDate" name="bk_usedate" type="date"/>
+                             <input class="form-control"  id="date" name="bk_usedate" type="date"/>
                              <label for="bk_usedate">예약일</label>
                         <script type="text/javascript">
                         var now_utc = Date.now()
                         var timeOff = new Date().getTimezoneOffset()*60000;
                         var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
-                        document.getElementById("currentDate").setAttribute("min", today);
+                        document.getElementById("date").setAttribute("min", today);
 						</script>
                     </div>
                     <div class="form-floating mb-3">
