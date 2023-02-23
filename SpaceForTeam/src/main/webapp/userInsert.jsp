@@ -20,8 +20,8 @@
  	$(document).ready(function(){
  		
  		var RegexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i; //@, . 필수 입력
- 		var RegexName = /^[가-힣]{2,4}$/; //이름 유효성 검사 2~4자 사이
- 		var RegexId =  /^[a-zA-Z0-9]{4,12}$/ ; //아이디 유효성 검사 4 ~12자 사이
+ 		var RegexName = /^[가-힣a-zA-Z]{2,12}$/; //이름 유효성 검사 2~4자 사이
+ 		var RegexId =  /^[a-zA-Z0-9]{3,12}$/ ; //아이디 유효성 검사 4 ~12자 사이
  		var RegexTel = /^[0-9]{8,11}$/; //전화번호 유효성 검사
  		var RegexPass= /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
  		$('#join').submit(function() {
@@ -31,9 +31,22 @@
 			return false;
 		}else if (!RegexEmail.test($.trim($("#user_email").val()))){
 				alert("이메일 형식에 맞지않습니다");
-				$("#email").focus();
+				$("#user_email").focus();
 				return false;
 			}
+		
+		if ($('#emaildup').val()=="") {
+			alert("이메일 중복확인 체크해주세요");
+			$('#user_email').focus();
+			return false;
+		}
+		if ($('#emaildup').val()=="0") {
+			alert("이메일이 중복됩니다. 확인해주세요.");
+			$('#user_email').focus();
+			return false;
+		}
+		
+		
 		if($('#user_id').val()==""){
 			alert("아이디 입력하세요");
 			$('#user_id').focus();
@@ -43,6 +56,18 @@
  				$("#user_id").focus();
  				return false;
  			}	
+		
+		if ($('#iddup').val()=="") {
+			alert("아이디 중복확인 체크해주세요");
+			$('#user_id').focus();
+			return false;
+		}
+		if ($('#iddup').val()=="0") {
+			alert("아이디가 중복됩니다. 확인해주세요.");
+			$('#user_id').focus();
+			return false;
+		}
+		
 		if ($('#user_name').val()=="") {
 			alert("이름 입력하세요");
 			$('#user_name').focus();
@@ -81,11 +106,12 @@
 			$('#user_birth').focus();
 			return false;
 		}
-		if ($('#emaildup').val()==0) {
-			alert("회원가입 안되었습니다");
-			$('#emaildup').focus();
-			return false;
-		}
+		
+
+		
+		
+
+		
  		});
 	
 		$('#button').click(function () {
@@ -100,8 +126,10 @@
 				success : function(result){
 					if(result.trim()=="이메일 중복"){
 						$('#button').html(result).css("color","red");
+						$('#emaildup').val(0);
 					}else{
-						$('#button').html(result).css("color","blue");						
+						$('#button').html(result).css("color","blue");
+						$('#emaildup').val(1);
 					}
 					
 				}
@@ -123,8 +151,10 @@
 				success : function(result){
 					if(result.trim()=="아이디 중복"){
 						$('#button1').html(result).css("color","red");
+						$('#iddup').val(0);
 					}else{
-						$('#button1').html(result).css("color","blue");						
+						$('#button1').html(result).css("color","blue");	
+						$('#iddup').val(1);
 					}
 					
 				}
@@ -207,7 +237,7 @@
                                     <div class="form-floating mb-3">
                                         <input class="form-control" name="user_email" id="user_email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
                                         <label for="email">이메일</label>
-                                        <input type="hidden" name="emaildup" value="0">
+                                        <input type="hidden" name="emaildup" value="" id="emaildup">
                                     <button class="btn btn-outline-dark" id="button" type="button">중복확인</button>
                                         <div class="invalid-feedback" data-sb-feedback="email:required"></div>
                                     </div>
@@ -216,6 +246,7 @@
                                	 <div class="form-floating mb-3">
                                     <input class="form-control" name= "user_id" id="user_id" type="text" placeholder="a"  data-sb-validations="required" aria-describedby="button-newsletter" />
                                     <label for="id">아이디</label>
+                                      <input type="hidden" name="iddup" value="" id="iddup">
                                     <button class="btn btn-outline-dark" id="button1" type="button">중복확인</button>
                                      <div class="invalid-feedback" data-sb-feedback="id:required"></div>
                                	 </div>
