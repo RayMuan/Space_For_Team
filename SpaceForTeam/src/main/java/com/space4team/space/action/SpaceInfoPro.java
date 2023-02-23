@@ -31,10 +31,7 @@ public class SpaceInfoPro implements Action{
 		SpaceDTO sdto=sdao.getSpace(s_num);
 
 		HostDAO hdao=new HostDAO();
-		HostDTO hdto=hdao.getHost(sdto.getH_num());
-		
-		UserDAO udao=new UserDAO();
-		UserDTO udto=udao.getUser(user_num);
+		HostDTO hdto=hdao.getHostInfo(sdto.getH_num());
 		
 		ReviewDAO redao=new ReviewDAO();
 		ReviewDTO redto=redao.getReview(s_num);
@@ -88,7 +85,6 @@ public class SpaceInfoPro implements Action{
 		// setAttribute dto
 		request.setAttribute("sdto", sdto);
 		request.setAttribute("hdto", hdto);
-		request.setAttribute("udto", udto);
 		request.setAttribute("redto", redto);
 		request.setAttribute("qdto", qdto);
 		request.setAttribute("re_avg", re_avg);

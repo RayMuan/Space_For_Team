@@ -10,9 +10,6 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
-import com.space4team.user.db.UserDTO;
-
-
 public class HostDAO {
 	private Connection con=null;
 	
@@ -110,6 +107,35 @@ public class HostDAO {
 		}
 		return dto;
 	}//getHostEmail
+	
+	public HostDTO getHostInfo(int h_num) {
+		HostDTO dto=null;
+		Connection con =null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=getConnection();
+			
+			String sql="select h_name, h_phone from host where h_num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, h_num);
+
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				dto=new HostDTO();
+				
+				dto.setH_name(rs.getString("h_name"));
+				dto.setH_phone(rs.getString("h_phone"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(rs!=null) try { rs.close();} catch (Exception e2) {}
+			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+			if(con!=null) try { con.close();} catch (Exception e2) {}
+		}
+		return dto;
+	}//getHostName, Phone
 
 	
 	public HostDTO hostCheck(String host_email, String host_pass) {
@@ -151,5 +177,7 @@ public class HostDAO {
 		}
 		return dto;
 	}//hostCheck()
+	
+	
 
 }//class

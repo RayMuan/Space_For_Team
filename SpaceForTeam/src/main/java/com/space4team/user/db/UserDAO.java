@@ -54,6 +54,7 @@ private Connection con=null;
 		}
 		return;
 	}
+	
 	public UserDTO getUserId(String id) {
 		UserDTO dto=null;
 		Connection con =null;
@@ -81,7 +82,8 @@ private Connection con=null;
 			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
 		return dto;
-	}//getMember()
+	}//getUserId()
+	
 	public UserDTO getUserEmail(String email) {
 		UserDTO dto=null;
 		Connection con =null;
@@ -109,7 +111,7 @@ private Connection con=null;
 			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
 		return dto;
-	}//getMember()
+	}//getUserEmail()
 	
 	public UserDTO getReviewUser(int re_user_num) {
 		UserDTO re_udto=null;
@@ -138,4 +140,5 @@ private Connection con=null;
 		}
 		return re_udto;
 	}// getInfoReview (User_num -> User_id)
+	
 }//class

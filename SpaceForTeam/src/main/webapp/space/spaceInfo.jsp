@@ -141,9 +141,8 @@ ul {
 										<li>
 											<div class="m-0 border-bottom">
 												<div class="ms-3">
-													<div class="fw-bold d-flex align-items-center"><%=redto.getRe_user_id() %><p
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
-															class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
+													<div class="fw-bold d-flex align-items-center"><%=redto.getRe_user_id() %>
+													<p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
 													</div>
 													<div><%=redto.getRe_point()%></div>
 													<%=redto.getRe_content()%>
