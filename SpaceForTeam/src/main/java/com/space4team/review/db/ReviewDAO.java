@@ -154,12 +154,13 @@ public class ReviewDAO {
 			con=getConnection();
 			// num 구하기
 			int re_num=1;
-			String sql="select Max(num) from review";
+			String sql="select Max(re_num) from review";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				re_num=rs.getInt("max(num)")+1;
-				sql="insert review(re_num, user_num, re_content, re_date, re_point, s_numy) values(?, ?, ?, ?, ?, ?)";
+				re_num=rs.getInt("max(re_num)")+1;
+			}
+				sql="insert review(re_num, user_num, re_content, re_date, re_point, s_num) values(?, ?, ?, ?, ?, ?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, re_num);
 				pstmt.setInt(2, redto.getUser_num());
@@ -169,12 +170,12 @@ public class ReviewDAO {
 				pstmt.setInt(6, redto.getS_num());
 			
 				pstmt.executeUpdate();
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
 			if(con!=null) try {con.close();}catch (Exception e2) {}
+			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 		}
 	} //insertReview
 	
