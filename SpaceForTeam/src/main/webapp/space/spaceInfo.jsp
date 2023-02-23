@@ -17,6 +17,9 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <%
+int s_num=Integer.parseInt(request.getParameter("s_num"));
+// (int)session.getAttribute("s_num");
+
 SpaceDTO sdto = (SpaceDTO) request.getAttribute("sdto");
 HostDTO hdto = (HostDTO) request.getAttribute("hdto");
 ReviewDTO redto = (ReviewDTO) request.getAttribute("redto");

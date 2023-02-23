@@ -20,10 +20,11 @@ public class SpaceInfoPro implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("SpaceInfo execute()");
 		int s_num=51;
+//		 Integer.parseInt(request.getParameter("s_num"));
 		request.setAttribute("s_num", s_num);
 		int user_num=1;
 		request.setAttribute("user_num", user_num);
-//				Integer.parseInt(request.getParameter("s_num"));
+//		Integer.parseInt(request.getParameter("s_num"));
 		SpaceDAO sdao=new SpaceDAO();
 		SpaceDTO sdto=sdao.getSpace(s_num);
 
