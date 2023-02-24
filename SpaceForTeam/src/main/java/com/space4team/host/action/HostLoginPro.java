@@ -18,7 +18,7 @@ public class HostLoginPro implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("HostLoginPro execute()");
 		
-		// request 가져오기
+		// request 가져오기.
 		String h_id=request.getParameter("h_id");
 		String h_pass=request.getParameter("h_pass");
 		

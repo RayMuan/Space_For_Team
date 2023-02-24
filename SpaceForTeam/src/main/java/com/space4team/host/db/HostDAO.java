@@ -205,7 +205,7 @@ public class HostDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, pass);
-			//4단계 SQL구문을 실행(select) => 결과 저장
+			//4단계 SQL구문을 실행(select) => 결과 저장.
 			rs=pstmt.executeQuery();
 			System.out.println(id + pass);
 			//5단계 결과를 출력, 데이터 담기 (select)

@@ -39,11 +39,7 @@ public class HostFrontController extends HttpServlet{
 			forward.setRedirect(false);
 		}else if(sPath.equals("/HostMain.ho")) {
 			forward = new ActionForward();
-<<<<<<< HEAD
-			forward.setPath("join/host_main.jsp");
-=======
 			forward.setPath("main/host.jsp");
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 			forward.setRedirect(false); 
 		}else if(sPath.equals("/HostInsertPro.ho")) {
 			action = new HostInsertPro();
@@ -113,7 +109,7 @@ public class HostFrontController extends HttpServlet{
 				dispatcher.forward(request, response); 
 			}
 		}
-	}//doProcess
+	}//doProcess.
 
 }//class
 
