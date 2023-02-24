@@ -1,14 +1,16 @@
 package com.space4team.host.action;
 
 public class ActionForward {
-//	String path = "주소정보"; 
+//<<<<<<< HEAD
+//	String path="주소 정보";
 //	boolean isRedirect = true;
-	// true면 reponse.sendRedirect()
-	// false 면 dispatcher.forward() 약속!
+	// true => response.sendRedirect()
+	// false => dispatcher.forward()
 	
 	private String path;
 	private boolean isRedirect;
 	
+	// get set
 	public String getPath() {
 		return path;
 	}
@@ -20,6 +22,6 @@ public class ActionForward {
 	}
 	public void setRedirect(boolean isRedirect) {
 		this.isRedirect = isRedirect;
-		
 	}	
+
 }

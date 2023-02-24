@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
 public class UserFrontController extends HttpServlet{
 
 	@Override
@@ -61,7 +60,41 @@ public class UserFrontController extends HttpServlet{
 			forward = new ActionForward(); 
 			forward.setPath("join/join.jsp"); 
 			forward.setRedirect(false); 
+		
+		}else if(sPath.equals("/UserLoginForm.us")) {
+			forward=new ActionForward();
+			forward.setPath("user/contact.jsp");
+			forward.setRedirect(false);
+		
+		}else if(sPath.equals("/UserLoginPro.us")) {
+			action = new UserLoginPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/UserLogout.us")) {
+			action=new UserLogout();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/GuestMain.us")) {
+			forward=new ActionForward();
+			forward.setPath("join/guest_main.jsp");
+			forward.setRedirect(false);
+		}else if(sPath.equals("/Main.us")) {
+			forward=new ActionForward();
+			forward.setPath("join/main.jsp");
+			forward.setRedirect(false);
 		}
+	
+		
+		
+		
+		
+		
 				
 		if(forward != null) {
 			if(forward.isRedirect()==true) {
@@ -76,3 +109,4 @@ public class UserFrontController extends HttpServlet{
 	}//doProcess
 
 }//class
+//>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git

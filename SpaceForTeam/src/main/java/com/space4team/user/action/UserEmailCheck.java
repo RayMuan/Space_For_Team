@@ -9,7 +9,6 @@ import com.space4team.user.db.UserDAO;
 import com.space4team.user.db.UserDTO;
 
 
-
 public class UserEmailCheck implements Action{
 
 	@Override
@@ -46,6 +45,7 @@ public class UserEmailCheck implements Action{
 		out.close();
 	
 		return null;
+
 	}
 
 }

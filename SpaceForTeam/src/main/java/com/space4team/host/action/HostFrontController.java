@@ -1,5 +1,6 @@
 package com.space4team.host.action;
 
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -7,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 
 
 public class HostFrontController extends HttpServlet{
@@ -71,6 +74,30 @@ public class HostFrontController extends HttpServlet{
 			forward = new  ActionForward(); 
 			forward.setPath("join/hostInsert.jsp"); 
 			forward.setRedirect(false);
+		}else if(sPath.equals("/HostLoginForm.ho")) {
+			forward=new ActionForward();
+			forward.setPath("host/hostLogin.jsp");
+			forward.setRedirect(false);
+		}else if(sPath.equals("/HostLoginPro.ho")) {
+			action = new HostLoginPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/HostLogout.ho")) {
+			action=new HostLogout();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(sPath.equals("/HostMypage.ho")) {
+			forward=new ActionForward();
+			forward.setPath("host/hostmypage.jsp");
+			forward.setRedirect(false);
+			
 		}
 		
 		if(forward != null) {
@@ -85,3 +112,4 @@ public class HostFrontController extends HttpServlet{
 	}//doProcess
 
 }//class
+
