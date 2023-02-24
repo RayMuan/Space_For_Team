@@ -15,7 +15,7 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css_main/styles.css?after" rel="stylesheet" />
+        <link href="css/styles1.css?after" rel="stylesheet" />
         <!-- 		아이콘 -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
@@ -290,7 +290,7 @@ function cat1_change(key,sel){
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2"><%=dto.getS_num() %></div>
            
-           		 <a class="text-decoration-none link-dark stretched-link" href="jsp/good.jsp"><h5 class="card-title mb-3"><%=dto.getS_name() %></h5></a>
+           		 <div class="text-decoration-none link-dark stretched-link" href="jsp/good.jsp"><h5 class="card-title mb-3"><%=dto.getS_name() %></h5></div>
             	 <p class="card-text mb-0"><%=dto.getS_memo() %></p>
         	</div>
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
@@ -318,9 +318,49 @@ function cat1_change(key,sel){
 	<%
 	}
 	%> 		
-           
-
-
+ <div class="page">        
+<%
+if(search == null){
+   //    검색어 없을때,, 
+      //10페이지 이전
+      if(startPage > pageBlock){
+         %>
+      <a href="MainPro.sp?pageNum=<%=startPage-pageBlock%>">이전</a>
+         <%
+      }
+      for(int i=startPage;i<=endPage;i++){
+         %>
+         <a href="MainPro.sp?pageNum=<%=i%>"><%=i %></a> 
+         <%
+      }
+      //10페이지 다음
+      if(endPage < pageCount){
+         %>
+      <a href="MainPro.sp?pageNum=<%=startPage+pageBlock%>">Next</a>
+         <%
+      }
+      }else {
+   //    검색어 있을때,,
+      //10페이지 이전
+      if(startPage > pageBlock){
+         %>
+      <a href="MainPro.sp?pageNum=<%=startPage-pageBlock%>&search=<%=search%>">Prev</a>
+         <%
+      }
+      for(int i=startPage;i<=endPage;i++){
+         %>
+         <a href="MainPro.sp?pageNum=<%=i%>&search=<%=search%>"><%=i %></a> 
+         <%
+      }
+      //10페이지 다음
+      if(endPage < pageCount){
+         %>
+      <a href="MainPro.sp?pageNum=<%=startPage+pageBlock%>&search=<%=search%>">다음</a>
+         <%
+      }
+}
+%>
+</div> 
            </div>
            </div>
           

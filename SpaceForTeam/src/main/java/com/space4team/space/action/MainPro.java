@@ -67,7 +67,7 @@ public class MainPro implements Action{
 	      
 	      //이동 center/notice.jsp
 	      ActionForward forward=new ActionForward();
-	      forward.setPath("jsp/main.jsp");
+	      forward.setPath("main/main.jsp");
 	      forward.setRedirect(false);
 	      return forward;
 		

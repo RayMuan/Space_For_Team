@@ -137,7 +137,28 @@ String id=(String)session.getAttribute("id");
 <%
    }
 %>
- 
+ <div class="page">        
+<%
+if(id != null){
+      if(startPage > pageBlock){
+         %>
+      <a href="HostPro.sp?pageNum=<%=startPage-pageBlock%>">이전</a>
+         <%
+      }
+      for(int i=startPage;i<=endPage;i++){
+         %>
+         <a href="HostPro.sp?pageNum=<%=i%>"><%=i %></a> 
+         <%
+      }
+    
+      if(endPage < pageCount){
+         %>
+      <a href="HostPro.sp?pageNum=<%=startPage+pageBlock%>">다음</a>
+         <%
+      }
+      }
+%>
+</div> 
                            </div>
                        </div>
         

@@ -63,7 +63,7 @@ public class UserPro implements Action{
 
 		
 		ActionForward forward=new ActionForward();
-		forward.setPath("jsp/user.jsp");
+		forward.setPath("main/user.jsp");
 		forward.setRedirect(false);
 		return forward;
 			

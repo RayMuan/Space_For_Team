@@ -183,9 +183,10 @@ import com.space4team.host.db.HostDTO;
 				// 기본 num기준 오름차순 => 최근글 위로 올라오게 정렬 (num 내림차순)
 //				String sql="select * from space order by num desc";
 //			    String sql=select * from space order by num desc limit 시작행-1, 몇개
-				String sql="select * from space order by s_num desc";
+				String sql="select * from space order by s_num desc limit ?,?";
 				pstmt=con.prepareStatement(sql);
-			
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, pageSize);
 				//4
 				rs=pstmt.executeQuery();
 				//5
