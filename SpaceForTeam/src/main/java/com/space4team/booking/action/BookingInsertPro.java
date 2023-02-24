@@ -51,8 +51,8 @@ public class BookingInsertPro implements Action{
 		dao.insertBooking(dto);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("index/index.jsp");
-		forward.setRedirect(false);
+		forward.setPath("GuestMain.us");
+		forward.setRedirect(true);
 		
 		return forward;
 	}

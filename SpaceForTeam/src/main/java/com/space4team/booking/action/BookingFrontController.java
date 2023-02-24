@@ -92,9 +92,36 @@ public class BookingFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(sPath.equals("/Home.bk")) {
+			System.out.println("/Home.bk");
+			forward = new ActionForward();
+			forward.setPath("main/user.jsp");
+			forward.setRedirect(false);
+		}else if(sPath.equals("/Home.bk")) {
+			System.out.println("/Home.bk");
+			forward = new ActionForward();
+			forward.setPath("main/user.jsp");
+			forward.setRedirect(false);
+		}else if(sPath.equals("/LoginForm.bk")) {
+			System.out.println("/LoginForm.bk");
+			forward = new ActionForward();
+			forward.setPath("user/contact.jsp");
+			forward.setRedirect(false);
+		}else if(sPath.equals("/InsertForm.bk")) {
+			System.out.println("/InsertForm.bk");
+			forward = new ActionForward();
+			forward.setPath("join/userInsert.jsp");
+			forward.setRedirect(false);
 		}
 			
 		
+		
+		
+		
+		
+//		<li class="nav-item"><a class="nav-link" href="Home.bk">Home</a></li>
+//        <li class="nav-item"><a class="nav-link" href="LoginForm.bk">로그인</a></li>
+//        <li class="nav-item"><a class="nav-link" href="InsertForm.bk">회원가입</a></li>
 		
 		
 	
