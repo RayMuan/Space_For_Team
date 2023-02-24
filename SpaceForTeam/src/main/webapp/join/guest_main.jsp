@@ -42,7 +42,7 @@
                                 <h1 class="display-5 fw-bolder text-white mb-2">A Bootstrap 5 template for modern businesses</h1>
                                 <p class="lead fw-normal text-white-50 mb-4">당신이 원하는 공간을 예약해보세요</p>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="">공간둘러보기</a>
+                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="SpaceInfoPro.sp">공간둘러보기</a>
                                 </div>
                             </div>
                         </div>
