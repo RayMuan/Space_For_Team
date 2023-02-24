@@ -9,6 +9,8 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 
+
+
 public class HostDAO {
 	private Connection con=null;
 	
@@ -51,5 +53,37 @@ public class HostDAO {
 		}
 		return dto;
 	}//getHost
+	
 
+	public HostDTO getHost(String id) {
+		HostDTO dto=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		try {
+			con=getConnection();
+			String sql="select * from host where h_num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				dto=new HostDTO();
+				dto.setH_id(rs.getString("h_id"));
+				dto.setH_name(rs.getString("h_name"));
+				dto.setH_email(rs.getString("h_email")); 
+				dto.setH_id(rs.getString("h_id"));
+				dto.setH_pass(rs.getString("h_pass"));
+				dto.setH_birth(rs.getString("h_birth"));
+				
+				}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+			if(con!=null) try {con.close();}catch (Exception e2) {}
+			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
+		}
+		return dto;
+	}
 }//class
