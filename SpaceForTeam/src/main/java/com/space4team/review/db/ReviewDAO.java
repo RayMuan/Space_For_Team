@@ -43,7 +43,6 @@ public class ReviewDAO {
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
 				dto.setRe_reply(rs.getString("re_reply"));
-<<<<<<< HEAD
 				dto.setRe_max(rs.getString("re_max"));
 				
 				}
@@ -54,8 +53,6 @@ public class ReviewDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto.setRe_avg(rs.getDouble("avg(re_point)"));
-=======
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
