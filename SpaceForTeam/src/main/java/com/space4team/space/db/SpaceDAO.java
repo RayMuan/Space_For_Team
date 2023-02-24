@@ -37,7 +37,7 @@ import com.space4team.host.db.HostDTO;
 			if(rs.next()) {
 				num = rs.getInt("max(s_num)") + 1;	}
 			
-			String sql2 ="insert into space(s_num, s_name, s_address, s_bill, h_num, s_sido, s_sigungu, s_memo) values (?,?,?,?,?,?,?,?)";
+			String sql2 ="insert into space(s_num, s_name, s_address, s_bill, h_num, s_sido, s_gungu, s_memo) values (?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql2);
 			pstmt.setInt(1,num);
 			pstmt.setString(2, dto.getS_name());
@@ -45,7 +45,7 @@ import com.space4team.host.db.HostDTO;
 			pstmt.setString(4, dto.getS_bill());
 			pstmt.setInt(5, 1);
 			pstmt.setString(6, dto.getS_sido());
-			pstmt.setString(7, dto.getS_sigungu());
+			pstmt.setString(7, dto.getS_gungu());
 			pstmt.setString(8, dto.getS_memo());
 			
 			pstmt.executeUpdate();

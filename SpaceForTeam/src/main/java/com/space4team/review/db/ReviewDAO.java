@@ -43,9 +43,6 @@ public class ReviewDAO {
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
 				dto.setRe_reply(rs.getString("re_reply"));
-<<<<<<< HEAD
-				dto.setRe_max(rs.getString("re_max"));
-				
 				}
 			String sql2="select avg(re_point) from review where s_num=?";
 			pstmt=con.prepareStatement(sql2);
@@ -54,8 +51,6 @@ public class ReviewDAO {
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto.setRe_avg(rs.getDouble("avg(re_point)"));
-=======
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
