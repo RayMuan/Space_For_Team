@@ -140,7 +140,7 @@ public class HostDAO {
 	}//getHostName, Phone
 
 	
-	public HostDTO hostCheck(String host_email, String host_pass) {
+	public HostDTO hostCheck(String h_id, String h_pass) {
 		System.out.println("hostCheck()");
 		HostDTO dto=null;
 		Connection con =null;
@@ -149,23 +149,23 @@ public class HostDAO {
 		try {
 			con = getConnection();
 			
-			String sql="select * from host where host_email=? and host_pass=?";
+			String sql="select * from host where h_id=? and h_pass=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, host_email);
-			pstmt.setString(2, host_pass);
+			pstmt.setString(1, h_id);
+			pstmt.setString(2, h_pass);
 			
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()){
 				
 				dto=new HostDTO();
-				dto.setH_num(0);
-				dto.setH_email(rs.getString("host_email"));
-				dto.setH_id(rs.getString("host_id"));
-				dto.setH_name(rs.getString("host_name"));
-				dto.setH_pass(rs.getString("host_pass"));
-				dto.setH_phone(rs.getString("host_phone"));
-				dto.setH_birth(rs.getString("host_birth"));
+//				dto.setH_num(0);
+				dto.setH_email(rs.getString("h_email"));
+				dto.setH_id(rs.getString("h_id"));
+				dto.setH_name(rs.getString("h_name"));
+//				dto.setH_pass(rs.getString("h_pass"));
+				dto.setH_phone(rs.getString("h_phone"));
+//				dto.setH_birth(rs.getString("h_birth"));
 			}else{
 
 			}	

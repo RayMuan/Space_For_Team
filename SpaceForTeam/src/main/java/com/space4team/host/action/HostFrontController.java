@@ -37,9 +37,9 @@ public class HostFrontController extends HttpServlet{
 			forward = new ActionForward(); 
 			forward.setPath("join/hostInsert.jsp"); 
 			forward.setRedirect(false);
-		}else if(sPath.equals("/Main.ho")) {
+		}else if(sPath.equals("/HostMain.ho")) {
 			forward = new ActionForward();
-			forward.setPath("join/main.jsp");
+			forward.setPath("join/host_main.jsp");
 			forward.setRedirect(false); 
 		}else if(sPath.equals("/HostInsertPro.ho")) {
 			action = new HostInsertPro();
