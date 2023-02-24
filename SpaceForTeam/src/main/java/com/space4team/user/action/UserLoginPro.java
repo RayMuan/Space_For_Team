@@ -36,7 +36,7 @@ public class UserLoginPro implements Action {
 			
 			
 			forward=new ActionForward();
-			forward.setPath("Main.ho");
+			forward.setPath("GuestMain.us");
 			forward.setRedirect(true);
 			
 		} else {

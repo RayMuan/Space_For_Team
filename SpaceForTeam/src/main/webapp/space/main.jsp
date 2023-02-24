@@ -392,7 +392,7 @@ ReviewDTO rdto = (ReviewDTO)request.getAttribute("rdto");
                                    <div class="fw-bold"><%=hdto.getH_name() %></div>
                                    <div class="text-muted">
                                     <i class="fa-solid fa-user fa-sm">최대 <%=sdto.getS_max() %>명</i>
-									<i class="fa-solid fa-comment fa-sm">리뷰 <%=rdto.getRe_max() %>개</i>
+<%-- 									<i class="fa-solid fa-comment fa-sm">리뷰 <%=rdto.getRe_max() %>개</i> --%>
 									<i class="fa-solid fa-heart fa-sm">찜3</i> 
                                    </div>
                                </div>
