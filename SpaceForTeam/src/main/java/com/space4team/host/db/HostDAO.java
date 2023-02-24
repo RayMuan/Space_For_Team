@@ -53,6 +53,7 @@ public class HostDAO {
 		}
 		return;
 	}//insertHost
+	
 	public HostDTO getHostID(String id) {
 		HostDTO dto=null;
 		Connection con =null;
@@ -79,11 +80,8 @@ public class HostDAO {
 			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
 		return dto;
-<<<<<<< HEAD
-	}//getHost
-	
-=======
 	}//getHostID
+	
 	public HostDTO getHostEmail(String email) {
 		HostDTO dto=null;
 		Connection con =null;
@@ -181,9 +179,6 @@ public class HostDAO {
 		}
 		return dto;
 	}//hostCheck()
-	
-	
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 
 	public HostDTO getHost(String id) {
 		HostDTO dto=null;
