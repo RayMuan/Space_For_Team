@@ -61,6 +61,10 @@ public class SpaceFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(sPath.equals("/SpaceMain.sp")) {
+			forward = new ActionForward();
+			forward.setPath("space/main.jsp");
+			forward.setRedirect(false);	
 		}
 		
 		

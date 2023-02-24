@@ -121,7 +121,7 @@
                                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                                     <!-- Submit Button-->
                                     <div class="d-grid"> <a href="Main.ho" class="login"></a>
-                                    <button class="btn btn-primary btn-lg" id="login" type="submit">이메일로 로그인</button></div>
+                                    <button class="btn btn-primary btn-lg" id="login" type="submit">로그인</button></div>
                                 </form>
                             </div>
                         </div>
