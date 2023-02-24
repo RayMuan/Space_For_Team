@@ -17,13 +17,13 @@ public class UserLoginPro implements Action {
 		System.out.println("UserLoginPro execute()");
 		
 		// request 가져오기
-		String user_email=request.getParameter("user_email");
+		String user_id=request.getParameter("user_id");
 		String user_pass=request.getParameter("user_pass");
 		
 		// SpaceDAO 객체생성
 		UserDAO dao=new UserDAO();
 		// SpaceDTO = userCheck() 메서드호출
-		UserDTO dto=dao.getUserEmail("user_email");
+		UserDTO dto=dao.getUserCheck(user_id,user_pass);
 		
 		// dto != null 아이디 비밀번호 일치 세션값 생성 MemberMain.me 이동
 		// 아이디 비밀번호 틀림 , 뒤로이동	
@@ -32,8 +32,8 @@ public class UserLoginPro implements Action {
 		if(dto!=null) {
 			//아이디 비밀번호 일치
 			HttpSession session=request.getSession();
-			session.setAttribute("user_email", user_email);
-			session.setAttribute("user_pass", user_pass);
+			session.setAttribute("id", user_id);
+			
 			
 			forward=new ActionForward();
 			forward.setPath("Main.ho");

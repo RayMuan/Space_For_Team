@@ -67,20 +67,20 @@
                                 <!-- To make this form functional, sign up at-->
                                 <!-- https://startbootstrap.com/solution/contact-forms-->
                                 <!-- to get an API token!-->
-                                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                                <form action="UserLoginPro.us" method="post" id="contactForm" data-sb-form-api-token="API_TOKEN">
                               
 
                                     <!-- Email address input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
-                                        <label for="email">Email address</label>
-                                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                                        <input class="form-control" id="user_id" name="user_id" type="text" data-sb-validations="required,id" />
+                                        <label for="id">id</label>
+                                        <div class="invalid-feedback" data-sb-feedback="email:required">An id is required.</div>
+                             
                                     </div>
                                     
                                     <!-- Password input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="password" type="password" placeholder="비밀번호" data-sb-validations="required" />
+                                        <input class="form-control" id="user_pass" name="user_pass" type="password" placeholder="비밀번호" data-sb-validations="required" />
                                         <label for="name">Password</label>
                                         <div class="invalid-feedback" data-sb-feedback="password:required">A password is required.</div>
                                     </div>
@@ -94,7 +94,7 @@
                                     
                                    <p class="no mem">
                                    Space For Team 회원이 아니신가요?-------------------------------
-                                   <a href="/insertForm.jsp" class="submit">회원가입</a>
+                                   <a href="UserInsertForm.us" class="submit">회원가입</a>
                                    </p>
                                    
                                     <p class="host">
