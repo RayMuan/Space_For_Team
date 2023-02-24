@@ -116,7 +116,7 @@ import com.space4team.host.db.HostDTO;
 				pstmt.setString(7, dto.getS_gungu());
 				pstmt.setString(8, dto.getS_memo());
 				pstmt.setString(9, dto.getS_file());
-				pstmt.setString(10, dto.getS_option());
+				pstmt.setString(10, dto.getS_opt());
 				pstmt.setString(11, dto.getS_max());
 				
 				pstmt.executeUpdate();
@@ -406,7 +406,7 @@ import com.space4team.host.db.HostDTO;
 					pstmt.setString(1, dto.getS_name());
 					pstmt.setString(2, dto.getS_address());
 					pstmt.setString(3, dto.getS_bill());
-					pstmt.setInt(4, mdto.getH_num());
+					pstmt.setInt(4, hdto.getH_num());
 					pstmt.setString(5, dto.getS_sido());
 					pstmt.setString(6, dto.getS_gungu());
 					

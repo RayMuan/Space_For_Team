@@ -75,7 +75,7 @@ public class SpaceInsertPro implements Action{
 		dto.setS_gungu(gungu);
 		dto.setS_memo(memo);
 		dto.setS_file(file);
-		dto.setS_option(s_option);
+		dto.setS_opt(s_option);
 		
 		
 		HttpSession session = request.getSession();

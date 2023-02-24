@@ -72,7 +72,7 @@ public class SpaceUpdatePro implements Action{
 			dto.setS_max(max);
 			dto.setS_memo(memo);
 			dto.setS_file(file);
-			dto.setS_option(s_option);
+			dto.setS_opt(s_option);
 			
 			dao.updateSpace(dto, mdto);
 		
