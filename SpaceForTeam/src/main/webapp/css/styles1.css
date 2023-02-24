@@ -98,6 +98,12 @@
 	top : -10px;
 	
 }
+.page{
+	text-align:center;
+	text-decoration: none;
+	color:#000040;
+
+}
 
 /* 호스트/게스트 버튼  */
 .btn{
@@ -456,7 +462,6 @@ sup {
 }
 
 a {
-  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 a:hover {

@@ -14,7 +14,7 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css_main/styles.css" rel="stylesheet" />
+        <link href="css/styles1.css" rel="stylesheet" />
         <!-- 		아이콘 -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
@@ -336,7 +336,50 @@ function cat1_change(key,sel){
            </div>
 	<%
 	}
-	%> 		
+	%> 	
+	
+<!-- 	로그인 하고 수정해야함!! -->
+<!-- 	<div class="page">         -->
+<%-- <% --%>
+// if(search == null){
+//    //    검색어 없을때,, 
+//       if(startPage > pageBlock){
+<%--          %> --%>
+<%--       <a href="UserPro.sp?pageNum=<%=startPage-pageBlock%>">이전</a> --%>
+<%--          <% --%>
+//       }
+//       for(int i=startPage;i<=endPage;i++){
+<%--          %> --%>
+<%--          <a href="UserPro.sp?pageNum=<%=i%>"><%=i %></a>  --%>
+<%--          <% --%>
+//       }
+//       if(endPage < pageCount){
+<%--          %> --%>
+<%--       <a href="UserPro.sp?pageNum=<%=startPage+pageBlock%>">다음</a> --%>
+<%--          <% --%>
+//       }
+//       }else {
+//    //    검색어 있을때,,
+//       if(startPage > pageBlock){
+<%--          %> --%>
+<%--       <a href="UserPro.sp?pageNum=<%=startPage-pageBlock%>&search=<%=search%>">이전</a> --%>
+<%--          <% --%>
+//       }
+//       for(int i=startPage;i<=endPage;i++){
+<%--          %> --%>
+<%--          <a href="UserPro.sp?pageNum=<%=i%>&search=<%=search%>"><%=i %></a>  --%>
+<%--          <% --%>
+//       }
+//       //10페이지 다음
+//       if(endPage < pageCount){
+<%--          %> --%>
+<%--       <a href="UserPro.sp?pageNum=<%=startPage+pageBlock%>&search=<%=search%>">다음</a> --%>
+<%--          <% --%>
+//       }
+// }
+<%-- %> --%>
+<!-- </div>  -->
+		
     </div>
     </div>
             </section>              

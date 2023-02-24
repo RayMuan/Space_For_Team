@@ -59,7 +59,7 @@ SpaceDAO dao = new SpaceDAO();
 	
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("jsp/host.jsp");
+		forward.setPath("main/host.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}
