@@ -60,10 +60,12 @@ public class UserFrontController extends HttpServlet{
 			forward = new ActionForward(); 
 			forward.setPath("join/join.jsp"); 
 			forward.setRedirect(false); 
+		
 		}else if(sPath.equals("/UserLoginForm.us")) {
 			forward=new ActionForward();
 			forward.setPath("user/contact.jsp");
 			forward.setRedirect(false);
+		
 		}else if(sPath.equals("/UserLoginPro.us")) {
 			action = new UserLoginPro();
 			try {
