@@ -11,13 +11,21 @@ import javax.sql.DataSource;
 
 
 public class HostDAO {
-	private Connection con=null;
+//	private Connection con=null;
 	
 	public Connection getConnection() throws Exception{
+	
 		Context init=new InitialContext();
 		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/MysqlDB");
-		con=ds.getConnection();
+		Connection con=ds.getConnection();
 		return con;
+		
+//		Context init=new InitialContext();
+//		DataSource ds=(DataSource)init.lookup("java:comp/env/jdbc/MysqlDB");
+//		con=ds.getConnection();
+//		System.out.println("con주소 : "+con);
+//		return con;
+		
 	}//connection
 
 	public void insertHost(HostDTO dto) { 
