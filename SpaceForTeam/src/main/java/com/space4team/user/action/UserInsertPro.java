@@ -42,7 +42,7 @@ public class UserInsertPro implements Action{
 		
 		// 이동 MemberLoginForm.me
 		ActionForward forward = new ActionForward();
-		forward.setPath("Main.ho");
+		forward.setPath("UserLoginForm.us");
 		forward.setRedirect(true);
 		
 	
