@@ -1,4 +1,4 @@
-<%@page import="com.space4team.user.db.UserDTO"%>
+<%@page import="com.space4team.notice.db.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,25 +14,7 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/styles.css" rel="stylesheet" />
-    
-    <style type="text/css">
-    btn.btn-primary {
-    
-    }
-    
-    </style>
-        
-    <script type="text/javascript">
-        // 비밀번호 미입력시 경고창
-        function checkValue(){
-            if(!document.deleteform.pass.value){
-                alert("비밀번호를 입력하지 않았습니다.");
-                return false;
-            }
-        }
-    </script>
-        
+        <link href="css/styles3.css" rel="stylesheet" />
     </head>
     <body class="d-flex flex-column">
         <main class="flex-shrink-0">
@@ -72,54 +54,50 @@
                     <!-- Contact form-->
                     <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
                         <div class="text-center mb-5">
-                            <h1 class="fw-bolder">회원탈퇴</h1>
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                            <h1 class="fw-bolder">공지사항 작성하기</h1> 
                         </div>
+                        
+                        <% NoticeDTO dto=(NoticeDTO)request.getAttribute("dto");%>
+  
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- * * SB Forms Contact Form * *-->
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- This form is pre-integrated with SB Forms.-->
-                                <!-- To make this form functional, sign up at-->
-                                <!-- https://startbootstrap.com/solution/contact-forms-->
-                                <!-- to get an API token!-->
-<%
-UserDTO dto=(UserDTO)request.getAttribute("dto");
-String id=(String)session.getAttribute("id");
-%>
-                                <form action="UserDeletePro.us" id="join" method="post" onsubmit="return checkValue()">
-                                    <!-- ID input-->
+                                <form action = "NoticeUpdatePro.no" data-sb-form-api-token="API_TOKEN">
+                                <input type="hidden" name="num" value="<%=dto.getNo_num()%>">    
+                                    <!-- Name input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="user_id" type="text" name="id" value="<%=id%>" readonly data-sb-validations="required" />
-                                        <label for="id"><i class="bi bi-star-fill text-warning"></i> 아이디</label>
-                                        <div class="invalid-feedback" data-sb-feedback="user_id:required">5~12자 영문(대소문자 구분), 숫자 입력해주세요.</div>
+                                        <input class="form-control" name="subject" value="<%=dto.getNo_subject() %>" type="text" placeholder="Enter title..." required/>
+                                        <label for="name">제목</label>
                                     </div>
-                                    <!-- Pass input-->
+                                    <!-- Message input-->
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" id="user_pass" type="pass"  name="pass"  data-sb-validations="required" />
-                                        <label for="pass"> <i class="bi bi-star-fill text-warning"></i> 비밀번호</label>
-                                        <div class="invalid-feedback" data-sb-feedback="user_pass:required">영문, 숫자, 특수문자 조합 8~16자리를 입력해 주세요.</div>
+                                        <textarea class="form-control" name="content" type="text" placeholder="Enter your message here..." style="height: 10rem" required"><%=dto.getNo_content().trim() %></textarea>
+                                        <label for="message">내용</label>
                                     </div>
-                                    <!-- Submit success message-->
-                                    <!---->
-                                    <!-- This is what your users will see when the form-->
-                                    <!-- has successfully submitted-->
-                                    <div class="d-none" id="submitSuccessMessage">
-                                        <div class="text-center mb-3">
-                                            <div class="fw-bolder">Form submission successful!</div>
-                                            To activate this form, sign up at
-                                            <br />
-                                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                        </div>
-                                    </div>
-                                    <!-- This is what your users will see when there is-->
+
                                     <!-- Submit Button-->
-<!--                                     <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">변경완료</button></div> -->
-									<input class="btn btn-primary btn-lg" type="button" value="뒤로가기" onclick="javascript:window.location='UserMain.us'">
-									<input class="btn btn-primary btn-lg" href="#scroll-target" type="submit" value="탈퇴">
-									
+                                    <div class="d-grid">
+                                    <input class="btn btn-primary btn-lg" href="#scroll-target" type="submit" value="등록하기">
+                                   </div>
                                 </form>
                             </div>
+                        </div>
+                    </div>
+                    <!-- Contact cards-->
+           				<div class="row gx-5 row-cols-2 row-cols-lg-4 py-5 justify-content-center">
+                        
+                        <div class="col">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-people"></i></div>
+                            <div class="h5">Ask the community</div>
+                            <p class="text-muted mb-0"><a href="community.jsp">문의게시판 바로가기</a></p>
+                        </div>
+                        
+                        <div class="col">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-telephone"></i></div>
+                            <div class="h5">Call us</div>
+                            <p class="text-muted mb-0">상담가능시간</p>
+                            <p class="text-muted mb-0">09:00 - 17:00</p>
+                            <p class="text-muted mb-0">☎ 010-1234-5678</p>
                         </div>
                     </div>
                 </div>
@@ -144,10 +122,6 @@ String id=(String)session.getAttribute("id");
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>

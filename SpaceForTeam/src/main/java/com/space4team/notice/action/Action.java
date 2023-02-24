@@ -1,4 +1,4 @@
-package com.space4team.qna.action;
+package com.space4team.notice.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

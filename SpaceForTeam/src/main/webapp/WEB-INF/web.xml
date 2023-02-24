@@ -73,4 +73,15 @@
   	<url-pattern>*.bk</url-pattern>
   </servlet-mapping>
   
+  	<servlet>
+		<servlet-name>NoticeFrontController</servlet-name>
+		<servlet-class>com.space4team.notice.action.NoticeFrontController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>NoticeFrontController</servlet-name>
+		<url-pattern>*.no</url-pattern>
+	</servlet-mapping>
+  
+  
 </web-app>

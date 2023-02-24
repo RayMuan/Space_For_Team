@@ -1,4 +1,3 @@
-
 <%@page import="com.space4team.user.db.UserDTO"%>
 <%@page import="com.space4team.booking.db.BookingDTO"%>
 <%@page import="java.util.ArrayList"%>

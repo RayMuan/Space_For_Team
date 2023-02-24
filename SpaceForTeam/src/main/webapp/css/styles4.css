@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /*!
-* Start Bootstrap - Shop Homepage v5.0.5 (https://startbootstrap.com/template/shop-homepage)
+* Start Bootstrap - Modern Business v5.0.6 (https://startbootstrap.com/template-overviews/modern-business)
 * Copyright 2013-2022 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-shop-homepage/blob/master/LICENSE)
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-modern-business/blob/master/LICENSE)
 */
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -64,6 +64,195 @@
   --bs-body-bg: #fff;
 }
 
+
+
+
+
+
+/* 호스트/게스트 버튼  */
+.btn{
+  display:inline-block;
+  position: relative;
+  top: 15px;
+  left:520px;
+}
+.block {
+  display: flex;
+  width: 100%;
+  border: none;
+  background-color: #00002D;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* 호스트 수정 버튼 */
+.button1 {
+  background-color: #ddd;
+  border: none;
+  color: blue;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+/* 호스트 삭제 버튼 */
+.button2 {
+  background-color: #ddd;
+  border: none;
+  color: #ff0000;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+/* 호스트 리뷰 */
+.notification {
+  background-color: #ddd;
+  color: black;
+  text-decoration: none;
+  padding: 10px 20px;
+  position: relative;
+  display: inline-block;
+  border-radius: 16px;
+}
+
+.notification:hover {
+  background: red;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+
+/* 검색창,선택창 배치 */
+.form-control{
+  display: block;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          
+}
+
+
+
+/* 검색창 위치 */
+.searchmain{
+  position: relative;
+  top: 15px;
+  left:300px;
+  text-align:center;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left;
+  width: 100%;
+  
+}
+
+/* 선택창 가로 정렬, 위치*/
+.selmain{
+	display: inline-block;
+	position: relative;
+  	top: 20px;
+	
+}
+.search_boxes{
+	display: inline-block;
+	position: relative;
+  	top: 20px;
+
+	
+}
+
+#state{
+  display: inline-block;
+  position: relative;
+  	top: -30px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;}
+
+/* 셀렉트박스 눌렀을 때 박스이름이 안보이게  */
+	select option[value=""][disabled] {
+			display: none;
+		}
+
+/* 달력 전체 선택 가능 */
+/*      input[type='date']{position:relative; } */
+/*  	 input[type='date']::-webkit-clear-button,  */
+/*  	 input[type='date']::-webkit-inner-spin-button{display:none;}  */
+/*  	 input[type='date']::-webkit-calendar-picker-indicator{ */
+/* 	 position: absolute; */
+/* 	 left: 0; */
+/* 	 top:0; */
+/* 	 width: 100%; */
+/* 	 height: 100%; */
+/* 	 background:transparent; */
+/* 	 color:transparent; */
+/* 	 cursor:pointer;} */
+/* 날짜 */
+input[type='date']::before {
+  content: attr(data-placeholder);
+  width: 100%;
+}
+input[type='date']:focus::before,
+input[type='date']:valid::before {
+  display: none;
+}
+
+/* 돋보기 */
+.ser-main{
+	position: relative;
+  top: -20px;
+  left:880px;
+}
+
+
+
+
+
 *,
 *::before,
 *::after {
@@ -75,8 +264,6 @@
     scroll-behavior: smooth;
   }
 }
-
-
 
 body {
   margin: 0;
@@ -148,7 +335,6 @@ h4, .h4 {
 
 h5, .h5 {
   font-size: 1.25rem;
-  text-align: center;
 }
 
 h6, .h6 {
@@ -532,6 +718,9 @@ progress {
   font-size: calc(1.475rem + 2.7vw);
   font-weight: 300;
   line-height: 1.2;
+  position: relative;
+  top: -10px;
+  
 }
 @media (min-width: 1200px) {
   .display-4 {
@@ -543,6 +732,7 @@ progress {
   font-size: calc(1.425rem + 2.1vw);
   font-weight: 300;
   line-height: 1.2;
+  
 }
 @media (min-width: 1200px) {
   .display-5 {
@@ -2757,7 +2947,6 @@ textarea.form-control-lg {
 .input-group .btn {
   position: relative;
   z-index: 2;
-
 }
 .input-group .btn:focus {
   z-index: 3;
@@ -4548,12 +4737,10 @@ textarea.form-control-lg {
 .card-body {
   flex: 1 1 auto;
   padding: 1rem 1rem;
-
 }
 
 .card-title {
   margin-bottom: 0.5rem;
-  text-align: center;
 }
 
 .card-subtitle {
@@ -4563,7 +4750,6 @@ textarea.form-control-lg {
 
 .card-text:last-child {
   margin-bottom: 0;
-    text-align: center;
 }
 
 .card-link + .card-link {
@@ -7297,7 +7483,7 @@ textarea.form-control-lg {
 }
 
 .my-5 {
-  margin-top: 1rem !important;
+  margin-top: 3rem !important;
   margin-bottom: 3rem !important;
 }
 
@@ -7779,7 +7965,6 @@ textarea.form-control-lg {
 .text-muted {
   --bs-text-opacity: 1;
   color: #6c757d !important;
-  text-align: center;
 }
 
 .text-black-50 {
@@ -9141,13 +9326,8 @@ textarea.form-control-lg {
   }
 
   .px-md-5 {
-    padding-right: 1rem !important;
-    padding-left: 1rem !important;
-  }
-  
-  .px-md-6 {
-    padding-right: 10em !important;
-    padding-left: 10rem !important;
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
   }
 
   .py-md-0 {
@@ -11298,14 +11478,26 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-  
-  .spaceupload {
-  	text-align: center;
-  	align-items: center;
-  	position : relative;
-  }
-  .pagenumber{
-  	text-align: center;
-  }
-  
+}
+body,
+html {
+  height: 100%;
+}
+
+.feature {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.5rem;
+}
+
+.bg-featured-blog {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 15rem;
 }

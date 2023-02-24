@@ -22,44 +22,115 @@ import com.space4team.host.db.HostDTO;
 			return con;
 		}//connection
 		
-		public void insertSpace (SpaceDTO dto) {
+//		public void insertSpace (SpaceDTO dto) {
+//			Connection con = null;
+//			PreparedStatement pstmt = null;
+//			ResultSet rs = null;
+//			System.out.println("insert성공");
+//			try {
+//				con = getConnection();
+//			int num=4;
+//			String sql ="select max(s_num) from space";
+//			pstmt = con.prepareStatement(sql);
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				num = rs.getInt("max(s_num)") + 1;	}
+//			
+//			String sql2 ="insert into space(s_num, s_name, s_address, s_bill, h_num, s_sido, s_gungu, s_memo) values (?,?,?,?,?,?,?,?)";
+//			pstmt = con.prepareStatement(sql2);
+//			pstmt.setInt(1,num);
+//			pstmt.setString(2, dto.getS_name());
+//			pstmt.setString(3, dto.getS_address());
+//			pstmt.setString(4, dto.getS_bill());
+//			pstmt.setInt(5, 1);
+//			pstmt.setString(6, dto.getS_sido());
+//			pstmt.setString(7, dto.getS_gungu());
+//			pstmt.setString(8, dto.getS_memo());
+//			
+//			pstmt.executeUpdate();
+//			
+//			System.out.println("con주소"+con);
+//			
+//		} catch (Exception e) {
+//			System.out.println("예외처리함");
+//			e.printStackTrace();
+//		} finally {
+//			if(con!=null) {try {con.close();} catch (Exception e2) {}}
+//			if(pstmt!=null){try {pstmt.close();} catch (Exception e2) {}}
+//			}
+//		}//insertSpace
+//		
+		public int getSpaceNumber(int num) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
-			System.out.println("insert성공");
+			System.out.println("spacenumber 구하기");
 			try {
 				con = getConnection();
-			int num=4;
-			String sql ="select max(s_num) from space";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+				
+				String sql ="select max(s_num) from space";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				num = rs.getInt("max(s_num)") + 1;	}
+				
+				if(rs.next()) {
+					num = rs.getInt("max(s_num)") + 1;	}
 			
-			String sql2 ="insert into space(s_num, s_name, s_address, s_bill, h_num, s_sido, s_gungu, s_memo) values (?,?,?,?,?,?,?,?)";
-			pstmt = con.prepareStatement(sql2);
-			pstmt.setInt(1,num);
-			pstmt.setString(2, dto.getS_name());
-			pstmt.setString(3, dto.getS_address());
-			pstmt.setString(4, dto.getS_bill());
-			pstmt.setInt(5, 1);
-			pstmt.setString(6, dto.getS_sido());
-			pstmt.setString(7, dto.getS_gungu());
-			pstmt.setString(8, dto.getS_memo());
-			
-			pstmt.executeUpdate();
-			
-			System.out.println("con주소"+con);
-			
-		} catch (Exception e) {
-			System.out.println("예외처리함");
-			e.printStackTrace();
-		} finally {
-			if(con!=null) {try {con.close();} catch (Exception e2) {}}
-			if(pstmt!=null){try {pstmt.close();} catch (Exception e2) {}}
+				
+			} catch (Exception e) {
+				System.out.println("예외처리함");
+				e.printStackTrace();
+			} finally {
+				if(con!=null) {try {con.close();} catch (Exception e2) {}}
+				if(pstmt!=null){try {pstmt.close();} catch (Exception e2) {}}
+				
+			}return num;
+		}
+		
+		public void insertSpace (SpaceDTO dto, HostDTO mdto) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			System.out.println("insert시도");
+			try {
+				con = getConnection();
+
+				// num 구하기
+				int num=1;
+				String sql ="select max(s_num) from space";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					num = rs.getInt("max(s_num)") + 1;	}
+				
+				String sql2 ="insert into space(s_num, s_name, s_address, s_bill, h_num, s_sido, s_gungu, s_memo, s_file, s_opt, s_max) values (?,?,?,?,?,?,?,?,?,?,?)";
+				pstmt = con.prepareStatement(sql2);
+				pstmt.setInt(1,num);
+				pstmt.setString(2, dto.getS_name());
+				pstmt.setString(3, dto.getS_address());
+				pstmt.setString(4, dto.getS_bill());
+				pstmt.setInt(5, mdto.getH_num());
+				pstmt.setString(6, dto.getS_sido());
+				pstmt.setString(7, dto.getS_gungu());
+				pstmt.setString(8, dto.getS_memo());
+				pstmt.setString(9, dto.getS_file());
+				pstmt.setString(10, dto.getS_opt());
+				pstmt.setString(11, dto.getS_max());
+				
+				pstmt.executeUpdate();
+				
+				System.out.println("con주소"+con);
+				
+			} catch (Exception e) {
+				System.out.println("예외처리함");
+				e.printStackTrace();
+			} finally {
+				if(con!=null) {try {con.close();} catch (Exception e2) {}}
+				if(pstmt!=null){try {pstmt.close();} catch (Exception e2) {}}
+				}return;
 			}
-		}//insertSpace
 
 		
 		public SpaceDTO getSpace(int s_num) {
@@ -87,6 +158,7 @@ import com.space4team.host.db.HostDTO;
 					dto.setS_memo(rs.getString("s_memo"));
 					dto.setS_opt(rs.getString("s_opt"));
 					dto.setS_max(rs.getString("s_max"));
+					dto.setS_file(rs.getString("s_file"));
 					}
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -180,7 +252,7 @@ import com.space4team.host.db.HostDTO;
 				// 1~2 단계
 				con=getConnection();
 				// 3단계 sql
-				String sql="select count(*) from Host";
+				String sql="select count(*) from space where h_num =?";
 				pstmt=con.prepareStatement(sql);
 				//4
 				rs=pstmt.executeQuery();
@@ -198,6 +270,8 @@ import com.space4team.host.db.HostDTO;
 			}
 			return count;
 		}// getspaceCount()
+		
+		
 		public ArrayList<SpaceDTO> getSpaceList(int startRow,int pageSize, String search){
 			System.out.println("SpaceDAO getSpaceList()");
 			Connection con=null;
@@ -296,6 +370,10 @@ import com.space4team.host.db.HostDTO;
 					SpaceDTO dto = new SpaceDTO();
 					dto.setS_num(rs.getInt("s_num"));
 					dto.setS_name(rs.getString("s_name"));
+					dto.setS_bill(rs.getString("s_bill"));
+					dto.setS_address(rs.getString("s_address"));
+					dto.setS_memo(rs.getString("s_memo"));
+					dto.setS_max(rs.getString("s_max"));
 					
 					spaceList.add(dto);
 				}
@@ -309,5 +387,64 @@ import com.space4team.host.db.HostDTO;
 			}
 				return spaceList;
 		}	
+		
+
+		
+		 public void updateSpace(SpaceDTO dto, HostDTO hdto) {
+				Connection con = null;
+				PreparedStatement pstmt = null;
+				System.out.println("updateSpace 시도! sql구문 시작전 ");
+
+				try {
+					con=getConnection();
+					
+					String sql = "update space set s_name=?, s_address=?,s_bill=?,h_num=?,s_sido=?, s_gungu=?,s_memo=?,s_file=?,s_opt=?,s_max=?  where s_num=?";
+					pstmt = con.prepareStatement(sql);
+					
+					System.out.println("sql구문 실행중 ");
+
+					pstmt.setString(1, dto.getS_name());
+					pstmt.setString(2, dto.getS_address());
+					pstmt.setString(3, dto.getS_bill());
+					pstmt.setInt(4, hdto.getH_num());
+					pstmt.setString(5, dto.getS_sido());
+					pstmt.setString(6, dto.getS_gungu());
+					
+					pstmt.setString(7, dto.getS_memo());
+					pstmt.setString(8, dto.getS_file());
+					pstmt.setString(9, dto.getS_opt());
+					pstmt.setString(10, dto.getS_max());
+					pstmt.setInt(11, dto.getS_num());
+					
+					pstmt.executeUpdate();
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					if(pstmt!=null) {try {pstmt.close();} catch (Exception e2) {}}
+					if(con!=null) {try {con.close();} catch (Exception e2) {}}		
+				}		
+			}
+				public void deleteSpace(int num) {
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					
+					try {
+						con = getConnection();
+						
+						String sql = "delete from space where s_num = ?";
+						pstmt = con.prepareStatement(sql);
+						pstmt.setInt(1, num);
+						
+						pstmt.executeUpdate();
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					} finally {
+						if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+						if(con!=null) try { con.close();} catch (Exception e2) {}
+					}
+				}
+		
 	}//class
 
