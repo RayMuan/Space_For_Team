@@ -9,24 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class SpaceFrontController extends HttpServlet{
-
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("SpaceFrontController doGet()");
 		doProcess(request, response);
 	} //doGet
-
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("SpaceFrontController doPost()");
 		doProcess(request, response);
 	} //doPost
-	
-	
-	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("SpaceFrontController doProcess()");
-		
 		System.out.println("뽑은 가상주소 : "+request.getServletPath());
 		String sPath=request.getServletPath();
 		
@@ -34,17 +28,82 @@ public class SpaceFrontController extends HttpServlet{
 		Action action=null;
 		
 		if(sPath.equals("/SpaceInfoPro.sp")) {
+			
 			action=new SpaceInfoPro();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		
+		} else if(sPath.equals("/SpaceInsertForm.sp")) {
+			System.out.println("spaceinsertForm.sp 실행전");
+			
+			action = new SpaceInsertForm();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		}  else if(sPath.equals("/SpaceInsertPro.sp")) {
+			System.out.println("spaceInsertPRo.sp 실행");
+			
+			action = new SpaceInsertPro();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
+		
+		} else if(sPath.equals("/SpaceList.sp")) {
+			
+			action = new SpaceList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		} else if(sPath.equals("/SpaceUpdateForm.sp")) {
+			
+			action = new SpaceUpdateForm();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+		} else if(sPath.equals("/SpaceUpdatePro.sp")) {
+			System.out.println("spaceupdatepro 실행");
+			
+			action = new SpaceUpdatePro();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if(sPath.equals("/SpaceDeleteForm.sp")) {
+			System.out.println("spacedelteform 까지옴");
+			
+			action = new SpaceDeleteForm();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		} else if(sPath.equals("/SpaceDeletePro.sp")) {
+			
+			action = new SpaceDeletePro();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
-		
-		
-		
+
 		// 연결
 		if(forward != null) {
 			if(forward.isRedirect()==true) {
@@ -54,8 +113,5 @@ public class SpaceFrontController extends HttpServlet{
 				dispatcher.forward(request, response);
 			}
 		}
-		
-		
-	}// doProcess
-	
+	}// doProcess	
 }// class
