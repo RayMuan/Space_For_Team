@@ -24,8 +24,8 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="guest_main.us">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="insertHost.jsp">호스트가입</a></li>
+                            <li class="nav-item"><a class="nav-link" href="GuestMain.us">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="HostInsertForm.ho">호스트가입</a></li>
                             <li class="nav-item"><a class="nav-link" href="g_mypage.jsp">마이페이지</a></li>
                             <li class="nav-item"><a class="nav-link" href="logout.jsp">로그아웃</a></li>
                             <li class="nav-item"><a class="nav-link" href="faq.jsp">FAQ</a></li> 
@@ -42,7 +42,11 @@
                                 <h1 class="display-5 fw-bolder text-white mb-2">A Bootstrap 5 template for modern businesses</h1>
                                 <p class="lead fw-normal text-white-50 mb-4">당신이 원하는 공간을 예약해보세요</p>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+<<<<<<< HEAD
                                     <a class="btn btn-primary btn-lg px-4 me-sm-3" href="SpaceInfoPro.sp">공간둘러보기</a>
+=======
+                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="SpaceMain.sp">공간둘러보기</a>
+>>>>>>> refs/heads/우정임
                                 </div>
                             </div>
                         </div>
