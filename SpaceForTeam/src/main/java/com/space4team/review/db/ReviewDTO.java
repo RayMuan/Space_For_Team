@@ -5,14 +5,17 @@ import java.sql.Timestamp;
 public class ReviewDTO {
 	private int re_num;
 	private int user_num;
-	private String re_subject;
 	private String re_content;
 	private Timestamp re_date;
 	private int re_point;
 	private int s_num;
 	private String re_reply;
 	private double re_avg;
+<<<<<<< HEAD
 	private String re_max;
+=======
+	private String re_user_id;
+>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 	
 	public String getRe_max() {
 		return re_max;
@@ -33,12 +36,7 @@ public class ReviewDTO {
 	public void setUser_num(int user_num) {
 		this.user_num = user_num;
 	}
-	public String getRe_subject() {
-		return re_subject;
-	}
-	public void setRe_subject(String re_subject) {
-		this.re_subject = re_subject;
-	}
+
 	public String getRe_content() {
 		return re_content;
 	}
@@ -74,6 +72,12 @@ public class ReviewDTO {
 	}
 	public void setRe_avg(double re_avg) {
 		this.re_avg = re_avg;
+	}
+	public String getRe_user_id() {
+		return re_user_id;
+	}
+	public void setRe_user_id(String re_user_id) {
+		this.re_user_id = re_user_id;
 	}
 	
 }//class

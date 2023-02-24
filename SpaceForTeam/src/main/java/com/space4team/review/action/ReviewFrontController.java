@@ -1,4 +1,4 @@
-package com.space4team.space.action;
+package com.space4team.review.action;
 
 import java.io.IOException;
 
@@ -8,24 +8,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SpaceFrontController extends HttpServlet{
+import com.space4team.space.action.SpaceInfoPro;
+
+
+
+public class ReviewFrontController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("SpaceFrontController doGet()");
+		System.out.println("ReviewFrontController doGet()");
 		doProcess(request, response);
-	} //doGet
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("SpaceFrontController doPost()");
-		doProcess(request, response);
-	} //doPost
-	
-	
-	
+		System.out.println("ReviewFrontController doPost()");
+		doProcess(request, response);		
+	}
+
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("SpaceFrontController doProcess()");
+		System.out.println("ReviewFrontController doProcess()");
 		
 		System.out.println("뽑은 가상주소 : "+request.getServletPath());
 		String sPath=request.getServletPath();
@@ -33,38 +35,14 @@ public class SpaceFrontController extends HttpServlet{
 		ActionForward forward=null;
 		Action action=null;
 		
-		if(sPath.equals("/SpaceInfo.sp")) {
-			action=new SpaceInfoPro();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(sPath.equals("/MainPro.sp")) {
-			action=new MainPro();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(sPath.equals("/UserPro.sp")) {
-			action=new UserPro();
-			try {
-				forward=action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}else if(sPath.equals("/HostPro.sp")) {
-			action=new HostPro();
+		if(sPath.equals("/ReviewWritePro.re")) {
+			action=new ReviewWritePro();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
 		
 		// 연결
 		if(forward != null) {
@@ -76,7 +54,6 @@ public class SpaceFrontController extends HttpServlet{
 			}
 		}
 		
-		
 	}// doProcess
-	
+
 }// class
