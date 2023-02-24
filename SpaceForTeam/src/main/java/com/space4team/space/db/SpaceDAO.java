@@ -29,6 +29,38 @@ import com.space4team.host.db.HostDTO;
 			System.out.println("insert성공");
 			try {
 				con = getConnection();
+
+<<<<<<< HEAD
+				int num=4;
+				String sql ="select max(s_num) from space";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					num = rs.getInt("max(s_num)") + 1;	}
+				
+				String sql2 ="insert into space(s_num, s_name, s_address, s_bill, h_num, s_sido, s_sigungu, s_memo) values (?,?,?,?,?,?,?,?)";
+				pstmt = con.prepareStatement(sql2);
+				pstmt.setInt(1,num);
+				pstmt.setString(2, dto.getS_name());
+				pstmt.setString(3, dto.getS_address());
+				pstmt.setString(4, dto.getS_bill());
+				pstmt.setInt(5, 1);
+				pstmt.setString(6, dto.getS_sido());
+				pstmt.setString(7, dto.getS_sigungu());
+				pstmt.setString(8, dto.getS_memo());
+				
+				pstmt.executeUpdate();
+				
+				System.out.println("con주소"+con);
+				
+			} catch (Exception e) {
+				System.out.println("예외처리함");
+				e.printStackTrace();
+			} finally {
+				if(con!=null) {try {con.close();} catch (Exception e2) {}}
+				if(pstmt!=null){try {pstmt.close();} catch (Exception e2) {}}
+=======
 			int num=4;
 			String sql ="select max(s_num) from space";
 			pstmt = con.prepareStatement(sql);
@@ -60,7 +92,34 @@ import com.space4team.host.db.HostDTO;
 			if(pstmt!=null){try {pstmt.close();} catch (Exception e2) {}}
 			}
 		}//insertSpace
-
+	
+	public SpaceDTO getSpace(int s_num) {
+		System.out.println("getSpace()");
+		SpaceDTO dto=null;
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		try {
+			con=getConnection();
+			String sql="select * from space where s_num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, s_num);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				dto=new SpaceDTO();
+				dto.setS_num(s_num);
+				dto.setS_name(rs.getString("s_name"));
+				dto.setS_address(rs.getString("s_address"));
+				dto.setS_bill(rs.getString("s_bill"));
+				dto.setH_num(rs.getInt("h_num"));
+				dto.setS_sido(rs.getString("s_sido"));
+				dto.setS_sigungu(rs.getString("s_gungu"));
+				dto.setS_memo(rs.getString("s_memo"));
+				dto.setS_opt(rs.getString("s_opt"));
+>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
+				}
+			}//insertSpace
 		
 		public SpaceDTO getSpace(int s_num) {
 			System.out.println("getSpace()");
@@ -97,7 +156,6 @@ import com.space4team.host.db.HostDTO;
 			}
 			return dto;
 		}// getSpace
-		
 		public ArrayList<SpaceDTO> getSpaceList(int startRow,int pageSize){
 			System.out.println("SpaceDAO getSpaceList()");
 			Connection con=null;
