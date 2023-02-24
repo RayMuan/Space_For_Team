@@ -13,7 +13,7 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/styles3.css" rel="stylesheet" />
     </head>
     <body class="d-flex flex-column">
         <main class="flex-shrink-0">
@@ -79,7 +79,7 @@
                                    </div>
                                    <br>
                                    <div class="d-grid">
-                                   <input class="btn btn-primary btn-lg" onclick="location.href='NoticeList.no'" type="button" value="뒤로가기"> 
+                                   <input class="btn btn-primary btn-lg" onclick="location.href='NoticeList.no'" type="button" value="목록으로 가기"> 
                                    </div>
                                 </form>
                             </div>

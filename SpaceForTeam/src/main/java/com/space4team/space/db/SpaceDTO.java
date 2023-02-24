@@ -7,11 +7,26 @@ public class SpaceDTO {
 	private String s_bill;
 	private int h_num;
 	private String s_sido;
-	private String s_sigungu;
+	private String s_gungu;
 	private String s_memo;
 	private String s_opt;
+	private String s_max;
+	private String s_file;
 	
 	
+	public String getS_file() {
+		return s_file;
+	}
+	public void setS_file(String s_file) {
+		this.s_file = s_file;
+	}
+	
+	public String getS_max() {
+		return s_max;
+	}
+	public void setS_max(String s_max) {
+		this.s_max = s_max;
+	}
 	// get set
 	public int getS_num() {
 		return s_num;
@@ -49,11 +64,11 @@ public class SpaceDTO {
 	public void setS_sido(String s_sido) {
 		this.s_sido = s_sido;
 	}
-	public String getS_sigungu() {
-		return s_sigungu;
+	public String getS_gungu() {
+		return s_gungu;
 	}
-	public void setS_sigungu(String s_sigungu) {
-		this.s_sigungu = s_sigungu;
+	public void setS_gungu(String s_gungu) {
+		this.s_gungu = s_gungu;
 	}
 	public String getS_memo() {
 		return s_memo;

@@ -22,7 +22,7 @@ public class NoticeFrontController extends HttpServlet{
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("NoticeFrontController doProcess()");
-		
+
 		String sPath = request.getServletPath();
 		System.out.println("뽑은 가상주소 : " + request.getServletPath());
 		

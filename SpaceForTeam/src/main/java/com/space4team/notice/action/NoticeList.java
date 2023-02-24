@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import com.space4team.notice.db.NoticeDAO;
 import com.space4team.notice.db.NoticeDTO;
@@ -15,6 +15,10 @@ public class NoticeList implements Action{
 		System.out.println("NoticeList execute() 실행");
 		
 		NoticeDAO dao = new NoticeDAO();
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		System.out.println(id);
 		
 //		String pageNum = request.getParameter("pageNum"); // pageNum값 받ㅇㅏ옴
 //		int currentPage = Integer.parseInt(pageNum);

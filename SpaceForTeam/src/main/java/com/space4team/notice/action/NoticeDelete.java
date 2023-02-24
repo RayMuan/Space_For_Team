@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.space4team.notice.db.NoticeDAO;
 
 public class NoticeDelete implements Action{
-
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("NoticeDElete execute 실행");
@@ -23,5 +22,4 @@ public class NoticeDelete implements Action{
 		
 		return forward;
 	}
-
 }

@@ -16,19 +16,15 @@ public class NoticeUpdateForm implements Action{
 		int num = Integer.parseInt(request.getParameter("num"));
 		System.out.println(num);
 	
-
-		
 		NoticeDAO dao = new NoticeDAO();
 		NoticeDTO dto = dao.getNotice(num);
 		
 		request.setAttribute("dto", dto);
-
-		
+	
 		ActionForward forward = new ActionForward();
 		forward.setPath("community/noticeUpdate.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
 	}
-
 }

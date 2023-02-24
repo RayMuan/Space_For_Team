@@ -17,9 +17,13 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <%
+	int s_num=51;
+	// (int)session.getAttribute("s_num");
+
 SpaceDTO sdto = (SpaceDTO) request.getAttribute("sdto");
 HostDTO hdto = (HostDTO) request.getAttribute("hdto");
 ReviewDTO redto = (ReviewDTO) request.getAttribute("redto");
+QnaDTO qdto = (QnaDTO) request.getAttribute("qdto");
 ReviewDTO re_avg = (ReviewDTO) request.getAttribute("re_avg");
 %>
 <title><%=sdto.getS_name()%></title>
@@ -107,45 +111,46 @@ ul {
 						</article>
 						
 						<div class="card bg-light">
-							<div class="col p-2">
-							<ul class="btn-toolbar m-0 p-0">
-                            <li class="col-lg-6 text-center" id="review">
-                            <a class="button fs-4 text-black text-decoration-none" href="javascript:void(0)" id="review">리뷰</a>
-                            </li>
-                            <li class="col-lg-6 text-center border-start">
-                            <a class="button fs-4 text-black text-decoration-none" href="#" id="qna">QnA</a>
-                            </li>
-                        	</ul>
-							</div>
-							
+						<h2 class="fw-bolder m-3">Review</h2>
 							<%
 							ArrayList<ReviewDTO> reviewList = (ArrayList<ReviewDTO>) request.getAttribute("reviewList");
-							UserDAO udao = new UserDAO();
-							UserDTO udto = null; 
 							%>
 						<!-- 리뷰 -->
 						<div id="reviewList">
 								<div class="card-body">
+								<div class="row gx-5">
 									<!-- Comment form-->
-									<form class="mb-4">
-										<textarea class="form-control" rows="3"
+									<form class="mb-4 col" action="ReviewWritePro.re" method="post">
+										<select class="btn btn-outline-dark text-center" name="re_point">
+										<option class="text-center" value="5">★★★★★</option>
+										<option class="text-center" value="4">★★★★☆</option>
+										<option class="text-center" value="3">★★★☆☆</option>
+										<option class="text-center" value="2">★★☆☆☆</option>
+										<option class="text-center" value="1">★☆☆☆☆</option>
+										</select>
+										<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기">
+										<textarea class="form-control col-10"  name="re_content" rows="3"
 											placeholder="Join the discussion and leave a comment!"></textarea>
 									</form>
-									<ul>
+									</div>
+									<ul class="p-4">
 										<%
 										for (int i = 0; i < reviewList.size(); i++) { redto =
 										reviewList.get(i);
 										%>
 										<li>
-											<div class="ms-3 border-bottom">
+											<div class="m-0 border-bottom">
 												<div class="ms-3">
-													<div class="fw-bold d-flex align-items-center">아이디<p
-															class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
+													<div class="fw-bold d-flex align-items-center"><%=redto.getRe_user_id() %>
+													<p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date()%></p>
 													</div>
 													<div><%=redto.getRe_point()%></div>
 													<%=redto.getRe_content()%>
 												</div>
 												<!-- Child comment 1-->
+												<%
+												if(redto.getRe_reply() !=null){
+												%>
 												<div class="ms-3">
 													<div class="d-flex mt-3 mb-4 ">
 														<div class="ms-3 p-sm-4 bg-dark bg-opacity-25 col-5">
@@ -156,6 +161,9 @@ ul {
 														</div>
 													</div>
 												</div>
+												<%
+												}
+												%>
 											</div>
 										</li>
 										<%
@@ -167,29 +175,23 @@ ul {
 									</div>
 								</div>
 							</div>
-						<!-- 	QnA		-->
 						</div>
 					</div>
-					
-					
-					
-					
 					<!-- 상세 정보 -->
 					<div class="col-lg-3">
 						<section class="mb-5 pt-4">
 							<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 							<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
-
+							<a class="btn btn-primary btn-lg px-4 me-sm-3" href="BookingInsertForm.bk">예약하기</a>
 							<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 							<div></div>
-
 							<h3 class="fw-bolder mb-2 mt-5">위치</h3>
 							<div class="col-lg-12 mb-5">
 								<div class="card h-100 border">
 									<img class="card-img-top"
 										src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
 									<div class="card-body p-4">
-										<p class="card-text mb-0"><%=sdto.getS_sido()%><%=sdto.getS_sigungu()%><%=sdto.getS_address()%></p>
+										<p class="card-text mb-0"><%=sdto.getS_address()%></p>
 									</div>
 								</div>
 							</div>
@@ -206,10 +208,37 @@ ul {
 									</div>
 								</div>
 							</div>
+
+						<%
+						ArrayList<QnaDTO> qnaList = (ArrayList<QnaDTO>) request.getAttribute("qnaList");
+						%>
+						<h2 class="fw-bolder mb-3">Q&amp;A</h2>
+						<%if(qnaList !=null){ %>
+										<%
+										for (int i = 0; i < qnaList.size(); i++) { 
+											qdto =qnaList.get(i);
+										%>
+                            <div class="accordion mb-3" id="accordionExample">
+                                <div class="accordion-item">
+									<h3 class="accordion-header" id="heading<%=qdto.getQ_num() %>">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%=qdto.getQ_num() %>" aria-expanded="true" aria-controls="collapse<%=qdto.getQ_num() %>">
+									Q. <%=qdto.getQ_content() %>
+									</button></h3>
+                                    <div class="accordion-collapse collapse show" id="collapse<%=qdto.getQ_num() %>" aria-labelledby="heading<%=qdto.getQ_num() %>" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            A.<%=qdto.getQ_recontent() %>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                    <%
+                                    }
+                                }
+								%>
 						</section>
+                            </div>
 					</div>
 				</div>
-			</div>
 		</section>
 	</main>
 	<!-- Footer-->
