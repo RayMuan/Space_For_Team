@@ -18,14 +18,14 @@ public class HostLoginPro implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("HostLoginPro execute()");
 		
-		// request 가져오기
-		String h_email=request.getParameter("host_email");
-		String h_pass=request.getParameter("host_pass");
+		// request 가져오기.
+		String h_id=request.getParameter("h_id");
+		String h_pass=request.getParameter("h_pass");
 		
 		// SpaceDAO 객체생성
 		HostDAO dao=new HostDAO();
-		// SpaceDTO = hostCheck() 메서드호출
-		HostDTO dto=dao.hostCheck("h_email", "h_pass");
+		// SpaceDTO = hostCheck() 메서드호출.
+		HostDTO dto=dao.hostCheck(h_id, h_pass);
 		
 		// dto != null 아이디 비밀번호 일치 세션값 생성 MemberMain.me 이동
 		// 아이디 비밀번호 틀림 , 뒤로이동	
@@ -34,11 +34,10 @@ public class HostLoginPro implements Action {
 		if(dto!=null) {
 			//아이디 비밀번호 일치
 			HttpSession session=request.getSession();
-			session.setAttribute("h_email", h_email);
-			session.setAttribute("h_pass", h_pass);
+			session.setAttribute("id", h_id);
 			
 			forward=new ActionForward();
-			forward.setPath("Main.ho");
+			forward.setPath("HostMain.ho");
 			forward.setRedirect(true);
 			
 		} else {
