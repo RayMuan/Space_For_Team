@@ -29,6 +29,7 @@ import com.space4team.host.db.HostDTO;
 			System.out.println("insert성공");
 			try {
 				con = getConnection();
+<<<<<<< HEAD
 				int num=4;
 				String sql ="select max(s_num) from space";
 				pstmt = con.prepareStatement(sql);
@@ -49,6 +50,28 @@ import com.space4team.host.db.HostDTO;
 				pstmt.setString(8, dto.getS_memo());
 			
 				pstmt.executeUpdate();
+=======
+			int num=4;
+			String sql ="select max(s_num) from space";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				num = rs.getInt("max(s_num)") + 1;	}
+			
+			String sql2 ="insert into space(s_num, s_name, s_address, s_bill, h_num, s_sido, s_gungu, s_memo) values (?,?,?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(sql2);
+			pstmt.setInt(1,num);
+			pstmt.setString(2, dto.getS_name());
+			pstmt.setString(3, dto.getS_address());
+			pstmt.setString(4, dto.getS_bill());
+			pstmt.setInt(5, 1);
+			pstmt.setString(6, dto.getS_sido());
+			pstmt.setString(7, dto.getS_gungu());
+			pstmt.setString(8, dto.getS_memo());
+			
+			pstmt.executeUpdate();
+>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 			
 			System.out.println("con주소"+con);
 			
@@ -60,6 +83,10 @@ import com.space4team.host.db.HostDTO;
 			if(pstmt!=null){try {pstmt.close();} catch (Exception e2) {}}
 			}
 		}//insertSpace
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 		
 		public SpaceDTO getSpace(int s_num) {
 			System.out.println("getSpace()");
