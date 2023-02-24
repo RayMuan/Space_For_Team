@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
