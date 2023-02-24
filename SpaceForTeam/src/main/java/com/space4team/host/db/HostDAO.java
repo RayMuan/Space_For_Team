@@ -9,13 +9,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-<<<<<<< HEAD
 
-
-
-=======
-
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 public class HostDAO {
 	private Connection con=null;
 	
