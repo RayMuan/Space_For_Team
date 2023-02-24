@@ -43,6 +43,14 @@ public class ReviewDAO {
 				dto.setRe_date(rs.getTimestamp("re_date"));
 				dto.setRe_point(rs.getInt("re_point"));
 				dto.setRe_reply(rs.getString("re_reply"));
+				}
+			String sql2="select avg(re_point) from review where s_num=?";
+			pstmt=con.prepareStatement(sql2);
+			pstmt.setInt(1, s_num);
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setRe_avg(rs.getDouble("avg(re_point)"));
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

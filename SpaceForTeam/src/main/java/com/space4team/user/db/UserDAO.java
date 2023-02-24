@@ -56,7 +56,6 @@ private Connection con=null;
 		}
 		return;
 	}
-	
 	public UserDTO getUserId(String id) {
 		UserDTO dto=null;
 		Connection con =null;
