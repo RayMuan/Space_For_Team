@@ -27,20 +27,13 @@ public class SpaceFrontController extends HttpServlet{
 		ActionForward forward=null;
 		Action action=null;
 		
-<<<<<<< HEAD
 		if(sPath.equals("/SpaceInfoPro.sp")) {
-			
-=======
-		if(sPath.equals("/SpaceInfo.sp")) {
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 			action=new SpaceInfoPro();
 			try {
 				forward=action.execute(request, response);
-			} catch (Exception e) {
+			}catch (Exception e) {
 				e.printStackTrace();
 			}
-<<<<<<< HEAD
-		
 		} else if(sPath.equals("/SpaceInsertForm.sp")) {
 			System.out.println("spaceinsertForm.sp 실행전");
 			
@@ -88,7 +81,6 @@ public class SpaceFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 		} else if(sPath.equals("/SpaceDeleteForm.sp")) {
 			System.out.println("spacedelteform 까지옴");
 			
@@ -98,13 +90,14 @@ public class SpaceFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
 		} else if(sPath.equals("/SpaceDeletePro.sp")) {
 			
 			action = new SpaceDeletePro();
 			try {
 				forward = action.execute(request, response);
-=======
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(sPath.equals("/MainPro.sp")) {
 			action=new MainPro();
 			try {
@@ -123,7 +116,6 @@ public class SpaceFrontController extends HttpServlet{
 			action=new HostPro();
 			try {
 				forward=action.execute(request, response);
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
