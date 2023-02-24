@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
+<<<<<<< master
 	<Resource name = "jdbc/MysqlDB" 
 			  auth = "Container"
 			  type = "javax.sql.DataSource"
@@ -9,4 +10,15 @@
 			  password = "1234"
 			  >
 	</Resource>
+=======
+<!-- 	자원이름 관리자 저장된타입 드라이버 디비주소 디비접속유저 디비접속비번		 -->
+	<Resource name="jdbc/MysqlDB"
+			  auth="Container"
+			  type="javax.sql.DataSource"
+			  driverClassName="com.mysql.cj.jdbc.Driver"
+			  url="jdbc:mysql://db.itwillbs.dev:3306/class1_221020_team4"
+			  username="class1_221020_team4"
+			  password="1234"
+	/>
+>>>>>>> f8cec2a Delete SpaceForTeam/src/main/webapp/META-INF directory
 </Context>
