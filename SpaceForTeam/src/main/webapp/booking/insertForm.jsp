@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/RayMuan/Space_For_Team.git
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,7 +14,7 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body class="d-flex flex-column">
         <main class="flex-shrink-0">
