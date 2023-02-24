@@ -86,7 +86,7 @@ public class UserFrontController extends HttpServlet{
 			forward.setRedirect(false);
 		}else if(sPath.equals("/Main.us")) {
 			forward=new ActionForward();
-			forward.setPath("join/main.jsp");
+			forward.setPath("main/host.jsp");
 			forward.setRedirect(false);
 		}
 	

@@ -34,6 +34,7 @@ public class HostInsertPro implements Action{
 		System.out.println("HostDAO주소 :"+dao);
 
 		dao.insertHost(dto);
+
 		ActionForward forward = new ActionForward();
 		forward.setPath("Main.ho");
 		forward.setRedirect(true);
