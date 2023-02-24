@@ -2,12 +2,8 @@ package com.space4team.booking.db;
 
 import java.sql.Timestamp;
 
-import com.space4team.space.db.SpaceDTO;
-import com.space4team.user.db.UserDTO;
-
 public class BookingDTO {
-	SpaceDTO dto = new SpaceDTO();
-	UserDTO dto2 = new UserDTO();
+
 	private int bk_num;
 	private int s_num;
 //	= dto.getS_num();

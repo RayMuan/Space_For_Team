@@ -12,7 +12,7 @@ public class ReviewDTO {
 	private String re_reply;
 	private double re_avg;
 	private String re_user_id;
-	
+
 	//get set
 	public int getRe_num() {
 		return re_num;
