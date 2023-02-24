@@ -64,7 +64,7 @@ public class SpaceDTO {
 	public void setS_sido(String s_sido) {
 		this.s_sido = s_sido;
 	}
-	public String getS_sigungu() {
+	public String getS_gungu() {
 		return s_gungu;
 	}
 	public void setS_gungu(String s_gungu) {
