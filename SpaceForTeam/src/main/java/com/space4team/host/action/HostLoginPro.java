@@ -24,7 +24,7 @@ public class HostLoginPro implements Action {
 		
 		// SpaceDAO 객체생성
 		HostDAO dao=new HostDAO();
-		// SpaceDTO = hostCheck() 메서드호출
+		// SpaceDTO = hostCheck() 메서드호출.
 		HostDTO dto=dao.hostCheck(h_id, h_pass);
 		
 		// dto != null 아이디 비밀번호 일치 세션값 생성 MemberMain.me 이동
