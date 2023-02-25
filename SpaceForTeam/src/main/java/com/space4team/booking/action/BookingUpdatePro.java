@@ -41,6 +41,8 @@ public class BookingUpdatePro implements Action{
 		dto.setBk_usercount(bk_usercount);
 		dto.setBk_starttime(bk_starttime);
 		dto.setBk_endtime(bk_endtime);
+		dto.setBk_usetime(bk_usetime);
+		dto.setBk_price(bk_price);
 		// BookingDTO 객체생성
 		
 		// 리턴할형 없음 updateBooking(BookingDTO dto) 매서드 정의
