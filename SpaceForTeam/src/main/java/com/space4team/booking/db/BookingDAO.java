@@ -282,4 +282,74 @@ public void deleteBooking(int bk_num) {
 	}
 }//deleteBooking
 
+public int getUser_num(String id) {
+	int user_num = 0;
+	
+	Connection con = null;
+	PreparedStatement pstmt=null;
+	ResultSet rs = null;
+	
+	try { 
+		con = getConnection();
+
+ 	String sql = "select user_num from booking where id = ?";
+ 	pstmt = con.prepareStatement(sql);
+ 	pstmt.setString(1,id);
+ 	
+ 	rs = pstmt.executeQuery();
+ 	if(rs.next()) {
+ 		user_num = rs.getInt("user_num");
+ 	}
+} catch (Exception e) {
+	e.printStackTrace();
+} finally {
+	if(pstmt!=null)try {
+		pstmt.close();
+		} catch (Exception e2) {}
+	if(con!=null)try {
+		con.close();
+		} catch (Exception e2) {}	
+	if(rs!=null)try {
+		rs.close();
+		} catch (Exception e2) {}
+}
+return user_num;
+
+	} //selectUser_num
+public int getS_bill(int bk_num) {
+	int s_bill = 0;
+	
+	Connection con = null;
+	PreparedStatement pstmt=null;
+	ResultSet rs = null;
+	
+	try { 
+		con = getConnection();
+
+ 	String sql = "select s_bill from space where s_num = (select s_num from booking where bk_num=?)";
+ 	pstmt = con.prepareStatement(sql);
+ 	pstmt.setInt(1,bk_num);
+ 	
+ 	rs = pstmt.executeQuery();
+ 	if(rs.next()) {
+ 		s_bill = rs.getInt("s_bill");
+ 	}
+} catch (Exception e) {
+	e.printStackTrace();
+} finally {
+	if(pstmt!=null)try {
+		pstmt.close();
+		} catch (Exception e2) {}
+	if(con!=null)try {
+		con.close();
+		} catch (Exception e2) {}	
+	if(rs!=null)try {
+		rs.close();
+		} catch (Exception e2) {}
+}
+return s_bill;
+
+	} //selectUser_num
+
+
 }
