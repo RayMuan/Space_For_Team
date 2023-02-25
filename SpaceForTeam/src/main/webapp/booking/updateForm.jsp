@@ -84,7 +84,9 @@
 <tr><td colspan ="2"><input type="submit" value="예약수정"></td></tr>
  
                                 <form action="BookingUpdatePro.bk" method="post" name="fr">
-    								<input type ="hidden" name ="num" id="uc" value="<%=dto.getBk_num() %>">
+    								<input type ="hidden" name ="bk_num" id="bk_num" value="<%=dto.getBk_num() %>">
+    								
+    							
     								<div class="form-floating mb-3">
                                         <input class="form-control" type="number" name ="bk_usercount" value="<%=dto.getBk_usercount() %>"min="1" max="20" />
                                         <label for="bk_usercount">예약인원</label>       

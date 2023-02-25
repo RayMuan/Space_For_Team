@@ -88,7 +88,7 @@
  <%
  int s_no = Integer.parseInt(request.getParameter("s_no"));
  int s_bill = Integer.parseInt(request.getParameter("s_bill"));
- 
+ String id = (String)session.getAttribute("id");
  %>
  </script>
  
@@ -101,7 +101,11 @@
     				<div class="form-floating mb-3">
                             <input class="form-control" id="s_bill" name="s_bill" type="hidden" data-sb-validations="required" />                      
                     </div>
-                   
+                    
+                    <div class="form-floating mb-3">
+                            <input class="form-control" id="id" name="id" type="hidden" data-sb-validations="required" />                      
+                    </div>
+
                     <div class="form-floating mb-3">
                             <input class="form-control" id="uc" name="bk_usercount" type="number" data-sb-validations="required" min="1" max="20"/>
                             <label for="bk_usercount">예약인원</label>       
