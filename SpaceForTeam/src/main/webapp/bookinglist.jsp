@@ -35,7 +35,7 @@ BookingDTO dto=bookingList.get(i);
 	%>
 	
 <!-- 	글제목을 눌렀을 때 글내용으로 하이퍼링크 -->
-<tr><td><a href="BookingContent.bk?num=<%=dto.getBk_num() %>"><%=dto.getBk_num() %></a></td>
+<tr><td><a href="BookingContent.bk?num=<%=dto.getBk_num() %>"><%=dto.getBk_num() %></a></td>     
 	<td><%=dto.getBk_usedate() %></td>
 	<td><%=dto.getBk_usercount() %></td>
 	<td><%=dto.getBk_starttime() %>시</td>

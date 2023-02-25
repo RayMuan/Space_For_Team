@@ -20,7 +20,6 @@ BookingDTO dto = (BookingDTO)request.getAttribute("dto");
 <h1>[로그인 : <%=id %>]</h1>
 <table border="1">
 <tr><td>예약번호</td><td><%=dto.getBk_num() %></td></tr>
-<tr><td>유저번호</td><td><%=dto.getUser_num() %></td></tr>
 <tr><td>공간번호</td><td><%=dto.getS_num() %></td></tr>
 <tr><td>예약인원</td><td><%=dto.getBk_usercount() %></td></tr>
 <tr><td>예약날짜</td><td><%=dto.getBk_date() %></td></tr>
@@ -34,10 +33,10 @@ BookingDTO dto = (BookingDTO)request.getAttribute("dto");
 
 <%
 // 로그인 => 세션값 존재
-UserDTO dto2 = new UserDTO();
-if(id != null){
+// UserDTO dto2 = new UserDTO();
+// if(id != null){
 // 	글쓴이 세션값이 일치하면 자기자신이 쓴 글(글수정, 글삭제 보이기)
-		if(id.equals(dto2.getUser_id())){
+// 		if(id.equals(dto2.getUser_id())){
 %>
 
 <input type= "button" value="예약수정" 
@@ -48,8 +47,8 @@ if(id != null){
  onclick = "location.href='결제  ?num=<%=dto.getBk_num() %>'">
 <%
 //예약삭제는 따로 form이 없고 클릭시 경고 뜨는 방향으로 해결
-		}
-}
+// 		}
+// }
 %>
 
 </table>
