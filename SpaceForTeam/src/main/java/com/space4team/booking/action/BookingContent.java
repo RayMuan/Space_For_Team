@@ -12,7 +12,7 @@ public class BookingContent implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("BookingContent execute()");
-		int bk_num = Integer.parseInt(request.getParameter("bk_num"));
+		int bk_num = Integer.parseInt(request.getParameter("num"));
 		
 		BookingDAO dao = new BookingDAO();
 		BookingDTO dto = dao.getBooking(bk_num);
