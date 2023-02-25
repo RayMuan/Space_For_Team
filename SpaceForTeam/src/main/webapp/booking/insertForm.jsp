@@ -1,4 +1,5 @@
 
+<%@page import="com.mysql.cj.Session"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -83,10 +84,24 @@
 	
 	document.fr.submit();
  }
+ 
+ <%
+ int s_no = Integer.parseInt(request.getParameter("s_no"));
+ int s_bill = Integer.parseInt(request.getParameter("s_bill"));
+ 
+ %>
  </script>
  
                 <form action="BookingInsertPro.bk" method="post" id="bookingForm" name="fr">
     
+    				<div class="form-floating mb-3">
+                            <input class="form-control" id="s_num" name="s_num" type="hidden" data-sb-validations="required" />  
+                                               
+                    </div>
+    				<div class="form-floating mb-3">
+                            <input class="form-control" id="s_bill" name="s_bill" type="hidden" data-sb-validations="required" />                      
+                    </div>
+                   
                     <div class="form-floating mb-3">
                             <input class="form-control" id="uc" name="bk_usercount" type="number" data-sb-validations="required" min="1" max="20"/>
                             <label for="bk_usercount">예약인원</label>       
@@ -106,9 +121,11 @@
                              <label for="bk_starttime">시작시간</label>
                     </div>
                     <div class="form-floating mb-3">
-                             <input class="form-control" id="et" name="bk_endtime" type="number"  min="0" max="24"data-sb-validations="required,email" />
+                             <input class="form-control" id="et" name="bk_endtime" type="number"  min="0" max="24"data-sb-validations="required" />
                              <label for="bk_endtime">종료시간</label>                            
-                    </div>
+                    </div>   
+                    
+                    
                     <div id="d"></div>  
                                   <!-- Submit Button-->
 <!--                                     <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">공간예약</button></div> -->
