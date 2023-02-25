@@ -187,4 +187,33 @@ public class ReviewDAO {
 		}
 	} //insertReview
 	
+	public void deleteReview(int re_num) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		try {
+			con=getConnection();
+			String sql="select * from review where re_num=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, re_num);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				sql="delete from review where re_num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, re_num);
+				
+				pstmt.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(con!=null) try {pstmt.close();}catch (Exception e2) {}
+			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
+		}
+	} // deleteReview
+	
 }//class

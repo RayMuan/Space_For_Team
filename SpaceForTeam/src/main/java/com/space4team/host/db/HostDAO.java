@@ -126,7 +126,7 @@ public class HostDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select h_name, h_phone from host where h_num=?";
+			String sql="select h_id, h_name, h_phone from host where h_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, h_num);
 
@@ -134,6 +134,7 @@ public class HostDAO {
 			if(rs.next()){
 				dto=new HostDTO();
 				
+				dto.setH_id(rs.getString("h_id"));
 				dto.setH_name(rs.getString("h_name"));
 				dto.setH_phone(rs.getString("h_phone"));
 			}

@@ -79,7 +79,6 @@ private Connection con=null;
 				dto.setQ_recontent(rs.getString("q.q_recontent"));
 				dto.setQ_redate(rs.getTimestamp("q_redate"));
 				dto.setQ_user_id(rs.getString("u.user_id"));
-				dto.setQ_host_name(rs.getString("h.h_name"));
 				dto.setQ_s_num(rs.getInt("s.s_num"));
 				
 				qnaList.add(dto);
@@ -100,13 +99,13 @@ private Connection con=null;
 		int count=0;
 		try {
 			con=getConnection();
-			String sql="select count(q_num) from qna where s_num=?";
+			String sql="select count(q.q_num),s.s_num from qna q join space s on q.h_num=s.h_num group by s.s_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, s_num);
 			rs=pstmt.executeQuery();
 			
 			if(rs.next()) {
-				count=rs.getInt("count(q_num)");
+				count=rs.getInt("count(q.q_num)");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

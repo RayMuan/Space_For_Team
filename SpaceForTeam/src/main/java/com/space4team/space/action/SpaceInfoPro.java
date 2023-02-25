@@ -14,43 +14,64 @@ import com.space4team.review.db.ReviewDAO;
 import com.space4team.review.db.ReviewDTO;
 import com.space4team.space.db.SpaceDAO;
 import com.space4team.space.db.SpaceDTO;
+import com.space4team.user.db.UserDAO;
+import com.space4team.user.db.UserDTO;
 
+// 공간 *
+// 리뷰 	유저 : ruid 날짜 별점 내용 평점
+// 		호스트 : 날짜 내용
+// qna 유저 :quid 날짜 내용
+// 		 호스트 :날짜 내용
+
+// host 아이디 이름 전화번호
 public class SpaceInfoPro implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("SpaceInfo execute()");
 		
-		int s_num=Integer.parseInt(request.getParameter("s_num"));
+		int s_num=51;
+		request.setAttribute("num", s_num);
+		//Integer.parseInt(request.getParameter("num"));
+		// System.out.println(s_num);
+				
+		HttpSession session=request.getSession();
+		
+		String user_id="kim";
+
+		
+//		String referer=request.getHeader("referer");
+//		if(referer=="http://localhost:8080/SpaceForTeam/UserPro.sp") {
+//			String user_id=(String)session.getAttribute("id");
+			session.setAttribute("user_id", user_id);
+//			
+//			UserDAO udao=new UserDAO();
+//			UserDTO udto=udao.getReviewUser(user_id);
+//		}else if(referer=="http://localhost:8080/SpaceForTeam/HostPro.sp") {
+//			String host_id=(String)session.getAttribute("id");
+//			session.setAttribute("host_id", host_id);
+//		}
+
+		
+		
 		SpaceDAO sdao=new SpaceDAO();
 		SpaceDTO sdto=sdao.getSpace(s_num);
 		request.setAttribute("sdto", sdto);
 		
-		HttpSession session=request.getSession();
-		String id=(String)session.getAttribute("id");
-		request.setAttribute("id", id);
-		
-		// 공간 *
-		// 리뷰 	유저 날짜  별점 내용 평점
-		// 		호스트 날짜 내용
-		// qna 유저 날짜 내용
-		// 		 호스트 날짜 내용
-		
-		// user id 
-		// host 아이디 이름 전화번호
-		
-		
-		// 유저인지 호스트인지
-		
 		HostDAO hdao=new HostDAO();
 		HostDTO hdto=hdao.getHostInfo(sdto.getH_num());
+		request.setAttribute("hdto", hdto);
+		
 		
 		ReviewDAO redao=new ReviewDAO();
 		ReviewDTO redto=redao.getReview(s_num);
 		ReviewDTO re_avg=redao.getRe_avg(s_num);
+		request.setAttribute("redto", redto);
+		request.setAttribute("re_avg", re_avg);
 		
 		QnaDAO qdao=new QnaDAO();
 		QnaDTO qdto=qdao.getQna(s_num);
+		request.setAttribute("qdto", qdto);
 
 		//review
 		//review page
@@ -92,15 +113,7 @@ public class SpaceInfoPro implements Action{
 			q_endPage = q_pageCount;
 		}
 		
-
-		
-		// setAttribute dto
-		request.setAttribute("sdto", sdto);
-		request.setAttribute("hdto", hdto);
-		request.setAttribute("redto", redto);
-		request.setAttribute("qdto", qdto);
-		request.setAttribute("re_avg", re_avg);
-		
+		request.setAttribute("num", s_num);
 		// setAttribute re_page
 		request.setAttribute("re_currentPage", re_currentPage);
 		request.setAttribute("re_startPage", re_startPage);
@@ -120,6 +133,8 @@ public class SpaceInfoPro implements Action{
 		// setAttribute qna
 		request.setAttribute("qnaList",qnaList);
 		request.setAttribute("q_pageCount", q_pageCount);
+		
+		System.out.println("spaceInfoPro finsh");
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("spaceInfo.jsp");

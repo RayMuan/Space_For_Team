@@ -11,7 +11,6 @@ public class QnaDTO {
 	private String q_recontent;
 	private Timestamp q_redate;
 	private String q_user_id;
-	private String q_host_name;
 	private int q_s_num;
 	
 	//get set
@@ -62,12 +61,6 @@ public class QnaDTO {
 	}
 	public void setQ_user_id(String q_user_id) {
 		this.q_user_id = q_user_id;
-	}
-	public String getQ_host_name() {
-		return q_host_name;
-	}
-	public void setQ_host_name(String q_host_name) {
-		this.q_host_name = q_host_name;
 	}
 	public int getQ_s_num() {
 		return q_s_num;

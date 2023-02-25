@@ -14,19 +14,6 @@ public class SpaceDTO {
 	private String s_file;
 	
 	
-	public String getS_file() {
-		return s_file;
-	}
-	public void setS_file(String s_file) {
-		this.s_file = s_file;
-	}
-	
-	public String getS_max() {
-		return s_max;
-	}
-	public void setS_max(String s_max) {
-		this.s_max = s_max;
-	}
 	// get set
 	public int getS_num() {
 		return s_num;
@@ -81,6 +68,19 @@ public class SpaceDTO {
 	}
 	public void setS_opt(String s_opt) {
 		this.s_opt = s_opt;
+	}
+	public String getS_file() {
+		return s_file;
+	}
+	public void setS_file(String s_file) {
+		this.s_file = s_file;
+	}
+	
+	public String getS_max() {
+		return s_max;
+	}
+	public void setS_max(String s_max) {
+		this.s_max = s_max;
 	}
 	
 }// class

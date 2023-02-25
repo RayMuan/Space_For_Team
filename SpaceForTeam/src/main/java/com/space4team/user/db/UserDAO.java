@@ -57,6 +57,7 @@ private Connection con=null;
 		}
 		return;
 	}
+	
 	public UserDTO getUserId(String id) {
 		UserDTO dto=null;
 		Connection con =null;
@@ -72,9 +73,7 @@ private Connection con=null;
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				dto=new UserDTO();
-				
 				dto.setUser_id(rs.getString("user_id"));
-				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -162,7 +161,7 @@ private Connection con=null;
 		return dto;
 	}//userCheck()
 	
-	public UserDTO getReviewUser(int re_user_num) {
+	public UserDTO getReviewUser(String re_user_id) {
 		UserDTO re_udto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -170,15 +169,15 @@ private Connection con=null;
 		
 		try {
 			con=getConnection();
-			String sql="select * from user where user_num=?";
+			String sql="select user_id, user_num from user where user_id=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, re_user_num);
+			pstmt.setString(1, re_user_id);
 			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				re_udto=new UserDTO();
-				re_udto.setUser_num(re_user_num);
-				re_udto.setUser_id(rs.getString("user_id"));
+				re_udto.setUser_id(re_user_id);
+				re_udto.setUser_num(rs.getInt("user_num"));
 				}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -188,6 +187,6 @@ private Connection con=null;
 			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 		}
 		return re_udto;
-	}// getInfoReview (User_num -> User_id)
+	}// getInfoReview (User_id User_num)
 	
 }//class

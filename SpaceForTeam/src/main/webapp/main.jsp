@@ -4,12 +4,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>SpaceForTeam - search your space !</title>
+        <title>Modern Business - Start Bootstrap Template</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -23,38 +24,26 @@
 <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
-           
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">                
-                    <a class="navbar-brand" href="index.html">SpaceForTeam</a> 
+                    <a class="navbar-brand" href="index.html">Space for team</a>
+                    
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="MainPro.sp">Home</a></li>                   
-                            <li class="nav-item"><a class="nav-link" href="join.jsp">Join</a></li>
+                            <li class="nav-item"><a class="nav-link" href="faq.html">공지사항</a></li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">회원가입</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="userloginform.jsp">Guest</a></li>
-                                     <li><a class="dropdown-item" href="hostLogin.jsp">Host</a></li>
+                                    <li><a class="dropdown-item" href="MemberLoginPro.sp">게스트 회원가입</a></li>
+                                    <li><a class="dropdown-item" href="blog-post.html">호스트 회원가입</a></li>
                                 </ul>
                             </li>
-                            
-                            <%
-//                             	String id = "";
-								String id=(String)session.getAttribute("id");
-								if(id!=null){
-									%>
-									<li class="nav-item"><a class="nav-link" href="UserLogout.us">Logout</a></li>
-										<li class="nav-item"><a class="nav-link" href="UserMypage.us">Mypage</a></li>
-									<%
-										}
-									%>
-                            
-                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Community</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="NoticeList.no">Notice</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">로그인</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                    <li><a class="dropdown-item" href="user/login.jsp">게스트 로그인</a></li>
+                                    <li><a class="dropdown-item" href="host/hostLogin.jsp">호스트 로그인</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -65,19 +54,21 @@
       <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-               <h1 class="display-4 fw-bolder">Space For Team</h1>
+               <h1 class="display-4 fw-bolder">Space for team</h1>
   
 		<%
-             ArrayList<SpaceDTO> spaceList = (ArrayList<SpaceDTO>)request.getAttribute("spaceList");
+//              ArrayList<SpaceDTO> spaceList = (ArrayList<SpaceDTO>)request.getAttribute("spaceList");
       
-             int currentPage = (Integer)request.getAttribute("currentPage");
-             int startPage = (Integer)request.getAttribute("startPage");
-             int pageBlock = (Integer)request.getAttribute("pageBlock");
-             int endPage = (Integer)request.getAttribute("endPage");
-             int pageCount = (Integer)request.getAttribute("pageCount");
+//              int currentPage = (Integer)request.getAttribute("currentPage");
+//              int startPage = (Integer)request.getAttribute("startPage");
+//              int pageBlock = (Integer)request.getAttribute("pageBlock");
+//              int endPage = (Integer)request.getAttribute("endPage");
+//              int pageCount = (Integer)request.getAttribute("pageCount");
             
-             String search=(String)request.getAttribute("search");
-
+//              String search=(String)request.getAttribute("search");
+            
+             
+             
             	 %>                 
 <!-- 검색창 -->
 <form action="MainPro.sp" method="post">
@@ -90,8 +81,9 @@
 	</div> 
 </form>
 
-<div class="selmain" >  
-	<form name="form1" >
+<form>
+<div class="selmain" >
+
 		<select class="form-control" style="text-align:center; width:150px; height:35px;" name="h_area1" onChange="cat1_change(this.value,h_area2)" >
 		
    <option value="" disabled selected>시/도</option>
@@ -127,12 +119,19 @@
 <option value='15'>충남</option>
 
 <option value='16'>충북</option>
-		</select>
+</select>
 </div>
+
 <div class="selmain" >
+
   		<select class="form-control" style="text-align:center; top:20; width:150px; height:35px;" name="h_area2">
 			<option value="" disabled selected>구/군</option>
 		</select>
+	
+
+
+</div>
+
 
 <script language=javascript>
 
@@ -232,9 +231,8 @@ function cat1_change(key,sel){
 
 }
 </script>
-</form>
-</div>
-   
+  </form>
+  
     <div class="selmain">   
     <input type="number"  placeholder="인원"  min="1"  class="form-control" 
      style="display:inline-block; position: relative;  text-align:center; width:150px; height:35px; "> 
@@ -266,6 +264,9 @@ function cat1_change(key,sel){
 </div>
 </div>
 
+
+
+
             </header>
             <!-- Features section-->
                 <!-- Blog preview section-->
@@ -282,109 +283,105 @@ function cat1_change(key,sel){
                     <div class="row gx-5">
             
 	<%
-	for (int i = 0; i<spaceList.size(); i++){
-		SpaceDTO dto = spaceList.get(i);
+// 	for (int i = 0; i<spaceList.size(); i++){
+// 		SpaceDTO dto = spaceList.get(i);
 	%>            		
 <!-- 공간프리뷰 1	 -->
 <div class="col-lg-4 mb-5">
   
-    <div class="card h-100 shadow border-0" onclick="location.href='SpaceInfoPro.sp?num=<%=dto.getS_num() %>'">
-        <img class="card-img-top" src=<%=dto.getS_file() %> alt="..." />
+    <div class="card h-100 shadow border-0" onclick="location.href='SpaceInfoPro.sp?num=51'">
+<%--         <img class="card-img-top" src=<%=dto.getS_file() %> alt="..." /> --%>
         	<div class="card-body p-4">
-            	<div class="badge bg-primary bg-gradient rounded-pill mb-2"><%=dto.getS_num() %></div>
-           
-           		 <div class="text-decoration-none link-dark stretched-link" style="cursor: pointer;" ><h5 class="card-title mb-3"><%=dto.getS_name() %></h5></div>
-            	 <p class="card-text mb-0"><%=dto.getS_memo() %></p>
+<%--             	<div class="badge bg-primary bg-gradient rounded-pill mb-2"><%=dto.getS_num() %></div> --%>
+                 		                                                                                        <!-- 여기에 공간상세페이지 링크걸기! -->
+<%--            		 <div class="text-decoration-none link-dark stretched-link" style="cursor: pointer;" onclick="location.href='main.jsp';" ><h5 class="card-title mb-3"><%=dto.getS_name() %></h5></div> --%>
+<%--             	 <p class="card-text mb-0"><%=dto.getS_memo() %></p> --%>
         	</div>
-        	
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
             <div class="d-flex align-items-end justify-content-between">                    
-				<div class="d-flex align-items-center" style="font-weight: bold; font-size: 15px;">
-					<%=dto.getS_bill() %> 원  
+				<div class="d-flex align-items-center" style="font-weight: bold; font-size: 20px;">
+<%-- 					<%=dto.getS_bill() %> 원   --%>
 					
 				</div>
                              <div class="small">
                                    
                                    <div class="text-muted">
       <div class="fw-bold">
-      <i class="fa-solid fa-map-location-dot"> <%=dto.getS_sido() %></i> |
-      <i class="fa-solid fa-user fa-sm"> 최대 <%=dto.getS_max() %></i> |     
+<%--       <i class="fa-solid fa-map-location-dot"> <%=dto.getS_sido() %></i> | --%>
+<%--       <i class="fa-solid fa-user fa-sm"> 최대 <%=dto.getS_max() %></i> |      --%>
       <i class="fa-solid fa-comment fa-sm">개</i>
-     							 </div>
-                             </div> 
-                           </div>
+      
+      </div>
+                                   </div>
+                               </div>
+                           
                        </div>
-<%--          <input type="button" name="detail" value="상세페이지" onclick="location.href='SpaceInfoPro.sp?num<%=dto.getS_num()%>'"> --%>
-         
-<%--          <%if(id!=null){ --%>
-<%-- 				%> --%>
-<%-- 	 <input type="button" name="write" value="예약하기" onclick="location.href='BookingInsertForm.bk?s_num=<%=dto.getS_num()%>'">  --%>
-<%-- 				<% --%>
-
-<%-- 				%> --%>
-
-                   		
                    </div>
                </div>
            </div>
 	<%
-	}
+// 	}
 	%> 		
  <div class="page">        
 <%
-if(search == null){
-   //    검색어 없을때,, 
-      //10페이지 이전
-      if(startPage > pageBlock){
+// if(search == null){
+//    //    검색어 없을때,, 
+//       //10페이지 이전
+//       if(startPage > pageBlock){
          %>
-      <a href="UserPro.sp?pageNum=<%=startPage-pageBlock%>">이전</a>
+<%--       <a href="MainPro.sp?pageNum=<%=startPage-pageBlock%>">이전</a> --%>
          <%
-      }
-      for(int i=startPage;i<=endPage;i++){
+//       }
+//       for(int i=startPage;i<=endPage;i++){
          %>
-         <a href="UserPro.sp?pageNum=<%=i%>"><%=i %></a> 
+<%--          <a href="MainPro.sp?pageNum=<%=i%>"><%=i %></a>  --%>
          <%
-      }
+//       }
       //10페이지 다음
-      if(endPage < pageCount){
+//       if(endPage < pageCount){
          %>
-      <a href="UserPro.sp?pageNum=<%=startPage+pageBlock%>">Next</a>
+<%--       <a href="MainPro.sp?pageNum=<%=startPage+pageBlock%>">Next</a> --%>
          <%
-      }
-      }else {
-   //    검색어 있을때,,
-      //10페이지 이전
-      if(startPage > pageBlock){
+//       }
+//       }else {
+//    //    검색어 있을때,,
+//       //10페이지 이전
+//       if(startPage > pageBlock){
          %>
-      <a href="UserPro.sp?pageNum=<%=startPage-pageBlock%>&search=<%=search%>">Prev</a>
+<%--       <a href="MainPro.sp?pageNum=<%=startPage-pageBlock%>&search=<%=search%>">Prev</a> --%>
          <%
-      }
-      for(int i=startPage;i<=endPage;i++){
+//       }
+//       for(int i=startPage;i<=endPage;i++){
          %>
-         <a href="UserPro.sp?pageNum=<%=i%>&search=<%=search%>"><%=i %></a> 
+<%--          <a href="MainPro.sp?pageNum=<%=i%>&search=<%=search%>"><%=i %></a>  --%>
          <%
-      }
+//       }
       //10페이지 다음
-      if(endPage < pageCount){
+//       if(endPage < pageCount){
          %>
-      <a href="UserPro.sp?pageNum=<%=startPage+pageBlock%>&search=<%=search%>">다음</a>
+<%--       <a href="MainPro.sp?pageNum=<%=startPage+pageBlock%>&search=<%=search%>">다음</a> --%>
          <%
-      }
-}
+//       }
+// }
 %>
 </div> 
            </div>
            </div>
-         
+          
             </section>
         </main>
 
         <!-- Footer-->
-            <footer class="bg-dark py-4 mt-auto">
+        <footer class="bg-dark py-4 mt-auto">
             <div class="container px-5">
                 <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">spaceforteam</div></div>
-                    <div class="col-auto">     
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2022</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" href="#!">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
                     </div>
                 </div>
             </div>

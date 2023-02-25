@@ -62,7 +62,7 @@ public class MainPro implements Action{
 	      System.out.println("count"+count);
 	      
 	      ActionForward forward=new ActionForward();
-	      forward.setPath("usermain.jsp");
+	      forward.setPath("main.jsp");
 	      forward.setRedirect(false);
 	      return forward;
 		
