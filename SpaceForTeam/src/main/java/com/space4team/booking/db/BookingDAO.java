@@ -134,7 +134,7 @@ public class BookingDAO {
 
 
 //리턴할형 ArrayList<BookingDTO> getBookingList매서드 정의
-	public ArrayList<BookingDTO> getBookingList(int pageSize, int startRow){
+	public ArrayList<BookingDTO> getBookingList(int startRow, int pageSize){
 		
 		Connection con = null;
 		PreparedStatement pstmt=null;

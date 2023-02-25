@@ -40,7 +40,7 @@ public class BookingList implements Action{
 		int endRow = startRow + pageSize - 1; 
 
 		// ArrayList<BoardDTO> boardList = dao.getBoardList() 매서드호출
-		ArrayList<BookingDTO> bookingList = dao.getBookingList(pageSize,startRow);
+		ArrayList<BookingDTO> bookingList = dao.getBookingList(startRow, pageSize);
 		
 		
 		// 한 화면에 보여줄 페이지 개수 설정
