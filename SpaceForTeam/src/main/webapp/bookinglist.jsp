@@ -14,15 +14,20 @@
 <% 
 String id = (String)session.getAttribute("id");
 UserDTO dto2= new UserDTO();
-
-if(id != null){
+ArrayList<BookingDTO> bookingList =(ArrayList<BookingDTO>) request.getAttribute("bookingList");
+int currentPage = (Integer)request.getAttribute("currentPage");
+int	startPage = (Integer)request.getAttribute("startPage");
+int	pageBlock = (Integer)request.getAttribute("pageBlock");
+int	endPage = (Integer)request.getAttribute("endPage");
+int pageCount =(Integer)request.getAttribute("pageCount");
+// if(id != null){
 // 	글쓴이 세션값이 일치하면 자기자신이 쓴 글(글수정, 글삭제 보이기)
-		if(id.equals(dto2.getUser_id())){
+// 		if(id.equals(dto2.getUser_id())){
 %>
 <table border ="1">
 <tr><td>예약번호</td><td>사용날짜</td><td>사용인원</td><td>시작시간</td><td>종료시간</td><td>사용시간</td><td>합계가격</td></tr>
 <%
-ArrayList<BookingDTO> bookingList =(ArrayList<BookingDTO>) request.getAttribute("boardList");
+
 
 for(int i=0 ; i<bookingList.size();i++){
 // 	배열접근, 배열한칸에 내용 가져오기 => BoardDTO 저장 => 출력
@@ -30,7 +35,7 @@ BookingDTO dto=bookingList.get(i);
 	%>
 	
 <!-- 	글제목을 눌렀을 때 글내용으로 하이퍼링크 -->
-<tr><td><a href="BookingContent.bk?num=<%=dto.getBk_num() %>"></a></td>
+<tr><td><a href="BookingContent.bk?num=<%=dto.getBk_num() %>"><%=dto.getBk_num() %></a></td>
 	<td><%=dto.getBk_usedate() %></td>
 	<td><%=dto.getBk_usercount() %></td>
 	<td><%=dto.getBk_starttime() %>시</td>
@@ -38,12 +43,44 @@ BookingDTO dto=bookingList.get(i);
 	<td><%=dto.getBk_usetime() %>시간</td>
 	<td><%=dto.getBk_price() %></td></tr>
 	<%
-	}
-	}
+// 	}
+// 	}
 }
 %>
 </table>
+<%
+if(currentPage>1){
+	%>
+<a href="BoardList.bo?pageNum=<%=currentPage -1 %>">[1페이지 이전]</a>
+	<% 
+}
 
+// 10페이지 이전 (블록단위)
+if(startPage > pageBlock){
+	%>
+<a href="BoardList.bo?pageNum=<%=startPage - pageBlock %>">[10페이지 이전]</a>
+	<% 
+}
+
+for(int i=startPage;i<=endPage;i++){
+	%>
+	<a href="BoardList.bo?pageNum=<%=i %>"><%=i %></a>
+	<%
+}		
+// 다음 페이지(전체페이지수보다 작을 때) 가기 (+1p)
+if(currentPage < pageCount){
+	%>
+<a href="BoardList.bo?pageNum=<%=currentPage +1 %>">[1페이지 다음]</a>
+	<% 
+}
+// 10페이지 이후(블록단위)
+if(endPage < pageCount){
+	%>
+<a href="BoardList.bo?pageNum=<%=startPage + pageBlock %>">[10페이지 다음]</a>
+	<% 
+}
+
+%>
 
 </body>
 </html>
