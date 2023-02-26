@@ -95,6 +95,47 @@ public class UserFrontController extends HttpServlet{
 			forward=new ActionForward();
 			forward.setPath("usermypage.jsp");
 			forward.setRedirect(false);
+			
+		}else if(sPath.equals("/UserDeleteForm.us")) {
+			forward=new ActionForward();
+			forward.setPath("userdelete.jsp");
+			forward.setRedirect(false);
+		}
+		else if(sPath.equals("/UserDeletePro.us")) {
+			action=new UserDeletePro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/UserPwModifyForm.us")) {
+			action=new UserPwModifyForm();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/UserPwModifyPro.us")) {
+			action=new UserPwModifyPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/UserUpdateForm.us")){
+			action=new UserUpdateForm();
+			try {
+				forward=action.execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/UserUpdatePro.us")){
+			action=new UserUpdatePro();
+			try {
+				forward=action.execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 			
 		if(forward != null) {

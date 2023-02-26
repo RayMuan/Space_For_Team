@@ -8,11 +8,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-         <title>SpaceForTeam - search your space !</title>
+        <title>Small Business - Start Bootstrap Template</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/styles6.css" rel="stylesheet" />
         
     <style>
 .b {
@@ -57,7 +57,7 @@
 <%
 // session.setAttribute("id", 모든 참조형값); => 업캐스팅(자동형변환)
 // 자식 = 업캐스팅된 부모(다운캐스팅 명시적으로 형변환)
-// String id=(String)session.getAttribute("id");
+String id=(String)session.getAttribute("id");
 
 %>
         <!-- Responsive navbar-->
@@ -68,7 +68,6 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="MainPro.sp">Home</a></li>                   
-                            <li class="nav-item"><a class="nav-link" href="join.jsp">Join</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -76,18 +75,10 @@
                                      <li><a class="dropdown-item" href="hostLogin.jsp">Host</a></li>
                                 </ul>
                             </li>
-                            
-                            <%
-//                             	String id = "";
-								String id=(String)session.getAttribute("id");
-								if(id!=null){
-									%>
+
 									<li class="nav-item"><a class="nav-link" href="UserLogout.us">Logout</a></li>
 									<li class="nav-item"><a class="nav-link" href="UserMypage.us">Mypage</a></li>
-									<%
-										}
-									%>
-                            
+
                              <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Community</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -131,9 +122,9 @@
                             <h2 class="card-title" >예약내역</h2>
                             <p class="card-text">예약내역이 없습니다.</p>
                         </div>
-                         <div style="text-align:center">
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="BookingList.bk">바로가기</a></div>
-                    	 </div>
+                        <div style="text-align:center">
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">바로가기</a></div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
@@ -142,9 +133,9 @@
                             <h2 class="card-title">리뷰 내역</h2>
                             <p class="card-text">작성한 리뷰가 없습니다.</p>
                         </div>
-                          <div style="text-align:center">
+                        <div style="text-align:center">
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">바로가기</a></div>
-                   		  </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-5">
@@ -153,23 +144,17 @@
                             <h2 class="card-title">1:1 문의내역</h2>
                             <p class="card-text">문의내역이 없습니다.</p>
                         </div>
-                         <div style="text-align:center">
+                        <div style="text-align:center">
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">바로가기</a></div>
-                  		  </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
        
         <!-- Footer-->
-         <footer class="bg-dark py-4 mt-auto">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-white">spaceforteam</div></div>
-                    <div class="col-auto">     
-                    </div>
-                </div>
-            </div>
+        <footer class="py-5 bg-dark">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
