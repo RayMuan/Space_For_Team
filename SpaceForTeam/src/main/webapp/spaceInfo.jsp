@@ -33,9 +33,9 @@
 	int job=(int)request.getAttribute("job");
 	String id=null;
 	if(job==1){
-	id=(String)session.getAttribute("user_id");
+		id=(String)session.getAttribute("user_id");
 	}else if(job==2){
-	id=(String)session.getAttribute("host_id");		
+		id=(String)session.getAttribute("host_id");		
 	}
 	
 	session.setAttribute("id", id);
@@ -187,18 +187,18 @@
 						<%
 						if(re_startPage > pageBlock){
 						%>
-							<a href="SpaceInfoPro.sp?re_pageNum=<%=re_startPage-pageBlock%>">이전</a>
+							<a href="SpaceInfoPro.sp?num=<%=sdto.getS_num() %>&re_pageNum=<%=re_startPage-pageBlock%>">이전</a>
 						<%
 						}
 						for(int i=re_startPage;i<=endPage;i++){
 						%>
-						<a href="SpaceInfoPro.sp?re_pageNum=<%=i%>"><%=i %></a>
+						<a href="SpaceInfoPro.sp?num=<%=sdto.getS_num() %>&re_pageNum=<%=i%>"><%=i %></a>
 						<%
 						}
 						//10페이지 다음
 						if(endPage < re_pageCount){
 						%>
-						<a href="SpaceInfoPro.sp?re_pageNum=<%=re_startPage+pageBlock%>">다음</a>
+						<a href="SpaceInfoPro.sp?num=<%=sdto.getS_num() %>&re_pageNum=<%=re_startPage+pageBlock%>">다음</a>
 						<%
 						}
 						%>
@@ -243,7 +243,7 @@
 					ArrayList<QnaDTO> qnaList = (ArrayList<QnaDTO>) request.getAttribute("qnaList");
 					%>
 					<h2 class="fw-bolder mb-3">Q&amp;A</h2>
-					<%if(qnaList !=null){
+					<%
 						for (int i = 0; i < qnaList.size(); i++) {
 							qdto =qnaList.get(i);
 					%>
@@ -263,14 +263,14 @@
                     </div>
                     <%
                     	}
-					}
 					%>
-					
 					<div class="col">
 						<div class="card-body card bg-light">
 							<!-- Comment form-->
-							<form class="mb-2 col" action="ReviewWritePro.re" method="post">
-								<input type="hidden" name="num" value=<%=sdto.getS_num() %> >
+							<form class="mb-2 col" action="QnaWritePro.qa" method="post">
+								<input type="hidden" name="num" value=<%=sdto.getS_num() %>>
+								<input type="hidden" name="h_num" value=<%=hdto.getH_num() %>>
+								<input type="hidden" name="job" value=<%=job %> >
 								<textarea class="form-control col-10 mb-3"  name="re_content" rows="3" placeholder="질문을 남겨보세요!"></textarea>
 								<input type="submit" class="btn btn-secondary btn-lg px2 col-100" value="질문하기">
 							</form>
@@ -283,6 +283,8 @@
 </div>
 </section>
 </main>
+
+
 <!-- Footer-->
 <footer class="bg-dark py-4 mt-auto">
 	<div class="container px-5">

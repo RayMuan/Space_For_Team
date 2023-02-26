@@ -32,7 +32,7 @@ public class ReviewWritePro implements Action{
 				session.setAttribute("user_id", user_id);
 				UserDAO dao=new UserDAO();
 				System.out.println(user_id);
-				UserDTO dto=dao.getReviewUser(user_id);
+				UserDTO dto=dao.getUserInfo(user_id);
 				
 				int user_num=dto.getUser_num();
 				int re_point=Integer.parseInt(request.getParameter("re_point"));
@@ -53,7 +53,7 @@ public class ReviewWritePro implements Action{
 				
 				
 			ActionForward forward=new ActionForward();
-			forward.setPath("SpaceInfoPro.sp?num="+s_num);
+			forward.setPath("SpaceInfoPro.sp");
 			forward.setRedirect(false);
 			return forward;
 	}

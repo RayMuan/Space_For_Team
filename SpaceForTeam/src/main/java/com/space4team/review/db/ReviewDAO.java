@@ -26,8 +26,6 @@ public class ReviewDAO {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs= null;
-		
-		
 		try {
 			con=getConnection();
 			String sql="select * from review where s_num=?";
@@ -87,7 +85,7 @@ public class ReviewDAO {
 			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 		}
 		return dto;
-	}// getReview
+	}// getReview_avg
 	
 	public ArrayList<ReviewDTO> getReviewList(int s_num, int re_startRow, int re_pageSize){
 		ArrayList<ReviewDTO> reviewList=new ArrayList<ReviewDTO>();

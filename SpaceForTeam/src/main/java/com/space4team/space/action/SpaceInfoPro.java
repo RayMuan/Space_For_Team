@@ -34,10 +34,9 @@ public class SpaceInfoPro implements Action{
 		//Integer.parseInt(request.getParameter("num"));
 		// System.out.println(s_num);
 				
-		HttpSession session=request.getSession();
 		
+		HttpSession session=request.getSession();
 		String user_id="kim";
-		String host_id=null;
 		// 0> null 1> user 2>host
 		int job=0;
 		
@@ -57,14 +56,12 @@ public class SpaceInfoPro implements Action{
 //		}
 		request.setAttribute("job", job);
 
-		
-		
 		SpaceDAO sdao=new SpaceDAO();
 		SpaceDTO sdto=sdao.getSpace(s_num);
 		request.setAttribute("sdto", sdto);
 		
 		HostDAO hdao=new HostDAO();
-		HostDTO hdto=hdao.getHostInfo(sdto.getH_num());
+		HostDTO hdto=hdao.getHostInfo(sdto.getH_num()); // 주인 이름 아이디 번호
 		request.setAttribute("hdto", hdto);
 		
 		

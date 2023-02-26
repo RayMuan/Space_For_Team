@@ -161,7 +161,7 @@ private Connection con=null;
 		return dto;
 	}//userCheck()
 	
-	public UserDTO getReviewUser(String re_user_id) {
+	public UserDTO getUserInfo(String re_user_id) {
 		UserDTO re_udto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -187,6 +187,6 @@ private Connection con=null;
 			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 		}
 		return re_udto;
-	}// getInfoReview (User_id User_num)
+	}// getuserInfo (User_id User_num)
 	
 }//class

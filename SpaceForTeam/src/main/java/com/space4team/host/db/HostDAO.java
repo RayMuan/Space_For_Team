@@ -126,7 +126,7 @@ public class HostDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select h_id, h_name, h_phone from host where h_num=?";
+			String sql="select h_id, h_name, h_phone, h_num from host where h_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, h_num);
 
@@ -137,6 +137,7 @@ public class HostDAO {
 				dto.setH_id(rs.getString("h_id"));
 				dto.setH_name(rs.getString("h_name"));
 				dto.setH_phone(rs.getString("h_phone"));
+				dto.setH_num(h_num);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -146,7 +147,7 @@ public class HostDAO {
 			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
 		return dto;
-	}//getHostName, Phone
+	}//getHost Name, Phone, Num
 
 	
 	public HostDTO hostCheck(String h_id, String h_pass) {
@@ -314,4 +315,5 @@ public class HostDAO {
 		}
 		return dto;
 	}//getMember()
+	
 }//class
