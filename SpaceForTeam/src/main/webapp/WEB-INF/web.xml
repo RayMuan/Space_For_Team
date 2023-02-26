@@ -82,6 +82,16 @@
 		<servlet-name>NoticeFrontController</servlet-name>
 		<url-pattern>*.no</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>PaymentFrontController</servlet-name>
+	<servlet-class>com.space4team.payment.action.PaymentFrontController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>PaymentFrontController</servlet-name>
+  	<url-pattern>*.pa</url-pattern>
+  </servlet-mapping>
   
   
 </web-app>
