@@ -70,7 +70,7 @@ public class HostDAO {
 		try {
 			con=getConnection();
 			
-			String sql="select h_id from host where h_id=?";
+			String sql="select h_id from host where h_num=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, id);
 
