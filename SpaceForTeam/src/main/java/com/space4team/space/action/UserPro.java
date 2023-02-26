@@ -17,9 +17,9 @@ public class UserPro implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("UserPro execute()");
-		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
+
 		
 		SpaceDAO dao = new SpaceDAO();
 		int pageSize = 9;

@@ -14,6 +14,8 @@ import com.space4team.review.db.ReviewDAO;
 import com.space4team.review.db.ReviewDTO;
 import com.space4team.space.db.SpaceDAO;
 import com.space4team.space.db.SpaceDTO;
+import com.space4team.user.db.UserDAO;
+import com.space4team.user.db.UserDTO;
 
 
 // 공간 *
@@ -35,22 +37,21 @@ public class SpaceInfoPro implements Action{
 		
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
-		// 0> null 1> user 2>host
-		int job=0;
+		int job=(int)session.getAttribute("job");
+		System.out.println(id);
+
+		System.out.println(job);
 		
-		
-//		String referer=request.getHeader("referer");
-//		if(referer=="http://localhost:8080/SpaceForTeam/UserPro.sp") {
-//			user_id=(String)session.getAttribute("id");
-			job=1;
-//			
-//			UserDAO udao=new UserDAO();
-//			UserDTO udto=udao.getReviewUser(user_id);
-//		}else if(referer=="http://localhost:8080/SpaceForTeam/HostPro.sp") {
-//			host_id=(String)session.getAttribute("id");
-//			session.setAttribute("host_id", host_id);
-//			job=2;
-//		}
+		if(job==1) {
+			// user	
+			UserDAO udao=new UserDAO();
+			UserDTO udto=udao.getUserInfo(id);
+			request.setAttribute("udto", udto);
+		}else if(job==2) {
+			// host
+			
+		}
+		System.out.println("job="+job);
 		request.setAttribute("job", job);
 
 		SpaceDAO sdao=new SpaceDAO();
@@ -121,7 +122,7 @@ public class SpaceInfoPro implements Action{
 			q_endPage = q_pageCount;
 		}
 		
-		request.setAttribute("num", s_num);
+		request.setAttribute("s_num", s_num);
 		// setAttribute re_page
 		request.setAttribute("re_currentPage", re_currentPage);
 		request.setAttribute("re_startPage", re_startPage);

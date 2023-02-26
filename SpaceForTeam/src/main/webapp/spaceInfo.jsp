@@ -29,13 +29,16 @@
 <main class="flex-shrink-0">
 
 <%
-	String id=(String)session.getAttribute("user_id");
+	int s_num=(int)request.getAttribute("s_num");
+
+	int job=(int)request.getAttribute("job");
+	String id=(String)session.getAttribute("id");
 	session.setAttribute("id", id);
 	System.out.println(id);
-
-	int s_num=(int)request.getAttribute("num");
+	
+	
 	System.out.println(s_num);
-	request.setAttribute("num", s_num);
+	request.setAttribute("s_num", s_num);
 	
 	SpaceDTO sdto = (SpaceDTO) request.getAttribute("sdto");
 	HostDTO hdto = (HostDTO) request.getAttribute("hdto");
