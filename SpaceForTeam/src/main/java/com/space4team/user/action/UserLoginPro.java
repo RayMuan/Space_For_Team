@@ -32,7 +32,7 @@ public class UserLoginPro implements Action {
 		if(dto!=null) {
 			//아이디 비밀번호 일치
 			HttpSession session=request.getSession();
-			session.setAttribute("user_id", user_id);
+			session.setAttribute("id", user_id);
 			// 공통 페이지에서 유저/호스트 나누는 코드
 			session.setAttribute("job", 1);
 			

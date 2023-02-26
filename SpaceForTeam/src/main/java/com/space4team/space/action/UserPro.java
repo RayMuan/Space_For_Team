@@ -13,7 +13,6 @@ import com.space4team.space.db.SpaceDTO;
 
 
 public class UserPro implements Action{
-
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("UserPro execute()");

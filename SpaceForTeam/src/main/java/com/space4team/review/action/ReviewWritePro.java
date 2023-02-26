@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.space4team.host.db.HostDAO;
-import com.space4team.host.db.HostDTO;
 import com.space4team.review.db.ReviewDAO;
 import com.space4team.review.db.ReviewDTO;
 import com.space4team.user.db.UserDAO;
@@ -27,10 +25,10 @@ public class ReviewWritePro implements Action{
 			ReviewDTO redto=new ReviewDTO();
 			HttpSession session=request.getSession();
 			String id=(String)session.getAttribute("id");
-			int job=(int)session.getAttribute("job");
+			int job=(Integer)session.getAttribute("job");
 			System.out.println("job="+job);
 				
-			if( job == 1) {
+			if(job == 1) {
 				UserDAO dao=new UserDAO();
 				System.out.println(id);
 				UserDTO dto=dao.getUserInfo(id);

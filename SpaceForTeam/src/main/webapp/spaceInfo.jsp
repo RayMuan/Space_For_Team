@@ -104,7 +104,7 @@
 					<div class="card-body">
 						<div class="row gx-5">
 							<!-- Comment form-->
-							<form class="mb-4 col" method="post">
+							<form class="mb-4 col" method="post" action="ReviewWritePro.re">
 								<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
 								<select class="btn btn-outline-dark text-center" name="re_point">
 									<option class="text-center" value="5">★★★★★</option>
@@ -113,7 +113,7 @@
 									<option class="text-center" value="2">★★☆☆☆</option>
 									<option class="text-center" value="1">★☆☆☆☆</option>
 								</select>
-								<input type="button" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기" onclick="location.href='/ReviewWritePro.re'">
+								<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기" >
 								<textarea class="form-control col-10"  name="re_content" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
 							</form>
 						</div>
