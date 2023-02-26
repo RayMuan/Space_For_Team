@@ -30,7 +30,7 @@
 
 <%
 	int s_num=(int)request.getAttribute("s_num");
-	int job=(Integer)request.getAttribute("job");
+	int job=(Integer)session.getAttribute("job");
 	
 	String id=(String)session.getAttribute("id");
 	System.out.println(id);
@@ -104,6 +104,9 @@
 					<div class="card-body">
 						<div class="row gx-5">
 							<!-- Comment form-->
+							<% 
+							if(job==1){
+							%>
 							<form class="mb-4 col" action="ReviewWritePro.re" method="post" >
 								<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
 								<select class="btn btn-outline-dark text-center" name="re_point">
@@ -116,6 +119,9 @@
 								<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기" >
 								<textarea class="form-control col-10"  name="re_content" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
 							</form>
+							<%
+							}
+							%>
 						</div>
 						<!-- User comment -->
 						<%
@@ -148,9 +154,6 @@
 										<div><%=redto.getRe_content() %></div>
 									</div>
 									<!-- Host reply -->
-									<%
-									if(redto.getRe_reply() != null){
-									%>
 									<div class="ms-3">
 										<div class="d-flex mt-3 mb-4 ">
 											<div class="ms-3 p-sm-4 bg-dark bg-opacity-25 col-5">
@@ -162,12 +165,14 @@
 											</div>
 										</div>
 									</div>
-									<%
-									}
-									%>
+									<form class="mb-4 col" action="ReviewWritePro.re" method="post" >
+										<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
+										<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="답글 달기" >
+										<textarea class="form-control col-10"  name="re_reply" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+									</form>
 								</div>
 							</li>
-							<%
+							<% 
 							}
 						}
 						%>
