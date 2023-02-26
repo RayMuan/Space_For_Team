@@ -213,8 +213,7 @@ import com.space4team.host.db.HostDTO;
 			}
 			return count;
 		}// getspaceCount(HostDTO hdto)
-		
-		
+	
 		public ArrayList<SpaceDTO> getSpaceList(int startRow,int pageSize, String search){
 			System.out.println("SpaceDAO getSpaceList search()");
 			Connection con=null;
@@ -223,7 +222,7 @@ import com.space4team.host.db.HostDTO;
 			ArrayList<SpaceDTO> spaceList=new ArrayList<>();
 			try {
 				con=getConnection();
-				String sql="select * from space  where s_name like ? order by s_num desc limit ?,?";
+				String sql="select * from space where s_name like ? order by s_num desc limit ?,?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, "%"+search+"%");
 				pstmt.setInt(2, startRow-1);
@@ -251,6 +250,8 @@ import com.space4team.host.db.HostDTO;
 			}
 			return spaceList;
 		}//getSpaceList(int startRow,int pageSize, String search)
+		
+	
 		
 		public int getSpaceCount(String search) {
 			System.out.println("search count");
@@ -282,6 +283,8 @@ import com.space4team.host.db.HostDTO;
 			return count;
 		}// getspaceCount()
 		
+		
+		
 //		 호스트
 		public ArrayList<SpaceDTO> getSpaceList(int startRow, int pageSize, HostDTO hdto){
 			System.out.println("getSpaceList()");
@@ -310,6 +313,7 @@ import com.space4team.host.db.HostDTO;
 					dto.setS_address(rs.getString("s_address"));
 					dto.setS_memo(rs.getString("s_memo"));
 					dto.setS_max(rs.getString("s_max"));
+					dto.setH_num(rs.getInt("h_num"));
 					
 					spaceList.add(dto);
 				}

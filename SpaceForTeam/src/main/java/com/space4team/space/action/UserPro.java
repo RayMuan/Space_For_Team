@@ -42,7 +42,7 @@ public class UserPro implements Action{
 	         spaceList=dao.getSpaceList(startRow, pageSize);
 	      }else {
 	         // 검색어 있음
-	        spaceList=dao.getSpaceList(startRow, pageSize, search);    
+	        spaceList=dao.getSpaceList(startRow, pageSize, search);
 	      }
 		
 		int pageBlock = 3;
@@ -55,6 +55,7 @@ public class UserPro implements Action{
 		}else {
 			count=dao.getSpaceCount(search);
 		}
+		  System.out.println("count"+count);
 		
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);
 		if(endPage > pageCount) {
@@ -70,7 +71,7 @@ public class UserPro implements Action{
 	      request.setAttribute("endPage", endPage);
 	      request.setAttribute("pageCount", pageCount);
 	      
-	      System.out.println("count"+count);
+	    
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("usermain.jsp");
