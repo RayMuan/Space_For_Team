@@ -28,11 +28,13 @@ public class BookingFrontController extends HttpServlet{
 		Action action =null;
 
 		if(sPath.equals("/BookingInsertForm.bk")) {
-			System.out.println("/BookingInsertForm.bk");
-			forward = new ActionForward();
-			forward.setPath("bookinginsertform.jsp");
-			forward.setRedirect(false);
-
+			System.out.println("/BookingInserform.bk");
+			action = new BookingInsertForm();
+			try {
+				forward = action.execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		} else if(sPath.equals("/BookingInsertPro.bk")) {
 			System.out.println("/BookingInsertPro.bk");
 			action = new BookingInsertPro();
