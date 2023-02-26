@@ -1,4 +1,3 @@
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.space4team.qna.db.QnaDTO"%>
 <%@page import="com.space4team.user.db.UserDAO"%>
 <%@page import="java.util.ArrayList"%>
@@ -29,15 +28,8 @@
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
 
-<%	
-	int job=(int)request.getAttribute("job");
-	String id=null;
-	if(job==1){
-		id=(String)session.getAttribute("user_id");
-	}else if(job==2){
-		id=(String)session.getAttribute("host_id");		
-	}
-	
+<%
+	String id=(String)session.getAttribute("user_id");
 	session.setAttribute("id", id);
 	System.out.println(id);
 
@@ -125,14 +117,8 @@
 						</div>
 						<!-- User comment -->
 						<%
-						SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy.MM.dd");
+						if(null!="reviewList"){
 						ArrayList<ReviewDTO> reviewList =(ArrayList<ReviewDTO>)request.getAttribute("reviewList");
-						
-						int re_currentPage=(Integer)request.getAttribute("re_currentPage");
-						int re_startPage=(Integer)request.getAttribute("re_startPage");
-						int pageBlock=(Integer)request.getAttribute("pageBlock");
-						int endPage=(Integer)request.getAttribute("endPage");
-						int re_pageCount=(Integer)request.getAttribute("re_pageCount");
 						%>
 						<ul class="p-4 list-unstyled ">
 						<%
@@ -144,7 +130,7 @@
 									<div class="ms-3">
 										<div class="fw-bold d-flex align-items-center">
 											<%=redto.getRe_user_id() %>
-											<p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=dateFormat.format(redto.getRe_date()) %></p>
+											<p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date() %></p>
 										<%
 										if(id.equals(redto.getRe_user_id())){
 										%>
@@ -181,28 +167,9 @@
 							</li>
 							<%
 							}
-							%>
+						}
+						%>
 						</ul>
-						<div id="re_page_control">
-						<%
-						if(re_startPage > pageBlock){
-						%>
-							<a href="SpaceInfoPro.sp?num=<%=sdto.getS_num() %>&re_pageNum=<%=re_startPage-pageBlock%>">이전</a>
-						<%
-						}
-						for(int i=re_startPage;i<=endPage;i++){
-						%>
-						<a href="SpaceInfoPro.sp?num=<%=sdto.getS_num() %>&re_pageNum=<%=i%>"><%=i %></a>
-						<%
-						}
-						//10페이지 다음
-						if(endPage < re_pageCount){
-						%>
-						<a href="SpaceInfoPro.sp?num=<%=sdto.getS_num() %>&re_pageNum=<%=re_startPage+pageBlock%>">다음</a>
-						<%
-						}
-						%>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -212,9 +179,6 @@
 			<section class="mb-5 pt-4">
 				<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 				<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
-				<%
-// 				if()
-				%>
 				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="BookingInsertForm.bk?s_num=<%=sdto.getS_num()%>">예약하기</a>
 				<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 				<h3 class="fw-bolder mb-2 mt-5">위치</h3>
@@ -238,12 +202,11 @@
 							</div>
 						</div>
 					</div>
-					<div>
 					<%
 					ArrayList<QnaDTO> qnaList = (ArrayList<QnaDTO>) request.getAttribute("qnaList");
 					%>
 					<h2 class="fw-bolder mb-3">Q&amp;A</h2>
-					<%
+					<%if(qnaList !=null){
 						for (int i = 0; i < qnaList.size(); i++) {
 							qdto =qnaList.get(i);
 					%>
@@ -263,28 +226,14 @@
                     </div>
                     <%
                     	}
+					}
 					%>
-					<div class="col">
-						<div class="card-body card bg-light">
-							<!-- Comment form-->
-							<form class="mb-2 col" action="QnaWritePro.qa" method="post">
-								<input type="hidden" name="num" value=<%=sdto.getS_num() %>>
-								<input type="hidden" name="h_num" value=<%=hdto.getH_num() %>>
-								<input type="hidden" name="job" value=<%=job %> >
-								<textarea class="form-control col-10 mb-3"  name="re_content" rows="3" placeholder="질문을 남겨보세요!"></textarea>
-								<input type="submit" class="btn btn-secondary btn-lg px2 col-100" value="질문하기">
-							</form>
-						</div>
-					</div>
-					</div>
 			</section>
 		</div>
 	</div>
 </div>
 </section>
 </main>
-
-
 <!-- Footer-->
 <footer class="bg-dark py-4 mt-auto">
 	<div class="container px-5">

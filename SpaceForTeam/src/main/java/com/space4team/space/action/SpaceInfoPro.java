@@ -66,8 +66,10 @@ public class SpaceInfoPro implements Action{
 		ReviewDTO redto=redao.getReview(s_num);
 		ReviewDTO re_avg=redao.getRe_avg(s_num);
 		
+		
 		request.setAttribute("redto", redto);
-		request.setAttribute("re_avg", re_avg);
+		request.setAttribute("re_avg", re_avg);			
+
 		
 		QnaDAO qdao=new QnaDAO();
 		QnaDTO qdto=qdao.getQna(s_num);
