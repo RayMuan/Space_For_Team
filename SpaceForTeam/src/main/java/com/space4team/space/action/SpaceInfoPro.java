@@ -14,8 +14,7 @@ import com.space4team.review.db.ReviewDAO;
 import com.space4team.review.db.ReviewDTO;
 import com.space4team.space.db.SpaceDAO;
 import com.space4team.space.db.SpaceDTO;
-import com.space4team.user.db.UserDAO;
-import com.space4team.user.db.UserDTO;
+
 
 // 공간 *
 // 리뷰 	유저 : ruid 날짜 별점 내용 평점
@@ -35,31 +34,34 @@ public class SpaceInfoPro implements Action{
 		//Integer.parseInt(request.getParameter("num"));
 		// System.out.println(s_num);
 				
-		HttpSession session=request.getSession();
 		
+		HttpSession session=request.getSession();
 		String user_id="kim";
-
+		// 0> null 1> user 2>host
+		int job=0;
+		
 		
 //		String referer=request.getHeader("referer");
 //		if(referer=="http://localhost:8080/SpaceForTeam/UserPro.sp") {
-//			String user_id=(String)session.getAttribute("id");
+//			user_id=(String)session.getAttribute("id");
 			session.setAttribute("user_id", user_id);
+			job=1;
 //			
 //			UserDAO udao=new UserDAO();
 //			UserDTO udto=udao.getReviewUser(user_id);
 //		}else if(referer=="http://localhost:8080/SpaceForTeam/HostPro.sp") {
-//			String host_id=(String)session.getAttribute("id");
+//			host_id=(String)session.getAttribute("id");
 //			session.setAttribute("host_id", host_id);
+//			job=2;
 //		}
+		request.setAttribute("job", job);
 
-		
-		
 		SpaceDAO sdao=new SpaceDAO();
 		SpaceDTO sdto=sdao.getSpace(s_num);
 		request.setAttribute("sdto", sdto);
 		
 		HostDAO hdao=new HostDAO();
-		HostDTO hdto=hdao.getHostInfo(sdto.getH_num());
+		HostDTO hdto=hdao.getHostInfo(sdto.getH_num()); // 주인 이름 아이디 번호
 		request.setAttribute("hdto", hdto);
 		
 		
@@ -76,15 +78,18 @@ public class SpaceInfoPro implements Action{
 		//review
 		//review page
 		System.out.println("ReviewPro()");
-		int re_pageSize=10;
-		String re_pageNum="1";
+		int re_pageSize=5;
+		String re_pageNum=request.getParameter("re_pageNum");
+		if(re_pageNum==null){
+			re_pageNum="1";		
+		}
 		int re_currentPage=Integer.parseInt(re_pageNum);
 		int re_startRow=(re_currentPage-1)*re_pageSize+1;
 		int re_endRow = re_startRow+re_pageSize-1;
 		
 		ArrayList<ReviewDTO> reviewList=redao.getReviewList(s_num, re_startRow, re_pageSize);
 		
-		int re_pageBlock=10;
+		int re_pageBlock=5;
 		int re_startPage=(re_currentPage-1)/re_pageBlock*re_pageBlock+1;
 		int re_endPage=re_startPage+re_pageBlock-1;
 		int re_count=redao.getReviewCount(s_num);
@@ -92,6 +97,9 @@ public class SpaceInfoPro implements Action{
 		if(re_endPage > re_pageCount){
 			re_endPage = re_pageCount;
 		}
+		// setAttribute review
+		request.setAttribute("reviewList",reviewList);
+		request.setAttribute("re_pageCount", re_pageCount);
 
 		//qna
 		//qna page
@@ -104,7 +112,7 @@ public class SpaceInfoPro implements Action{
 		
 		ArrayList<QnaDTO> qnaList=qdao.getQnaList(s_num, q_startRow, q_pageSize);
 		
-		int q_pageBlock=10;
+		int q_pageBlock=5;
 		int q_startPage=(q_currentPage-1)/q_pageBlock*q_pageBlock+1;
 		int q_endPage=q_startPage+q_pageBlock-1;
 		int q_count=qdao.getQnaCount(s_num);
@@ -126,9 +134,6 @@ public class SpaceInfoPro implements Action{
 		request.setAttribute("q_pageBlock", q_pageBlock);
 		request.setAttribute("q_endPage", q_endPage);
 		
-		// setAttribute review
-		request.setAttribute("reviewList",reviewList);
-		request.setAttribute("re_pageCount", re_pageCount);
 
 		// setAttribute qna
 		request.setAttribute("qnaList",qnaList);

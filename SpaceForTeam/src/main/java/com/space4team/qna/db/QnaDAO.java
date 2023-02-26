@@ -9,6 +9,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.space4team.review.db.ReviewDTO;
+
 
 public class QnaDAO {
 private Connection con=null;
@@ -52,6 +54,42 @@ private Connection con=null;
 		}
 		return dto;
 	}// getQna
+	
+	public void insertQna(QnaDTO qdto) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		try {
+			con=getConnection();
+			// num 구하기
+			int q_num=1;
+			String sql="select Max(q_num) from Qna";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				q_num=rs.getInt("max(q_num)")+1;
+			}
+//			q_num, user_num, q_content, q_date, h_num, q_recontent, q_redate, s_num
+				sql="insert review(q_num, user_num, q_content, q_date, h_num, q_recontent, q_redate, s_num) values(?, ?, ?, ?, ?, ?, ?, ?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, q_num);
+				pstmt.setInt(2, qdto.getUser_num());
+				pstmt.setString(3, qdto.getQ_content());
+				pstmt.setTimestamp(4, qdto.getQ_date());
+				pstmt.setInt(5, qdto.getH_num());
+				pstmt.setString(6, qdto.getQ_recontent());
+				pstmt.setTimestamp(7, qdto.getQ_redate());
+				pstmt.setInt(8, qdto.getQ_s_num());
+			
+				pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+			if(con!=null) try {con.close();}catch (Exception e2) {}
+			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
+		}
+	} //insertQna
 	
 	public ArrayList<QnaDTO> getQnaList(int s_num, int q_startRow, int q_pageSize){
 		ArrayList<QnaDTO> qnaList=new ArrayList<QnaDTO>();
