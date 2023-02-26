@@ -123,7 +123,7 @@ String id=(String)session.getAttribute("id");
                             <p class="card-text">예약내역이 없습니다.</p>
                         </div>
                         <div style="text-align:center">
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">바로가기</a></div>
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="BookingList.bk">바로가기</a></div>
                         </div>
                     </div>
                 </div>

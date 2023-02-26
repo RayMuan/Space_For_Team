@@ -134,7 +134,7 @@
 											<%=redto.getRe_user_id() %>
 											<p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date() %></p>
 										<%
-										if(id.equals(redto.getRe_user_id())){
+										if(id==redto.getRe_user_id()){
 										%>
 										<ul class="list-unstyled">
 										<li class="nav-item  align-content-end">
