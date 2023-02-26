@@ -48,7 +48,7 @@
 /* 		margin-left: 130px; */
 /* 	} */
 	h6, .h6 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
     </style>
         

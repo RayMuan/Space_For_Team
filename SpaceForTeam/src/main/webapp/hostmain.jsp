@@ -42,7 +42,7 @@
 								if(id!=null){
 									%>
 									<li class="nav-item"><a class="nav-link" href="UserLogout.us">Logout</a></li>
-										<li class="nav-item"><a class="nav-link" href="UserMypage.us">Mypage</a></li>
+										<li class="nav-item"><a class="nav-link" href="HostMypage.ho">Mypage</a></li>
 									<%
 										}
 									%>
