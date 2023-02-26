@@ -29,10 +29,8 @@ public class SpaceInfoPro implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("SpaceInfo execute()");
 		
-		int s_num=51;
-		request.setAttribute("num", s_num);
-		//Integer.parseInt(request.getParameter("num"));
-		// System.out.println(s_num);
+		int s_num=Integer.parseInt(request.getParameter("num"));
+		 System.out.println(s_num);
 				
 		
 		HttpSession session=request.getSession();
