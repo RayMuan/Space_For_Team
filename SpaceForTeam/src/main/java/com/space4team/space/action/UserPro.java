@@ -13,21 +13,23 @@ import com.space4team.space.db.SpaceDTO;
 
 
 public class UserPro implements Action{
-
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("UserPro execute()");
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		
-		// 공통 페이지에서 유저/호스트 나누는 코드
-		session.setAttribute("job", 0);
+		if(id==null) {
+			session.setAttribute("job", 0);
+		}
+		int job = (Integer)session.getAttribute("job");
+		System.out.println("job="+job);
 		
 		SpaceDAO dao = new SpaceDAO();
 		int pageSize = 9;
 		String pageNum = request.getParameter("pageNum");
 		String search=request.getParameter("search");
-		 
+		
+		
 		if(pageNum == null) {
 			pageNum = "1";
 		}

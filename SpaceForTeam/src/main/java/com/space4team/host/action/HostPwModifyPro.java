@@ -12,7 +12,7 @@ public class HostPwModifyPro implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-	System.out.println("UserPwModifyPro execute()");
+	System.out.println("HostPwModifyPro execute()");
 		
 		request.setCharacterEncoding("utf-8");
 		

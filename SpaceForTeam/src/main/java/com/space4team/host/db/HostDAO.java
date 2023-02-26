@@ -245,27 +245,27 @@ public class HostDAO {
 	
 	}//userCheck()
 
-	public HostDTO getHost(String id) {
+	public HostDTO getHost(String h_id) {
 		HostDTO dto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs= null;
 		try {
 			con=getConnection();
-			String sql="select * from host where h_num=?";
+			String sql="select * from host where h_id=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, h_id);
 			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto=new HostDTO();
-				dto.setH_id(rs.getString("h_id"));
+				dto.setH_id(h_id);
+				dto.setH_num(rs.getInt("h_num"));
 				dto.setH_name(rs.getString("h_name"));
 				dto.setH_email(rs.getString("h_email")); 
 				dto.setH_id(rs.getString("h_id"));
 				dto.setH_pass(rs.getString("h_pass"));
 				dto.setH_birth(rs.getString("h_birth"));
-				
 				}
 		}catch (Exception e) {
 			e.printStackTrace();

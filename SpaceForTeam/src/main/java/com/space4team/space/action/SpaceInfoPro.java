@@ -32,28 +32,20 @@ public class SpaceInfoPro implements Action{
 		System.out.println("SpaceInfo execute()");
 		
 		int s_num=Integer.parseInt(request.getParameter("s_num"));
-		System.out.println(s_num);
+		System.out.println("s_nu="+s_num);
 				
 		
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
-		int job=(int)session.getAttribute("job");
-		System.out.println(id);
-
-		System.out.println(job);
 		
-		if(job==1) {
-			// user	
-			UserDAO udao=new UserDAO();
-			UserDTO udto=udao.getUserInfo(id);
-			request.setAttribute("udto", udto);
-		}else if(job==2) {
-			// host
-			
-		}
-		System.out.println("job="+job);
-		request.setAttribute("job", job);
+		System.out.println(id);
+		
 
+		// user	
+		UserDAO udao=new UserDAO();
+		UserDTO udto=udao.getUserInfo(id);
+		request.setAttribute("udto", udto);
+		
 		SpaceDAO sdao=new SpaceDAO();
 		SpaceDTO sdto=sdao.getSpace(s_num);
 		request.setAttribute("sdto", sdto);

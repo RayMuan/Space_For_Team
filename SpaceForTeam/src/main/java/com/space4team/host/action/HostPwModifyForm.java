@@ -15,7 +15,7 @@ public class HostPwModifyForm implements Action {
 		String id=(String)session.getAttribute("id");
 
 		HostDAO dao=new HostDAO();
-		HostDTO dto=dao.getHost(id);
+		HostDTO dto=dao.gethost(id);
 		
 		request.setAttribute("dto", dto);
 				

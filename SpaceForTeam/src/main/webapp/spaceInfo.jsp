@@ -30,10 +30,9 @@
 
 <%
 	int s_num=(int)request.getAttribute("s_num");
-
-	int job=(int)request.getAttribute("job");
+	int job=(Integer)request.getAttribute("job");
+	
 	String id=(String)session.getAttribute("id");
-	session.setAttribute("id", id);
 	System.out.println(id);
 	
 	
@@ -105,8 +104,8 @@
 					<div class="card-body">
 						<div class="row gx-5">
 							<!-- Comment form-->
-							<form class="mb-4 col" action="ReviewWritePro.re" method="post">
-								<input type="hidden" name="num" value=<%=sdto.getS_num() %> >
+							<form class="mb-4 col" action="ReviewWritePro.re" method="post" >
+								<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
 								<select class="btn btn-outline-dark text-center" name="re_point">
 									<option class="text-center" value="5">★★★★★</option>
 									<option class="text-center" value="4">★★★★☆</option>
@@ -114,7 +113,7 @@
 									<option class="text-center" value="2">★★☆☆☆</option>
 									<option class="text-center" value="1">★☆☆☆☆</option>
 								</select>
-								<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기">
+								<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기" >
 								<textarea class="form-control col-10"  name="re_content" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
 							</form>
 						</div>
@@ -139,7 +138,7 @@
 										%>
 										<ul class="list-unstyled">
 										<li class="nav-item  align-content-end">
-										<a class="nav-link" href="ReviewDeletePro.re?re_num=<%=redto.getRe_num() %>">삭제하기</a></li>
+										<a class="nav-link" href="ReviewDeletePro.re?s_num=<%=redto.getS_num() %>&re_num=<%=redto.getRe_num() %>">삭제하기</a></li>
 										</ul>
 										<%
 										}
