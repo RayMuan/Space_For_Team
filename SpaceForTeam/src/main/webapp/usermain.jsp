@@ -80,7 +80,7 @@
 
             	 %>                 
 <!-- 검색창 -->
-<form action="MainPro.sp" method="post">
+<form action="UserPro.sp" method="post">
     <div class="searchmain">
        <input type="text" name="search" class="form-control" placeholder="공간명으로 찾아보세요" style="text-align:left; width:550px; height:35px;" >
     </div>
@@ -288,7 +288,7 @@ function cat1_change(key,sel){
 <!-- 공간프리뷰 1	 -->
 <div class="col-lg-4 mb-5">
   
-    <div class="card h-100 shadow border-0" onclick="location.href='SpaceInfoPro.sp?num=<%=dto.getS_num() %>'">
+    <div class="card h-100 shadow border-0" style="cursor: pointer;" onclick="location.href='SpaceInfoPro.sp?s_num=<%=dto.getS_num()%>'">
         <img class="card-img-top" src=<%=dto.getS_file() %> alt="..." />
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2"><%=dto.getS_num() %></div>
@@ -334,7 +334,7 @@ function cat1_change(key,sel){
 <%
 if(search == null){
    //    검색어 없을때,, 
-      //10페이지 이전
+      //5페이지 이전
       if(startPage > pageBlock){
          %>
       <a href="UserPro.sp?pageNum=<%=startPage-pageBlock%>">이전</a>
@@ -345,7 +345,7 @@ if(search == null){
          <a href="UserPro.sp?pageNum=<%=i%>"><%=i %></a> 
          <%
       }
-      //10페이지 다음
+      //5페이지 다음
       if(endPage < pageCount){
          %>
       <a href="UserPro.sp?pageNum=<%=startPage+pageBlock%>">Next</a>
@@ -353,7 +353,7 @@ if(search == null){
       }
       }else {
    //    검색어 있을때,,
-      //10페이지 이전
+      //5페이지 이전
       if(startPage > pageBlock){
          %>
       <a href="UserPro.sp?pageNum=<%=startPage-pageBlock%>&search=<%=search%>">Prev</a>
@@ -364,7 +364,7 @@ if(search == null){
          <a href="UserPro.sp?pageNum=<%=i%>&search=<%=search%>"><%=i %></a> 
          <%
       }
-      //10페이지 다음
+      //5페이지 다음
       if(endPage < pageCount){
          %>
       <a href="UserPro.sp?pageNum=<%=startPage+pageBlock%>&search=<%=search%>">다음</a>

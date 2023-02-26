@@ -215,7 +215,7 @@ import com.space4team.host.db.HostDTO;
 		
 		
 		public ArrayList<SpaceDTO> getSpaceList(int startRow,int pageSize, String search){
-			System.out.println("SpaceDAO getSpaceList()");
+			System.out.println("SpaceDAO getSpaceList search()");
 			Connection con=null;
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
@@ -236,6 +236,7 @@ import com.space4team.host.db.HostDTO;
 					sdto.setS_file(rs.getString("s_file"));
 					sdto.setS_bill(rs.getString("s_bill"));
 					sdto.setH_num(rs.getInt("h_num"));
+					sdto.setS_sido(rs.getString("s_sido"));
 					
 					spaceList.add(sdto);
 				}
@@ -250,6 +251,7 @@ import com.space4team.host.db.HostDTO;
 		}//getSpaceList(int startRow,int pageSize, String search)
 		
 		public int getSpaceCount(String search) {
+			System.out.println("search count");
 			Connection con=null;
 			PreparedStatement pstmt=null;
 			ResultSet rs=null;
@@ -258,7 +260,7 @@ import com.space4team.host.db.HostDTO;
 				// 1~2 단계
 				con=getConnection();
 				// 3단계 sql
-				String sql="select count(*) from space where subject like ?";
+				String sql="select count(*) from space where s_name like ?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, "%"+search+"%");
 				//4

@@ -22,7 +22,7 @@ public class UserPro implements Action{
 		String id = (String)session.getAttribute("id");
 		
 		SpaceDAO dao = new SpaceDAO();
-		int pageSize = 3;
+		int pageSize = 9;
 		String pageNum = request.getParameter("pageNum");
 		String search=request.getParameter("search");
 		 
@@ -46,7 +46,14 @@ public class UserPro implements Action{
 		int pageBlock = 3;
 		int startPage = (currentPage -1 )/pageBlock * pageBlock + 1;
 		int endPage = startPage + pageBlock -1;
-		int count = dao.getSpaceCount();
+		
+		int count=0;
+		if(search==null) {
+			count=dao.getSpaceCount();
+		}else {
+			count=dao.getSpaceCount(search);
+		}
+		
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);
 		if(endPage > pageCount) {
 			endPage = pageCount;
@@ -60,7 +67,8 @@ public class UserPro implements Action{
 	      request.setAttribute("pageBlock", pageBlock);
 	      request.setAttribute("endPage", endPage);
 	      request.setAttribute("pageCount", pageCount);
-
+	      
+	      System.out.println("count"+count);
 		
 		ActionForward forward=new ActionForward();
 		forward.setPath("usermain.jsp");
