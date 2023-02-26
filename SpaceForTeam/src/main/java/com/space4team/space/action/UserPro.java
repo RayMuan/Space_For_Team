@@ -19,7 +19,9 @@ public class UserPro implements Action{
 		System.out.println("UserPro execute()");
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-
+		
+		// 공통 페이지에서 유저/호스트 나누는 코드
+		session.setAttribute("job", 0);
 		
 		SpaceDAO dao = new SpaceDAO();
 		int pageSize = 9;
