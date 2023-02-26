@@ -21,10 +21,10 @@ public class SpaceList implements Action{
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		
-		HostDAO mdao = new HostDAO();
-		HostDTO mdto = mdao.gethost(id);
-		System.out.println(mdto.getH_id());
-		System.out.println(mdto.getH_num()); // host number 출력됨 
+		HostDAO hdao = new HostDAO();
+		HostDTO hdto = hdao.gethost(id);
+		System.out.println(hdto.getH_id());
+		System.out.println(hdto.getH_num()); // host number 출력됨 
 		
 		int pageSize = 6;
 		String pageNum = request.getParameter("pageNum");
@@ -37,12 +37,12 @@ public class SpaceList implements Action{
 		int startRow = (currentPage -1) * pageSize + 1;
 		int endRow = startRow + pageSize - 1;
 		
-		ArrayList<SpaceDTO> spaceList = dao.getSpaceList(startRow, pageSize ,mdto);
+		ArrayList<SpaceDTO> spaceList = dao.getSpaceList(startRow, pageSize ,hdto);
 		
 		int pageBlock = 3;
 		int startPage = (currentPage -1 )/pageBlock * pageBlock + 1;
 		int endPage = startPage + pageBlock -1;
-		int count = dao.getSpaceCount(mdto);
+		int count = dao.getSpaceCount(hdto);
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);
 		if(endPage > pageCount) {
 			endPage = pageCount;

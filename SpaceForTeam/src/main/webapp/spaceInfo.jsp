@@ -104,7 +104,7 @@
 					<div class="card-body">
 						<div class="row gx-5">
 							<!-- Comment form-->
-							<form class="mb-4 col" method="post" action="ReviewWritePro.re">
+							<form class="mb-4 col" action="ReviewWritePro.re" method="post" >
 								<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
 								<select class="btn btn-outline-dark text-center" name="re_point">
 									<option class="text-center" value="5">★★★★★</option>
@@ -138,7 +138,7 @@
 										%>
 										<ul class="list-unstyled">
 										<li class="nav-item  align-content-end">
-										<a class="nav-link" href="ReviewDeletePro.re?re_num=<%=redto.getRe_num() %>">삭제하기</a></li>
+										<a class="nav-link" href="ReviewDeletePro.re?s_num=<%=redto.getS_num() %>&re_num=<%=redto.getRe_num() %>">삭제하기</a></li>
 										</ul>
 										<%
 										}

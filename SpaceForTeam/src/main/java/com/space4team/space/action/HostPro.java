@@ -1,7 +1,6 @@
 package com.space4team.space.action;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +16,7 @@ public class HostPro implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("HostPro execute()");
-SpaceDAO dao = new SpaceDAO();
+		SpaceDAO dao = new SpaceDAO();
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
