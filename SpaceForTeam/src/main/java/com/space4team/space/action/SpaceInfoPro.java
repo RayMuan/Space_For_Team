@@ -29,14 +29,12 @@ public class SpaceInfoPro implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("SpaceInfo execute()");
 		
-		int s_num=51;
-		request.setAttribute("num", s_num);
-		//Integer.parseInt(request.getParameter("num"));
-		// System.out.println(s_num);
+		int s_num=Integer.parseInt(request.getParameter("s_num"));
+		System.out.println(s_num);
 				
 		
 		HttpSession session=request.getSession();
-		String user_id="kim";
+		String id=(String)session.getAttribute("id");
 		// 0> null 1> user 2>host
 		int job=0;
 		
@@ -44,7 +42,6 @@ public class SpaceInfoPro implements Action{
 //		String referer=request.getHeader("referer");
 //		if(referer=="http://localhost:8080/SpaceForTeam/UserPro.sp") {
 //			user_id=(String)session.getAttribute("id");
-			session.setAttribute("user_id", user_id);
 			job=1;
 //			
 //			UserDAO udao=new UserDAO();
@@ -68,6 +65,7 @@ public class SpaceInfoPro implements Action{
 		ReviewDAO redao=new ReviewDAO();
 		ReviewDTO redto=redao.getReview(s_num);
 		ReviewDTO re_avg=redao.getRe_avg(s_num);
+		
 		request.setAttribute("redto", redto);
 		request.setAttribute("re_avg", re_avg);
 		

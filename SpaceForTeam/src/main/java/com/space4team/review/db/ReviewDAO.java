@@ -68,14 +68,14 @@ public class ReviewDAO {
 		ResultSet rs= null;
 		try {
 			con=getConnection();
-			String sql2="select round(avg(re_point), 1) from review where s_num=?";
+			String sql2="select round(ifnull(avg(re_point),0), 1) from review where s_num=?";
 			pstmt=con.prepareStatement(sql2);
 			pstmt.setInt(1, s_num);
 			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				dto=new ReviewDTO();
-				dto.setRe_avg(rs.getDouble("round(avg(re_point), 1)"));
+				dto.setRe_avg(rs.getDouble("round(ifnull(avg(re_point),0), 1)"));
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
