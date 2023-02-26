@@ -17,38 +17,41 @@ public class ReviewWritePro implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			System.out.println("ReviewWritePro execute()");
 			request.setCharacterEncoding("utf-8");
+			HttpSession session=request.getSession();
 			
 			int s_num=Integer.parseInt(request.getParameter("s_num"));
-			System.out.println(s_num);
+			String id=(String)session.getAttribute("id");
+			int job=(Integer)session.getAttribute("job");
 
 						
 			ReviewDTO redto=new ReviewDTO();
-			HttpSession session=request.getSession();
-			String id=(String)session.getAttribute("id");
-			int job=(Integer)session.getAttribute("job");
-			System.out.println("job="+job);
-				
+			
 			if(job == 1) {
+				// user
 				UserDAO dao=new UserDAO();
-				System.out.println(id);
 				UserDTO dto=dao.getUserInfo(id);
 				
 				int user_num=dto.getUser_num();
+				String re_content=request.getParameter("re_content");
+				Timestamp re_date=new Timestamp(System.currentTimeMillis());
 				int re_point=Integer.parseInt(request.getParameter("re_point"));
 				
+				redto.setS_num(s_num);
 				redto.setUser_num(user_num);
+				redto.setRe_content(re_content);
+				redto.setRe_date(re_date);
 				redto.setRe_point(re_point);
 			}else if( job==2 ) {
-				String re_content=request.getParameter("re_content");
-				redto.setRe_content(re_content);
+				//host
+				String re_reply=request.getParameter("re_reply");
+				redto.setRe_reply(re_reply);
 				
-				Timestamp re_date=new Timestamp(System.currentTimeMillis());
-				redto.setRe_date(re_date);
-				redto.setS_num(s_num);
-
-				ReviewDAO redao=new ReviewDAO();
-				redao.insertReview(redto);
 			}
+			ReviewDAO redao=new ReviewDAO();
+			redao.insertReview(redto);
+			System.out.println("ReviewWritePro s_num="+s_num);
+			System.out.println("ReviewWritePro id="+s_num);
+			System.out.println("ReviewWritePro job="+job);
 				
 				
 			ActionForward forward=new ActionForward();
