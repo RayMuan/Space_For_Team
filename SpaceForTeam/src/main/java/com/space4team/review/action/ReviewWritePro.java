@@ -20,7 +20,7 @@ public class ReviewWritePro implements Action{
 			System.out.println("ReviewWritePro execute()");
 			request.setCharacterEncoding("utf-8");
 			
-			int s_num=Integer.parseInt(request.getParameter("num"));
+			int s_num=Integer.parseInt(request.getParameter("s_num"));
 			System.out.println(s_num);
 
 						
@@ -28,6 +28,7 @@ public class ReviewWritePro implements Action{
 			HttpSession session=request.getSession();
 			String id=(String)session.getAttribute("id");
 			int job=(int)session.getAttribute("job");
+			System.out.println("job="+job);
 				
 			if( job == 1) {
 				UserDAO dao=new UserDAO();
