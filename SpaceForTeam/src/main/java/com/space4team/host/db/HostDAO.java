@@ -9,6 +9,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.space4team.user.db.UserDTO;
+
 
 public class HostDAO {
 //	private Connection con=null;
@@ -275,45 +277,132 @@ public class HostDAO {
 		return dto;
 	}
 	
-	public HostDTO gethost(String id) {
-		HostDTO dto=null;
+
+	
+	public void deleteHost(String id) {
 		Connection con =null;
 		PreparedStatement pstmt=null;
-		ResultSet rs=null;
 		try {
-			//1,2 디비연결 메서드
 			con=getConnection();
-			
-			//3단계 SQL구문 만들어서 실행할 준비(select 조건 where id=?)
-			String sql="select * from host where h_id=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1, id);
-
-			//4단계 SQL구문을 실행(select) => 결과 저장
-			rs=pstmt.executeQuery();
-			//5단계 결과를 출력, 데이터 담기 (select)
-			// next() 다음행 => 리턴값 데이터 있으면 true/ 데이터 없으면 false
-			//조건이 true 실행문=> 다음행 데이터 있으면 true =>  열접근 출력
-			if(rs.next()){
-				//next() 다음행 => 리턴값 데이터 있으면 true/ 아이디 일치
-				// 바구니 객체생성 => 기억장소 할당
-				dto=new HostDTO();
-				// set메서드호출 바구니에 디비에서 가져온 값 저장
-				dto.setH_id(rs.getString("h_id"));
-				dto.setH_pass(rs.getString("h_pass"));
-				dto.setH_name(rs.getString("h_name"));
-				dto.setH_num(rs.getInt("h_num"));
-		
-			}
+		 	String sql="delete from host where h_id = ?";
+		 	 pstmt=con.prepareStatement(sql);
+		 	pstmt.setString(1, id);
+		 	pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			// 예외 상관없이 마무리작업 => 객체생성한 기억장소 해제
-			if(rs!=null) try { rs.close();} catch (Exception e2) {}
 			if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
 			if(con!=null) try { con.close();} catch (Exception e2) {}
 		}
-		return dto;
-	}//getMember()
+	}//deleteHost
+	
+	// id 체크
+      public HostDTO idCheck(String id) {
+         HostDTO dto=null;
+         Connection con =null;
+         PreparedStatement pstmt=null;
+         ResultSet rs=null;
+         try {
+            con = getConnection();
+            String sql="select * from user where user_id=?";
+            pstmt=con.prepareStatement(sql);
+            pstmt.setString(1, id);
+            rs=pstmt.executeQuery();
+            if(rs.next()){
+               dto=new HostDTO();
+				dto.setH_email(rs.getString("h_email"));
+				dto.setH_id(rs.getString("h_id"));
+				dto.setH_name(rs.getString("h_name"));
+				dto.setH_pass(rs.getString("h_pass"));
+				dto.setH_phone(rs.getString("h_phone"));
+				dto.setH_birth(rs.getString("h_birth"));
+            }else{
+               
+            }   
+         } catch (Exception e) {
+            e.printStackTrace();
+         } finally {
+            if(rs!=null) try { rs.close();} catch (Exception e2) {}
+            if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+            if(con!=null) try { con.close();} catch (Exception e2) {}
+         }
+         return dto;
+      }//idCheck()
+      
+   // 비밀번호 변경
+      public void modifyPass(HostDTO modifyPassDto) {
+         Connection con =null;
+         PreparedStatement pstmt2=null;
+         try {
+            con=getConnection();
+            String sql2="update host set h_pass=? where h_id =?";
+            pstmt2=con.prepareStatement(sql2);
+            pstmt2.setString(1, modifyPassDto.getH_pass()); 
+            pstmt2.setString(2, modifyPassDto.getH_id());  
+            pstmt2.executeUpdate();
+         } catch (Exception e) {
+            e.printStackTrace();
+         }finally {
+            if(pstmt2!=null) try { pstmt2.close();} catch (Exception e2) {}
+            if(con!=null) try { con.close();} catch (Exception e2) {}
+         }
+      }//modifyPass()
+      
+		public HostDTO gethost(String id) {
+			HostDTO dto=null;
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			try {
+				  con=getConnection();
+				String sql="select * from host where h_id=? ";
+				  pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
+				  rs=pstmt.executeQuery();
+				if(rs.next()){
+					dto=new HostDTO();
+					dto.setH_email(rs.getString("h_email"));
+					dto.setH_id(rs.getString("h_id"));
+					dto.setH_name(rs.getString("h_name"));
+					dto.setH_pass(rs.getString("h_pass"));
+					dto.setH_phone(rs.getString("h_phone"));
+					dto.setH_birth(rs.getString("h_birth"));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(pstmt != null) try {	pstmt.close();} catch (Exception e2) {}
+				if(con != null) try { con.close();} catch (Exception e2) {}
+				if(rs != null) try { rs.close();} catch (Exception e2) {}
+			}
+			return dto;
+	}//getUser()
+		
+		public void updateHost (HostDTO updateDto) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+
+			try {
+				  con=getConnection();
+						
+			 	String sql="update host set h_name=?, h_email=?, h_phone=?, h_birth=? where h_id =?";
+			 	pstmt=con.prepareStatement(sql);
+			 	//? 채워넣기
+			 	pstmt.setString(1, updateDto.getH_name()); //set 문자열(1번째 물음표, 값 name)
+			 	pstmt.setString(2, updateDto.getH_email()); //set 문자열(1번째 물음표, 값 name)
+			 	pstmt.setString(3, updateDto.getH_phone()); //set 문자열(1번째 물음표, 값 name)
+			 	pstmt.setString(4, updateDto.getH_birth()); //set 문자열(1번째 물음표, 값 name)
+			 	pstmt.setString(5, updateDto.getH_id());  //set 문자열 (5번째 물음표, 값 id)
+			 	pstmt.executeUpdate();
+			 			
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				if(pstmt != null) try {	pstmt.close();} catch (Exception e2) {}
+				if(con != null) try { con.close();} catch (Exception e2) {}
+
+			}
+	}//updateUser
 	
 }//class

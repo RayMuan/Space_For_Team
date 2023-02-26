@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.space4team.space.action.HostPro;
-
 public class HostFrontController extends HttpServlet{
 
 	@Override
@@ -103,6 +101,46 @@ public class HostFrontController extends HttpServlet{
 			forward.setPath("hostmypage.jsp");
 			forward.setRedirect(false);
 			
+		}else if(sPath.equals("/HostDeleteForm.ho")) {
+			forward=new ActionForward();
+			forward.setPath("hostdelete.jsp");
+			forward.setRedirect(false);
+		}
+		else if(sPath.equals("/HostDeletePro.ho")) {
+			action=new HostDeletePro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/HostPwModifyForm.ho")) {
+			action=new HostPwModifyForm();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/HostPwModifyPro.ho")) {
+			action=new HostPwModifyPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/HostUpdateForm.ho")){
+			action=new HostUpdateForm();
+			try {
+				forward=action.execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(sPath.equals("/HostUpdatePro.ho")){
+			action=new HostUpdatePro();
+			try {
+				forward=action.execute(request,response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		
 		if(forward != null) {

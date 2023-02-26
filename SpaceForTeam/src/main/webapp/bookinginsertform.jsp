@@ -104,7 +104,6 @@
  
  </script>
  <%
- 	int s_num=Integer.parseInt(request.getParameter("num"));
 	SpaceDTO dto = (SpaceDTO)request.getAttribute("dto");
  %>
                 <form action="BookingInsertPro.bk" method="post" id="bookingForm" name="fr">
