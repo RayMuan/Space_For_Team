@@ -14,13 +14,13 @@ public class MainPro implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MainPro execute()");
-		request.setCharacterEncoding("utf-8");
+request.setCharacterEncoding("utf-8");
 		
 		SpaceDAO dao = new SpaceDAO();
-		// 한페이지당 뜨는 글 갯수 => search만 적용됨 ㅠㅠ 
 		int pageSize = 9;
 		String pageNum = request.getParameter("pageNum");
 		String search=request.getParameter("search");
+
 		
 		if(pageNum == null) {
 			pageNum = "1";
@@ -37,13 +37,20 @@ public class MainPro implements Action{
 	         spaceList=dao.getSpaceList(startRow, pageSize);
 	      }else {
 	         // 검색어 있음
-	        spaceList=dao.getSpaceList(startRow, pageSize, search);    
+	        spaceList=dao.getSpaceList(startRow, pageSize, search);   
 	      }
 		
 		int pageBlock = 5;
 		int startPage = (currentPage -1 )/pageBlock * pageBlock + 1;
 		int endPage = startPage + pageBlock -1;
-		int count = dao.getSpaceCount();
+		
+		int count = 0;
+		if(search==null) {
+			count=dao.getSpaceCount();
+		}else {
+			count=dao.getSpaceCount(search);
+		}
+		
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);
 		if(endPage > pageCount) {
 			endPage = pageCount;
@@ -61,8 +68,10 @@ public class MainPro implements Action{
 
 	      System.out.println("count"+count);
 	      
+	      
+	      
 	      ActionForward forward=new ActionForward();
-	      forward.setPath("main.jsp");
+	      forward.setPath("usermain.jsp");
 	      forward.setRedirect(false);
 	      return forward;
 		

@@ -99,6 +99,13 @@ public class SpaceFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(sPath.equals("/MainPro.sp")) {
+			action=new MainPro();
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(sPath.equals("/UserPro.sp")) {
 			action=new UserPro();
 			try {

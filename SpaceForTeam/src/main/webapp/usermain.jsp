@@ -27,7 +27,7 @@
            
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">                
-                    <a class="navbar-brand" href="index.html">SpaceForTeam</a> 
+                    <a class="navbar-brand" href="MainPro.sp">SpaceForTeam</a> 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -81,32 +81,80 @@
 
             	 %>                 
 <!-- 검색창 -->
-<form action="UserPro.sp" method="post">
-    <div class="searchmain">
-       <input type="text" name="search" class="form-control" placeholder="공간명으로 찾아보세요" style="text-align:left; width:550px; height:35px;" >
-    </div>
 
-<div class="ser-main" >
-       <button type="submit" value="search" class="form-control" style="text-align:left; width:40px; height:35px;"><i class="fa-solid fa-magnifying-glass"></i></button>  
-	</div> 
-</form>
-
-
-            </header>
+<div class="searchmain" style="left:-650px;">
+		<div class="ser-main">
+			<form method="post" name="search" action="MainPro.sp">
+				<table class="pull-right">
+					<tr>
+						<td><select class="form-control" name="sel" style="text-align:center; width:110px; height:35px;">
+								<option  value="0" disabled selected>지역</option>
+								<option value='1'>서울</option>
+								<option value='2'>부산</option>
+								<option value='3'>대구</option>
+								<option value='4'>인천</option>
+								<option value='5'>광주</option>
+								<option value='6'>대전</option>
+								<option value='7'>울산</option>
+								<option value='8'>강원</option>
+								<option value='9'>경기</option>
+								<option value='10'>경남</option>
+								<option value='11'>경북</option>
+								<option value='12'>전남</option>
+								<option value='13'>전북</option>
+								<option value='14'>제주</option>
+								<option value='15'>충남</option>
+								<option value='16'>충북</option>
+						</select></td>
+						<td><input type="text" class="form-control"
+							placeholder="공간명으로 찾아보세요" name="search" style="text-align:left; width:550px; height:35px;"></td>
+						<td><button type="submit" value="search" class="form-control" style="text-align:center;  height:35px;">검색</button></td>
+				</tr>
+				
+			</table>
+		</form>
+		
+	</div>
+</div>
+</div>
+</div>
+ </header>
+ 
+    <%
+//                             	String id = "";
+	String idcheck = (String)request.getAttribute("idcheck");  
+	 if(idcheck=="host"){
+									%>
+<div class="btn">
+<button class="block"><a href="SpaceInsertForm.sp">공간등록</a></button>
+</div>
+<div class="btn">
+<button class="block"><a href="SpaceList.sp">공간관리</a></button>
+</div>
+<div class="btn">
+<button class="block"><a href="UserLoginForm.us">게스트 전환</a></button>
+</div>
+									<%
+										}
+									%>
+         <%
+           
+    	 if(idcheck=="user" || idcheck == null){
+         %>
             <!-- Features section-->
                 <!-- Blog preview section-->
             <section class="py-5">
-                <div class="container px-5 my-5">
+                <div class="container px-5 my-5"> 
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6">
                             <div class="text-center">
                                 <h2 class="fw-bolder">공간 둘러보기</h2>
                                 <p class="lead fw-normal text-muted mb-5">space for team에서 볼 수 있는 공간을 준비했어요</p>
+
                             </div>
                         </div>
-                    </div>
-                    <div class="row gx-5">
-            
+                    </div>   
+                    <div class="row gx-5">        
 	<%
 	for (int i = 0; i<spaceList.size(); i++){
 		SpaceDTO dto = spaceList.get(i);
@@ -114,12 +162,13 @@
 <!-- 공간프리뷰 1	 -->
 <div class="col-lg-4 mb-5">
   
-    <div class="card h-100 shadow border-0" style="cursor: pointer;" onclick="location.href='SpaceInfoPro.sp?s_num=<%=dto.getS_num()%>'">
-        <img class="card-img-top" src=<%=dto.getS_file() %> alt="..." />
+    <div class="card h-100 shadow border-0 style="cursor: pointer;" onclick="location.href='SpaceInfoPro.sp?s_num=<%=dto.getS_num()%>'"">
+    <img src="upload/<%=dto.getS_file()%>" width="300">
+<%--         <img class="card-img-top" src=<%=dto.getS_file() %> alt="..." /> --%>
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2"><%=dto.getS_num() %></div>
            
-           		 <div class="text-decoration-none link-dark stretched-link" style="cursor: pointer;" ><h5 class="card-title mb-3"><%=dto.getS_name() %></h5></div>
+           		 <div class="text-decoration-none link-dark stretched-link" style="cursor: pointer;" onclick="location.href='SpaceInfoPro.sp?s_num=<%=dto.getS_num()%>'" ><h5 class="card-title mb-3"><%=dto.getS_name() %></h5></div>
             	 <p class="card-text mb-0"><%=dto.getS_memo() %></p>
         	</div>
         	
@@ -160,44 +209,46 @@
 <%
 if(search == null){
    //    검색어 없을때,, 
-      //5페이지 이전
+      //10페이지 이전
       if(startPage > pageBlock){
          %>
-      <a href="UserPro.sp?pageNum=<%=startPage-pageBlock%>">이전</a>
+      <a href="MainPro.sp?pageNum=<%=startPage-pageBlock%>">Prev</a>
          <%
       }
       for(int i=startPage;i<=endPage;i++){
          %>
-         <a href="UserPro.sp?pageNum=<%=i%>"><%=i %></a> 
+         <a href="MainPro.sp?pageNum=<%=i%>"><%=i %></a> 
          <%
       }
-      //5페이지 다음
+      //10페이지 다음
       if(endPage < pageCount){
          %>
-      <a href="UserPro.sp?pageNum=<%=startPage+pageBlock%>">다음</a>
+      <a href="MainPro.sp?pageNum=<%=startPage+pageBlock%>">Next</a>
          <%
       }
       }else {
    //    검색어 있을때,,
-      //5페이지 이전
+      //10페이지 이전
       if(startPage > pageBlock){
          %>
-      <a href="UserPro.sp?pageNum=<%=startPage-pageBlock%>&search=<%=search%>">이전</a>
+      <a href="MainPro.sp?pageNum=<%=startPage-pageBlock%>&search=<%=search%>">Prev</a>
          <%
       }
       for(int i=startPage;i<=endPage;i++){
          %>
-         <a href="UserPro.sp?pageNum=<%=i%>&search=<%=search%>"><%=i %></a> 
+         <a href="MainPro.sp?pageNum=<%=i%>&search=<%=search%>"><%=i %></a> 
          <%
       }
-      //5페이지 다음
+      //10페이지 다음
       if(endPage < pageCount){
          %>
-      <a href="UserPro.sp?pageNum=<%=startPage+pageBlock%>&search=<%=search%>">다음</a>
+      <a href="MainPro.sp?pageNum=<%=startPage+pageBlock%>&search=<%=search%>">Next</a>
          <%
       }
 }
+	}
 %>
+
 </div> 
            </div>
            </div>

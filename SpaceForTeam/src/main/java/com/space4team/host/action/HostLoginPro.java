@@ -39,7 +39,7 @@ public class HostLoginPro implements Action {
 			session.setAttribute("job", 2);
 			
 			forward=new ActionForward();
-			forward.setPath("HostPro.sp");
+			forward.setPath("UserPro.sp");
 			forward.setRedirect(true);
 			
 		} else {
