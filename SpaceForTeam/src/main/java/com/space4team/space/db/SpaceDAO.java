@@ -153,6 +153,7 @@ import com.space4team.host.db.HostDTO;
 					sdto.setS_bill(rs.getString("s_bill"));
 					sdto.setH_num(rs.getInt("h_num"));
 					sdto.setS_sido(rs.getString("s_sido"));
+					sdto.setS_num(rs.getInt("s_num"));
 
 					spaceList.add(sdto);
 				}
@@ -237,6 +238,7 @@ import com.space4team.host.db.HostDTO;
 					sdto.setS_bill(rs.getString("s_bill"));
 					sdto.setH_num(rs.getInt("h_num"));
 					sdto.setS_sido(rs.getString("s_sido"));
+					sdto.setS_num(rs.getInt("s_num"));
 					
 					spaceList.add(sdto);
 				}
