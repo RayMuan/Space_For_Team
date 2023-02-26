@@ -103,9 +103,9 @@ String id=(String)session.getAttribute("id");
                  <div class="h6 fw-bolder"> 호스트 <b><%=id %></b>님,</div>
 					 </div><br>
 					<div style="text-align:right;">
-                    <a class="btn btn-primary" href="#!">회원정보수정</a>
-                    <a class="btn btn-primary" href="#!">비밀번호변경</a>
-                    <a class="btn btn-primary" href="#!">회원탈퇴</a> 
+                    <a class="btn btn-primary" href="HostUpdateForm.ho">회원정보수정</a>
+                    <a class="btn btn-primary" href="HostPwModifyForm.ho">비밀번호변경</a>
+                    <a class="btn btn-primary" href="HostDeleteForm.ho">회원탈퇴</a> 
                		 </div>
                 </div>
             </div>
