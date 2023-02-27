@@ -19,6 +19,8 @@ public class SpaceInsertPro implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	
 		System.out.println("SpaceInsertPro execute()");
+		HttpSession session = request.getSession();
+		String id=(String)session.getAttribute("id");
 		
 //		request 한글처리
 //		request.setCharacterEncoding("utf-8");
@@ -76,8 +78,7 @@ public class SpaceInsertPro implements Action{
 		dto.setS_opt(s_option);
 		
 		
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
+//		HttpSession session = request.getSession();
 		HostDAO mdao = new HostDAO();
 		HostDTO mdto = mdao.gethost(id);
 		System.out.println(mdto.getH_id());

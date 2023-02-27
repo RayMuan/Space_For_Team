@@ -181,7 +181,7 @@
 <!-- 공간프리뷰 1	 -->
 <div class="col-lg-4 mb-5">
     <div class="card h-100 shadow border-0 style="cursor: pointer;" onclick="location.href='SpaceInfoPro.sp?s_num=<%=dto.getS_num()%>'"">
- <img src="upload/<%=dto.getS_file()%>" width="375" >
+ 	<img src="upload/<%=dto.getS_file()%>" >
 
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2"><%=dto.getS_num() %></div>
