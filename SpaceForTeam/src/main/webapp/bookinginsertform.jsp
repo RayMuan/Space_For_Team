@@ -1,4 +1,6 @@
 
+<%@page import="com.space4team.user.db.UserDTO"%>
+<%@page import="com.space4team.user.db.UserDAO"%>
 <%@page import="com.space4team.space.db.SpaceDAO"%>
 <%@page import="com.space4team.space.db.SpaceDTO"%>
 <%@page import="com.mysql.cj.Session"%>
@@ -105,6 +107,8 @@
  </script>
  <%
 	SpaceDTO dto = (SpaceDTO)request.getAttribute("dto");
+ 	UserDAO dao = new UserDAO();
+ 	int user_num = dao.getUserNum(id);
  %>
                 <form action="BookingInsertPro.bk" method="post" id="bookingForm" name="fr">
     
@@ -113,11 +117,11 @@
                                                
                     </div>
     				<div class="form-floating mb-3">
-                            <input class="form-control" id="s_bill" name="s_bill" type="hidden" data-sb-validations="required" />                      
+                            <input id="s_bill" name="s_bill" type="hidden" value="<%=dto.getS_bill() %>">                      
                     </div>
                     
                     <div class="form-floating mb-3">
-                            <input class="form-control" id="id" name="id" type="hidden" data-sb-validations="required" />                      
+                            <input id="user_num" name="user_num" type="hidden" value="<%=user_num %>">                      
                     </div>
                     <div>
                    <i class="bi bi-star-fill text-warning"></i>
