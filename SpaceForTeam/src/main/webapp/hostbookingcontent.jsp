@@ -83,7 +83,7 @@
                             		<input type="hidden" name="num" value="<%=dto.getS_num() %>">
                             		<div>
                                     	 <i class="bi bi-star-fill text-warning"></i>
-                                        <label for="hostnumber">게스트<b> <%=id %>님,</b> 예약 상세내역입니다. 확인후 <code>결제</code>를 진행해주세요. </label><br>
+                                        <label for="hostnumber">호스트<b> <%=id %>님,</b> 예약 상세내역입니다.  </label><br>
                                     </div><br>
                             		 
                                     <div class="form-floating mb-3">
@@ -124,6 +124,10 @@
                                         <input class="form-control" name="sggNm" id="sggNm" type="text" value="<%=dto.getBk_usetime() %>시간" readonly>
                                         <label for="gungu"><i class="bi bi-star-fill text-warning"></i>사용시간</label>
                                     </div>
+                                     <div class="form-floating mb-3">
+                                        <input class="form-control" name="sggNm" id="sggNm" type="text" value="<%=dto.getPayment()%>" readonly>
+                                        <label for="gungu"><i class="bi bi-star-fill text-warning"></i>결제상태<label>
+                                    </div>
                        					</div>
                                       
                                   
@@ -132,12 +136,9 @@
                                     <br><br>
                                     <!-- Submit Button-->
                                     <div style="text-align:center">
-                                    <input class="btn btn-primary btn-lg" type= "button" value="예약수정" 
-									 onclick = "location.href='BookingUpdateForm.bk?num=<%=dto.getBk_num() %>'">
-									<input class="btn btn-primary btn-lg" type= "button" value="예약삭제" 
+									<input class="btn btn-primary btn-lg" type= "button" value="예약취소" 
 									 onclick = "location.href='BookingDeletePro.bk?num=<%=dto.getBk_num() %>'">
-									<input class="btn btn-primary btn-lg" type= "button" value="결제" 
-									onclick = "location.href='payment.jsp?num=<%=dto.getBk_num() %>&totalPrice=<%=dto.getBk_price()%>'">
+									
                                     
                                     </div>
                                 </form>

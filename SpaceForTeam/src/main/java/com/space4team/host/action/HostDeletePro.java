@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.space4team.host.db.HostDAO;
 import com.space4team.host.db.HostDTO;
 
@@ -22,6 +23,7 @@ public class HostDeletePro implements Action {
 		if(dto!=null) {
 			dao.deleteHost(id);
 			System.out.println("끝!");
+
 			forward=new ActionForward();
 			forward.setPath("HostLoginForm.ho");
 			forward.setRedirect(true);

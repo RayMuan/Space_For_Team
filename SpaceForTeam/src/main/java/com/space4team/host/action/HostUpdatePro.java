@@ -39,7 +39,7 @@ public class HostUpdatePro implements Action {
 			dao.updateHost(updateDto); 
 			// 	=> main.jsp 이동
 			forward=new ActionForward();
-			forward.setPath("HostMypage.ho");
+			forward.setPath("UserMypage.us");
 			forward.setRedirect(true);
 		}else{
 			response.setContentType("text/html; charset=UTF-8");
