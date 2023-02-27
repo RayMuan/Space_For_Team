@@ -186,7 +186,9 @@
 			<section class="mb-5 pt-4">
 				<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 				<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
+				<%if(job==1){ %>
 				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="BookingInsertForm.bk?s_num=<%=sdto.getS_num()%>">예약하기</a>
+				<%} %>
 				<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 				<h3 class="fw-bolder mb-2 mt-5">위치</h3>
 					<div class="col-lg-12 mb-5">
