@@ -283,4 +283,55 @@ public void deleteBooking(int bk_num) {
 	}
 }//deleteBooking
 
+public void updateBooking(int bk_num) {
+    Connection con = null;
+    PreparedStatement pstmt=null;
+    PreparedStatement pstmt2=null;
+    ResultSet rs = null;
+    
+    try {
+       
+       con = getConnection();
+       int num =1;
+        
+        //3 최대 num + 1
+        String sql = "select max(pay_num) from booking";
+        pstmt = con.prepareStatement(sql);
+        
+        //4
+        rs=pstmt.executeQuery();
+        //5
+        if(rs.next()) {
+           num=rs.getInt("max(pay_num)")+1;
+        }
+        System.out.println("bknum"+bk_num);
+        System.out.println("sql 구문 진행");
+        System.out.println("num"+num);
+        sql = "update booking set payment=?,pay_num=? where bk_num=?";
+        pstmt2 = con.prepareStatement(sql);
+        String pay = "결제완료";
+        pstmt2.setString(1, pay);
+        
+        pstmt2.setInt(2, num);
+        pstmt2.setInt(3, bk_num);
+        
+        System.out.println("num"+ num);
+        System.out.println("bk_num"+ bk_num);
+        pstmt2.executeUpdate();
+        
+    }
+       catch (Exception e) {
+          e.printStackTrace();
+       } finally {
+          if(pstmt!=null)try {
+             pstmt.close();
+             } catch (Exception e2) {}
+          if(con!=null)try {
+             con.close();
+             } catch (Exception e2) {}   
+          if(rs != null) try {rs.close();} catch (Exception e2) {}
+       }
+ }
+
+
 }

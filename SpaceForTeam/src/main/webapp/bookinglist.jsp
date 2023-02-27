@@ -15,7 +15,7 @@
 <% 
 String id = (String)session.getAttribute("id");
 UserDAO dao = new UserDAO();
-
+BookingDTO dto = new BookingDTO();
 UserDTO dto2= new UserDTO();
 ArrayList<BookingDTO> bookingList =(ArrayList<BookingDTO>) request.getAttribute("bookingList");
 int currentPage = (Integer)request.getAttribute("currentPage");
@@ -30,26 +30,27 @@ int pageCount =(Integer)request.getAttribute("pageCount");
 <%
 
 
-for(int i=0 ; i<bookingList.size();i++){
-// 	배열접근, 배열한칸에 내용 가져오기 => BoardDTO 저장 => 출력
-BookingDTO dto=bookingList.get(i);
 
-if(id != null){
+
+// if(id != null){
 // 	글쓴이 세션값이 일치하면 자기자신이 쓴 글(글수정, 글삭제 보이기)
-		if(dao.getUserNum(id) == dto.getUser_num()){
+// 		if(dao.getUserNum(id) == dto.getUser_num()){
+			for(int i=0 ; i<bookingList.size();i++){
+//			 	배열접근, 배열한칸에 내용 가져오기 => BoardDTO 저장 => 출력
+			BookingDTO dto3=bookingList.get(i);
 	%>
 	
 <!-- 	글제목을 눌렀을 때 글내용으로 하이퍼링크 -->
-<tr><td><a href="BookingContent.bk?num=<%=dto.getBk_num() %>"><%=dto.getBk_num() %></a></td>     
-	<td><%=dto.getBk_usedate() %></td>
-	<td><%=dto.getBk_usercount() %></td>
-	<td><%=dto.getBk_starttime() %>시</td>
-	<td><%=dto.getBk_endtime() %>시</td>
-	<td><%=dto.getBk_usetime() %>시간</td>
-	<td><%=dto.getBk_price() %></td></tr>
+<tr><td><a href="BookingContent.bk?num=<%=dto3.getBk_num() %>"><%=dto3.getBk_num() %></a></td>     
+	<td><%=dto3.getBk_usedate() %></td>
+	<td><%=dto3.getBk_usercount() %></td>
+	<td><%=dto3.getBk_starttime() %>시</td>
+	<td><%=dto3.getBk_endtime() %>시</td>
+	<td><%=dto3.getBk_usetime() %>시간</td>
+	<td><%=dto3.getBk_price() %></td></tr>
 	<%
-	}
-	}
+// 	}
+// 	}
 }
 %>
 </table>
