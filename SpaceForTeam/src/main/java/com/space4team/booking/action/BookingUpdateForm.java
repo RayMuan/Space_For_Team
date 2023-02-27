@@ -24,7 +24,7 @@ public class BookingUpdateForm implements Action{
 		request.setAttribute("dto", dto);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("booking/updateForm.jsp");
+		forward.setPath("bookingupdateform.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

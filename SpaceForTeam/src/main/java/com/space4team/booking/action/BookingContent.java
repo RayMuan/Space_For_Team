@@ -19,7 +19,7 @@ public class BookingContent implements Action{
 		request.setAttribute("dto", dto);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("booking/content.jsp");
+		forward.setPath("bookingcontent.jsp");
 		forward.setRedirect(false);
 		
 		return forward;
