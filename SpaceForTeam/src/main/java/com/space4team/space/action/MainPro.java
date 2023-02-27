@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mysql.cj.xdevapi.Session;
 import com.space4team.space.db.SpaceDAO;
@@ -14,13 +15,20 @@ public class MainPro implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("MainPro execute()");
-request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("utf-8");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
+		
+		if(id==null) {
+			session.setAttribute("job", 0);
+		}
+
 		
 		SpaceDAO dao = new SpaceDAO();
 		int pageSize = 9;
 		String pageNum = request.getParameter("pageNum");
 		String search=request.getParameter("search");
-
 		
 		if(pageNum == null) {
 			pageNum = "1";

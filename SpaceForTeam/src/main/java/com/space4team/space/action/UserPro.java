@@ -21,9 +21,7 @@ public class UserPro implements Action{
 		System.out.println("UserPro execute()");
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-		if(id==null) {
-			session.setAttribute("job", 0);
-		}
+
 		int job = (Integer)session.getAttribute("job");
 		System.out.println("job="+job);
 		
