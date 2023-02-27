@@ -94,7 +94,7 @@
 					</header>
 					<!-- 본문 사진 -->
 					<figure class="mb-4">
-						<img class="img-fluid rounded"	src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." />
+						<img class="img-fluid rounded"	src="upload/<%=sdto.getS_file()%>" width="900" alt="..." />
 					</figure>
 				</article>
 			<div class="card bg-light">
@@ -139,21 +139,35 @@
 										<div class="fw-bold d-flex align-items-center">
 											<%=redto.getRe_user_id() %>
 											<p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date() %></p>
+										<!-- 	본인일 경우 리뷰 삭제하기 기능 -->
 										<%
-										if(id==redto.getRe_user_id()){
+										if(id!=null){
+											if(id.equals(redto.getRe_user_id())){
 										%>
-										<ul class="list-unstyled">
-										<li class="nav-item  align-content-end">
-										<a class="nav-link" href="ReviewDeletePro.re?s_num=<%=redto.getS_num() %>&re_num=<%=redto.getRe_num() %>">삭제하기</a></li>
-										</ul>
+											<a class="nav-link" href="ReviewDeletePro.re?s_num=<%=redto.getS_num() %>&re_num=<%=redto.getRe_num() %>">삭제하기</a>
 										<%
+											}
 										}
 										%>
 										</div>
-										<div><%=redto.getRe_point() %></div>
+										<div>
+										<%
+										int star=0;
+											for(star=0; star<redto.getRe_point(); star++){
+												%>★
+											<%
+											}
+											while(star<5) {%>
+											☆
+											<%
+											star++;
+											} %>
+										</div>
 										<div><%=redto.getRe_content() %></div>
 									</div>
 									<!-- Host reply -->
+									<!--답글 있음 -->
+									<%if(redto.getRe_reply() != null) {%>
 									<div class="ms-3">
 										<div class="d-flex mt-3 mb-4 ">
 											<div class="ms-3 p-sm-4 bg-dark bg-opacity-25 col-5">
@@ -165,11 +179,21 @@
 											</div>
 										</div>
 									</div>
-									<form class="mb-4 col" action="ReviewWritePro.re" method="post" >
-										<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
-										<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="답글 달기" >
-										<textarea class="form-control col-10"  name="re_reply" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
-									</form>
+									<!--답글 없음 -->
+									<%
+									}else if(redto.getRe_reply()==null){
+										if(id == hdto.getH_id()){%>
+										<!-- 이 공간의 호스트 --> -->
+										<div class="ms-3">
+											<form class="mb-4 col" action="ReviewWritePro.re" method="post" >
+											<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
+											<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="답글 달기" >
+											<textarea class="form-control col-10"  name="re_reply" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+											</form>
+										</div>
+									<%
+									}
+									%>
 								</div>
 							</li>
 							<% 
@@ -187,10 +211,7 @@
 				<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 				<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
 				
-				
-				
-				
-				
+
 				<%if(job==1){ %>
 				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="BookingInsertForm.bk?s_num=<%=sdto.getS_num()%>">예약하기</a>
 				<%
@@ -247,14 +268,13 @@
                             <div class="accordion-collapse collapse show" id="collapse<%=qdto.getQ_num() %>" aria-labelledby="heading<%=qdto.getQ_num() %>" data-bs-parent="#accordionExample">
                                 <%
                                 if(qdto.getQ_recontent()==null){
-                                	if(id==hdto.getH_id()){ %>
-										<!-- 답변 없음. 이 공간의 주인인 경우 -->
+                                	if(id.equals(hdto.getH_id())){ %>
+								<!-- 답변 없음. 이 공간의 주인인 경우 -->
 								<div class="accordion-body">
-                                	<form class="mb-4 col" action="QnaWritePro.re" method="post" >
+                                	<form class="mb-4 col" action="QnaWritePro.qa" method="post" >
 									<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
-
-									<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="답글달기" >
-									<textarea class="form-control col-10"  name="Q_reply" rows="3" placeholder="질문에 답변해주세요!"></textarea>
+									<textarea class="form-control col-10 mb-2"  name="q_recontent" rows="3" placeholder="질문에 답변해주세요!"></textarea>
+									<input type="submit" class="btn btn-secondary btn-lg px-4 fs-6" value="답글달기" >
 									</form>
                                 </div>
                                 <%}else{
@@ -279,14 +299,17 @@
                     <%
                     	}
 					}
+					
 					if(job==1){
 					%>
-					<form class="mb-4 col" action="QnaWritePro.re" method="post" >
+					<form class="mb-4 col" action="QnaWritePro.qa" method="post" >
 						<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
-						<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="질문하기" >
-					<textarea class="form-control col-10"  name="Qna" rows="3" placeholder="호스트님께 질문해보세요!"></textarea>
+						<input type="hidden" name="h_num" value=<%=hdto.getH_num() %> >
+						<textarea class="form-control col-10 mb-2"  name="q_content" rows="3" placeholder="호스트님께 질문해보세요!"></textarea>
+						<input type="submit" class="btn btn-secondary btn-lg px-4 col" value="질문하기" >
 					</form>
 					<%
+						}
 					}
 					%>
 			</section>
