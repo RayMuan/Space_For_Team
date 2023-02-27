@@ -213,6 +213,7 @@
 							</div>
 						</div>
 					</div>
+							<!--  Qna	 -->
 					<%
 					ArrayList<QnaDTO> qnaList = (ArrayList<QnaDTO>) request.getAttribute("qnaList");
 					%>
@@ -228,23 +229,32 @@
 									Q. <%=qdto.getQ_content() %>
 								</button>
 							</h3>
+							<!-- 답변 / 질문 달기 -->
                             <div class="accordion-collapse collapse show" id="collapse<%=qdto.getQ_num() %>" aria-labelledby="heading<%=qdto.getQ_num() %>" data-bs-parent="#accordionExample">
                                 <%
                                 if(qdto.getQ_recontent()==null){
-                                	if(job==2){ %>
-                                <div class="accordion-body">
-                                	
+                                	if(id==hdto.getH_id()){ %>
+										<!-- 답변 없음. 이 공간의 주인인 경우 -->
+								<div class="accordion-body">
+                                	<form class="mb-4 col" action="QnaWritePro.re" method="post" >
+									<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
+
+									<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="답글달기" >
+									<textarea class="form-control col-10"  name="Q_reply" rows="3" placeholder="질문에 답변해주세요!"></textarea>
+									</form>
                                 </div>
-                                	<%}else{
-                                	%>
-                                	<div class="accordion-body">
-                                	
-                                	</div>
-                                	<%}
+                                <%}else{
+                                %>
+									<!-- 답변 없음. 이 공간의 주인이 아닌 경우  -->
+								<div class="accordion-body">
+                                	A.호스트님의 답변을 기다리고 있어요.
+                                </div>
+                                <%}
                                 }else{
                                 %>
-                                <div class="accordion-body">
-                                	A.<%=qdto.getQ_recontent() %>
+								<!--  답변 있음 -->
+								<div class="accordion-body">
+                                A.<%=qdto.getQ_recontent() %>
                                 </div>
                                 <%
                                 }
@@ -255,19 +265,16 @@
                     <%
                     	}
 					}
+					if(job==1){
 					%>
 					<form class="mb-4 col" action="QnaWritePro.re" method="post" >
 						<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
-					<% 
-						//
-						if(job==1){
-					%>
 						<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="질문하기" >
-						<textarea class="form-control col-10"  name="Qna" rows="3" placeholder="호스트님께 질문해보세요!"></textarea>
+					<textarea class="form-control col-10"  name="Qna" rows="3" placeholder="호스트님께 질문해보세요!"></textarea>
+					</form>
 					<%
 					}
 					%>
-					</form>
 			</section>
 		</div>
 	</div>
