@@ -23,16 +23,25 @@ public class BookingInsertPro implements Action{
 		//공간번호, 유저번호, 공간 시간당가격은 space -> insertform으로 갈 때 space(공간번호)에서 받고, session(유저번호// 아이디), 시간당 가격(공간번호에서request.getParameter)로 받아와주기 
 		
 		
-		int s_num=1;
-		int user_num=1;
+		int s_num=Integer.parseInt(request.getParameter("s_num"));
+		System.out.println(s_num);
+		int user_num= Integer.parseInt(request.getParameter("user_num"));
+		System.out.println(user_num);
 		int bk_usercount = Integer.parseInt(request.getParameter("bk_usercount"));
+		System.out.println(bk_usercount);
 		Timestamp bk_date = new Timestamp(System.currentTimeMillis());
-		int bk_price= 10000;
+		System.out.println(bk_date);
+//		int bk_price= 10000;
 		String bk_usedate = request.getParameter("bk_usedate");
+		System.out.println(bk_usedate);
 		int bk_starttime = Integer.parseInt(request.getParameter("bk_starttime"));
+		System.out.println(bk_starttime);
 		int bk_endtime = Integer.parseInt(request.getParameter("bk_endtime"));
+		System.out.println(bk_endtime);
 		int bk_usetime = bk_endtime - bk_starttime;
-//		int bk_price = Integer.parseInt(dto.getS_bill()) * bk_usetime;
+		System.out.println(bk_usetime);
+		int bk_price = Integer.parseInt(request.getParameter("s_bill")) * bk_usetime;
+		System.out.println(bk_price);
 		
 		BookingDTO dto = new BookingDTO();
 		System.out.println("dto주머니"+ dto);
