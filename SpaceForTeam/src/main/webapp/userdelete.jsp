@@ -152,7 +152,7 @@ String id=(String)session.getAttribute("id");
                                     <!-- Submit Button-->
 <!--                                     <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">변경완료</button></div> -->
 									<div style="text-align:center">
-									<input class="btn btn-primary btn-lg" type="button" value="취소" onclick="javascript:window.location='UserMain.us'">
+									<input class="btn btn-primary btn-lg" type="button" value="취소" onclick="javascript:window.location='UserMypage.us'">
 									<input class="btn btn-primary btn-lg" href="#scroll-target" type="submit" value="탈퇴">
 									</div>
                                 </form>
