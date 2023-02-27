@@ -387,6 +387,33 @@ import com.space4team.host.db.HostDTO;
 						 if(con!=null) try { con.close();} catch (Exception e2) {}
 					 }
 			 }
+		 public String getHostID(int s_num) {
+				System.out.println("getSpace()");
+				String h_id=null;
+				Connection con=null;
+				PreparedStatement pstmt=null;
+				ResultSet rs= null;
+				try {
+					con=getConnection();
+					String sql="select h_id from host where h_num =(select h_num from space where s_num=?)";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setInt(1, s_num);
+					
+					rs=pstmt.executeQuery();
+					if(rs.next()) {
+						h_id = rs.getString("h_id");				
+						}
+				}catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+					if(con!=null) try {con.close();}catch (Exception e2) {}
+					if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
+				}
+				return h_id;
+			}// getSpace
+		 
+		 
 	
 	}//class
 
