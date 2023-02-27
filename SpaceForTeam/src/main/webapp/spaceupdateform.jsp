@@ -105,6 +105,10 @@
                                         <input type="number" name="bill" min="10000" max="5000000" value="<%=dto.getS_bill()%>"> / hr 
                                         <br><br>
                                    	</div>
+                                   	<div class="form-floating mb-3">
+                                        <input class="form-control" name="max" type="text" placeholder="max" value="<%=dto.getS_max() %>" required title="입력하세요!">
+                                        <label for="max"><i class="bi bi-star-fill text-warning"></i>최대 수용인원을 알려주세요</label>
+                                    </div>
                                     <div class="form-floating mb-3">
                                     	<input type="button" onClick="goPopup();" value="주소찾기"/><code>  주소찾기 버튼을 눌러 주소를 입력하세요</code>
                                     	</div>
