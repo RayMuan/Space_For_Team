@@ -25,13 +25,14 @@ public class Mypage implements Action{
 		UserDTO udto = udao.getUser(id);
 		
 		HostDAO hdao = new HostDAO();
-		HostDTO hdto = hdao.getHostID(id);
+		HostDTO hdto = new HostDTO();
 		
 		System.out.println("hdtoget한 아이디"+hdto.getH_id());
 		if(udto != null) {
 			idcheck = "user";
 			
 		}else {
+			hdto = hdao.getHostID(id);
 			if (hdto.getH_id() .equals("admin")) {
 				idcheck = "admin";
 				
