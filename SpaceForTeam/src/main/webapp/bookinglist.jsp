@@ -57,35 +57,34 @@ int pageCount =(Integer)request.getAttribute("pageCount");
 <%
 if(currentPage>1){
 	%>
-<a href="BookingContent.bk?pageNum=<%=currentPage -1 %>">[1페이지 이전]</a>
+<a href="BookingList.bk?pageNum=<%=currentPage -1 %>">[1페이지 이전]</a>
 	<% 
 }
 
 // 10페이지 이전 (블록단위)
 if(startPage > pageBlock){
 	%>
-<a href="BookingContent.bk?pageNum=<%=startPage - pageBlock %>">[10페이지 이전]</a>
+<a href="BookingList.bk?pageNum=<%=startPage - pageBlock %>">[10페이지 이전]</a>
 	<% 
 }
 
 for(int i=startPage;i<=endPage;i++){
 	%>
-	<a href="BookingContent.bk?pageNum=<%=i %>"><%=i %></a>
+	<a href="BookingList.bk?pageNum=<%=i %>"><%=i %></a>
 	<%
 }		
 // 다음 페이지(전체페이지수보다 작을 때) 가기 (+1p)
 if(currentPage < pageCount){
 	%>
-<a href="BookingContent.bk?pageNum=<%=currentPage +1 %>">[1페이지 다음]</a>
+<a href="BookingList.bk?pageNum=<%=currentPage +1 %>">[1페이지 다음]</a>
 	<% 
 }
 // 10페이지 이후(블록단위)
 if(endPage < pageCount){
 	%>
-<a href="BookingContent.bk?pageNum=<%=startPage + pageBlock %>">[10페이지 다음]</a>
+<a href="BookingList.bk?pageNum=<%=startPage + pageBlock %>">[10페이지 다음]</a>
 	<% 
 }
-
 %>
 
 </body>
