@@ -160,7 +160,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-5">
+<!--                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title">리뷰 내역</h2>
@@ -169,7 +169,7 @@
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">바로가기</a></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
                  <% if(idcheck=="host"){
                   			%>
