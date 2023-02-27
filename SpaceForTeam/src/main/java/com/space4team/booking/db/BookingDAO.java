@@ -10,6 +10,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+
+
+
+
 public class BookingDAO {
 	public Connection getConnection() throws Exception{
 
@@ -211,6 +215,13 @@ public void updateBooking(BookingDTO dto) {
 	Connection con = null;
 	PreparedStatement pstmt=null;
 	
+
+	
+//	dto.setBk_num(bk_num);
+//	dto.setBk_usedate(bk_usedate);
+//	dto.setBk_usercount(bk_usercount);
+//	dto.setBk_starttime(bk_starttime);
+//	dto.setBk_endtime(bk_endtime);
 	try {
 		con = getConnection();
 //		num name subject content
