@@ -8,7 +8,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content />
@@ -20,9 +20,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body class="d-flex flex-column">
-        <main class="flex-shrink-0">
+</head>
+<body class="d-flex flex-column">
+	<main class="flex-shrink-0">
             <!-- Navigation-->
              <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">                
@@ -72,7 +72,6 @@
                            
 
  <script type="text/javascript">
-
  function fun(){
 	if(document.fr.uc.value==""){
 		document.getElementById("d").innerHTML="<h5>예약인원을 설정해주세요</h5>";

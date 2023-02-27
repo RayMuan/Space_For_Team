@@ -43,9 +43,9 @@ import com.space4team.host.db.HostDTO;
 				System.out.println("예외처리함");
 				e.printStackTrace();
 			} finally {
-				if(con!=null) {try {con.close();} catch (Exception e2) {}}
-				if(pstmt!=null){try {pstmt.close();} catch (Exception e2) {}}
-				
+				if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+				if(con!=null) try {con.close();}catch (Exception e2) {}
+				if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 			}return num;
 		}
 		
@@ -88,8 +88,9 @@ import com.space4team.host.db.HostDTO;
 				System.out.println("예외처리함");
 				e.printStackTrace();
 			} finally {
-				if(con!=null) {try {con.close();} catch (Exception e2) {}}
-				if(pstmt!=null){try {pstmt.close();} catch (Exception e2) {}}
+				if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+				if(con!=null) try {con.close();}catch (Exception e2) {}
+				if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 				}return;
 			}
 
@@ -163,9 +164,9 @@ import com.space4team.host.db.HostDTO;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				if(rs!=null) try { rs.close();} catch (Exception e2) {}
-				if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-				if(con!=null) try { con.close();} catch (Exception e2) {}
+				if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+				if(con!=null) try {con.close();}catch (Exception e2) {}
+				if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 			}
 			return spaceList;
 		}//getSpaceList
@@ -187,9 +188,9 @@ import com.space4team.host.db.HostDTO;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				if(rs!=null) try { rs.close();} catch (Exception e2) {}
-				if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-				if(con!=null) try { con.close();} catch (Exception e2) {}	
+				if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+				if(con!=null) try {con.close();}catch (Exception e2) {}
+				if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 			}
 			return count;
 		}// getspaceCount()
@@ -212,9 +213,9 @@ import com.space4team.host.db.HostDTO;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				if(rs!=null) try { rs.close();} catch (Exception e2) {}
-				if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-				if(con!=null) try { con.close();} catch (Exception e2) {}	
+				if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+				if(con!=null) try {con.close();}catch (Exception e2) {}
+				if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 			}
 			return count;
 		}// getspaceCount(HostDTO hdto)
@@ -251,9 +252,9 @@ import com.space4team.host.db.HostDTO;
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
-				if(rs!=null) try { rs.close();} catch (Exception e2) {}
-				if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-				if(con!=null) try { con.close();} catch (Exception e2) {}
+				if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+				if(con!=null) try {con.close();}catch (Exception e2) {}
+				if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 			}
 			return spaceList;
 		}//getSpaceList(int startRow,int pageSize, String search)
@@ -286,9 +287,9 @@ import com.space4team.host.db.HostDTO;
 				e.printStackTrace();
 			}finally {
 				// 예외 상관없이 마무리작업 => 객체생성한 기억장소 해제
-				if(rs!=null) try { rs.close();} catch (Exception e2) {}
-				if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
-				if(con!=null) try { con.close();} catch (Exception e2) {}	
+				if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+				if(con!=null) try {con.close();}catch (Exception e2) {}
+				if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 			}
 			return count;
 		}// getspaceCount()
@@ -332,9 +333,9 @@ import com.space4team.host.db.HostDTO;
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-				if(con != null) {try {con.close();} catch (Exception e2) {}}
-				if(pstmt != null) {try {pstmt.close();} catch (Exception e2) {}}
-				if(rs != null) {try {rs.close();} catch (Exception e2) {}}
+				if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+				if(con!=null) try {con.close();}catch (Exception e2) {}
+				if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 			}
 				return spaceList;
 		}	
@@ -392,6 +393,7 @@ import com.space4team.host.db.HostDTO;
 						 if(con!=null) try { con.close();} catch (Exception e2) {}
 					 }
 			 }
+		 
 		 public String getHostID(int s_num) {
 				System.out.println("getSpace()");
 				String h_id=null;

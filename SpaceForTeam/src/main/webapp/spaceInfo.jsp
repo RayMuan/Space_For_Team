@@ -23,6 +23,8 @@
 <link href="css/styles.css" rel="stylesheet" />
 <!-- 추가 css -->
 <style>
+
+
 </style>
 </head>
 <body class="d-flex flex-column">
@@ -98,11 +100,11 @@
 					</figure>
 				</article>
 			<div class="card bg-light">
-				<h2 class="fw-bolder m-3">Review</h2>
+				<h2 class="fw-bolder mx-3">Review</h2>
 				<!-- 리뷰 -->
 				<div id="reviewList">
 					<div class="card-body">
-						<div class="row gx-5">
+						<div class="row">
 							<!-- Comment form-->
 							<% 
 							if(job==1){
@@ -116,8 +118,8 @@
 									<option class="text-center" value="2">★★☆☆☆</option>
 									<option class="text-center" value="1">★☆☆☆☆</option>
 								</select>
-								<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="리뷰 달기" >
-								<textarea class="form-control col-10"  name="re_content" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+								<input type="submit" class="btn btn-secondary px-4 col-2" value="리뷰 달기" >
+								<textarea class="form-control col-10 mt-2"  name="re_content" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
 							</form>
 							<%
 							}
@@ -128,7 +130,7 @@
 						if(null!="reviewList"){
 						ArrayList<ReviewDTO> reviewList =(ArrayList<ReviewDTO>)request.getAttribute("reviewList");
 						%>
-						<ul class="p-4 list-unstyled ">
+						<ul class="px-4 pt-0 pb-2 list-unstyled ">
 						<%
 						for (int i = 0; i < reviewList.size(); i++) {
 							redto = reviewList.get(i);
@@ -163,7 +165,7 @@
 											star++;
 											} %>
 										</div>
-										<div><%=redto.getRe_content() %></div>
+										<div class="p-1"><%=redto.getRe_content() %></div>
 									</div>
 									<!-- Host reply -->
 									<!--답글 있음 -->
@@ -226,7 +228,8 @@
 				<%
 				}
 				%>
-				<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
+				<h3 class="fw-bolder mb-2 mt-5">시설 및 옵션</h3>
+				<%=sdto.getS_opt() %>
 				<h3 class="fw-bolder mb-2 mt-5">위치</h3>
 					<div class="col-lg-12 mb-5">
 						<div class="card h-100 border">
@@ -260,7 +263,7 @@
                      <div class="accordion mb-3" id="accordionExample">
                      	<div class="accordion-item">
 							<h3 class="accordion-header" id="heading<%=qdto.getQ_num() %>">
-								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%=qdto.getQ_num() %>" aria-expanded="true" aria-controls="collapse<%=qdto.getQ_num() %>">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%=qdto.getQ_num() %>" aria-expanded="false" aria-controls="collapse<%=qdto.getQ_num() %>">
 									Q. <%=qdto.getQ_content() %>
 								</button>
 							</h3>
@@ -268,7 +271,7 @@
                             <div class="accordion-collapse collapse show" id="collapse<%=qdto.getQ_num() %>" aria-labelledby="heading<%=qdto.getQ_num() %>" data-bs-parent="#accordionExample">
                                 <%
                                 if(qdto.getQ_recontent()==null){
-                                	if(id.equals(hdto.getH_id())){ %>
+                                	if(id==hdto.getH_id()){ %>
 								<!-- 답변 없음. 이 공간의 주인인 경우 -->
 								<div class="accordion-body">
                                 	<form class="mb-4 col" action="QnaWritePro.qa" method="post" >
@@ -281,7 +284,7 @@
                                 %>
 									<!-- 답변 없음. 이 공간의 주인이 아닌 경우  -->
 								<div class="accordion-body">
-                                	A.호스트님의 답변을 기다리고 있어요.
+                                	A. 답변을 기다리고 있어요.
                                 </div>
                                 <%}
                                 }else{
