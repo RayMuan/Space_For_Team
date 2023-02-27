@@ -27,8 +27,8 @@
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.jsp">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="loginForm.jsp">로그인</a></li>
-                            <li class="nav-item"><a class="nav-link" href="insertForm.jsp">회원가입</a></li>
+<!--                             <li class="nav-item"><a class="nav-link" href="loginForm.jsp">로그인</a></li> -->
+<!--                             <li class="nav-item"><a class="nav-link" href="insertForm.jsp">회원가입</a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -81,12 +81,12 @@
  }
  </script>
 
-<tr><td colspan ="2"><input type="submit" value="예약수정"></td></tr>
+<!-- <tr><td colspan ="2"><input type="submit" value="예약수정"></td></tr> -->
  
                                 <form action="BookingUpdatePro.bk" method="post" name="fr">
     								<input type ="hidden" name ="num" id="uc" value="<%=dto.getBk_num() %>">
     								<div class="form-floating mb-3">
-                                        <input class="form-control" type="number" name ="bk_usercount" value="<%=dto.getBk_usercount() %>"min="1" max="20" />
+                                        <input class="form-control" type="number" name ="bk_usercount" value="<%=dto.getBk_usercount() %>" min="1"/>
                                         <label for="bk_usercount">예약인원</label>       
                                     </div>
                                     
@@ -101,7 +101,7 @@
 										</script>     
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input class="form-control" type="number" id="st" name ="bk_starttime" value="<%=dto.getBk_starttime() %>" min="1" max="24" />
+                                        <input class="form-control" type="number" id="st" name ="bk_starttime" value="<%=dto.getBk_starttime() %>" min="0" max="23" />
                                         <label for="bk_usercount">시작시간</label>       
                                     </div>
                                     

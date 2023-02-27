@@ -44,7 +44,7 @@ BookingDTO dto = (BookingDTO)request.getAttribute("dto");
 <input type= "button" value="예약삭제" 
  onclick = "location.href='BookingDeleteForm.bk?num=<%=dto.getBk_num() %>'">
 <input type= "button" value="결제" 
- onclick = "location.href='결제  ?num=<%=dto.getBk_num() %>'">
+ onclick = "location.href='PaymentPro.pa?num=<%=dto.getBk_num() %>'">
 <%
 //예약삭제는 따로 form이 없고 클릭시 경고 뜨는 방향으로 해결
 // 		}
