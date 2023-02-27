@@ -94,27 +94,42 @@ form input[type="button"]
             <!-- Navigation-->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">                
-                    <a class="navbar-brand" href="index.html">SpaceForTeam</a> 
+                    <a class="navbar-brand" href="MainPro.sp">SpaceForTeam</a> 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="MainPro.sp">Home</a></li>                   
                             <li class="nav-item"><a class="nav-link" href="join.jsp">Join</a></li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item">
+                            <%   
+//                             String id = "";
+							String id=(String)session.getAttribute("id");
+                            if(id!=null){
+                            	%>
+                            	<a class="nav-link" ><%=id %> 님</a>
+                            <%
+                            }
+                            %>
+                            </li>
+                            <%if(id==null){
+                            	%>
+                            	<li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                                     <li><a class="dropdown-item" href="userloginform.jsp">Guest</a></li>
                                      <li><a class="dropdown-item" href="hostLogin.jsp">Host</a></li>
                                 </ul>
+                                <%
+                                }
+                                %>
                             </li>
                             
                             <%
-//                             	String id = "";
-								String id=(String)session.getAttribute("id");
+                           	
 								if(id!=null){
 									%>
-									<li class="nav-item"><a class="nav-link" href="HostLogout.ho">Logout</a></li>
-									<li class="nav-item"><a class="nav-link" href="HostMypage.ho">Mypage</a></li>
+									<li class="nav-item"><a class="nav-link" href="UserLogout.us">Logout</a></li>
+										<li class="nav-item"><a class="nav-link" href="UserMypage.us">Mypage</a></li>
 									<%
 										}
 									%>
@@ -176,7 +191,7 @@ HostDTO dto=(HostDTO)request.getAttribute("dto");
                                     <!-- Submit Button-->
 <!--                                     <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">변경완료</button></div> -->
 									<div style="text-align:center">
-									<input class="btn btn-primary btn-lg" type="button" value="취소" onclick="javascript:window.location='UserMain.us'">
+									<input class="btn btn-primary btn-lg" type="button" value="취소" onclick="javascript:window.location='UserMypage.us'">
 									<input class="btn btn-primary btn-lg" href="#scroll-target" type="submit" value="변경">
 									</div>
                                 </form>

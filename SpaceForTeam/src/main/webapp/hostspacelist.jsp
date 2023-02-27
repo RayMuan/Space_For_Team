@@ -42,23 +42,40 @@
     </head>
     <body>
         <!-- Responsive navbar-->
-                  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">                
-                    <a class="navbar-brand" href="index.html">SpaceForTeam</a> 
+                    <a class="navbar-brand" href="MainPro.sp">SpaceForTeam</a> 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="MainPro.sp">Home</a></li>                   
                             <li class="nav-item"><a class="nav-link" href="join.jsp">Join</a></li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item">
+                            <%   
+//                             String id = "";
+							String id=(String)session.getAttribute("id");
+                            if(id!=null){
+                            	%>
+                            	<a class="nav-link" ><%=id %> 님</a>
+                            <%
+                            }
+                            %>
+                            </li>
+                            <%if(id==null){
+                            	%>
+                            	<li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                                     <li><a class="dropdown-item" href="userloginform.jsp">Guest</a></li>
                                      <li><a class="dropdown-item" href="hostLogin.jsp">Host</a></li>
                                 </ul>
+                                <%
+                                }
+                                %>
                             </li>
-                             <%
-								String id=(String)session.getAttribute("id");
+                            
+                            <%
+                           	
 								if(id!=null){
 									%>
 									<li class="nav-item"><a class="nav-link" href="UserLogout.us">Logout</a></li>
@@ -66,6 +83,7 @@
 									<%
 										}
 									%>
+                            
                              <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Community</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
@@ -166,21 +184,21 @@
 					}
            %>
  			</div>
- 			<div class="row gx-5 row-cols-2 row-cols-lg-4 py-5 justify-content-center">
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-people"></i></div>
-<!--                           h5태그 찾아서 text-align : center했음 -->
-                            <div class="h5">공지사항/자주하는질문</div>
-                            <p class="text-muted mb-0"><a href="NoticeList.no">게시판 바로가기</a></p>
-                        </div>
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-telephone"></i></div>
-                            <div class="h5">Call us</div>
-                            <p class="text-muted mb-0">상담가능시간</p>
-                            <p class="text-muted mb-0">09:00 - 17:00</p>
-                            <p class="text-muted mb-0">☎ 010-1234-5678</p>
-                        </div>
-                    </div>
+<!--  			<div class="row gx-5 row-cols-2 row-cols-lg-4 py-5 justify-content-center"> -->
+<!--                         <div class="col"> -->
+<!--                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-people"></i></div> -->
+<!-- <!--                           h5태그 찾아서 text-align : center했음 --> -->
+<!--                             <div class="h5">공지사항/자주하는질문</div> -->
+<!--                             <p class="text-muted mb-0"><a href="NoticeList.no">게시판 바로가기</a></p> -->
+<!--                         </div> -->
+<!--                         <div class="col"> -->
+<!--                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-telephone"></i></div> -->
+<!--                             <div class="h5">Call us</div> -->
+<!--                             <p class="text-muted mb-0">상담가능시간</p> -->
+<!--                             <p class="text-muted mb-0">09:00 - 17:00</p> -->
+<!--                             <p class="text-muted mb-0">☎ 010-1234-5678</p> -->
+<!--                         </div> -->
+<!--                     </div> -->
             </section>
         <!-- Footer-->
               <footer class="bg-dark py-4 mt-auto">
