@@ -15,8 +15,7 @@
 <% 
 String id = (String)session.getAttribute("id");
 UserDAO dao = new UserDAO();
-BookingDTO dto = new BookingDTO();
-UserDTO dto2= new UserDTO();
+
 ArrayList<BookingDTO> bookingList =(ArrayList<BookingDTO>) request.getAttribute("bookingList");
 int currentPage = (Integer)request.getAttribute("currentPage");
 int	startPage = (Integer)request.getAttribute("startPage");
@@ -30,14 +29,13 @@ int pageCount =(Integer)request.getAttribute("pageCount");
 <%
 
 
-
-
-// if(id != null){
 // 	글쓴이 세션값이 일치하면 자기자신이 쓴 글(글수정, 글삭제 보이기)
-// 		if(dao.getUserNum(id) == dto.getUser_num()){
+
 			for(int i=0 ; i<bookingList.size();i++){
 //			 	배열접근, 배열한칸에 내용 가져오기 => BoardDTO 저장 => 출력
 			BookingDTO dto3=bookingList.get(i);
+			if(id!=null){
+				if(id.equals(dao.getUserID(dto3.getUser_num()))){
 	%>
 	
 <!-- 	글제목을 눌렀을 때 글내용으로 하이퍼링크 -->
@@ -49,8 +47,8 @@ int pageCount =(Integer)request.getAttribute("pageCount");
 	<td><%=dto3.getBk_usetime() %>시간</td>
 	<td><%=dto3.getBk_price() %></td></tr>
 	<%
-// 	}
-// 	}
+			}
+			}
 }
 %>
 </table>

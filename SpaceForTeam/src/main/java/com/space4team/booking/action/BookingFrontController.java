@@ -60,13 +60,6 @@ public class BookingFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 			
-		}else if(sPath.equals("/BookingContent.bk")) {
-			action = new BookingContent();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}else if(sPath.equals("/BookingUpdateForm.bk")) {
 			action = new BookingUpdateForm();
 			try {

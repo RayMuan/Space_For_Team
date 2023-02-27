@@ -222,16 +222,20 @@ public void updateBooking(BookingDTO dto) {
 //	dto.setBk_usercount(bk_usercount);
 //	dto.setBk_starttime(bk_starttime);
 //	dto.setBk_endtime(bk_endtime);
+//	dto.setBk_usetime(bk_usetime);
+//	dto.setBk_price(bk_price);
 	try {
 		con = getConnection();
 //		num name subject content
-	 	String sql = "update booking set bk_usedate = ?, bk_usercount = ?, bk_starttime=?, bk_endtime=? where bk_num = ?";
+	 	String sql = "update booking set bk_usedate = ?, bk_usercount = ?, bk_starttime=?, bk_endtime=?, bk_usetime=?, bk_price =? where bk_num = ?";
 	 	pstmt = con.prepareStatement(sql);
 	 	pstmt.setString(1,dto.getBk_usedate());
 	 	pstmt.setInt(2,dto.getBk_usercount());
 	 	pstmt.setInt(3,dto.getBk_starttime());
 	 	pstmt.setInt(4,dto.getBk_endtime());
-	 	pstmt.setInt(5,dto.getBk_num());
+	 	pstmt.setInt(5,dto.getBk_usetime());
+	 	pstmt.setInt(6,dto.getBk_price());
+	 	pstmt.setInt(7,dto.getBk_num());
 	 	pstmt.executeUpdate();	
 	} catch (Exception e) {
 		e.printStackTrace();

@@ -385,7 +385,33 @@ private Connection con=null;
 				if(con!=null) try { con.close();} catch (Exception e2) {}
 			}
 			return user_num;
-		}//getUserId()
+		}//getUserNum()
 		
+		public String getUserID(int num) {
+			Connection con =null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String user_id = null;
+			try {
+				con=getConnection();
+				
+				String sql="select user_id from user where user_num=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, num);
 
+				rs=pstmt.executeQuery();
+				if(rs.next()){
+					user_id = rs.getString("user_id");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(rs!=null) try { rs.close();} catch (Exception e2) {}
+				if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+				if(con!=null) try { con.close();} catch (Exception e2) {}
+			}
+			return user_id;
+		}//getUserNum()
+		
 }//class

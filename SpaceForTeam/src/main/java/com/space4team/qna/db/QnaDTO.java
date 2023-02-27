@@ -9,8 +9,6 @@ public class QnaDTO {
 	private Timestamp q_date;
 	private int h_num;
 	private String q_recontent;
-	private Timestamp q_redate;
-	private String q_user_id;
 	private int q_s_num;
 	
 	//get set
@@ -49,18 +47,6 @@ public class QnaDTO {
 	}
 	public void setQ_recontent(String q_recontent) {
 		this.q_recontent = q_recontent;
-	}
-	public Timestamp getQ_redate() {
-		return q_redate;
-	}
-	public void setQ_redate(Timestamp q_redate) {
-		this.q_redate = q_redate;
-	}
-	public String getQ_user_id() {
-		return q_user_id;
-	}
-	public void setQ_user_id(String q_user_id) {
-		this.q_user_id = q_user_id;
 	}
 	public int getQ_s_num() {
 		return q_s_num;
