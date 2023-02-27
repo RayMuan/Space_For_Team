@@ -141,10 +141,12 @@
 											<p class="fst-italic fw-noaml mb-0 ms-3 fw-light fs-6"><%=redto.getRe_date() %></p>
 										<!-- 	본인일 경우 리뷰 삭제하기 기능 -->
 										<%
-										if(id.equals(redto.getRe_user_id())){
+										if(id!=null){
+											if(id.equals(redto.getRe_user_id())){
 										%>
-										<a class="nav-link" href="ReviewDeletePro.re?s_num=<%=redto.getS_num() %>&re_num=<%=redto.getRe_num() %>">삭제하기</a>
+											<a class="nav-link" href="ReviewDeletePro.re?s_num=<%=redto.getS_num() %>&re_num=<%=redto.getRe_num() %>">삭제하기</a>
 										<%
+											}
 										}
 										%>
 										</div>
