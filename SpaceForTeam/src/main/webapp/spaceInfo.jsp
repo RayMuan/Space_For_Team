@@ -186,11 +186,25 @@
 			<section class="mb-5 pt-4">
 				<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 				<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
+				
+				
+				
+				
+				
 				<%if(job==1){ %>
 				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="BookingInsertForm.bk?s_num=<%=sdto.getS_num()%>">예약하기</a>
-				<%}else{%>
-				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="UserLoginForm.us">게스트로 로그인하기</a>				
-				<%}%>
+				<%
+				}else if(job==2){
+					if(id.equals(hdto.getH_id())){
+				%>
+				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="SpaceUpdatePro.sp"> 나의 공간 관리하기</a>								
+				<%						
+					}
+				}else if(job==0){%>
+				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="UserLoginForm.us">로그인하고 예약하기</a>				
+				<%
+				}
+				%>
 				<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 				<h3 class="fw-bolder mb-2 mt-5">위치</h3>
 					<div class="col-lg-12 mb-5">

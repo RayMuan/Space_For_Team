@@ -91,7 +91,7 @@ public class SpaceInsertPro implements Action{
 //		actionForward(이동정보를 담는 객체)를 생성함 ! 
 //		여기에 setPath, setRedirect에 이동정보를 담아서 그 객체를 들고 호출한 곳으로 돌아감. return forward 
 		ActionForward forward = new ActionForward();
-		forward.setPath("HostPro.sp");
+		forward.setPath("SpaceList.sp");
 		forward.setRedirect(true);
 		
 		return forward;

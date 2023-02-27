@@ -143,7 +143,9 @@ import com.space4team.host.db.HostDTO;
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, pageSize);
+				
 				rs=pstmt.executeQuery();
+			
 				while(rs.next()) {
 					SpaceDTO sdto=new SpaceDTO();
 					sdto.setS_name(rs.getString("s_name"));
@@ -154,6 +156,7 @@ import com.space4team.host.db.HostDTO;
 					sdto.setH_num(rs.getInt("h_num"));
 					sdto.setS_sido(rs.getString("s_sido"));
 					sdto.setS_num(rs.getInt("s_num"));
+					sdto.setS_address(rs.getString("s_address"));
 
 					spaceList.add(sdto);
 				}
@@ -241,6 +244,7 @@ import com.space4team.host.db.HostDTO;
 					sdto.setH_num(rs.getInt("h_num"));
 					sdto.setS_sido(rs.getString("s_sido"));
 					sdto.setS_num(rs.getInt("s_num"));
+					sdto.setS_address(rs.getString("s_address"));
 					
 					spaceList.add(sdto);
 				}
@@ -388,6 +392,33 @@ import com.space4team.host.db.HostDTO;
 						 if(con!=null) try { con.close();} catch (Exception e2) {}
 					 }
 			 }
+		 public String getHostID(int s_num) {
+				System.out.println("getSpace()");
+				String h_id=null;
+				Connection con=null;
+				PreparedStatement pstmt=null;
+				ResultSet rs= null;
+				try {
+					con=getConnection();
+					String sql="select h_id from host where h_num =(select h_num from space where s_num=?)";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setInt(1, s_num);
+					
+					rs=pstmt.executeQuery();
+					if(rs.next()) {
+						h_id = rs.getString("h_id");				
+						}
+				}catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+					if(con!=null) try {con.close();}catch (Exception e2) {}
+					if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
+				}
+				return h_id;
+			}// getSpace
+		 
+		 
 	
 	}//class
 

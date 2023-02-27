@@ -30,7 +30,7 @@ public class PaymentPro implements Action{
 		
 		ActionForward forward= new ActionForward();
 		
-		forward.setPath("payment/paymentdone.jsp");
+		forward.setPath("paymentdone.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

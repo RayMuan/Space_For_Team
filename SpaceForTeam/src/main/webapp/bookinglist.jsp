@@ -1,5 +1,5 @@
+<%@page import="com.space4team.space.db.SpaceDAO"%>
 <%@page import="com.space4team.user.db.UserDAO"%>
-<%@page import="com.space4team.user.db.UserDTO"%>
 <%@page import="com.space4team.booking.db.BookingDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,8 +15,8 @@
 <% 
 String id = (String)session.getAttribute("id");
 UserDAO dao = new UserDAO();
-BookingDTO dto = new BookingDTO();
-UserDTO dto2= new UserDTO();
+SpaceDAO dao2 = new SpaceDAO();
+
 ArrayList<BookingDTO> bookingList =(ArrayList<BookingDTO>) request.getAttribute("bookingList");
 int currentPage = (Integer)request.getAttribute("currentPage");
 int	startPage = (Integer)request.getAttribute("startPage");
@@ -30,27 +30,50 @@ int pageCount =(Integer)request.getAttribute("pageCount");
 <%
 
 
-
-
-// if(id != null){
 // 	글쓴이 세션값이 일치하면 자기자신이 쓴 글(글수정, 글삭제 보이기)
-// 		if(dao.getUserNum(id) == dto.getUser_num()){
+
 			for(int i=0 ; i<bookingList.size();i++){
 //			 	배열접근, 배열한칸에 내용 가져오기 => BoardDTO 저장 => 출력
-			BookingDTO dto3=bookingList.get(i);
+			BookingDTO dto=bookingList.get(i);
+			if(id!=null){
+				if(id.equals(dao.getUserID(dto.getUser_num()))){
 	%>
 	
 <!-- 	글제목을 눌렀을 때 글내용으로 하이퍼링크 -->
-<tr><td><a href="BookingContent.bk?num=<%=dto3.getBk_num() %>"><%=dto3.getBk_num() %></a></td>     
-	<td><%=dto3.getBk_usedate() %></td>
-	<td><%=dto3.getBk_usercount() %></td>
-	<td><%=dto3.getBk_starttime() %>시</td>
-	<td><%=dto3.getBk_endtime() %>시</td>
-	<td><%=dto3.getBk_usetime() %>시간</td>
-	<td><%=dto3.getBk_price() %></td></tr>
+<tr><td><a href="BookingContent.bk?num=<%=dto.getBk_num() %>"><%=dto.getBk_num() %></a></td>     
+	<td><%=dto.getBk_usedate() %></td>
+	<td><%=dto.getBk_usercount() %></td>
+	<td><%=dto.getBk_starttime() %>시</td>
+	<td><%=dto.getBk_endtime() %>시</td>
+	<td><%=dto.getBk_usetime() %>시간</td>
+	<td><%=dto.getBk_price() %></td></tr>
 	<%
-// 	}
-// 	}
+			}if(id.equals("admin")){
+				%>
+				
+				<!-- 	글제목을 눌렀을 때 글내용으로 하이퍼링크 -->
+<tr><td><a href="BookingContent.bk?num=<%=dto.getBk_num() %>"><%=dto.getBk_num() %></a></td>     
+	<td><%=dto.getBk_usedate() %></td>
+	<td><%=dto.getBk_usercount() %></td>
+	<td><%=dto.getBk_starttime() %>시</td>
+	<td><%=dto.getBk_endtime() %>시</td>
+	<td><%=dto.getBk_usetime() %>시간</td>
+	<td><%=dto.getBk_price() %></td></tr>
+					<%
+			}if(id.equals(dao2.getHostID(dto.getS_num()))){
+								%>
+								
+								<!-- 	글제목을 눌렀을 때 글내용으로 하이퍼링크 -->
+<tr><td><a href="BookingContent.bk?num=<%=dto.getBk_num() %>"><%=dto.getBk_num() %></a></td>     
+	<td><%=dto.getBk_usedate() %></td>
+	<td><%=dto.getBk_usercount() %></td>
+	<td><%=dto.getBk_starttime() %>시</td>
+	<td><%=dto.getBk_endtime() %>시</td>
+	<td><%=dto.getBk_usetime() %>시간</td>
+	<td><%=dto.getBk_price() %></td></tr>
+									<%
+											}
+			}
 }
 %>
 </table>

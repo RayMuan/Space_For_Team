@@ -24,18 +24,29 @@ public class BookingUpdatePro implements Action{
 //	    <td><input type="number" name ="bk_endtime" value="<%=dto.getBk_endtime() %>"></td></tr>
 		
 		request.setCharacterEncoding("utf-8");
+		int bk_num = Integer.parseInt(request.getParameter("num"));
+		int exbk_price = Integer.parseInt(request.getParameter("exbk_price"));
+		System.out.println(exbk_price);
+		int exbk_usetime = Integer.parseInt(request.getParameter("exbk_usetime"));
+		System.out.println(exbk_usetime);
+		int s_bill = exbk_price / exbk_usetime;
+		System.out.println(s_bill);
 		String bk_usedate = request.getParameter("bk_usedate");
-		int bk_usercount = Integer.parseInt("bk_usercount");
-		int bk_starttime = Integer.parseInt("bk_starttime");
-		int bk_endtime = Integer.parseInt("bk_endtime");
-		
+		int bk_usercount = Integer.parseInt(request.getParameter("bk_usercount"));
+		int bk_starttime = Integer.parseInt(request.getParameter("bk_starttime"));
+		int bk_endtime = Integer.parseInt(request.getParameter("bk_endtime"));
+		int bk_usetime = bk_endtime - bk_starttime;
+		int bk_price = bk_usetime * s_bill;
 
 		// BookingDTO 객체생성 + 바구니생성(set매서드)
 		BookingDTO dto = new BookingDTO();
+		dto.setBk_num(bk_num);
 		dto.setBk_usedate(bk_usedate);
 		dto.setBk_usercount(bk_usercount);
 		dto.setBk_starttime(bk_starttime);
 		dto.setBk_endtime(bk_endtime);
+		dto.setBk_usetime(bk_usetime);
+		dto.setBk_price(bk_price);
 		// BookingDTO 객체생성
 		BookingDAO dao = new BookingDAO();
 		// 리턴할형 없음 updateBooking(BookingDTO dto) 매서드 정의

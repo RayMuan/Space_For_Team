@@ -55,7 +55,7 @@ public class ReviewWritePro implements Action{
 				
 				
 			ActionForward forward=new ActionForward();
-			forward.setPath("SpaceInfoPro.sp");
+			forward.setPath("SpaceInfoPro.sp?s_num="+s_num);
 			forward.setRedirect(false);
 			return forward;
 	}

@@ -16,7 +16,7 @@ public class BookingUpdateForm implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("BookingUpdateForm execute()");
 		
-		int bk_num = Integer.parseInt(request.getParameter("bk_num"));
+		int bk_num = Integer.parseInt(request.getParameter("num"));
 		
 		BookingDAO dao = new BookingDAO();
 		BookingDTO dto = dao.getBooking(bk_num);
@@ -24,7 +24,7 @@ public class BookingUpdateForm implements Action{
 		request.setAttribute("dto", dto);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("booking/updateForm.jsp");
+		forward.setPath("bookingupdateform.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

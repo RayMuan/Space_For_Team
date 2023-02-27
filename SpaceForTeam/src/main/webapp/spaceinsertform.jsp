@@ -177,7 +177,7 @@
                                     <div style="text-align:center">
                                     <input class="btn btn-primary btn-lg spaceupload " href="#scroll-target" type="submit" value="공간등록하기">
                                    <input class="btn btn-primary btn-lg spaceupload " href="#scroll-target" type="reset" value="초기화"> 
-                                   <input class="btn btn-primary btn-lg spaceupload " onclick="location.href='HostMain.me'" type="button" value="뒤로가기"> 
+                                   <input class="btn btn-primary btn-lg spaceupload " onclick="location.href='UserMypage.us'" type="button" value="뒤로가기"> 
                                      </div>
                                   </div>
                                 </form>

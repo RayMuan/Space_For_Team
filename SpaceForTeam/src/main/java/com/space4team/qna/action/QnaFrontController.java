@@ -8,11 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.space4team.review.action.Action;
-import com.space4team.review.action.ActionForward;
-import com.space4team.review.action.ReviewDeletePro;
-import com.space4team.review.action.ReviewWritePro;
-
 public class QnaFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,14 +31,14 @@ public class QnaFrontController extends HttpServlet{
 		Action action=null;
 			
 		if(sPath.equals("/QnaWritePro.qa")) {
-			action=new ReviewWritePro();
+			action=new QnaWritePro();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(sPath.equals("/QnaDeletePro.Qa")) {
-			action=new ReviewDeletePro();
+//			action=new ReviewDeletePro();
 			try {
 				forward=action.execute(request, response);
 			} catch (Exception e) {

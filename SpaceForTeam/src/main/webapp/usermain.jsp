@@ -60,7 +60,7 @@
                             </li>
                             
                             <%
-                           	
+//                             	String id = ""
 								if(id!=null){
 									%>
 									<li class="nav-item"><a class="nav-link" href="UserLogout.us">Logout</a></li>
@@ -83,7 +83,7 @@
       <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
-               <h1 class="display-4 fw-bolder">Space For Team</h1>
+               <h1 class="display-4 fw-bolder" style="left:20px;">Space For Team</h1>
   
 		<%
              ArrayList<SpaceDTO> spaceList = (ArrayList<SpaceDTO>)request.getAttribute("spaceList");
@@ -100,7 +100,7 @@
             	 %>                 
 <!-- 검색창 -->
 
-<div class="searchmain" style="left:-600px;">
+<div class="searchmain" style="left:-640px;">
 		<div class="ser-main">
 			<form method="post" name="searchform" id="searchform" action="MainPro.sp" onsubmit="return checkIt()">
 				<table class="pull-right">
@@ -179,11 +179,10 @@
 		SpaceDTO dto = spaceList.get(i);
 	%>            		
 <!-- 공간프리뷰 1	 -->
-<div class="col-lg-4 mb-5"> 
+<div class="col-lg-4 mb-5">
     <div class="card h-100 shadow border-0 style="cursor: pointer;" onclick="location.href='SpaceInfoPro.sp?s_num=<%=dto.getS_num()%>'"">
-   
-   <p> <img src="upload/<%=dto.getS_file()%>" width="300"></p>
-<%--         <img class="card-img-top" src=<%=dto.getS_file() %> alt="..." /> --%>
+ <img src="upload/<%=dto.getS_file()%>" width="375" >
+
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2"><%=dto.getS_num() %></div>
            
@@ -223,8 +222,9 @@
 	<%
 	}
 	%> 		
- <div class="page">  
- <ul class = "page-nation">     
+
+<div class="page">        
+
 <%
 if(search == null){
    //    검색어 없을때,, 
@@ -269,10 +269,11 @@ if(search == null){
 %>
 </ul> 
 </div> 
-           </div>
-           </div>
-         
+
+         </div>
+            </div>
             </section>
+            
         </main>
 
         <!-- Footer-->

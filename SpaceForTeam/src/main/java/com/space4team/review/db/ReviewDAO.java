@@ -177,6 +177,34 @@ public class ReviewDAO {
 		}
 	} //insertReview
 	
+	public void insertReply(ReviewDTO redto) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs= null;
+		try {
+			con=getConnection();
+			// num 구하기
+			int re_num=1;
+			String sql="select Max(re_num) from review";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				re_num=rs.getInt("max(re_num)")+1;
+			}
+				sql="insert review(re_reply) values(?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, redto.getRe_reply());
+			
+				pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(pstmt!=null) try {pstmt.close();}catch (Exception e2) {}
+			if(con!=null) try {con.close();}catch (Exception e2) {}
+			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
+		}
+	} //insertReply
+	
 	public void deleteReview(int re_num) {
 		Connection con=null;
 		PreparedStatement pstmt=null;

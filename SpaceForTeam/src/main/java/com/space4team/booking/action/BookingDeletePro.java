@@ -16,7 +16,7 @@ public class BookingDeletePro implements Action {
 		System.out.println("BookingDeletepro execute()");
 		
 		request.setCharacterEncoding("utf-8");
-		int bk_num = Integer.parseInt(request.getParameter("bk_num"));
+		int bk_num = Integer.parseInt(request.getParameter("num"));
 		
 		BookingDAO dao = new BookingDAO();
 		dao.deleteBooking(bk_num);
