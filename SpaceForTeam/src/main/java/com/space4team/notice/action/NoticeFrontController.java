@@ -33,7 +33,7 @@ public class NoticeFrontController extends HttpServlet{
 		if(sPath.equals("/NoticeWriteForm.no")) {
 			
 			forward = new ActionForward();
-			forward.setPath("community/noticewrite.jsp");
+			forward.setPath("noticewrite.jsp");
 			forward.setRedirect(false);
 		
 		

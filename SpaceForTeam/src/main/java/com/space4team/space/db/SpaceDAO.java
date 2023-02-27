@@ -200,7 +200,9 @@ import com.space4team.host.db.HostDTO;
 				con=getConnection();
 				String sql="select count(*) from space where h_num =?";
 				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, hdto.getH_num());
 				rs=pstmt.executeQuery();
+				
 				if(rs.next()) {
 					count=rs.getInt("count(*)");
 				}
@@ -381,6 +383,6 @@ import com.space4team.host.db.HostDTO;
 						 if(con!=null) try { con.close();} catch (Exception e2) {}
 					 }
 			 }
-		
+	
 	}//class
 

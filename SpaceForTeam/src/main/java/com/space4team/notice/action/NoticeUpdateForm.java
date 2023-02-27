@@ -23,7 +23,7 @@ public class NoticeUpdateForm implements Action{
 
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("community/noticeUpdate.jsp");
+		forward.setPath("noticeUpdate.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

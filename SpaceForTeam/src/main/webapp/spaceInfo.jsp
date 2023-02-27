@@ -186,7 +186,11 @@
 			<section class="mb-5 pt-4">
 				<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 				<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
+				<%if(job==1){ %>
 				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="BookingInsertForm.bk?s_num=<%=sdto.getS_num()%>">예약하기</a>
+				<%}else{%>
+				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="UserLoginForm.us">게스트로 로그인하기</a>				
+				<%}%>
 				<h3 class="fw-bolder mb-2 mt-5">기본 옵션</h3>
 				<h3 class="fw-bolder mb-2 mt-5">위치</h3>
 					<div class="col-lg-12 mb-5">
@@ -225,16 +229,45 @@
 								</button>
 							</h3>
                             <div class="accordion-collapse collapse show" id="collapse<%=qdto.getQ_num() %>" aria-labelledby="heading<%=qdto.getQ_num() %>" data-bs-parent="#accordionExample">
+                                <%
+                                if(qdto.getQ_recontent()==null){
+                                	if(job==2){ %>
+                                <div class="accordion-body">
+                                	
+                                </div>
+                                	<%}else{
+                                	%>
+                                	<div class="accordion-body">
+                                	
+                                	</div>
+                                	<%}
+                                }else{
+                                %>
                                 <div class="accordion-body">
                                 	A.<%=qdto.getQ_recontent() %>
                                 </div>
-                            </div>
+                                <%
+                                }
+                                %>
+                             </div>
                         </div>
                     </div>
                     <%
                     	}
 					}
 					%>
+					<form class="mb-4 col" action="QnaWritePro.re" method="post" >
+						<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
+					<% 
+						//
+						if(job==1){
+					%>
+						<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="질문하기" >
+						<textarea class="form-control col-10"  name="Qna" rows="3" placeholder="호스트님께 질문해보세요!"></textarea>
+					<%
+					}
+					%>
+					</form>
 			</section>
 		</div>
 	</div>

@@ -92,10 +92,14 @@ public class UserFrontController extends HttpServlet{
 			forward.setRedirect(false);
 		
 		} else if(sPath.equals("/UserMypage.us")) {
-			forward=new ActionForward();
-			forward.setPath("usermypage.jsp");
-			forward.setRedirect(false);
+			action = new Mypage();
 			
+			try {
+				forward=action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	
 		}else if(sPath.equals("/UserDeleteForm.us")) {
 			forward=new ActionForward();
 			forward.setPath("userdelete.jsp");

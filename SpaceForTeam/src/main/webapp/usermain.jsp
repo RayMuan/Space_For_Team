@@ -82,30 +82,30 @@
             	 %>                 
 <!-- 검색창 -->
 
-<div class="searchmain" style="left:-650px;">
+<div class="searchmain" style="left:-600px;">
 		<div class="ser-main">
 			<form method="post" name="search" action="MainPro.sp">
 				<table class="pull-right">
 					<tr>
-						<td><select class="form-control" name="sel" style="text-align:center; width:110px; height:35px;">
-								<option  value="0" disabled selected>지역</option>
-								<option value='1'>서울</option>
-								<option value='2'>부산</option>
-								<option value='3'>대구</option>
-								<option value='4'>인천</option>
-								<option value='5'>광주</option>
-								<option value='6'>대전</option>
-								<option value='7'>울산</option>
-								<option value='8'>강원</option>
-								<option value='9'>경기</option>
-								<option value='10'>경남</option>
-								<option value='11'>경북</option>
-								<option value='12'>전남</option>
-								<option value='13'>전북</option>
-								<option value='14'>제주</option>
-								<option value='15'>충남</option>
-								<option value='16'>충북</option>
-						</select></td>
+<!-- 						<td><select class="form-control" name="sel" style="text-align:center; width:110px; height:35px;"> -->
+<!-- 								<option  value="0" disabled selected>지역</option> -->
+<!-- 								<option value='1'>서울</option> -->
+<!-- 								<option value='2'>부산</option> -->
+<!-- 								<option value='3'>대구</option> -->
+<!-- 								<option value='4'>인천</option> -->
+<!-- 								<option value='5'>광주</option> -->
+<!-- 								<option value='6'>대전</option> -->
+<!-- 								<option value='7'>울산</option> -->
+<!-- 								<option value='8'>강원</option> -->
+<!-- 								<option value='9'>경기</option> -->
+<!-- 								<option value='10'>경남</option> -->
+<!-- 								<option value='11'>경북</option> -->
+<!-- 								<option value='12'>전남</option> -->
+<!-- 								<option value='13'>전북</option> -->
+<!-- 								<option value='14'>제주</option> -->
+<!-- 								<option value='15'>충남</option> -->
+<!-- 								<option value='16'>충북</option> -->
+<!-- 						</select></td> -->
 						<td><input type="text" class="form-control"
 							placeholder="공간명으로 찾아보세요" name="search" style="text-align:left; width:550px; height:35px;"></td>
 						<td><button type="submit" value="search" class="form-control" style="text-align:center;  height:35px;">검색</button></td>
@@ -183,8 +183,7 @@
                                    <div class="text-muted">
       <div class="fw-bold">
       <i class="fa-solid fa-map-location-dot"> <%=dto.getS_sido() %></i> |
-      <i class="fa-solid fa-user fa-sm"> 최대 <%=dto.getS_max() %></i> |     
-      <i class="fa-solid fa-comment fa-sm">개</i>
+      <i class="fa-solid fa-user fa-sm"> 최대 <%=dto.getS_max() %></i>      
      							 </div>
                              </div> 
                            </div>
