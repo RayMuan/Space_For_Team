@@ -162,6 +162,7 @@ public class BookingDAO {
 				// set 매서드호출을 통한 열접근
 				dto.setBk_num(rs.getInt("bk_num")); // 예약번호
 				dto.setS_num(rs.getInt("s_num"));  // 공간번호
+				dto.setUser_num(rs.getInt("user_num"));  // 유저번호
 				dto.setBk_usercount(rs.getInt("bk_usercount"));  // 예약인원
 				dto.setBk_date(rs.getTimestamp("bk_date"));   // 예약날짜
 				dto.setBk_price(rs.getInt("bk_price"));   // 가격

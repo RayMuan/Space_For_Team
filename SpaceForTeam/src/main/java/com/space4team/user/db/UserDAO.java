@@ -388,5 +388,4 @@ private Connection con=null;
 		}//getUserId()
 		
 
-	
 }//class
