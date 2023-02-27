@@ -98,6 +98,7 @@ public class BookingDAO {
 			dto.setBk_starttime(rs.getInt("bk_starttime"));  // 시작시간
 			dto.setBk_endtime(rs.getInt("bk_endtime"));  // 종료시간
 			dto.setBk_usetime(rs.getInt("bk_usetime"));  // 사용시간
+			dto.setPayment(rs.getString("payment"));
 		}
 			
 		} catch (Exception e) {

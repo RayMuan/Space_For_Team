@@ -126,7 +126,7 @@
                                     </div>
                                      <div class="form-floating mb-3">
                                         <input class="form-control" name="sggNm" id="sggNm" type="text" value="<%=dto.getPayment()%>" readonly>
-                                        <label for="gungu"><i class="bi bi-star-fill text-warning"></i>결제상태<label>
+                                        <label for="gungu"><i class="bi bi-star-fill text-warning"></i><code>결제상태</code><label>
                                     </div>
                        					</div>
                                       
@@ -138,6 +138,8 @@
                                     <div style="text-align:center">
 									<input class="btn btn-primary btn-lg" type= "button" value="예약취소" 
 									 onclick = "location.href='BookingDeletePro.bk?num=<%=dto.getBk_num() %>'">
+									 <input class="btn btn-primary btn-lg" type= "button" value="뒤로가기" 
+									 onclick = "location.href='BookingList.bk'">
 									
                                     
                                     </div>

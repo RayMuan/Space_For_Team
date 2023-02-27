@@ -138,7 +138,8 @@
 									 onclick = "location.href='BookingDeletePro.bk?num=<%=dto.getBk_num() %>'">
 									<input class="btn btn-primary btn-lg" type= "button" value="결제" 
 									onclick = "location.href='payment.jsp?num=<%=dto.getBk_num() %>&totalPrice=<%=dto.getBk_price()%>'">
-                                    
+                                     <input class="btn btn-primary btn-lg" type= "button" value="뒤로가기" 
+									 onclick = "location.href='BookingList.bk'">
                                     </div>
                                 </form>
                             </div>
