@@ -97,17 +97,33 @@ String id=(String)session.getAttribute("id");
             
                 <div class="col-lg-5">
                 
-                        <h1 class="b">Guest Mypage</h1>
+                        <h1 class="b">Mypage</h1>
                     </br>
                     </br>
                     
                     <div class="h6 fw-bolder"> ♡<%=id %>님♡ </div>
                     </br>
-                    <div style="text-align:right;">
+                  <%  String idcheck = (String)request.getAttribute("idcheck");
+                  		if(idcheck=="user"){
+                  			%>
+                  			 <div style="text-align:right;">
                     <a class="btn btn-primary" href="UserUpdateForm.us">회원정보수정</a>
                     <a class="btn btn-primary" href="UserPwModifyForm.us">비밀번호변경</a>
                     <a class="btn btn-primary" href="UserDeleteForm.us">회원 탈퇴</a>
                     </div>
+                  			<%
+                  		} else {
+                  			%>
+                  			 <div style="text-align:right;">
+                  	<a class="btn btn-primary" href="HostUpdateForm.ho">회원정보수정</a>
+                    <a class="btn btn-primary" href="HostPwModifyForm.ho">비밀번호변경</a>
+                    <a class="btn btn-primary" href="HostDeleteForm.ho">회원 탈퇴</a>	
+                  			 </div>
+                  			
+                  			<%                  			
+                  		}
+                    %>
+                   
                 </div>
             </div>
             <!-- Call to Action-->
@@ -138,17 +154,38 @@ String id=(String)session.getAttribute("id");
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-5">
+                
+                 <% if(idcheck=="host"){
+                  			%>
+                  			     <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">1:1 문의내역</h2>
-                            <p class="card-text">문의내역이 없습니다.</p>
+                            <h2 class="card-title">공간등록하기</h2>
+                            <p class="card-text"><code>호스트 전용 메뉴입니다</code></p>
                         </div>
                         <div style="text-align:center">
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">바로가기</a></div>
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="SpaceInsertForm.sp">바로가기</a></div>
                         </div>
                     </div>
                 </div>
+                
+                 <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">공간관리</h2>
+                            <p class="card-text"><code>호스트 전용 메뉴입니다</code></p>
+                        </div>
+                        <div style="text-align:center">
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="SpaceList.sp">바로가기</a></div>
+                        </div>
+                    </div>
+                </div>
+                  			<%
+                  		} 
+                    %>
+                
+                
+           
             </div>
         </div>
        
