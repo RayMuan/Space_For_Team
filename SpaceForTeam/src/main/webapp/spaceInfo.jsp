@@ -233,7 +233,6 @@
 				<h3 class="fw-bolder mb-2 mt-5">위치</h3>
 					<div class="col-lg-12 mb-5">
 						<div class="card h-100 border">
-							<img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
 							<div class="card-body p-4">
 								<p class="card-text mb-0"><%=sdto.getS_address()%></p>
 							</div>
@@ -263,7 +262,7 @@
                      <div class="accordion mb-3" id="accordionExample">
                      	<div class="accordion-item">
 							<h3 class="accordion-header" id="heading<%=qdto.getQ_num() %>">
-								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%=qdto.getQ_num() %>" aria-expanded="false" aria-controls="collapse<%=qdto.getQ_num() %>">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%=qdto.getQ_num() %>" aria-expanded="true" aria-controls="collapse<%=qdto.getQ_num() %>">
 									Q. <%=qdto.getQ_content() %>
 								</button>
 							</h3>
