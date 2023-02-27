@@ -135,9 +135,9 @@
 			  </div>
 			  <br>
 			  <div style="text-align:center;">
-                <input type="button" name="write" value="수정" onclick="location.href='SpaceUpdateForm.sp?num=<%=dto.getS_num()%>'">
-				<input type="button" name="delete" value="삭제" onclick="location.href='SpaceDeleteForm.sp?num=<%=dto.getS_num()%>'">
-				<input type="button" name="detail" value="상세페이지" onclick="location.href='SpaceInfoPro.sp?num<%=dto.getS_num()%>'">
+                <input type="button" name="write" value="수정" onclick="location.href='SpaceUpdateForm.sp?s_num=<%=dto.getS_num()%>'">
+				<input type="button" name="delete" value="삭제" onclick="location.href='SpaceDeleteForm.sp?s_num=<%=dto.getS_num()%>'">
+				<input type="button" name="detail" value="상세페이지" onclick="location.href='SpaceInfoPro.sp?s_num=<%=dto.getS_num()%>'">
                   		</div>
                    </div>
                </div>
