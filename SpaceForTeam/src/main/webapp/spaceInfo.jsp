@@ -150,10 +150,24 @@
 										}
 										%>
 										</div>
-										<div><%=redto.getRe_point() %></div>
+										<div>
+										<%
+										int star=0;
+											for(star=0; star<redto.getRe_point(); star++){
+												%>★
+											<%
+											}
+											while(star<5) {%>
+											☆
+											<%
+											star++;
+											} %>
+										</div>
 										<div><%=redto.getRe_content() %></div>
 									</div>
 									<!-- Host reply -->
+									<!--답글 있음 -->
+									<%if(redto.getRe_reply() != null) {%>
 									<div class="ms-3">
 										<div class="d-flex mt-3 mb-4 ">
 											<div class="ms-3 p-sm-4 bg-dark bg-opacity-25 col-5">
@@ -165,11 +179,21 @@
 											</div>
 										</div>
 									</div>
-									<form class="mb-4 col" action="ReviewWritePro.re" method="post" >
-										<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
-										<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="답글 달기" >
-										<textarea class="form-control col-10"  name="re_reply" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
-									</form>
+									<!--답글 없음 -->
+									<%
+									}else if(redto.getRe_reply()==null){
+										if(id == hdto.getH_id()){%>
+										<!-- 이 공간의 호스트 --> -->
+										<div class="ms-3">
+											<form class="mb-4 col" action="ReviewWritePro.re" method="post" >
+											<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
+											<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="답글 달기" >
+											<textarea class="form-control col-10"  name="re_reply" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+											</form>
+										</div>
+									<%
+									}
+									%>
 								</div>
 							</li>
 							<% 
@@ -187,10 +211,7 @@
 				<h2 class="fw-bolder mb-2 mt-5">평점</h2>
 				<p class="fs-1 mb-4"><%=re_avg.getRe_avg() %></p>
 				
-				
-				
-				
-				
+
 				<%if(job==1){ %>
 				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="BookingInsertForm.bk?s_num=<%=sdto.getS_num()%>">예약하기</a>
 				<%
@@ -279,6 +300,7 @@
                     <%
                     	}
 					}
+					
 					if(job==1){
 					%>
 					<form class="mb-4 col" action="QnaWritePro.re" method="post" >
@@ -287,6 +309,7 @@
 					<textarea class="form-control col-10"  name="Qna" rows="3" placeholder="호스트님께 질문해보세요!"></textarea>
 					</form>
 					<%
+						}
 					}
 					%>
 			</section>
