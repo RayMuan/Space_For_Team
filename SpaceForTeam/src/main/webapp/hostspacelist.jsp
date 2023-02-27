@@ -184,21 +184,21 @@
 					}
            %>
  			</div>
- 			<div class="row gx-5 row-cols-2 row-cols-lg-4 py-5 justify-content-center">
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-people"></i></div>
-<!--                           h5태그 찾아서 text-align : center했음 -->
-                            <div class="h5">공지사항/자주하는질문</div>
-                            <p class="text-muted mb-0"><a href="NoticeList.no">게시판 바로가기</a></p>
-                        </div>
-                        <div class="col">
-                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-telephone"></i></div>
-                            <div class="h5">Call us</div>
-                            <p class="text-muted mb-0">상담가능시간</p>
-                            <p class="text-muted mb-0">09:00 - 17:00</p>
-                            <p class="text-muted mb-0">☎ 010-1234-5678</p>
-                        </div>
-                    </div>
+<!--  			<div class="row gx-5 row-cols-2 row-cols-lg-4 py-5 justify-content-center"> -->
+<!--                         <div class="col"> -->
+<!--                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-people"></i></div> -->
+<!-- <!--                           h5태그 찾아서 text-align : center했음 --> -->
+<!--                             <div class="h5">공지사항/자주하는질문</div> -->
+<!--                             <p class="text-muted mb-0"><a href="NoticeList.no">게시판 바로가기</a></p> -->
+<!--                         </div> -->
+<!--                         <div class="col"> -->
+<!--                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-telephone"></i></div> -->
+<!--                             <div class="h5">Call us</div> -->
+<!--                             <p class="text-muted mb-0">상담가능시간</p> -->
+<!--                             <p class="text-muted mb-0">09:00 - 17:00</p> -->
+<!--                             <p class="text-muted mb-0">☎ 010-1234-5678</p> -->
+<!--                         </div> -->
+<!--                     </div> -->
             </section>
         <!-- Footer-->
               <footer class="bg-dark py-4 mt-auto">
