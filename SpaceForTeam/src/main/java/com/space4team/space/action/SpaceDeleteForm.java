@@ -12,7 +12,7 @@ public class SpaceDeleteForm implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("spacedeleteForm execute()실행");
 		
-		int num = Integer.parseInt(request.getParameter("num"));
+		int num = Integer.parseInt(request.getParameter("s_num"));
 		System.out.println(num);
 		
 		SpaceDAO dao = new SpaceDAO();
