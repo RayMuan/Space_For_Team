@@ -303,10 +303,11 @@
 					
 					if(job==1){
 					%>
-					<form class="mb-4 col" action="QnaWritePro.re" method="post" >
+					<form class="mb-4 col" action="QnaWritePro.qa" method="post" >
 						<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
-						<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="질문하기" >
-					<textarea class="form-control col-10"  name="Qna" rows="3" placeholder="호스트님께 질문해보세요!"></textarea>
+						<input type="hidden" name="h_num" value=<%=hdto.getH_num() %> >
+						<textarea class="form-control col-10 mb-2"  name="q_content" rows="3" placeholder="호스트님께 질문해보세요!"></textarea>
+						<input type="submit" class="btn btn-secondary btn-lg px-4 col" value="질문하기" >
 					</form>
 					<%
 						}

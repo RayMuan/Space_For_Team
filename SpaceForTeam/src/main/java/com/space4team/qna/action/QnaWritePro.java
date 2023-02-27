@@ -21,50 +21,40 @@ public class QnaWritePro implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			System.out.println("QnaWritePro execute()");
 			request.setCharacterEncoding("utf-8");
-			
-			int s_num=Integer.parseInt(request.getParameter("num"));
-			int job=Integer.parseInt(request.getParameter("job"));
-			int h_num=Integer.parseInt(request.getParameter("h_num"));
-			System.out.println(s_num);
-			
 			HttpSession session=request.getSession();
+			
+			
+			int s_num=Integer.parseInt(request.getParameter("s_num"));
+			String id=(String)session.getAttribute("id");
+			int job=(Integer)session.getAttribute("job");
+			
 			QnaDTO qdto=new QnaDTO();
-			QnaDAO qdao=new QnaDAO();
-				
+	
 			if(job==1) {
-				String user_id=(String)session.getAttribute("id");
-				session.setAttribute("id", user_id);
-		
 				UserDAO dao=new UserDAO();
-				UserDTO dto=dao.getUserInfo(user_id);
-				Timestamp q_date=new Timestamp(System.currentTimeMillis());
-				String q_content=request.getParameter("q_content");
-				
-				System.out.println(user_id);
-				
+				UserDTO dto=dao.getUserInfo(id);
+
 				int user_num=dto.getUser_num();
+				String q_content=request.getParameter("q_content");
+				Timestamp q_date=new Timestamp(System.currentTimeMillis());
 				
+				qdto.setQ_s_num(s_num);
 				qdto.setUser_num(user_num);
 				qdto.setQ_content(q_content);
 				qdto.setQ_date(q_date);
-				qdto.setQ_s_num(s_num);
-			}else {
-				String host_id=(String)session.getAttribute("id");
-				session.setAttribute("id", host_id);
-				
+			}else if(job==2) {
+				// host
 
 				String q_recontent=request.getParameter("q_recontent");
-				Timestamp q_redate=new Timestamp(System.currentTimeMillis());
-				
+
 				qdto.setQ_recontent(q_recontent);
-				qdto.setQ_redate(q_redate);
-				qdto.setH_num(h_num);
 			}
 			
+			QnaDAO qdao=new QnaDAO();
 			qdao.insertQna(qdto);
-	
+			
 			ActionForward forward=new ActionForward();
-			forward.setPath("SpaceInfoPro.sp?num="+s_num);
+			forward.setPath("SpaceInfoPro.sp?s_num="+s_num);
 			forward.setRedirect(false);
 			return forward;
 	}
