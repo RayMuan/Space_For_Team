@@ -136,7 +136,6 @@ String id=(String)session.getAttribute("id");
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title" >예약내역</h2>
-                            <p class="card-text">예약내역이 없습니다.</p>
                         </div>
                         <div style="text-align:center">
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="BookingList.bk">바로가기</a></div>
@@ -147,7 +146,6 @@ String id=(String)session.getAttribute("id");
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title">리뷰 내역</h2>
-                            <p class="card-text">작성한 리뷰가 없습니다.</p>
                         </div>
                         <div style="text-align:center">
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">바로가기</a></div>
