@@ -99,7 +99,7 @@ private Connection con=null;
 			if(rs.next()) {
 				q_num=rs.getInt("max(q_num)")+1;
 			}
-				sql="insert qna(q_recontent) values(?)";
+				sql="insert qna(q_recontent) values(?) where q_num=?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, qdto.getQ_recontent());
 			

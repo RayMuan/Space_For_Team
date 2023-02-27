@@ -43,6 +43,7 @@
                             
                             <%
 //                             	String id = "";
+                            	
 								String id=(String)session.getAttribute("id");
 								if(id!=null){
 									%>
@@ -161,6 +162,7 @@
 	%>            		
 <!-- 공간프리뷰 1	 -->
 <div class="col-lg-4 mb-5">
+
   
     <div class="card h-100 shadow border-0 style="cursor: pointer;" onclick="location.href='SpaceInfoPro.sp?s_num=<%=dto.getS_num()%>'"">
     <img src="upload/<%=dto.getS_file()%>" width="300">
