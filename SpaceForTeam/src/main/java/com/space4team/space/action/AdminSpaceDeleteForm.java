@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.space4team.space.db.SpaceDAO;
 import com.space4team.space.db.SpaceDTO;
 
-public class SpaceDeleteForm implements Action{
+public class AdminSpaceDeleteForm implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -21,7 +21,7 @@ public class SpaceDeleteForm implements Action{
 		request.setAttribute("dto", dto);
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("spacedelete.jsp");
+		forward.setPath("adminspacedelete.jsp");
 		forward.setRedirect(false);
 		return forward;
 	}

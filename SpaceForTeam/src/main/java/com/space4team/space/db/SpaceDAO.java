@@ -143,7 +143,9 @@ import com.space4team.host.db.HostDTO;
 				pstmt=con.prepareStatement(sql);
 				pstmt.setInt(1, startRow);
 				pstmt.setInt(2, pageSize);
+				
 				rs=pstmt.executeQuery();
+			
 				while(rs.next()) {
 					SpaceDTO sdto=new SpaceDTO();
 					sdto.setS_name(rs.getString("s_name"));
@@ -154,6 +156,7 @@ import com.space4team.host.db.HostDTO;
 					sdto.setH_num(rs.getInt("h_num"));
 					sdto.setS_sido(rs.getString("s_sido"));
 					sdto.setS_num(rs.getInt("s_num"));
+					sdto.setS_address(rs.getString("s_address"));
 
 					spaceList.add(sdto);
 				}
@@ -240,6 +243,7 @@ import com.space4team.host.db.HostDTO;
 					sdto.setH_num(rs.getInt("h_num"));
 					sdto.setS_sido(rs.getString("s_sido"));
 					sdto.setS_num(rs.getInt("s_num"));
+					sdto.setS_address(rs.getString("s_address"));
 					
 					spaceList.add(sdto);
 				}

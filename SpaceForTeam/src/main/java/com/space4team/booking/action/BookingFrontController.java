@@ -97,19 +97,11 @@ public class BookingFrontController extends HttpServlet{
 			forward.setPath("UserInsertForm.us");
 			forward.setRedirect(false);
 		}
-			
 		
-		
-		
-		
-		
+
 //		<li class="nav-item"><a class="nav-link" href="Home.bk">Home</a></li>
 //        <li class="nav-item"><a class="nav-link" href="LoginForm.bk">로그인</a></li>
 //        <li class="nav-item"><a class="nav-link" href="InsertForm.bk">회원가입</a></li>
-		
-		
-	
-		
 		
 		if(forward != null) {
 			if(forward.isRedirect()==true) {

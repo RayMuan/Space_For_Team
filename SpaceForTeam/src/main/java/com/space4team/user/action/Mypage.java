@@ -24,14 +24,23 @@ public class Mypage implements Action{
 		UserDAO udao = new UserDAO();
 		UserDTO udto = udao.getUser(id);
 		
+		HostDAO hdao = new HostDAO();
+		HostDTO hdto = new HostDTO();
 		
+		System.out.println("hdtoget한 아이디"+hdto.getH_id());
 		if(udto != null) {
 			idcheck = "user";
 			
 		}else {
-			idcheck = "host";
+			hdto = hdao.getHostID(id);
+			if (hdto.getH_id() .equals("admin")) {
+				idcheck = "admin";
+				
+			}else {
+				idcheck = "host";
+			}	
 		}
-		
+		System.out.println(idcheck);
 		request.setAttribute("idcheck", idcheck);
 		
 		ActionForward forward=new ActionForward();

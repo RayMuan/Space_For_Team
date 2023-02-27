@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 public class SpaceFrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -124,6 +126,30 @@ public class SpaceFrontController extends HttpServlet{
 			forward = new ActionForward();
 			forward.setPath("space/main.jsp");
 			forward.setRedirect(false);	
+		}
+		else if(sPath.equals("/AdminSpaceList.sp")) {
+			action = new AdminSpaceList();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else if(sPath.equals("/AdminSpaceDeleteForm.sp")) {
+		action = new AdminSpaceDeleteForm();
+		try {
+			forward = action.execute(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+			}
+		}
+		else if(sPath.equals("/AdminSpaceDeletePro.sp")) {
+			action = new AdminSpaceDeletePro();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		// 연결

@@ -112,7 +112,7 @@ String id=(String)session.getAttribute("id");
                     <a class="btn btn-primary" href="UserDeleteForm.us">회원 탈퇴</a>
                     </div>
                   			<%
-                  		} else {
+                  		} else if(idcheck =="host"){
                   			%>
                   			 <div style="text-align:right;">
                   	<a class="btn btn-primary" href="HostUpdateForm.ho">회원정보수정</a>
@@ -120,7 +120,7 @@ String id=(String)session.getAttribute("id");
                     <a class="btn btn-primary" href="HostDeleteForm.ho">회원 탈퇴</a>	
                   			 </div>
                   			
-                  			<%                  			
+                  			<%
                   		}
                     %>
                    
@@ -181,7 +181,25 @@ String id=(String)session.getAttribute("id");
                     </div>
                 </div>
                   			<%
-                  		} 
+                  		} else if(idcheck =="admin"){
+                  			%>
+                  			
+                  		
+                
+                 <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title">공간관리</h2>
+                            <p class="card-text"><code>관리자 전용 메뉴입니다</code></p>
+                        </div>
+                        <div style="text-align:center">
+                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="AdminSpaceList.sp">바로가기</a></div>
+                        </div>
+                    </div>
+                </div>	
+                  			<%
+                  			
+                  		}
                     %>
                 
                 
@@ -191,7 +209,7 @@ String id=(String)session.getAttribute("id");
        
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">SpaceForTeam</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
