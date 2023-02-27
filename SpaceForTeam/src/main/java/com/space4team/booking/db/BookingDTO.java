@@ -16,14 +16,9 @@ public class BookingDTO {
 	private int bk_endtime;
 	private int bk_usetime;
 	private int bk_price;
+	private String payment;
+	private int pay_num;
 	
-	public int getBk_usetime() {
-		return bk_usetime;
-	}
-	public void setBk_usetime(int bk_usetime) {
-		this.bk_usetime = bk_usetime;
-	}
-	// get set
 	public int getBk_num() {
 		return bk_num;
 	}
@@ -54,12 +49,6 @@ public class BookingDTO {
 	public void setBk_date(Timestamp bk_date) {
 		this.bk_date = bk_date;
 	}
-	public int getBk_price() {
-		return bk_price;
-	}
-	public void setBk_price(int bk_price) {
-		this.bk_price = bk_price;
-	}
 	public String getBk_usedate() {
 		return bk_usedate;
 	}
@@ -78,7 +67,30 @@ public class BookingDTO {
 	public void setBk_endtime(int bk_endtime) {
 		this.bk_endtime = bk_endtime;
 	}
-	
+	public int getBk_usetime() {
+		return bk_usetime;
+	}
+	public void setBk_usetime(int bk_usetime) {
+		this.bk_usetime = bk_usetime;
+	}
+	public int getBk_price() {
+		return bk_price;
+	}
+	public void setBk_price(int bk_price) {
+		this.bk_price = bk_price;
+	}
+	public String getPayment() {
+		return payment;
+	}
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+	public int getPay_num() {
+		return pay_num;
+	}
+	public void setPay_num(int pay_num) {
+		this.pay_num = pay_num;
+	}
 	
 
 }
