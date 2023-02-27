@@ -360,7 +360,33 @@ private Connection con=null;
 
 			}
 	}//updateUser
+		public int getUserNum(String id) {
+			Connection con =null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			int user_num = 0;
+			try {
+				con=getConnection();
+				
+				String sql="select user_num from user where user_id=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, id);
 
+				rs=pstmt.executeQuery();
+				if(rs.next()){
+					user_num = rs.getInt("user_num");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				if(rs!=null) try { rs.close();} catch (Exception e2) {}
+				if(pstmt!=null) try { pstmt.close();} catch (Exception e2) {}
+				if(con!=null) try { con.close();} catch (Exception e2) {}
+			}
+			return user_num;
+		}//getUserId()
+		
 
 	
 }//class

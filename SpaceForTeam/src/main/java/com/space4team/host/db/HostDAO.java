@@ -246,7 +246,7 @@ public class HostDAO {
 	}//userCheck()
 
 	public HostDTO getHost(String h_id) {
-		HostDTO dto=null;
+		HostDTO hdto=null;
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs= null;
@@ -258,14 +258,15 @@ public class HostDAO {
 			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				dto=new HostDTO();
-				dto.setH_id(h_id);
-				dto.setH_num(rs.getInt("h_num"));
-				dto.setH_name(rs.getString("h_name"));
-				dto.setH_email(rs.getString("h_email")); 
-				dto.setH_id(rs.getString("h_id"));
-				dto.setH_pass(rs.getString("h_pass"));
-				dto.setH_birth(rs.getString("h_birth"));
+				hdto=new HostDTO();
+				
+				hdto.setH_id(rs.getString("h_id"));
+				hdto.setH_num(rs.getInt("h_num"));
+				hdto.setH_name(rs.getString("h_name"));
+				hdto.setH_email(rs.getString("h_email")); 
+				hdto.setH_pass(rs.getString("h_pass"));
+				hdto.setH_birth(rs.getString("h_birth"));
+				
 				}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -274,7 +275,7 @@ public class HostDAO {
 			if(con!=null) try {con.close();}catch (Exception e2) {}
 			if(rs!=null) try {pstmt.close();}catch (Exception e2) {}
 		}
-		return dto;
+		return hdto;
 	}
 	
 
@@ -362,6 +363,7 @@ public class HostDAO {
 				  rs=pstmt.executeQuery();
 				if(rs.next()){
 					dto=new HostDTO();
+					dto.setH_num(rs.getInt("h_num"));
 					dto.setH_email(rs.getString("h_email"));
 					dto.setH_id(rs.getString("h_id"));
 					dto.setH_name(rs.getString("h_name"));

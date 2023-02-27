@@ -20,11 +20,12 @@ public class SpaceList implements Action{
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
+		System.out.println("id"+id);
 		
 		HostDAO hdao = new HostDAO();
 		HostDTO hdto = hdao.gethost(id);
 		System.out.println(hdto.getH_id());
-		System.out.println(hdto.getH_num()); // host number 출력됨 
+		System.out.println("host num" + hdto.getH_num()); // host number 출력됨 
 		
 		int pageSize = 6;
 		String pageNum = request.getParameter("pageNum");
