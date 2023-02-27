@@ -12,8 +12,8 @@ public class SpaceDTO {
 	private String s_opt;
 	private String s_max;
 	private String s_file;
-	
-	
+
+
 	// get set
 	public int getS_num() {
 		return s_num;

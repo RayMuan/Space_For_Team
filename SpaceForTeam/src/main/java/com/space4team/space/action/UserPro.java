@@ -19,20 +19,20 @@ public class UserPro implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		System.out.println("UserPro execute()");
+		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
-
-		int job = (Integer)session.getAttribute("job");
-		System.out.println("job="+job);
-		
-		
 		System.out.println("login한 id값: "+id);
 		
+		int job = (Integer)session.getAttribute("job");
+		System.out.println("job="+job);
 		
 		SpaceDAO dao = new SpaceDAO();
 		int pageSize =9;
 		String pageNum = request.getParameter("pageNum");
 		String search=request.getParameter("search");
+		String s_sido=request.getParameter("s_sido");
+
 		 
 		if(pageNum == null) {
 			pageNum = "1";
@@ -49,18 +49,21 @@ public class UserPro implements Action{
 	         spaceList=dao.getSpaceList(startRow, pageSize);
 	      }else {
 	         // 검색어 있음
-	        spaceList=dao.getSpaceList(startRow, pageSize, search);    
+	        spaceList=dao.getSpaceList(startRow, pageSize, search, s_sido);    
 	      }
 		
 		int pageBlock = 3;
 		int startPage = (currentPage -1 )/pageBlock * pageBlock + 1;
 		int endPage = startPage + pageBlock -1;
 		
+		// 페이징
 		int count = 0;
 		if(search==null) {
+			//검색어 없음
 			count=dao.getSpaceCount();
 		}else {
-			count=dao.getSpaceCount(search);
+			// 검색어 있음
+			count=dao.getSpaceCount(search, s_sido);
 		}
 		System.out.println("count"+count);
 		

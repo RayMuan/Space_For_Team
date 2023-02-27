@@ -54,31 +54,49 @@
         
     </head>
     <body>
-<%
-// session.setAttribute("id", 모든 참조형값); => 업캐스팅(자동형변환)
-// 자식 = 업캐스팅된 부모(다운캐스팅 명시적으로 형변환)
-String id=(String)session.getAttribute("id");
-
-%>
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">                
-                    <a class="navbar-brand" href="index.html">SpaceForTeam</a> 
+                    <a class="navbar-brand" href="MainPro.sp">SpaceForTeam</a> 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="MainPro.sp">Home</a></li>                   
-                            <li class="nav-item dropdown">
+                            <li class="nav-item"><a class="nav-link" href="join.jsp">Join</a></li>
+                            <li class="nav-item">
+                            <%   
+//                             String id = "";
+							String id=(String)session.getAttribute("id");
+                            if(id!=null){
+                            	%>
+                            	<a class="nav-link" ><%=id %> 님</a>
+                            <%
+                            }
+                            %>
+                            </li>
+                            <%if(id==null){
+                            	%>
+                            	<li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                                     <li><a class="dropdown-item" href="userloginform.jsp">Guest</a></li>
                                      <li><a class="dropdown-item" href="hostLogin.jsp">Host</a></li>
                                 </ul>
+                                <%
+                                }
+                                %>
                             </li>
-
+                            
+                            <%
+                           	
+								if(id!=null){
+									%>
 									<li class="nav-item"><a class="nav-link" href="UserLogout.us">Logout</a></li>
-									<li class="nav-item"><a class="nav-link" href="UserMypage.us">Mypage</a></li>
-
+										<li class="nav-item"><a class="nav-link" href="UserMypage.us">Mypage</a></li>
+									<%
+										}
+									%>
+                            
                              <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Community</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">

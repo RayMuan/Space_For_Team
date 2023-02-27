@@ -30,6 +30,9 @@ public class MainPro implements Action{
 		String pageNum = request.getParameter("pageNum");
 		String search=request.getParameter("search");
 		
+		String s_sido=request.getParameter("s_sido");
+		
+		
 		if(pageNum == null) {
 			pageNum = "1";
 		}
@@ -45,7 +48,7 @@ public class MainPro implements Action{
 	         spaceList=dao.getSpaceList(startRow, pageSize);
 	      }else {
 	         // 검색어 있음
-	        spaceList=dao.getSpaceList(startRow, pageSize, search);   
+	        spaceList=dao.getSpaceList(startRow, pageSize, search, s_sido);   
 	      }
 		
 		int pageBlock = 5;
@@ -56,7 +59,7 @@ public class MainPro implements Action{
 		if(search==null) {
 			count=dao.getSpaceCount();
 		}else {
-			count=dao.getSpaceCount(search);
+			count=dao.getSpaceCount(search, s_sido);
 		}
 		
 		int pageCount = count/pageSize + (count%pageSize==0?0:1);

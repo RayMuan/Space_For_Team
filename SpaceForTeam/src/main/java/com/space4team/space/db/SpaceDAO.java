@@ -216,7 +216,7 @@ import com.space4team.host.db.HostDTO;
 			return count;
 		}// getspaceCount(HostDTO hdto)
 	
-		public ArrayList<SpaceDTO> getSpaceList(int startRow,int pageSize, String search){
+		public ArrayList<SpaceDTO> getSpaceList(int startRow,int pageSize, String search, String s_sido){
 			System.out.println("SpaceDAO getSpaceList search()");
 			Connection con=null;
 			PreparedStatement pstmt=null;
@@ -224,11 +224,12 @@ import com.space4team.host.db.HostDTO;
 			ArrayList<SpaceDTO> spaceList=new ArrayList<>();
 			try {
 				con=getConnection();
-				String sql="select * from space where s_name like ? order by s_num desc limit ?,?";
+				String sql="select * from space where s_name like ? and s_sido like ? order by s_num desc limit ?,?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, "%"+search+"%");
-				pstmt.setInt(2, startRow-1);
-				pstmt.setInt(3, pageSize);
+				pstmt.setString(2, "%"+s_sido+"%");
+				pstmt.setInt(3, startRow-1);
+				pstmt.setInt(4, pageSize);
 				rs=pstmt.executeQuery();
 				while(rs.next()) {
 					SpaceDTO sdto=new SpaceDTO();
@@ -253,9 +254,11 @@ import com.space4team.host.db.HostDTO;
 			return spaceList;
 		}//getSpaceList(int startRow,int pageSize, String search)
 		
+
+		
 	
 		
-		public int getSpaceCount(String search) {
+		public int getSpaceCount(String search, String s_sido) {
 			System.out.println("search count");
 			Connection con=null;
 			PreparedStatement pstmt=null;
@@ -265,9 +268,10 @@ import com.space4team.host.db.HostDTO;
 				// 1~2 단계
 				con=getConnection();
 				// 3단계 sql
-				String sql="select count(*) from space where s_name like ?";
+				String sql="select count(*) from space where s_name like ? and s_sido like ?";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, "%"+search+"%");
+				pstmt.setString(2, "%"+s_sido+"%");
 				//4
 				rs=pstmt.executeQuery();
 				//5
@@ -285,6 +289,7 @@ import com.space4team.host.db.HostDTO;
 			return count;
 		}// getspaceCount()
 		
+	
 		
 		
 //		 호스트
