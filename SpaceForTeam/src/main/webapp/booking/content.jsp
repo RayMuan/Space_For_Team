@@ -42,7 +42,7 @@ BookingDTO dto = (BookingDTO)request.getAttribute("dto");
 <input type= "button" value="예약수정" 
  onclick = "location.href='BookingUpdateForm.bk?num=<%=dto.getBk_num() %>'">
 <input type= "button" value="예약삭제" 
- onclick = "location.href='BookingDeleteForm.bk?num=<%=dto.getBk_num() %>'">
+ onclick = "location.href='BookingDeletePro.bk?num=<%=dto.getBk_num() %>'">
 <input type= "button" value="결제" 
  onclick = "location.href='PaymentPro.pa?num=<%=dto.getBk_num() %>'">
 <%
