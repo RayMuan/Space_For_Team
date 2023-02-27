@@ -10,10 +10,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-
-
-
-
 public class BookingDAO {
 	public Connection getConnection() throws Exception{
 
@@ -54,8 +50,7 @@ public class BookingDAO {
 			pstmt.setInt(7, dto.getBk_starttime()); 
 			pstmt.setInt(8, dto.getBk_endtime());
 			pstmt.setInt(9, dto.getBk_usetime());
-			
-			
+
 			// 4단계 SQL구문을 실행(insert,update,delete)
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -75,7 +70,6 @@ public class BookingDAO {
 		Connection con = null;
 		PreparedStatement pstmt=null;
 		ResultSet rs = null;
-		
 		try {
 //			1~2단계
 			con=getConnection();
@@ -88,18 +82,6 @@ public class BookingDAO {
 // 			rs.next() 데이터 있으면 true => 열 접근 => 한 명 정보 MemberDTO에 저장
 //			5단계
 			while(rs.next()){
-//			next() 다음행 => 리턴값 데이터 있으면 true 없으면 false
-//			바구니 객체생성
-//			set매서드 호출 바구니에 값 저장	
-//				private int bk_num;
-//				private int s_num;
-//				private int user_num;
-//				private int bk_usercount;
-//				private Timestamp bk_date;
-//				private int bk_price;
-//				private String bk_usedate;
-//				private int bk_starttime; 
-//				private int bk_endtime;
 				
 			dto = new BookingDTO();
 			
@@ -204,7 +186,6 @@ public int getBookingCount() {
 //		
 	 	String sql = "select count(*) from booking";
 	 	pstmt = con.prepareStatement(sql);
-	 	
 	 	rs = pstmt.executeQuery();
 	 	if(rs.next()) {
 	 		count = rs.getInt("count(*)");
@@ -230,11 +211,6 @@ public void updateBooking(BookingDTO dto) {
 	Connection con = null;
 	PreparedStatement pstmt=null;
 	
-	
-//	dto.setBk_usedate(bk_usedate);
-//	dto.setBk_usercount(bk_usercount);
-//	dto.setBk_starttime(bk_starttime);
-//	dto.setBk_endtime(bk_endtime);
 	try {
 		con = getConnection();
 //		num name subject content
@@ -332,6 +308,4 @@ public void updateBooking(int bk_num) {
           if(rs != null) try {rs.close();} catch (Exception e2) {}
        }
  }
-
-
 }

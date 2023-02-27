@@ -163,7 +163,7 @@
 <div class="col-lg-4 mb-5">
   
     <div class="card h-100 shadow border-0 style="cursor: pointer;" onclick="location.href='SpaceInfoPro.sp?s_num=<%=dto.getS_num()%>'"">
- <img src="upload/<%=dto.getS_file()%>" width="300">
+ <img src="upload/<%=dto.getS_file()%>" width="375" >
 <%--         <img class="card-img-top" src=<%=dto.getS_file() %> alt="..." /> --%>
         	<div class="card-body p-4">
             	<div class="badge bg-primary bg-gradient rounded-pill mb-2"><%=dto.getS_num() %></div>
@@ -204,7 +204,9 @@
 	<%
 	}
 	%> 		
- <div class="page">        
+	
+          
+	 <div class="page">        
 <%
 if(search == null){
    //    검색어 없을때,, 
@@ -249,10 +251,11 @@ if(search == null){
 %>
 
 </div> 
-           </div>
-           </div>
-         
+
+         </div>
+            </div>
             </section>
+            
         </main>
 
         <!-- Footer-->
