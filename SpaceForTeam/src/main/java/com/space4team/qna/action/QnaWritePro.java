@@ -6,12 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.space4team.host.db.HostDAO;
-import com.space4team.host.db.HostDTO;
 import com.space4team.qna.db.QnaDAO;
 import com.space4team.qna.db.QnaDTO;
-import com.space4team.review.db.ReviewDAO;
-import com.space4team.review.db.ReviewDTO;
 import com.space4team.user.db.UserDAO;
 import com.space4team.user.db.UserDTO;
 
@@ -42,16 +38,19 @@ public class QnaWritePro implements Action{
 				qdto.setUser_num(user_num);
 				qdto.setQ_content(q_content);
 				qdto.setQ_date(q_date);
+
+				QnaDAO qdao=new QnaDAO();
+				qdao.insertQna(qdto);
 			}else if(job==2) {
 				// host
-
 				String q_recontent=request.getParameter("q_recontent");
-
+				
 				qdto.setQ_recontent(q_recontent);
+
+				QnaDAO qdao=new QnaDAO();
+				qdao.insertRecontent(qdto);
 			}
 			
-			QnaDAO qdao=new QnaDAO();
-			qdao.insertQna(qdto);
 			
 			ActionForward forward=new ActionForward();
 			forward.setPath("SpaceInfoPro.sp?s_num="+s_num);

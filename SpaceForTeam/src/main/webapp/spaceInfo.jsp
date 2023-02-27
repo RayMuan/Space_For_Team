@@ -268,14 +268,13 @@
                             <div class="accordion-collapse collapse show" id="collapse<%=qdto.getQ_num() %>" aria-labelledby="heading<%=qdto.getQ_num() %>" data-bs-parent="#accordionExample">
                                 <%
                                 if(qdto.getQ_recontent()==null){
-                                	if(id==hdto.getH_id()){ %>
-										<!-- 답변 없음. 이 공간의 주인인 경우 -->
+                                	if(id.equals(hdto.getH_id())){ %>
+								<!-- 답변 없음. 이 공간의 주인인 경우 -->
 								<div class="accordion-body">
-                                	<form class="mb-4 col" action="QnaWritePro.re" method="post" >
+                                	<form class="mb-4 col" action="QnaWritePro.qa" method="post" >
 									<input type="hidden" name="s_num" value=<%=sdto.getS_num() %> >
-
-									<input type="submit" class="btn btn-secondary btn-lg px-4 col-2" value="답글달기" >
-									<textarea class="form-control col-10"  name="Q_reply" rows="3" placeholder="질문에 답변해주세요!"></textarea>
+									<textarea class="form-control col-10 mb-2"  name="q_recontent" rows="3" placeholder="질문에 답변해주세요!"></textarea>
+									<input type="submit" class="btn btn-secondary btn-lg px-4 fs-6" value="답글달기" >
 									</form>
                                 </div>
                                 <%}else{
