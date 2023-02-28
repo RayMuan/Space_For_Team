@@ -82,7 +82,7 @@ public class MainPro implements Action{
 	      
 	      
 	      ActionForward forward=new ActionForward();
-	      forward.setPath("usermain.jsp");
+	      forward.setPath("Join.us");
 	      forward.setRedirect(false);
 	      return forward;
 		

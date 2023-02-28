@@ -27,12 +27,12 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="MainPro.sp">Home</a></li>                   
-                            <li class="nav-item"><a class="nav-link" href="join.jsp">Join</a></li>
+                            <li class="nav-item"><a class="nav-link" href="Join.us">Join</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Login</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="userloginform.jsp">Guest</a></li>
-                                     <li><a class="dropdown-item" href="hostLogin.jsp">Host</a></li>
+                                    <li><a class="dropdown-item" href="UserLoginForm.us">Guest</a></li>
+                                     <li><a class="dropdown-item" href="HostLoginForm.ho">Host</a></li>
                                 </ul>
                             </li>
                              <%
