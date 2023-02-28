@@ -125,7 +125,7 @@ String id=(String)session.getAttribute("id");
 	<div class="fw-bold"></div>
 		<button class="button1"><a href="host.jsp">수정</a></button>
 		<button class="button2"><a href="host.jsp">삭제</a></button>
- 		<a href="host.jsp" class="notification">
+ 		<a href="SpaceInfo.sp?s_num=<%=dto.getS_num()%>" class="notification">
   			<span>리뷰 답글 달기</span>
   			<span class="badge">3</span>
 		</a>

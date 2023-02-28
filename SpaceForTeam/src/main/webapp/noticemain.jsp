@@ -81,7 +81,7 @@
                                           <strong> <%=dto.getNo_content() %></strong><br>
 											<%=dto.getNo_date() %><br>
 
-                                           <%if(id.equals("admin")){ 
+                                           <%if(id=="admin"){ 
                                         	  %>
                                         	  <input type="button" name="write" value="수정" onclick="location.href='NoticeUpdateForm.no?num=<%=dto.getNo_num()%>'">
                                         	  <input type="button" name="delete" value="삭제" onclick="location.href='NoticeDelete.no?num=<%=dto.getNo_num()%>'">                       
@@ -95,7 +95,7 @@
 					<%	  	}	 %>  
 					 </table>
 					<% 
-					if(id.equals("admin")){
+					if(id=="admin"){
                      	%>
                            <a href="NoticeWriteForm.no"><i class="bi bi-star-fill text-warning"></i>글쓰기</a>          
                            <%       

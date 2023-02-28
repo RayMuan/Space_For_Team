@@ -224,7 +224,7 @@
 	%> 		
 
 <div class="page">        
-<ul>
+<ul class ="page-nation">
 <%
 if(search == null){
    //    검색어 없을때,, 

@@ -184,7 +184,8 @@
 									<!--답글 없음 -->
 									<%
 									}else if(redto.getRe_reply()==null){
-										if(id == hdto.getH_id()){%>
+										if(id!=null){
+											if(id.equals(hdto.getH_id())){%>
 										<!-- 이 공간의 호스트 --> -->
 										<div class="ms-3">
 											<form class="mb-4 col" action="ReviewWritePro.re" method="post" >
@@ -200,6 +201,7 @@
 							</li>
 							<% 
 							}
+									}
 						}
 						%>
 						</ul>
@@ -220,7 +222,7 @@
 				}else if(job==2){
 					if(id.equals(hdto.getH_id())){
 				%>
-				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="SpaceUpdatePro.sp"> 나의 공간 관리하기</a>								
+				<a class="btn btn-primary btn-lg px-4 me-sm-3" href="SpaceList.sp"> 나의 공간 관리하기</a>								
 				<%						
 					}
 				}else if(job==0){%>
@@ -270,6 +272,7 @@
                             <div class="accordion-collapse collapse show" id="collapse<%=qdto.getQ_num() %>" aria-labelledby="heading<%=qdto.getQ_num() %>" data-bs-parent="#accordionExample">
                                 <%
                                 if(qdto.getQ_recontent()==null){
+                                if(id!=null){
                                 	if(id==hdto.getH_id()){ %>
 								<!-- 답변 없음. 이 공간의 주인인 경우 -->
 								<div class="accordion-body">
@@ -279,13 +282,15 @@
 									<input type="submit" class="btn btn-secondary btn-lg px-4 fs-6" value="답글달기" >
 									</form>
                                 </div>
-                                <%}else{
+                                <%
+                                }else{
                                 %>
 									<!-- 답변 없음. 이 공간의 주인이 아닌 경우  -->
 								<div class="accordion-body">
                                 	A. 답변을 기다리고 있어요.
                                 </div>
                                 <%}
+                                }
                                 }else{
                                 %>
 								<!--  답변 있음 -->
